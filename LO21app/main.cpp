@@ -1,3 +1,4 @@
+#include "MainWindow.h"
 #include <QApplication>
 #include <QPushButton>
 #include <QLineEdit>
@@ -12,6 +13,8 @@
 #include <QTreeWidget>
 #include <QList>
 #include <QTreeWidgetItem>
+#include <QStandardItemModel>
+#include <QStandardItem>
 
 int main(int argc, char * argv[]) {
     QApplication app(argc, argv);
@@ -36,15 +39,34 @@ int main(int argc, char * argv[]) {
 //    quit.show();
 //    QPushButton::connect(&quit, SIGNAL(clicked()), &app, SLOT(quit()));
 
-    QTreeWidget tree(tachesTab);
 
-    tree.setFixedSize(200, 500);
-    tree.setColumnCount(1);
-    QList<QTreeWidgetItem *> items;
-    for (int i = 0; i < 50; ++i)
-        items.append(new QTreeWidgetItem((QTreeWidget*)0, QStringList(QString("item: %1").arg(i))));
-    tree.insertTopLevelItems(0, items);
-    tree.show();
+    // Mode normal
+//    QTreeWidget tree(tachesTab);
+//    tree.setFixedSize(200, 500);
+//    tree.setColumnCount(1);
+//    tree.setHeaderHidden(true);
+//    QList<QTreeWidgetItem *> items;
+//    for (int i = 0; i < 50; ++i)
+//        items.append(new QTreeWidgetItem((QTreeWidget*)0, QStringList(QString("item: %1").arg(i))));
+//    tree.insertTopLevelItems(0, items);
+//    tree.show();
+
+    // Mode modèle/vue
+    QStandardItemModel *modele = new QStandardItemModel;
+    QStandardItem *item = new QStandardItem("Truc");
+    modele->appendRow(item);
+    item->appendRow(new QStandardItem("Sous truc"));
+    QStandardItem *item2 = new QStandardItem("Plep");
+    modele->appendRow(item2);
+    item2->appendRow(new QStandardItem("Sous plep"));
+    QTreeView *vue = new QTreeView(tachesTab);
+    vue->setHeaderHidden(true);
+    vue->setFixedSize(200,500);
+    vue->setModel(modele);
+
+    // Une fois qu'on aura une classe d'affichage
+//    QTreeView::connect(vue,  SIGNAL(clicked()), &app, SLOT(quit()));
+
 
 //    QPushButton::connect(&quit, SIGNAL(clicked()), &app, SLOT(quit()));
 

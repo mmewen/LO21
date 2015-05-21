@@ -12,6 +12,9 @@
 #include <QStandardItemModel>
 #include <QStandardItem>
 #include <QTreeView>
+#include <QFormLayout>
+#include <QLineEdit>
+#include <QHBoxLayout>
 //#include <QPushButton>
 //#include <QLineEdit>
 //#include <QTextEdit>
@@ -29,8 +32,18 @@
 
 
 class MainWindow: public QMainWindow{
+    QWidget *zoneCentrale;
+    QTabWidget *tabs;
+    QWidget *planningTab;
+    QWidget *tachesTab;
+    QHBoxLayout *tachesLayout;
+    QFormLayout *tachesFormLayout;
+
+    void showProject();
 public:
     MainWindow();
+//public slots:
+//    quit();
 };
 
 #endif // MAINWINDOW_H

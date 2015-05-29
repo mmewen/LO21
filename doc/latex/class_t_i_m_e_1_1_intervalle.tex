@@ -1,0 +1,65 @@
+\hypertarget{class_t_i_m_e_1_1_intervalle}{}\section{T\+I\+M\+E\+:\+:Intervalle Class Reference}
+\label{class_t_i_m_e_1_1_intervalle}\index{T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}}
+
+
+Classe permettant de manipuler des intervalles de dates L\textquotesingle{}utilisation de cette classe nécessite des dates valides au sens commun du terme. Déclenchement d\textquotesingle{}exception dans le cas contraire.  
+
+
+
+
+{\ttfamily \#include $<$timing.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_t_i_m_e_1_1_intervalle_a98b63f9c55a777090ec224d61ab26427}{Intervalle} (const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&f)
+\begin{DoxyCompactList}\small\item\em Constructeur à partir de deux dates. \end{DoxyCompactList}\item 
+\hypertarget{class_t_i_m_e_1_1_intervalle_a729d464967de6618da00b772357dc923}{}void {\bfseries afficher} (std\+::ostream \&f=std\+::cout) const \label{class_t_i_m_e_1_1_intervalle_a729d464967de6618da00b772357dc923}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_intervalle_a8a9980c16e051af5e08135815cc3d074}{}\hyperlink{class_t_i_m_e_1_1_date}{Date} {\bfseries get\+Debut} () const \label{class_t_i_m_e_1_1_intervalle_a8a9980c16e051af5e08135815cc3d074}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_intervalle_a20a035fb9d9720ef94e62e1ef45845c3}{}\hyperlink{class_t_i_m_e_1_1_date}{Date} {\bfseries get\+Fin} () const \label{class_t_i_m_e_1_1_intervalle_a20a035fb9d9720ef94e62e1ef45845c3}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_intervalle_adec63857259b690f79de8d16b0ca0c4d}{}int {\bfseries get\+Duree} () const \label{class_t_i_m_e_1_1_intervalle_adec63857259b690f79de8d16b0ca0c4d}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_intervalle_a8f7dca71eb9d8648fa30225360df4fda}{}bool {\bfseries operator\&\&} (const \hyperlink{class_t_i_m_e_1_1_intervalle}{Intervalle} \&v) const \label{class_t_i_m_e_1_1_intervalle_a8f7dca71eb9d8648fa30225360df4fda}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_intervalle_a9dfead5501b190507a2ffa5c29450ffe}{}\hyperlink{class_t_i_m_e_1_1_intervalle}{Intervalle} {\bfseries operator+} (const \hyperlink{class_t_i_m_e_1_1_intervalle}{Intervalle} \&i) const \label{class_t_i_m_e_1_1_intervalle_a9dfead5501b190507a2ffa5c29450ffe}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe permettant de manipuler des intervalles de dates L\textquotesingle{}utilisation de cette classe nécessite des dates valides au sens commun du terme. Déclenchement d\textquotesingle{}exception dans le cas contraire. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_t_i_m_e_1_1_intervalle_a98b63f9c55a777090ec224d61ab26427}{}\index{T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}!Intervalle@{Intervalle}}
+\index{Intervalle@{Intervalle}!T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}}
+\subsubsection[{Intervalle}]{\setlength{\rightskip}{0pt plus 5cm}Intervalle\+::\+Intervalle (
+\begin{DoxyParamCaption}
+\item[{const {\bf Date} \&}]{d, }
+\item[{const {\bf Date} \&}]{f}
+\end{DoxyParamCaption}
+)}\label{class_t_i_m_e_1_1_intervalle_a98b63f9c55a777090ec224d61ab26427}
+
+
+Constructeur à partir de deux dates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & date de début de l\textquotesingle{}intervalle \\
+\hline
+{\em f} & date de fin de l\textquotesingle{}intervalle. On doit avoir d$<$=f \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+L\+O21app/timing.\+h\item 
+L\+O21app/timing.\+cpp\end{DoxyCompactItemize}

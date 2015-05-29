@@ -1,0 +1,83 @@
+\hypertarget{class_t_i_m_e_1_1_date}{}\section{T\+I\+M\+E\+:\+:Date Class Reference}
+\label{class_t_i_m_e_1_1_date}\index{T\+I\+M\+E\+::\+Date@{T\+I\+M\+E\+::\+Date}}
+
+
+Classe permettant de manipuler des dates standards L\textquotesingle{}utilisation de cette classe nécessite des dates valides au sens commun du terme. Déclenchement d\textquotesingle{}exception dans le cas contraire.  
+
+
+
+
+{\ttfamily \#include $<$timing.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_t_i_m_e_1_1_date_ab0d72ce6e986c0c0a5f2902e586cf81a}{Date} (unsigned int short j=1, unsigned int short m=1, unsigned int a=0)
+\begin{DoxyCompactList}\small\item\em Constructeur à partir d\textquotesingle{}un jour, mois, année \end{DoxyCompactList}\item 
+\hypertarget{class_t_i_m_e_1_1_date_a4af978b7df2b738f62449b0a7e53c21d}{}unsigned short int {\bfseries get\+Jour} () const \label{class_t_i_m_e_1_1_date_a4af978b7df2b738f62449b0a7e53c21d}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_date_a6cb9d945143df216115419c4cb8b14ce}{}unsigned short int {\bfseries get\+Mois} () const \label{class_t_i_m_e_1_1_date_a6cb9d945143df216115419c4cb8b14ce}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_date_a07b41b2e9e85ef78bf13689e772bef7d}{}unsigned int {\bfseries get\+Annee} () const \label{class_t_i_m_e_1_1_date_a07b41b2e9e85ef78bf13689e772bef7d}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_date_a7419902750e61b9473ab05ccd5ced33d}{}void \hyperlink{class_t_i_m_e_1_1_date_a7419902750e61b9473ab05ccd5ced33d}{set\+Date} (unsigned short int j, unsigned short int m, unsigned int a)\label{class_t_i_m_e_1_1_date_a7419902750e61b9473ab05ccd5ced33d}
+
+\begin{DoxyCompactList}\small\item\em initialisation de la date \end{DoxyCompactList}\item 
+\hypertarget{class_t_i_m_e_1_1_date_ace4be52a503c45de93b8db92dc592d93}{}void \hyperlink{class_t_i_m_e_1_1_date_ace4be52a503c45de93b8db92dc592d93}{set\+Date\+Aujourdhui} ()\label{class_t_i_m_e_1_1_date_ace4be52a503c45de93b8db92dc592d93}
+
+\begin{DoxyCompactList}\small\item\em initialisation de la date avec la date d\textquotesingle{}aujourd\textquotesingle{}hui \end{DoxyCompactList}\item 
+\hypertarget{class_t_i_m_e_1_1_date_aa45188755f5d9d17cbebf0e55d3c571b}{}void \hyperlink{class_t_i_m_e_1_1_date_aa45188755f5d9d17cbebf0e55d3c571b}{afficher} (std\+::ostream \&f=std\+::cout) const \label{class_t_i_m_e_1_1_date_aa45188755f5d9d17cbebf0e55d3c571b}
+
+\begin{DoxyCompactList}\small\item\em affiche le date sous le format J\+J/\+M\+M/\+A\+A\+A\+A \end{DoxyCompactList}\item 
+\hypertarget{class_t_i_m_e_1_1_date_aa8208298c0efe5dbf661c66a284fd163}{}bool {\bfseries operator==} (const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d) const \label{class_t_i_m_e_1_1_date_aa8208298c0efe5dbf661c66a284fd163}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_date_a8a3bccb05f00086e64c5b5518a37949f}{}bool {\bfseries operator$<$} (const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d) const \label{class_t_i_m_e_1_1_date_a8a3bccb05f00086e64c5b5518a37949f}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_date_a61f93f8612a998bc440070f9b8a2660a}{}int {\bfseries operator-\/} (const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d) const \label{class_t_i_m_e_1_1_date_a61f93f8612a998bc440070f9b8a2660a}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_date_a85907da4cadaff930c748328fda4d527}{}\hyperlink{class_t_i_m_e_1_1_date}{Date} {\bfseries demain} () const \label{class_t_i_m_e_1_1_date_a85907da4cadaff930c748328fda4d527}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_date_a3c1f346c2ad9287155a71dc5d09e7fd8}{}\hyperlink{class_t_i_m_e_1_1_date}{Date} {\bfseries operator+} (unsigned int nb) const \label{class_t_i_m_e_1_1_date_a3c1f346c2ad9287155a71dc5d09e7fd8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe permettant de manipuler des dates standards L\textquotesingle{}utilisation de cette classe nécessite des dates valides au sens commun du terme. Déclenchement d\textquotesingle{}exception dans le cas contraire. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_t_i_m_e_1_1_date_ab0d72ce6e986c0c0a5f2902e586cf81a}{}\index{T\+I\+M\+E\+::\+Date@{T\+I\+M\+E\+::\+Date}!Date@{Date}}
+\index{Date@{Date}!T\+I\+M\+E\+::\+Date@{T\+I\+M\+E\+::\+Date}}
+\subsubsection[{Date}]{\setlength{\rightskip}{0pt plus 5cm}T\+I\+M\+E\+::\+Date\+::\+Date (
+\begin{DoxyParamCaption}
+\item[{unsigned int short}]{j = {\ttfamily 1}, }
+\item[{unsigned int short}]{m = {\ttfamily 1}, }
+\item[{unsigned int}]{a = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_t_i_m_e_1_1_date_ab0d72ce6e986c0c0a5f2902e586cf81a}
+
+
+Constructeur à partir d\textquotesingle{}un jour, mois, année 
+
+
+\begin{DoxyParams}{Parameters}
+{\em j} & jour avec 1$<$=j$<$=31 \\
+\hline
+{\em m} & mois avec 1$<$=m$<$=12 \\
+\hline
+{\em a} & année avec a$>$=0 \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+L\+O21app/timing.\+h\item 
+L\+O21app/timing.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,6 @@
+<map id="Unitaire" name="Unitaire">
+<area shape="rect" id="node2" href="$class_tache.html" title="Classe abstraite mère de toutes les taches. Comporte un titre, une échéance et une liste de précédenc..." alt="" coords="5,171,64,197"/>
+<area shape="rect" id="node3" href="$class_truc.html" title="Truc" alt="" coords="104,95,152,121"/>
+<area shape="rect" id="node4" href="$class_t_i_m_e_1_1_date.html" title="Classe permettant de manipuler des dates standards L&#39;utilisation de cette classe n�cessite des dates v..." alt="" coords="11,5,101,32"/>
+<area shape="rect" id="node5" href="$class_t_i_m_e_1_1_duree.html" title="Classe permettant de manipuler des durees L&#39;utilisation de cette classe n�cessite des dates valides au..." alt="" coords="89,171,186,197"/>
+</map>

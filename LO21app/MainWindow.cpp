@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 
+//! initialisation de la fenêtre principale
 MainWindow::MainWindow():
     zoneCentrale(new QWidget),
     tabs(new QTabWidget(zoneCentrale)),
@@ -45,8 +46,8 @@ MainWindow::MainWindow():
     showProject();
 }
 
+//! affichage du contenu d'un projet
 void MainWindow::showProject(){
-
     QLineEdit *nom = new QLineEdit;
     QLineEdit *prenom = new QLineEdit;
     QLineEdit *age = new QLineEdit;

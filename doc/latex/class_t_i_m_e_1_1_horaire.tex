@@ -1,0 +1,62 @@
+\hypertarget{class_t_i_m_e_1_1_horaire}{}\section{T\+I\+M\+E\+:\+:Horaire Class Reference}
+\label{class_t_i_m_e_1_1_horaire}\index{T\+I\+M\+E\+::\+Horaire@{T\+I\+M\+E\+::\+Horaire}}
+
+
+Classe permettant de manipuler des horaires L\textquotesingle{}utilisation de cette classe nécessite des dates valides au sens commun du terme. Déclenchement d\textquotesingle{}exception dans le cas contraire.  
+
+
+
+
+{\ttfamily \#include $<$timing.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_t_i_m_e_1_1_horaire_ab833c9dc3a4fdbda3894dbbd72643813}{Horaire} (unsigned short int h, unsigned short int m)
+\begin{DoxyCompactList}\small\item\em Constructeur à partir de heure et minute. \end{DoxyCompactList}\item 
+\hypertarget{class_t_i_m_e_1_1_horaire_ae4dd22490e383b0662fc5788bd42d370}{}void {\bfseries set\+Horaire} (unsigned short int h, unsigned short int m)\label{class_t_i_m_e_1_1_horaire_ae4dd22490e383b0662fc5788bd42d370}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_horaire_af4f27b26ed338d7fa03659107f813cf8}{}void {\bfseries afficher} (std\+::ostream \&f=std\+::cout) const \label{class_t_i_m_e_1_1_horaire_af4f27b26ed338d7fa03659107f813cf8}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_horaire_ace5d2381e38d80e99c6a84158a4044e3}{}unsigned short int {\bfseries get\+Heure} () const \label{class_t_i_m_e_1_1_horaire_ace5d2381e38d80e99c6a84158a4044e3}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_horaire_a5b0e73a520913fd0588407c1507344a8}{}unsigned short int {\bfseries get\+Minute} () const \label{class_t_i_m_e_1_1_horaire_a5b0e73a520913fd0588407c1507344a8}
+
+\item 
+\hypertarget{class_t_i_m_e_1_1_horaire_a30ec21c5b5cad95c1c17c02c66d796a6}{}bool {\bfseries operator$<$} (const \hyperlink{class_t_i_m_e_1_1_horaire}{Horaire} \&h) const \label{class_t_i_m_e_1_1_horaire_a30ec21c5b5cad95c1c17c02c66d796a6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe permettant de manipuler des horaires L\textquotesingle{}utilisation de cette classe nécessite des dates valides au sens commun du terme. Déclenchement d\textquotesingle{}exception dans le cas contraire. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_t_i_m_e_1_1_horaire_ab833c9dc3a4fdbda3894dbbd72643813}{}\index{T\+I\+M\+E\+::\+Horaire@{T\+I\+M\+E\+::\+Horaire}!Horaire@{Horaire}}
+\index{Horaire@{Horaire}!T\+I\+M\+E\+::\+Horaire@{T\+I\+M\+E\+::\+Horaire}}
+\subsubsection[{Horaire}]{\setlength{\rightskip}{0pt plus 5cm}T\+I\+M\+E\+::\+Horaire\+::\+Horaire (
+\begin{DoxyParamCaption}
+\item[{unsigned short int}]{h, }
+\item[{unsigned short int}]{m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_t_i_m_e_1_1_horaire_ab833c9dc3a4fdbda3894dbbd72643813}
+
+
+Constructeur à partir de heure et minute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & heure avec 0$<$=h$<$=23 \\
+\hline
+{\em m} & minute avec 0$<$=m$<$=59 \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+L\+O21app/timing.\+h\item 
+L\+O21app/timing.\+cpp\end{DoxyCompactItemize}

@@ -31,6 +31,9 @@
 
 
 
+/// \class MainWindow
+/// \brief Conserve les pointeurs vers les principaux widgets de la fenêtre. S'occupe des actions générales sur ceux-ci.
+///
 class MainWindow: public QMainWindow{
     QWidget *zoneCentrale;
     QTabWidget *tabs;

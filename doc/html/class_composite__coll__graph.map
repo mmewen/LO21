@@ -1,0 +1,5 @@
+<map id="Composite" name="Composite">
+<area shape="rect" id="node2" href="$class_tache.html" title="Classe abstraite mère de toutes les taches. Comporte un titre, une échéance et une liste de précédenc..." alt="" coords="19,171,77,197"/>
+<area shape="rect" id="node3" href="$class_truc.html" title="Truc" alt="" coords="99,95,147,121"/>
+<area shape="rect" id="node4" href="$class_t_i_m_e_1_1_date.html" title="Classe permettant de manipuler des dates standards L&#39;utilisation de cette classe n�cessite des dates v..." alt="" coords="5,5,96,32"/>
+</map>

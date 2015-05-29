@@ -1,0 +1,5 @@
+<map id="Tache" name="Tache">
+<area shape="rect" id="node3" href="$class_composite.html" title="Tache qui peut contenir des tâches mais ne peut pas être programmée. " alt="" coords="5,155,91,181"/>
+<area shape="rect" id="node4" href="$class_unitaire.html" title="Tache programmable. " alt="" coords="115,155,181,181"/>
+<area shape="rect" id="node2" href="$class_truc.html" title="Truc" alt="" coords="73,5,121,32"/>
+</map>

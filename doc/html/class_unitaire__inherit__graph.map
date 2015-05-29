@@ -1,0 +1,4 @@
+<map id="Unitaire" name="Unitaire">
+<area shape="rect" id="node2" href="$class_tache.html" title="Classe abstraite mère de toutes les taches. Comporte un titre, une échéance et une liste de précédenc..." alt="" coords="9,80,68,107"/>
+<area shape="rect" id="node3" href="$class_truc.html" title="Truc" alt="" coords="15,5,63,32"/>
+</map>

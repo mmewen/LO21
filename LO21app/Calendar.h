@@ -125,13 +125,17 @@ public:
 class Projet {
 private:
     Tache** taches;
+    Tache** tachesNonComposantes;
     unsigned int nb;
     unsigned int nbMax;
+    unsigned int nbNC;
+    unsigned int nbMaxNC;
     string identificateur;
     string nom;
     string file;
     Date dispo;
     void addItem(Tache* t);
+    void addItemNC(Tache* t);
     Tache* trouverTache(const string& id) const;
 public:
     Projet(const string& id, const string& nom, const string& file, const Date& d):identificateur(id),nom(nom),file(file),dispo(d),taches(0),nb(0),nbMax(0){}

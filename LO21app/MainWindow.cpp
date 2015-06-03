@@ -43,7 +43,7 @@ MainWindow::MainWindow():
     tachesTab->setLayout(tachesLayout);
     this->setCentralWidget(zoneCentrale);
 
-    showUnitaire();
+    showProject();
 }
 
 //! affichage du contenu d'un projet
@@ -54,6 +54,7 @@ void MainWindow::showProject(){
     tachesFormLayout = new QFormLayout;
     tachesFormLayout->addRow("Titre du projet", titre);
     tachesFormLayout->addRow("Disponibilité", dispo); // si on bouge la date, on bouge aussi les dates de début des taches
+    // nb de taches actuelles
     // échéance calculée
     // afficher l'identifiant
 

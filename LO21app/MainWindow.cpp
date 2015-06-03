@@ -48,14 +48,34 @@ MainWindow::MainWindow():
 
 //! affichage du contenu d'un projet
 void MainWindow::showProject(){
-    QLineEdit *nom = new QLineEdit;
-    QLineEdit *prenom = new QLineEdit;
-    QLineEdit *age = new QLineEdit;
+    QLineEdit *titre = new QLineEdit;
+    QLineEdit *dispo = new QLineEdit;
 
     tachesFormLayout = new QFormLayout;
-    tachesFormLayout->addRow("Votre nom", nom);
-    tachesFormLayout->addRow("Votre prénom", prenom);
-    tachesFormLayout->addRow("Votre âge", age);
+    tachesFormLayout->addRow("Titre du projet", titre);
+    tachesFormLayout->addRow("Disponibilité", dispo); // si on bouge la date, on bouge aussi les dates de début des taches
+    // échéance calculée
+    // afficher l'identifiant
+
+    // bouton -> enregistrer
+
+    tachesLayout->addLayout(tachesFormLayout);
+
+}
+
+void MainWindow::showUnitaire(){
+    QLineEdit *titre = new QLineEdit;
+    QLineEdit *echeance = new QLineEdit;
+
+    tachesFormLayout = new QFormLayout;
+    tachesFormLayout->addRow("Titre de la tache", titre);
+    tachesFormLayout->addRow("Disponibilité", echeance); // vérifier que ça n'est pas plus tôt que le début du projet !
+    tachesFormLayout->addRow("Échéance", echeance); // vérifier qu'elle est après la disponibilité
+    tachesFormLayout->addRow("Durée", echeance);
+    tachesFormLayout->addRow("Préemptible", echeance);
+    // afficher durée faite
+    //          + durée restante
+
 
     tachesLayout->addLayout(tachesFormLayout);
 

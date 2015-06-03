@@ -150,6 +150,7 @@ public:
     string getFile() const { return file; }
     Date getDispo() const { return dispo; }
     Date getEcheance();
+    void moveTacheTo(Tache* t);
     void load(const string& f);
     void save(const string& f);
     const Tache& getTache(const string& code) const;

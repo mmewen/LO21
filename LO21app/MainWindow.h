@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 // Includes
+#include "Calendar.h"
+
 #include <QString>
 #include <QMainWindow>
 #include <QWidget>
@@ -17,7 +19,9 @@
 #include <QHBoxLayout>
 #include <QCheckBox>
 #include <QDate>
-//#include <QPushButton>
+#include <QCalendarWidget>
+#include <QSpinBox>
+#include <QPushButton>
 //#include <QLineEdit>
 //#include <QTextEdit>
 //#include <QVBoxLayout>
@@ -28,8 +32,8 @@
 //#include <QTreeWidgetItem>
 
 // Constantes
-#define W_WIDTH 700
-#define W_HEIGHT 500
+#define W_WIDTH 900
+#define W_HEIGHT 700
 
 
 
@@ -47,7 +51,7 @@ class MainWindow: public QMainWindow{
     void showProject();
 public:
     MainWindow();
-    void showUnitaire();
+    void showUnitaire(const Unitaire& t);
     void saveUnitaire();
 //public slots:
 //    quit();

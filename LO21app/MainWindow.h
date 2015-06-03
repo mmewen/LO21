@@ -15,6 +15,8 @@
 #include <QFormLayout>
 #include <QLineEdit>
 #include <QHBoxLayout>
+#include <QCheckBox>
+#include <QDate>
 //#include <QPushButton>
 //#include <QLineEdit>
 //#include <QTextEdit>
@@ -45,6 +47,8 @@ class MainWindow: public QMainWindow{
     void showProject();
 public:
     MainWindow();
+    void showUnitaire();
+    void saveUnitaire();
 //public slots:
 //    quit();
 };

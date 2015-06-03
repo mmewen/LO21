@@ -43,7 +43,7 @@ MainWindow::MainWindow():
     tachesTab->setLayout(tachesLayout);
     this->setCentralWidget(zoneCentrale);
 
-    showProject();
+    showUnitaire();
 }
 
 //! affichage du contenu d'un projet
@@ -65,14 +65,17 @@ void MainWindow::showProject(){
 
 void MainWindow::showUnitaire(){
     QLineEdit *titre = new QLineEdit;
+    QLineEdit *dispo = new QLineEdit;
     QLineEdit *echeance = new QLineEdit;
+    QLineEdit *duree = new QLineEdit;
+    QCheckBox *preemptible = new QCheckBox;
 
     tachesFormLayout = new QFormLayout;
     tachesFormLayout->addRow("Titre de la tache", titre);
-    tachesFormLayout->addRow("Disponibilité", echeance); // vérifier que ça n'est pas plus tôt que le début du projet !
+    tachesFormLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tôt que le début du projet !
     tachesFormLayout->addRow("Échéance", echeance); // vérifier qu'elle est après la disponibilité
-    tachesFormLayout->addRow("Durée", echeance);
-    tachesFormLayout->addRow("Préemptible", echeance);
+    tachesFormLayout->addRow("Durée", duree);
+    tachesFormLayout->addRow("Préemptible", preemptible);
     // afficher durée faite
     //          + durée restante
 
@@ -81,12 +84,9 @@ void MainWindow::showUnitaire(){
 
 }
 
-/* Penser au QFormLayout pour l'édition des tâches
- * Ça parmet de faire :
- * layout->addRow("Votre nom", nom);
- * :)
-*/
-
+void saveUnitaire(){
+    QDate date = QDate::fromString("1MM12car2003", "d'MM'MMcaryyyy");
+}
 
 
 

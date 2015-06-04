@@ -1,17 +1,16 @@
 #include "Calendar.h"
 #include <fstream>
 
-ostream& operator<<(ostream& fout, const Tache& t){
-    fout<<t.getId()<<"\n";
-    fout<<t.getTitre()<<"\n";
-    fout<<t.getDateDisponibilite()<<"\n";
-    fout<<t.getDateEcheance()<<"\n";
-    return fout;
-}
+
 
 ostream& operator<<(ostream& f, const Programmation& p);
 
 //TACHE
+ostream& operator<<(ostream& fout, Tache& t){
+    t.afficher(fout);
+    return fout;
+}
+
 void Tache::addItem(Tache* t){
     if (nbPred==maxPred){
         Tache** newtab=new Tache*[maxPred+10];
@@ -41,7 +40,43 @@ const Tache& Tache::getPrecedence(const string& id)const{
     return const_cast<Tache*>(this)->getPrecedence(id);
 }
 
+//UNITAIRE
+void Unitaire::afficher(ostream& f) {
+    f<<"unitaire \n";
+    f<<"id"<<getId();
+    f<<"titre"<<getTitre();
+    f<<"date dispo"<<getDateDisponibilite();
+    f<<"date echeance"<<getDateEcheance();
+    f<<"duree totale"<<getDuree();
+    f<<"duree restante"<<getRestant();
+    f<<"duree faite"<<getFait();
+    f<<"preemptive"<<isPreemp();
+    f<<"precedence";
+    Unitaire::Iterator it = getIterator();
+    for(it.first(); !it.isDone(); it.next()){
+        f<<it.current().getId();
+    }
+}
+
 //COMPOSITE
+void Composite::afficher(ostream& f) {
+    f<<"composite \n";
+    f<<"id"<<getId();
+    f<<"titre"<<getTitre();
+    f<<"date dispo"<<getDateDisponibilite();
+    f<<"date echeance"<<getDateEcheance();
+    f<<"precedence";
+    Composite::Iterator it = getIterator();
+    for(it.first(); !it.isDone(); it.next()){
+        f<<it.current().getId();
+    }
+    f<<"composition";
+    Composite::iterator it2 = getiterator();
+    for(it2.first(); !it2.isDone(); it2.next()){
+        f<<it2.current().getId();
+    }
+}
+
 void Composite::addCompo(Tache* t){
     if (nbCompo==nbMaxCompo){
         Tache** newtab=new Tache*[nbMaxCompo+10];
@@ -152,6 +187,7 @@ const Tache& Projet::getTache(const string& id)const{
     return const_cast<Projet*>(this)->getTache(id);
 }
 
+/*
 Projet::Projet(const Projet& um):nb(um.nb),nbMax(um.nbMax), taches(new Tache*[um.nb]){
     for(unsigned int i=0; i<nb; i++) taches[i]=new Tache(*um.taches[i]);
 }
@@ -162,6 +198,7 @@ Projet& Projet::operator=(const Projet& um){
     for(unsigned int i=0; i<um.nb; i++) addItem(new Tache(*um.taches[i]));
     return *this;
 }
+*/
 
 void Projet::load(const string& f){
     if (file!=f) this->~Projet();
@@ -210,6 +247,18 @@ void  Projet::save(const string& f){
 }
 
 //PROJET MANAGER
+ProjetManager::Handler ProjetManager::handler=ProjetManager::Handler();
+
+ProjetManager& ProjetManager::getInstance(){
+    if (handler.instance==0) handler.instance=new ProjetManager;
+    return *(handler.instance);
+}
+
+void ProjetManager::libererInstance(){
+    if (handler.instance!=0) delete handler.instance;
+    handler.instance=0;
+}
+
 void ProjetManager::addItem(Projet* t){
     if (nb==nbMax){
         Projet** newtab=new Projet*[nbMax+10];
@@ -244,6 +293,18 @@ Projet& ProjetManager::ajouterProjet(const string& id, const string& nom, const 
 
 
 //PROGRAMMATION MANAGER
+ProgrammationManager::Handler ProgrammationManager::handler=ProgrammationManager::Handler();
+
+ProgrammationManager& ProgrammationManager::getInstance(){
+    if (handler.instance==0) handler.instance=new ProgrammationManager;
+    return *(handler.instance);
+}
+
+void ProgrammationManager::libererInstance(){
+    if (handler.instance!=0) delete handler.instance;
+    handler.instance=0;
+}
+
 void ProgrammationManager::addItem(Programmation* t){
     if (nb==nbMax){
         Programmation** newtab=new Programmation*[nbMax+10];
@@ -274,6 +335,7 @@ ProgrammationManager::~ProgrammationManager(){
     delete[] programmations;
 }
 
+/*
 ProgrammationManager::ProgrammationManager(const ProgrammationManager& um):nb(um.nb),nbMax(um.nbMax), programmations(new Programmation*[um.nb]){
     for(unsigned int i=0; i<nb; i++) programmations[i]=new Programmation(*um.programmations[i]);
 }
@@ -284,3 +346,4 @@ ProgrammationManager& ProgrammationManager::operator=(const ProgrammationManager
     for(unsigned int i=0; i<um.nb; i++) addItem(new Programmation(*um.programmations[i]));
     return *this;
 }
+*/

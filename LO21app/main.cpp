@@ -21,7 +21,7 @@ int main(int argc, char * argv[]) {
     wind.show();
 
 //    wind.showUnitaire(t1);
-    wind.showComposite(t2);
+//    wind.showComposite(t2);
 
 
 

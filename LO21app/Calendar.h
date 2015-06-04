@@ -125,6 +125,7 @@ class Evenement {
 public:
     Evenement(Duree dur):duree(dur){}
     Duree getDuree() const { return duree; }
+    void setDuree(const Duree& dur){ duree=dur; }
 };
 
 class Tache {
@@ -148,6 +149,12 @@ public:
     string getTitre() const { return titre; }
     Date getDateDisponibilite() const {  return disponibilite; }
     Date getDateEcheance() const {  return echeance; }
+    void setId(const string& id) { identificateur=id; }
+    void setTitre(const string& t) { titre=t; }
+    void setDatesDisponibiliteEcheance(const Date& disp, const Date& e) {
+        if (e<disp) throw CalendarException("erreur Tâche : date echéance < date disponibilité");
+        disponibilite=disp; echeance=e;
+    }
     class Iterator{
         friend class Tache;
         private:
@@ -178,7 +185,7 @@ class Unitaire : public Tache, public Evenement {
     Unitaire& operator=(const Unitaire& t);
     Unitaire(Date d, Date e, string id, string t, Duree dur, bool p):Tache(id,t,d,e),Evenement(dur),dureeRestante(dur),dureeFaite(0),preemptable(p){
         if(dur.getDureeEnHeures()>=12){
-            this->preemptable=false;
+            preemptable=true;
         }
     }
     friend Unitaire& Projet::ajouterUnitaire(const string& id, const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool premp);
@@ -187,7 +194,20 @@ public:
     bool isPreemp() const { return preemptable; }
     Duree getFait() const { return dureeFaite; }
     Duree getRestant() const { Duree dR = Duree(getDuree().getDureeEnMinutes()+getFait().getDureeEnMinutes()); return dR; }
+    void setRestant(const Duree& r){ dureeRestante=r; }
+    void setFait(const Duree& f){ dureeFaite=f; }
+    void setPreemp(){ preemptable=true; }
+    void setNonPreemp(){ preemptable=false; }
     void afficher(ostream& f) ;
+    void update(string id, string t, Date d, Date e, Duree dur, Duree dr, Duree df, bool p){
+        setId(id); setTitre(t); setDatesDisponibiliteEcheance(d,e); setDuree(dur); setRestant(dr); setFait(df);
+        if(dur.getDureeEnHeures()>=12)
+            setPreemp();
+        else{
+            if(p)setPreemp();
+            else setNonPreemp();
+        }
+    }
 };
 
 class Composite : public Tache {
@@ -204,6 +224,9 @@ public:
     void addCompo(Tache* t);
     Tache& getCompo(const string& id);
     const Tache& getCompo(const string& code) const;
+    void update(string id, string t, Date d, Date e){
+        setId(id); setTitre(t); setDatesDisponibiliteEcheance(d,e);
+    }
     friend class iterator;
     class iterator{
     private:

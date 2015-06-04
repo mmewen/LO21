@@ -43,37 +43,35 @@ const Tache& Tache::getPrecedence(const string& id)const{
 //UNITAIRE
 void Unitaire::afficher(ostream& f) {
     f<<"unitaire \n";
-    f<<"id"<<getId();
-    f<<"titre"<<getTitre();
-    f<<"date dispo"<<getDateDisponibilite();
-    f<<"date echeance"<<getDateEcheance();
-    f<<"duree totale"<<getDuree();
-    f<<"duree restante"<<getRestant();
-    f<<"duree faite"<<getFait();
-    f<<"preemptive"<<isPreemp();
-    f<<"precedence";
+    f<<"id"<<getId()<<"\n";
+    f<<"titre"<<getTitre()<<"\n";
+    f<<"date dispo"<<getDateDisponibilite()<<"\n";
+    f<<"date echeance"<<getDateEcheance()<<"\n";
+    f<<"duree"<<getDuree()<<"\n";
+    f<<"preemptive"<<isPreemp()<<"\n";
+    f<<"precedence"<<"\n";
     Unitaire::Iterator it = getIterator();
     for(it.first(); !it.isDone(); it.next()){
-        f<<it.current().getId();
+        f<<it.current().getId()<<"\n";
     }
 }
 
 //COMPOSITE
 void Composite::afficher(ostream& f) {
     f<<"composite \n";
-    f<<"id"<<getId();
-    f<<"titre"<<getTitre();
-    f<<"date dispo"<<getDateDisponibilite();
-    f<<"date echeance"<<getDateEcheance();
-    f<<"precedence";
+    f<<"id"<<getId()<<"\n";
+    f<<"titre"<<getTitre()<<"\n";
+    f<<"date dispo"<<getDateDisponibilite()<<"\n";
+    f<<"date echeance"<<getDateEcheance()<<"\n";
+    f<<"precedence"<<"\n";
     Composite::Iterator it = getIterator();
     for(it.first(); !it.isDone(); it.next()){
-        f<<it.current().getId();
+        f<<it.current().getId()<<"\n";
     }
-    f<<"composition";
+    f<<"composition"<<"\n";
     Composite::iterator it2 = getiterator();
     for(it2.first(); !it2.isDone(); it2.next()){
-        f<<it2.current().getId();
+        f<<it2.current().getId()<<"\n";
     }
 }
 
@@ -209,30 +207,56 @@ void Projet::load(const string& f){
     while (!fin.eof()&&fin.good()){
         fin.getline(tmp,256); // get code
         if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture identificateur tache");
-        string id=tmp;
-        fin.getline(tmp,256); // get titre
-        if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture titre tache");
-        string titre=tmp;
+        string type=tmp;
+        if(type=="unitaire"){
+            fin.getline(tmp,256); // get code
+            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture identificateur tache");
+            string id=tmp;
+            fin.getline(tmp,256); // get titre
+            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture titre tache");
+            string titre=tmp;
 
-        Duree duree;
-        fin>>duree;
-        if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture duree tache");
+            Date dispo;
+            fin>>dispo;
+            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture date disponibilite");
 
-        Date dispo;
-        fin>>dispo;
-        if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture date disponibilite");
+            Date echeance;
+            fin>>echeance;
+            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture date echeance");
 
-        Date echeance;
-        fin>>echeance;
-        if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture date echeance");
+            Duree duree;
+            fin>>duree;
+            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture duree tache");
 
-        bool preemp;
-        fin>>preemp;
-        if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture bool preemp");
-        while (fin.peek()=='\r') fin.ignore();
-        while (fin.peek()=='\n') fin.ignore();
-        std::cout<<"LOAD "<<id<<"-"<<titre<<"-"<<duree<<"-"<<dispo<<"-"<<echeance<<"\n";
-        ajouterUnitaire(id,titre,dispo,echeance,duree,preemp);
+            bool preemp;
+            fin>>preemp;
+            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture bool preemp");
+            while (fin.peek()=='\r') fin.ignore();
+            while (fin.peek()=='\n') fin.ignore();
+            std::cout<<"LOAD unitaire"<<id<<"-"<<titre<<"-"<<dispo<<"-"<<echeance<<"-"<<duree<<"-"<<preemp<<"\n";
+            ajouterUnitaire(id,titre,dispo,echeance,duree,preemp);
+        }
+        if(type=="composite"){
+            fin.getline(tmp,256); // get code
+            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture identificateur tache");
+            string id=tmp;
+            fin.getline(tmp,256); // get titre
+            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture titre tache");
+            string titre=tmp;
+
+            Date dispo;
+            fin>>dispo;
+            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture date disponibilite");
+
+            Date echeance;
+            fin>>echeance;
+            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture date echeance");
+
+            while (fin.peek()=='\r') fin.ignore();
+            while (fin.peek()=='\n') fin.ignore();
+            std::cout<<"LOAD composite"<<id<<"-"<<titre<<"-"<<dispo<<"-"<<echeance<<"\n";
+            ajouterComposite(id,titre,dispo,echeance);
+        }
     }
     fin.close(); // close file
 }

@@ -128,6 +128,7 @@ void Projet::addItem(Tache* t){
     taches[nb++]=t;
 
     // On ajoute la tâche au tableau des taches qui n'ont pas de parents
+    cout<<"Truc";
     addItemNC(t);
 }
 
@@ -136,14 +137,13 @@ void Projet::addItemNC(Tache* t){
         Tache** newtab=new Tache*[nbMaxNC+10];
         for(unsigned int i=0; i<nbNC; i++) newtab[i]=tachesNonComposantes[i];
         nbMaxNC+=10;
+        cout<<tachesNonComposantes<<endl;
         Tache** old=tachesNonComposantes;
         tachesNonComposantes=newtab;
         delete[] old;
     }
     cout<<nbNC<<' '<<tachesNonComposantes<<endl;
     tachesNonComposantes[nbNC++]=t;
-
-    addItemNC(t);
 }
 
 Tache* Projet::trouverTache(const string& id)const{

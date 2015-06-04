@@ -6,7 +6,8 @@ MainWindow::MainWindow():
     tabs(new QTabWidget(zoneCentrale)),
     planningTab(new QWidget()),
     tachesTab(new QWidget()),
-    tachesLayout(new QHBoxLayout)
+    tachesLayout(new QHBoxLayout),
+    treeView(TreeViewModel::getInstance())
     {
     this->setWindowTitle(QString::fromUtf8("LO21"));
     this->setFixedSize(W_WIDTH, W_HEIGHT);
@@ -19,20 +20,20 @@ MainWindow::MainWindow():
     tabs->addTab(tachesTab,"Tache");
 
     // Tree onglet Taches (modèle/vue
-    QStandardItemModel *modele = new QStandardItemModel;
-    QStandardItem *item = new QStandardItem("Truc");
-    item->setEditable(false);
-    modele->appendRow(item);
-    item->appendRow(new QStandardItem("Sous truc"));
-    QStandardItem *item2 = new QStandardItem("Plep");
-    item2->setEditable(false);
-    modele->appendRow(item2);
-    item2->appendRow(new QStandardItem("Sous plep"));
+//    QStandardItemModel *modele = new QStandardItemModel;
+//    QStandardItem *item = new QStandardItem("Truc");
+//    item->setEditable(false);
+//    modele->appendRow(item);
+//    item->appendRow(new QStandardItem("Sous truc"));
+//    QStandardItem *item2 = new QStandardItem("Plep");
+//    item2->setEditable(false);
+//    modele->appendRow(item2);
+//    item2->appendRow(new QStandardItem("Sous plep"));
     QTreeView *vue = new QTreeView();
     tachesLayout->addWidget(vue);
     vue->setHeaderHidden(true);
     vue->setFixedSize(200,W_HEIGHT);
-    vue->setModel(modele);
+    vue->setModel(treeView.getModele());
 
     QMenu *menuFichier = menuBar()->addMenu("&Fichier");
 //    QMenu *menuEdition = menuBar()->addMenu("&Edition");
@@ -44,6 +45,7 @@ MainWindow::MainWindow():
     this->setCentralWidget(zoneCentrale);
 
 //    showProject();
+    treeView.printTree();
 }
 
 //! affichage du contenu d'un projet

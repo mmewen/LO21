@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include <QApplication>
 #include "Calendar.h"
+#include "UIClasses.h"
 
 int main(int argc, char * argv[]) {
     QApplication app(argc, argv);
@@ -11,16 +12,21 @@ int main(int argc, char * argv[]) {
 //    Unitaire t1 = Unitaire (Date(10,6,2015), Date(20,6,2015), "t1", "Tache unitaire de test", Duree(1,20), true);
 //    Composite t2 = Composite("t2", "Tache composite de test", Date(15,6,2015), Date(25,6,2015));
 
-    ProjetManager pjm = ProjetManager::getInstance();
-    Projet* p1 = pjm.ajouterProjet("p1", "Projet 1", "pj1.xml", Date(4,6,2015));
-    Composite* t1 = p1->ajouterComposite("t1", "Tache unitaire de test", Date(10,6,2015), Date(20,6,2015), Duree(1,20), true);
-    Composite* t2 = p1->ajouterComposite("t2", "Tache composite de test", Date(15,6,2015), Date(25,6,2015));
+    ProjetManager& pjm = ProjetManager::getInstance();
+    Projet& p1 = pjm.ajouterProjet("p1", "Projet 1", "pj1.xml", Date(4,6,2015));
+    Unitaire& t11 = p1.ajouterUnitaire("t11", "Tache unitaire de test", Date(10,6,2015), Date(20,6,2015), Duree(1,20), true);
+    Composite& t12 = p1.ajouterComposite("t12", "Tache composite de test 3", Date(15,6,2015), Date(25,6,2015));
 
+    Projet& p2 = pjm.ajouterProjet("p2", "Projet 2", "pj1.xml", Date(4,6,2015));
+    Unitaire& t21 = p1.ajouterUnitaire("t21", "Tache unitaire de test 2", Date(10,6,2015), Date(20,6,2015), Duree(1,20), true);
+    Composite& t22 = p1.ajouterComposite("t22", "Tache composite de test 4", Date(15,6,2015), Date(25,6,2015));
 
     MainWindow wind;
     wind.show();
 
-//    wind.showUnitaire(t1);
+
+
+    wind.showUnitaire(t11);
 //    wind.showComposite(t2);
 
 

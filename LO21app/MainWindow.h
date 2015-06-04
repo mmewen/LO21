@@ -53,8 +53,14 @@ public:
     MainWindow();
     void showUnitaire(const Unitaire& t);
     void saveUnitaire();
+    void showComposite(const Composite& t);
 //public slots:
 //    quit();
 };
 
 #endif // MAINWINDOW_H
+
+// TODO :
+/*
+ * faire des fonctions Show plus jolies
+ */

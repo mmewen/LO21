@@ -43,7 +43,7 @@ MainWindow::MainWindow():
     tachesTab->setLayout(tachesLayout);
     this->setCentralWidget(zoneCentrale);
 
-    showProject();
+//    showProject();
 }
 
 //! affichage du contenu d'un projet
@@ -82,8 +82,6 @@ void MainWindow::showUnitaire(const Unitaire& t){
 
     // Remplissage des champs
     titre->setText(QString::fromStdString(t.getTitre()));
-    t.getDateDisponibilite().afficher(cout);
-    cout<<"\n Prout\n";
     dispo->setSelectedDate(t.getDateDisponibilite().getQDate());
     echeance->setSelectedDate(t.getDateEcheance().getQDate());
     duree->setValue(t.getDuree().getDureeEnMinutes());
@@ -113,5 +111,40 @@ void saveUnitaire(){
     QDate date = QDate::fromString("1MM12car2003", "d'MM'MMcaryyyy");
 }
 
+void MainWindow::showComposite(const Composite& t){
+    QLineEdit *titre = new QLineEdit;
+
+    QCalendarWidget *dispo = new QCalendarWidget;
+    dispo->setMinimumDate(QDate::currentDate());
+
+    QCalendarWidget *echeance = new QCalendarWidget;
+    echeance->setMinimumDate(QDate::currentDate());
+
+    QPushButton *predecesseurs = new QPushButton("Gérer les contraintes de précédence");
+    QPushButton *annuler = new QPushButton("Annuler les modifications");
+    QPushButton *sauver = new QPushButton("Sauver les changements");
+
+    // Remplissage des champs
+    titre->setText(QString::fromStdString(t.getTitre()));
+    dispo->setSelectedDate(t.getDateDisponibilite().getQDate());
+    echeance->setSelectedDate(t.getDateEcheance().getQDate());
+
+    tachesFormLayout = new QFormLayout;
+    tachesFormLayout->addRow("Titre de la tache", titre);
+    tachesFormLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tôt que le début du projet !
+    tachesFormLayout->addRow("Échéance", echeance); // vérifier qu'elle est après la disponibilité
+
+
+    // afficher durée faite
+    //          + durée restante
+
+    // mettre des taches prédécesseurs
+    tachesFormLayout->addRow("", predecesseurs);
+    tachesFormLayout->addRow("", annuler);
+    tachesFormLayout->addRow("", sauver);
+
+
+    tachesLayout->addLayout(tachesFormLayout);
+}
 
 

@@ -138,12 +138,14 @@ private:
     void addItemNC(Tache* t);
     Tache* trouverTache(const string& id) const;
 public:
-    Projet(const string& id, const string& nom, const string& file, const Date& d):identificateur(id),nom(nom),file(file),dispo(d),taches(0),nb(0),nbMax(0){}
+    Projet(const string& id, const string& nom, const string& file, const Date& d):identificateur(id),nom(nom),file(file),dispo(d),taches(0),nb(0),nbMax(0),nbNC(0),nbMaxNC(0){
+        cout<<"Projet construit nbNC="<<nbNC<<endl;
+    }
     ~Projet();
     Projet(const Projet& um);
     Projet& operator=(const Projet& um);
-    Tache& ajouterUnitaire(const string& id, const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool premp);
-    Tache& ajouterComposite(const string& id, const string& t, const Date& dispo, const Date& deadline);
+    Unitaire& ajouterUnitaire(const string& id, const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool premp);
+    Composite& ajouterComposite(const string& id, const string& t, const Date& dispo, const Date& deadline);
     Tache& getTache(const string& id);
     string getId() const { return identificateur; }
     string getNom() const { return nom; }

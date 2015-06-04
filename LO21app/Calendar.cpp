@@ -105,6 +105,7 @@ void Projet::addItemNC(Tache* t){
         tachesNonComposantes=newtab;
         delete[] old;
     }
+    cout<<nbNC<<' '<<tachesNonComposantes<<endl;
     tachesNonComposantes[nbNC++]=t;
 
     addItemNC(t);
@@ -116,14 +117,14 @@ Tache* Projet::trouverTache(const string& id)const{
     return 0;
 }
 
-Tache& Projet::ajouterUnitaire(const string& id, const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool preemp){
+Unitaire& Projet::ajouterUnitaire(const string& id, const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool preemp){
     if (trouverTache(id)) throw CalendarException("erreur, Projet, tache deja existante");
     Unitaire* newt=new Unitaire(dispo,deadline,id,t,duree,preemp);
     addItem(newt);
     return *newt;
 }
 
-Tache& Projet::ajouterComposite(const string& id, const string& t, const Date& dispo, const Date& deadline){
+Composite& Projet::ajouterComposite(const string& id, const string& t, const Date& dispo, const Date& deadline){
     if (trouverTache(id)) throw CalendarException("erreur, Projet, tache deja existante");
     Composite* newt=new Composite(id,t,dispo,deadline);
     addItem(newt);

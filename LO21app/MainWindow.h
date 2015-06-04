@@ -3,6 +3,7 @@
 
 // Includes
 #include "Calendar.h"
+#include "UIClasses.h"
 
 #include <QString>
 #include <QMainWindow>
@@ -47,6 +48,7 @@ class MainWindow: public QMainWindow{
     QWidget *tachesTab;
     QHBoxLayout *tachesLayout;
     QFormLayout *tachesFormLayout;
+    TreeViewModel& treeView;
 
     void showProject();
 public:

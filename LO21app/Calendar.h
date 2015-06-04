@@ -80,9 +80,7 @@ private:
     void addItem(Tache* t);
     void addItemNC(Tache* t);
     Tache* trouverTache(const string& id) const;
-    Projet(const string& id, const string& nom, const string& file, const Date& d):identificateur(id),nom(nom),file(file),dispo(d),taches(0),nb(0),nbMax(0),nbNC(0),nbMaxNC(0){
-        cout<<"Projet construit nbNC="<<nbNC<<endl;
-    }
+    Projet(const string& id, const string& nom, const string& file, const Date& d):identificateur(id),nom(nom),file(file),dispo(d),taches(0),nb(0),nbMax(0),tachesNonComposantes(0), nbNC(0),nbMaxNC(0){}
     Projet(const Projet& um);
     Projet& operator=(const Projet& um);
     friend Projet& ProjetManager::ajouterProjet(const string& id, const string& nom, const string& file, const Date& dispo);

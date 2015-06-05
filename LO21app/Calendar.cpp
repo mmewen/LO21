@@ -88,54 +88,6 @@ void Composite::addCompo(Tache* t){
     composition[nbCompo++]=t;
 }
 
-// ---------------------- BORDEL !
-void Projet::moveTacheTo(Tache* tMere, Tache* tFille){
-    // On vérifie que la classe mère est bien de type composite
-    if (typeid(*tMere) == typeid(Composite)){
-
-        // On vérifie que la compo est possible
-        if (!estComposante(tFille)){
-            // Si c'est possible, on l'ajoute à la liste des compos
-            dynamic_cast<Composite*>(tMere)->addCompo(tFille);
-            deleteTacheNC(tFille);
-        } else {
-            throw CalendarException("Composition impossible car la tache fille est déjà composante");
-        }
-    } else {
-        throw CalendarException("Composition impossible car la tache mère n'est pas composite");
-    }
-}
-
-void Projet::deleteTacheNC(Tache* t){
-    for(Iterator it = getNCIterator(); !it.isDone(); it.next()){
-        if( it.current().getId() == t->getId() ){
-            it.suppr();
-            --nbNC;
-            cout<<"nbNC:"<<nbNC<<endl;
-            return;
-        }
-    }
-    throw CalendarException("Suppression impossible : tache non trouvée");
-}
-
-bool Projet::estComposante(Tache* t){
-    for(Iterator it = getNCIterator(); !it.isDone(); it.next()){
-        if( it.current().getId() == t->getId() ){
-            return false;
-        }
-    }
-    return true;
-}
-
-void Projet::Iterator::suppr(){
-    if(allowSuppr && (nb>0) && (nb != indice_tache)){
-        tab[indice_tache] = tab[nb];
-        --indice_tache;
-        --nb;
-    } else throw ("Suppression de tache impossible");
-}
-
-
 Tache* Composite::trouverCompo(const string& id)const{
     for(unsigned int i=0; i<nbCompo; i++)
         if (id==composition[i]->getId()) return composition[i];
@@ -151,7 +103,8 @@ Tache& Composite::getCompo(const string& id){
 const Tache& Composite::getCompo(const string& id)const{
     return const_cast<Composite*>(this)->getCompo(id);
 }
-// -----------------------
+
+
 
 //PROJET
 Projet::~Projet(){
@@ -316,6 +269,54 @@ void  Projet::save(const string& f){
     }
     fout.close();
 }
+
+void Projet::moveTacheTo(Tache* tMere, Tache* tFille){
+    // On vérifie que la classe mère est bien de type composite
+    if (typeid(*tMere) == typeid(Composite)){
+
+        // On vérifie que la compo est possible
+        if (!estComposante(tFille)){
+            // Si c'est possible, on l'ajoute à la liste des compos
+            dynamic_cast<Composite*>(tMere)->addCompo(tFille);
+            deleteTacheNC(tFille);
+        } else {
+            throw CalendarException("Composition impossible car la tache fille est déjà composante");
+        }
+    } else {
+        throw CalendarException("Composition impossible car la tache mère n'est pas composite");
+    }
+}
+
+void Projet::deleteTacheNC(Tache* t){
+    for(Iterator it = getNCIterator(); !it.isDone(); it.next()){
+        if( it.current().getId() == t->getId() ){
+            it.suppr();
+            --nbNC;
+            return;
+        }
+    }
+    throw CalendarException("Suppression impossible : tache non trouvée");
+}
+
+bool Projet::estComposante(Tache* t){
+    for(Iterator it = getNCIterator(); !it.isDone(); it.next()){
+        if( it.current().getId() == t->getId() ){
+            return false;
+        }
+    }
+    return true;
+}
+
+void Projet::Iterator::suppr(){
+    if(allowSuppr && (nb>0) && (nb != indice_tache)){
+        tab[indice_tache] = tab[nb];
+        --indice_tache;
+        --nb;
+    } else throw ("Suppression de tache impossible");
+}
+
+
+
 
 //PROJET MANAGER
 ProjetManager::Handler ProjetManager::handler=ProjetManager::Handler();

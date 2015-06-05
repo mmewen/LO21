@@ -25,6 +25,7 @@ MainWindow::MainWindow():
     vue->setHeaderHidden(true);
     vue->setFixedSize(300,W_HEIGHT);
     vue->setModel(treeView.getModele());
+    connect(vue, SIGNAL(clicked(QModelIndex)), this, SLOT(treeViewClicked(QModelIndex)));
 
     QMenu *menuFichier = menuBar()->addMenu("&Fichier");
 //    QMenu *menuEdition = menuBar()->addMenu("&Edition");
@@ -58,6 +59,8 @@ void MainWindow::showProject(){
 }
 
 void MainWindow::showUnitaire(const Unitaire& t){
+    clearTFL();
+
     QLineEdit *titre = new QLineEdit;
 
     QCalendarWidget *dispo = new QCalendarWidget;
@@ -105,6 +108,8 @@ void saveUnitaire(){
 }
 
 void MainWindow::showComposite(const Composite& t){
+    clearTFL();
+
     QLineEdit *titre = new QLineEdit;
 
     QCalendarWidget *dispo = new QCalendarWidget;
@@ -140,4 +145,72 @@ void MainWindow::showComposite(const Composite& t){
     tachesLayout->addLayout(tachesFormLayout);
 }
 
+void MainWindow::showProjet(const Projet& p){
+    clearTFL();
+
+    QLineEdit *titre = new QLineEdit;
+
+    QCalendarWidget *dispo = new QCalendarWidget;
+    dispo->setMinimumDate(QDate::currentDate());
+
+    QPushButton *annuler = new QPushButton("Annuler les modifications");
+    QPushButton *sauver = new QPushButton("Sauver les changements");
+
+    // Remplissage des champs
+    titre->setText(QString::fromStdString(p.getNom()));
+    dispo->setSelectedDate(p.getDispo().getQDate());
+
+    tachesFormLayout = new QFormLayout;
+    tachesFormLayout->addRow("Titre de la tache", titre);
+    tachesFormLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tard que les dates de début des tâches
+
+
+    // afficher autres trucs !!
+
+    // mettre des taches prédécesseurs
+    tachesFormLayout->addRow("", annuler);
+    tachesFormLayout->addRow("", sauver);
+
+
+    tachesLayout->addLayout(tachesFormLayout);
+}
+
+void MainWindow::treeViewClicked(const QModelIndex &index)
+{
+    QStandardItem *item = treeView.getModele()->itemFromIndex(index);
+//    cout<<"Row : "<<item->row()<<", parent : "<<item->parent()<<endl;
+
+    if(item->parent() == 0){
+        // C'est un projet, on l'affiche
+        Projet& p = *treeView.getProjetFromItem(item);
+
+        showProjet(p);
+    } else {
+        // C'est une tache, on fait pareil
+        Tache& t = *treeView.getTacheFromItem(item);
+
+        // On détecte le type :
+        if (typeid(t) == typeid(Composite)){
+            showComposite(dynamic_cast<Composite&>(t));
+        } else {
+            showUnitaire(dynamic_cast<Unitaire&>(t));
+        }
+    }
+
+}
+
+
+void MainWindow::clearTFL(){
+    QLayoutItem *child;
+
+    if (tachesFormLayout != 0){
+        int count = tachesFormLayout->count();
+        while ( count-- != 0) {
+            child = tachesFormLayout->takeAt(0);
+            child->widget()->setParent(NULL);
+            tachesFormLayout->removeItem(child);
+        }
+        tachesFormLayout->deleteLater();
+    }
+}
 

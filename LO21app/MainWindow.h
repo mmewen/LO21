@@ -14,6 +14,7 @@
 #include <QTabWidget>
 #include <QStandardItemModel>
 #include <QStandardItem>
+#include <QModelIndex>
 #include <QTreeView>
 #include <QFormLayout>
 #include <QLineEdit>
@@ -42,6 +43,7 @@
 /// \brief Conserve les pointeurs vers les principaux widgets de la fenêtre. S'occupe des actions générales sur ceux-ci.
 ///
 class MainWindow: public QMainWindow{
+    Q_OBJECT
     QWidget *zoneCentrale;
     QTabWidget *tabs;
     QWidget *planningTab;
@@ -51,13 +53,18 @@ class MainWindow: public QMainWindow{
     TreeViewModel& treeView;
 
     void showProject();
+    void clearTFL();
 public:
+    ~MainWindow(){};
     MainWindow();
     void showUnitaire(const Unitaire& t);
     void saveUnitaire();
     void showComposite(const Composite& t);
-//public slots:
+    void showProjet(const Projet& p);
+public slots:
+    void treeViewClicked(const QModelIndex &index);
 //    quit();
+
 };
 
 #endif // MAINWINDOW_H

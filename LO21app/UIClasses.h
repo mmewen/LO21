@@ -18,6 +18,7 @@ class TreeViewModel {
         QStandardItem* item;
     };
 
+
     // Variables :
     QStandardItemModel modele; // le modèle
 
@@ -28,12 +29,10 @@ class TreeViewModel {
     int titNb, titNbMax;
 
 
-
-
     // Méthodes privées générales :
     TreeViewModel(): tabItemsProjets(0), tipNb(0), tipNbMax(0), tabItemsTaches(0), titNb(0), titNbMax(0) {}
 //    ~TreeViewModel(){for(unsigned int i=0; i<nb; i++) delete projets[i]; delete[] projets;}
-    ~TreeViewModel(){}
+    ~TreeViewModel();
     TreeViewModel(const TreeViewModel&);
     struct Handler{
         TreeViewModel* instance;
@@ -46,6 +45,8 @@ class TreeViewModel {
     void printBranch(QStandardItem* , Tache* );
     void addProjetItem(QStandardItem* item, Projet* projet);
     void addTacheItem(QStandardItem* item, Tache* tache);
+
+
 public:
     static TreeViewModel& getInstance();
     static void libererInstance();

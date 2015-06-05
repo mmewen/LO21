@@ -12,6 +12,10 @@ void TreeViewModel::libererInstance(){
     handler.instance=0;
 }
 
+TreeViewModel::~TreeViewModel(){
+    modele.clear();
+}
+
 void TreeViewModel::addProjetItem(QStandardItem* item, Projet* projet){
     if (tipNb==tipNbMax){
         CoupleItemProjet* newtab = new CoupleItemProjet[tipNbMax+10];

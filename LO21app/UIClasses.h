@@ -3,6 +3,7 @@
 
 #include<QStandardItemModel>
 #include <QStandardItem>
+#include <typeinfo>
 #include "Calendar.h"
 
 class TreeViewModel {
@@ -38,6 +39,7 @@ public:
     static TreeViewModel& getInstance();
     static void libererInstance();
     void printTree();
+    void printBranch(QStandardItem* , Tache* );
     QStandardItemModel* getModele() { return &modele; }
     // add projet (projet)
     // remove projet (projet)

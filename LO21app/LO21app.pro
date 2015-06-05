@@ -5,9 +5,11 @@ SOURCES += \
     main.cpp \
     timing.cpp \
     Calendar.cpp \
-    MainWindow.cpp
+    MainWindow.cpp \
+    UIClasses.cpp
 
 HEADERS += \
     timing.h \
     Calendar.h \
-    MainWindow.h
+    MainWindow.h \
+    UIClasses.h

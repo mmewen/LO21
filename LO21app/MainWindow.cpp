@@ -16,23 +16,14 @@ MainWindow::MainWindow():
     QTabWidget *tabs = new QTabWidget(zoneCentrale);
     tabs->setFixedSize(W_WIDTH, W_HEIGHT);
 
-    tabs->addTab(planningTab,"Planning");
     tabs->addTab(tachesTab,"Tache");
+    tabs->addTab(planningTab,"Planning");
 
     // Tree onglet Taches (modèle/vue
-//    QStandardItemModel *modele = new QStandardItemModel;
-//    QStandardItem *item = new QStandardItem("Truc");
-//    item->setEditable(false);
-//    modele->appendRow(item);
-//    item->appendRow(new QStandardItem("Sous truc"));
-//    QStandardItem *item2 = new QStandardItem("Plep");
-//    item2->setEditable(false);
-//    modele->appendRow(item2);
-//    item2->appendRow(new QStandardItem("Sous plep"));
     QTreeView *vue = new QTreeView();
     tachesLayout->addWidget(vue);
     vue->setHeaderHidden(true);
-    vue->setFixedSize(200,W_HEIGHT);
+    vue->setFixedSize(300,W_HEIGHT);
     vue->setModel(treeView.getModele());
 
     QMenu *menuFichier = menuBar()->addMenu("&Fichier");

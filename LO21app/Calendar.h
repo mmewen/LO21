@@ -2,6 +2,7 @@
 #define CALENDAR_h
 #include<string>
 #include<iostream>
+#include<typeinfo>
 #include "timing.h"
 using namespace std;
 using namespace TIME;
@@ -79,12 +80,14 @@ private:
     Date dispo;
     void addItem(Tache* t);
     void addItemNC(Tache* t);
+    void deleteTacheNC(Tache* t);
     Tache* trouverTache(const string& id) const;
     Projet(const string& id, const string& nom, const string& file, const Date& d):identificateur(id),nom(nom),file(file),dispo(d),taches(0),nb(0),nbMax(0),tachesNonComposantes(0), nbNC(0),nbMaxNC(0){}
     Projet(const Projet& um);
     Projet& operator=(const Projet& um);
     friend Projet& ProjetManager::ajouterProjet(const string& id, const string& nom, const string& file, const Date& dispo);
 public:
+    bool estComposante(Tache* tache);
     ~Projet();
     Unitaire& ajouterUnitaire(const string& id, const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool premp);
     Composite& ajouterComposite(const string& id, const string& t, const Date& dispo, const Date& deadline);
@@ -94,7 +97,7 @@ public:
     string getFile() const { return file; }
     Date getDispo() const { return dispo; }
     Date getEcheance();
-    void moveTacheTo(Tache* t);
+    void moveTacheTo(Tache* tMere, Tache* tFille);
     void load(const string& f);
     void save(const string& f);
     const Tache& getTache(const string& code) const;
@@ -104,7 +107,8 @@ public:
             Tache** tab;
             int nb;
             int indice_tache;
-            Iterator(Tache** t, int n):tab(t), nb(n), indice_tache(0){}
+            bool allowSuppr;
+            Iterator(Tache** t, int n, bool s):tab(t), nb(n), indice_tache(0), allowSuppr(s){ }
         public:
             Tache& current() const {
                 if(indice_tache>=nb)
@@ -114,8 +118,10 @@ public:
             bool isDone() const { return indice_tache==nb; }
             void next(){ ++indice_tache; }
             void first(){ indice_tache=0; }
+            void suppr();
         };
-    Iterator getIterator(){ return Iterator(taches,nb); }
+    Iterator getIterator(){ return Iterator(taches,nb, false); }
+    Iterator getNCIterator(){ return Iterator(tachesNonComposantes,nbNC, true); }
 };
 
 class Evenement {
@@ -139,7 +145,7 @@ class Tache {
     Tache& operator=(const Tache& t);
 public:
     Tache(const string& id, const string& t, const Date& dispo, const Date& deadline):
-            prec(0),identificateur(id),titre(t),disponibilite(dispo),echeance(deadline){}
+            prec(0),identificateur(id),titre(t),disponibilite(dispo),echeance(deadline), nbPred(0){}
     void addItem(Tache* t);
     Tache& getPrecedence(const string& id);
     const Tache& getPrecedence(const string& code) const;
@@ -170,7 +176,7 @@ public:
             void next(){ ++indice_tache; }
             void first(){ indice_tache=0; }
         };
-    Iterator getIterator(){ return Iterator(prec,nbPred); }
+    Iterator getIterator(){ cout<<"Débug it : "<<prec<<endl; return Iterator(prec,nbPred); }
     virtual void afficher(ostream& f) =0;
 };
 
@@ -225,14 +231,14 @@ public:
     void update(string id, string t, Date d, Date e){
         setId(id); setTitre(t); setDatesDisponibiliteEcheance(d,e);
     }
-    friend class iterator;
-    class iterator{
+    friend class CompoIterator;
+    class CompoIterator{
     private:
         Tache** tab;
         int nb;
         int indice_tache;
         friend class Composite;
-        iterator(Tache** t, int n):tab(t), nb(n), indice_tache(0){}
+        CompoIterator(Tache** t, int n):tab(t), nb(n), indice_tache(0){}
     public:
         Tache& current() const {
             if(indice_tache>=nb)
@@ -243,7 +249,7 @@ public:
         void next(){ ++indice_tache; }
         void first(){ indice_tache=0; }
     };
-    iterator getiterator(){ return iterator(composition,nbCompo); }
+    CompoIterator getCompoIterator(){ return CompoIterator(composition,nbCompo); }
     void afficher(ostream& f) ;
 };
 

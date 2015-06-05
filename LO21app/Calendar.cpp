@@ -69,7 +69,7 @@ void Composite::afficher(ostream& f) {
         f<<it.current().getId()<<"\n";
     }
     f<<"composition"<<"\n";
-    Composite::iterator it2 = getiterator();
+    Composite::CompoIterator it2 = getCompoIterator();
     for(it2.first(); !it2.isDone(); it2.next()){
         f<<it2.current().getId()<<"\n";
     }
@@ -88,6 +88,54 @@ void Composite::addCompo(Tache* t){
     composition[nbCompo++]=t;
 }
 
+// ---------------------- BORDEL !
+void Projet::moveTacheTo(Tache* tMere, Tache* tFille){
+    // On vérifie que la classe mère est bien de type composite
+    if (typeid(*tMere) == typeid(Composite)){
+
+        // On vérifie que la compo est possible
+        if (!estComposante(tFille)){
+            // Si c'est possible, on l'ajoute à la liste des compos
+            dynamic_cast<Composite*>(tMere)->addCompo(tFille);
+            deleteTacheNC(tFille);
+        } else {
+            throw CalendarException("Composition impossible car la tache fille est déjà composante");
+        }
+    } else {
+        throw CalendarException("Composition impossible car la tache mère n'est pas composite");
+    }
+}
+
+void Projet::deleteTacheNC(Tache* t){
+    for(Iterator it = getNCIterator(); !it.isDone(); it.next()){
+        if( it.current().getId() == t->getId() ){
+            it.suppr();
+            --nbNC;
+            cout<<"nbNC:"<<nbNC<<endl;
+            return;
+        }
+    }
+    throw CalendarException("Suppression impossible : tache non trouvée");
+}
+
+bool Projet::estComposante(Tache* t){
+    for(Iterator it = getNCIterator(); !it.isDone(); it.next()){
+        if( it.current().getId() == t->getId() ){
+            return false;
+        }
+    }
+    return true;
+}
+
+void Projet::Iterator::suppr(){
+    if(allowSuppr && (nb>0) && (nb != indice_tache)){
+        tab[indice_tache] = tab[nb];
+        --indice_tache;
+        --nb;
+    } else throw ("Suppression de tache impossible");
+}
+
+
 Tache* Composite::trouverCompo(const string& id)const{
     for(unsigned int i=0; i<nbCompo; i++)
         if (id==composition[i]->getId()) return composition[i];
@@ -103,6 +151,7 @@ Tache& Composite::getCompo(const string& id){
 const Tache& Composite::getCompo(const string& id)const{
     return const_cast<Composite*>(this)->getCompo(id);
 }
+// -----------------------
 
 //PROJET
 Projet::~Projet(){
@@ -126,7 +175,6 @@ void Projet::addItem(Tache* t){
     taches[nb++]=t;
 
     // On ajoute la tâche au tableau des taches qui n'ont pas de parents
-    cout<<"Truc";
     addItemNC(t);
 }
 
@@ -135,12 +183,11 @@ void Projet::addItemNC(Tache* t){
         Tache** newtab=new Tache*[nbMaxNC+10];
         for(unsigned int i=0; i<nbNC; i++) newtab[i]=tachesNonComposantes[i];
         nbMaxNC+=10;
-        cout<<tachesNonComposantes<<endl;
         Tache** old=tachesNonComposantes;
         tachesNonComposantes=newtab;
         delete[] old;
     }
-    cout<<nbNC<<' '<<tachesNonComposantes<<endl;
+
     tachesNonComposantes[nbNC++]=t;
 }
 

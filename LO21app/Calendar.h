@@ -82,7 +82,8 @@ private:
     void addItemNC(Tache* t);
     void deleteTacheNC(Tache* t);
     Tache* trouverTache(const string& id) const;
-    Projet(const string& id, const string& nom, const string& file, const Date& d):identificateur(id),nom(nom),file(file),dispo(d),taches(0),nb(0),nbMax(0),tachesNonComposantes(0), nbNC(0),nbMaxNC(0){}
+    Projet(const string& id, const string& nom, const string& file, const Date& d):
+        taches(0), tachesNonComposantes(0), nb(0),nbMax(0), nbNC(0),nbMaxNC(0), identificateur(id), nom(nom),file(file),dispo(d){}
     Projet(const Projet& um);
     Projet& operator=(const Projet& um);
     friend Projet& ProjetManager::ajouterProjet(const string& id, const string& nom, const string& file, const Date& dispo);
@@ -145,7 +146,7 @@ class Tache {
     Tache& operator=(const Tache& t);
 public:
     Tache(const string& id, const string& t, const Date& dispo, const Date& deadline):
-            prec(0),identificateur(id),titre(t),disponibilite(dispo),echeance(deadline), nbPred(0){}
+            prec(0), nbPred(0), maxPred(0), identificateur(id),titre(t),disponibilite(dispo),echeance(deadline){}
     void addItem(Tache* t);
     Tache& getPrecedence(const string& id);
     const Tache& getPrecedence(const string& code) const;
@@ -259,7 +260,7 @@ private:
     string lieu;
     //Duree duree;
 public:
-    Activite(const string& t, const string& l, Duree dur): titre(t), lieu(l), Evenement(dur) {}
+    Activite(const string& t, const string& l, Duree dur): Evenement(dur), titre(t), lieu(l) {}
     string getTitre() const { return titre; }
     string getLieu() const { return lieu; }
     //Duree getDuree() const { return duree; }

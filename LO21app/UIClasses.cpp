@@ -19,7 +19,7 @@ TreeViewModel::~TreeViewModel(){
 void TreeViewModel::addProjetItem(QStandardItem* item, Projet* projet){
     if (tipNb==tipNbMax){
         CoupleItemProjet* newtab = new CoupleItemProjet[tipNbMax+10];
-        for(unsigned int i=0; i<tipNb; i++) newtab[i]=tabItemsProjets[i];
+        for(int i=0; i<tipNb; i++) newtab[i]=tabItemsProjets[i];
         tipNbMax+=10;
         CoupleItemProjet* old = tabItemsProjets;
         tabItemsProjets=newtab;
@@ -33,7 +33,7 @@ void TreeViewModel::addProjetItem(QStandardItem* item, Projet* projet){
 void TreeViewModel::addTacheItem(QStandardItem* item, Tache* tache){
     if (titNb==titNbMax){
         CoupleItemTache* newtab = new CoupleItemTache[titNbMax+10];
-        for(unsigned int i=0; i<titNb; i++) newtab[i]=tabItemsTaches[i];
+        for(int i=0; i<titNb; i++) newtab[i]=tabItemsTaches[i];
         titNbMax+=10;
         CoupleItemTache* old = tabItemsTaches;
         tabItemsTaches=newtab;

@@ -145,6 +145,7 @@ class Tache {
     Tache(const Tache& t);
     Tache& operator=(const Tache& t);
 public:
+    virtual ~Tache(){};
     Tache(const string& id, const string& t, const Date& dispo, const Date& deadline):
             prec(0), nbPred(0), maxPred(0), identificateur(id),titre(t),disponibilite(dispo),echeance(deadline){}
     void addItem(Tache* t);

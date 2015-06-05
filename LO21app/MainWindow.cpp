@@ -6,7 +6,10 @@ MainWindow::MainWindow():
     tabs(new QTabWidget(zoneCentrale)),
     planningTab(new QWidget()),
     tachesTab(new QWidget()),
+    tachesView(new QVBoxLayout),
     tachesLayout(new QHBoxLayout),
+    tachesFormLayout(0),
+    boutonsTreeView(new QFormLayout),
     treeView(TreeViewModel::getInstance())
     {
     this->setWindowTitle(QString::fromUtf8("LO21"));
@@ -19,13 +22,22 @@ MainWindow::MainWindow():
     tabs->addTab(tachesTab,"Tache");
     tabs->addTab(planningTab,"Planning");
 
-    // Tree onglet Taches (modèle/vue
+    // Tree onglet Taches (modèle/vue)
     QTreeView *vue = new QTreeView();
-    tachesLayout->addWidget(vue);
+    tachesLayout->addLayout(tachesView);
+    tachesView->addWidget(vue);
     vue->setHeaderHidden(true);
-    vue->setFixedSize(300,W_HEIGHT);
+    vue->setFixedSize(300,0.7*W_HEIGHT);
     vue->setModel(treeView.getModele());
     connect(vue, SIGNAL(clicked(QModelIndex)), this, SLOT(treeViewClicked(QModelIndex)));
+
+    tachesView->addLayout(boutonsTreeView);
+    QPushButton *buttonProjet = new QPushButton("+");
+    QPushButton *buttonTU = new QPushButton("+");
+    QPushButton *buttonTC = new QPushButton("+");
+    boutonsTreeView->addRow("Projet", buttonProjet);
+    boutonsTreeView->addRow("Tâche unitaire", buttonTU);
+    boutonsTreeView->addRow("Tâche composite", buttonTC);
 
     QMenu *menuFichier = menuBar()->addMenu("&Fichier");
 //    QMenu *menuEdition = menuBar()->addMenu("&Edition");

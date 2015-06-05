@@ -67,6 +67,11 @@ public slots:
 
 };
 
+// TODO:
+// - enregistrement changements
+// - +/- taches/projets
+// - précédences
+
 // Penser à :
 // mettre des const
 // mettre des try catch

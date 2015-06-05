@@ -19,19 +19,18 @@
 #include <QFormLayout>
 #include <QLineEdit>
 #include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QCheckBox>
 #include <QDate>
 #include <QCalendarWidget>
 #include <QSpinBox>
 #include <QPushButton>
-//#include <QLineEdit>
+#include <QGridLayout>
+#include <QLabel>
 //#include <QTextEdit>
-//#include <QVBoxLayout>
 //#include <QtXml>
 //#include <QFileDialog>
-//#include <QTreeWidget>
 //#include <QList>
-//#include <QTreeWidgetItem>
 
 // Constantes
 #define W_WIDTH 900
@@ -44,13 +43,15 @@
 ///
 class MainWindow: public QMainWindow{
     Q_OBJECT
-    QWidget *zoneCentrale;
-    QTabWidget *tabs;
-    QWidget *planningTab;
-    QWidget *tachesTab;
-    QHBoxLayout *tachesLayout;
-    QFormLayout *tachesFormLayout;
-    TreeViewModel& treeView;
+    QWidget *zoneCentrale; //! zone contenant les onglets
+    QTabWidget *tabs; //! Widget gérant les onglets
+    QWidget *planningTab; //! Onglet avec le planning
+    QWidget *tachesTab; //! Onglet avec l'édition des tâches
+    QHBoxLayout *tachesLayout; //! Layout horizontal contenant le layout du treeview à gauche et celui du formulaire à droite
+    QVBoxLayout *tachesView; //! Layout vertical contenant le treeView et les boutons liés
+    QFormLayout *tachesFormLayout; //! Formulaire d'édition d'une tâche ou d'un projet
+    QFormLayout *boutonsTreeView; //! Boutons d'ajout/supression de projet/tache
+    TreeViewModel& treeView; //! Arborescence des projets et tâches
 
     void showProject();
     void clearTFL();

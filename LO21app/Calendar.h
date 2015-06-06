@@ -36,10 +36,11 @@ private:
         ~Handler(){ if (instance) delete instance; }
     };
     static Handler handler;
+    string genererId();
 public:
     static ProjetManager& getInstance();
     static void libererInstance();
-    Projet& ajouterProjet(const string& id, const string& nom, const string& file, const Date& dispo);
+    Projet& ajouterProjet(const string& nom, const string& file, const Date& dispo);
     Projet& getProjet(const string& id);
     const Projet& getProjet(const string& code) const;
     class Iterator{
@@ -86,12 +87,13 @@ private:
         taches(0), tachesNonComposantes(0), nb(0),nbMax(0), nbNC(0),nbMaxNC(0), identificateur(id), nom(nom),file(file),dispo(d){}
     Projet(const Projet& um);
     Projet& operator=(const Projet& um);
-    friend Projet& ProjetManager::ajouterProjet(const string& id, const string& nom, const string& file, const Date& dispo);
+    friend Projet& ProjetManager::ajouterProjet(const string& nom, const string& file, const Date& dispo);
+    string genererId();
 public:
     bool estComposante(Tache* tache);
     ~Projet();
-    Unitaire& ajouterUnitaire(const string& id, const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool premp);
-    Composite& ajouterComposite(const string& id, const string& t, const Date& dispo, const Date& deadline);
+    Unitaire& ajouterUnitaire(const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool premp);
+    Composite& ajouterComposite(const string& t, const Date& dispo, const Date& deadline);
     Tache& getTache(const string& id);
     string getId() const { return identificateur; }
     string getNom() const { return nom; }
@@ -190,12 +192,12 @@ class Unitaire : public Tache, public Evenement {
     bool preemptable;
     Unitaire(const Unitaire& t);
     Unitaire& operator=(const Unitaire& t);
-    Unitaire(Date d, Date e, string id, string t, Duree dur, bool p):Tache(id,t,d,e),Evenement(dur),dureeRestante(dur),dureeFaite(0),preemptable(p){
+    Unitaire(Date d, Date e, string id, string t, Duree dur, bool p):Tache(id, t,d,e),Evenement(dur),dureeRestante(dur),dureeFaite(0),preemptable(p){
         if(dur.getDureeEnHeures()>=12){
             preemptable=true;
         }
     }
-    friend Unitaire& Projet::ajouterUnitaire(const string& id, const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool premp);
+    friend Unitaire& Projet::ajouterUnitaire(const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool premp);
 public:
     //Duree getDuree() const { return duree; }
     bool isPreemp() const { return preemptable; }
@@ -226,7 +228,7 @@ private:
     Composite(const Composite& t);
     Composite& operator=(const Composite& t);
     Composite(string id, string t, Date d, Date e):Tache(id,t,d,e),composition(0),nbCompo(0),nbMaxCompo(0){}
-    friend Composite& Projet::ajouterComposite(const string& id, const string& t, const Date& dispo, const Date& deadline);
+    friend Composite& Projet::ajouterComposite(const string& t, const Date& dispo, const Date& deadline);
 public:
     void addCompo(Tache* t);
     Tache& getCompo(const string& id);

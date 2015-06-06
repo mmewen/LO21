@@ -86,6 +86,17 @@ void TreeViewModel::printBranch(QStandardItem* parentItem, Tache* tache){
     }
 }
 
+void TreeViewModel::addProjet(Projet* nouveauProjet){
+    QStandardItem *parentItem = modele.invisibleRootItem();
+
+    // On ajoute la ligne
+    QStandardItem* itemTemp = new QStandardItem(QString::fromStdString(nouveauProjet->getNom()));
+    itemTemp->setEditable(false);
+    parentItem->appendRow(itemTemp);
+
+    // On ajoute le couple (item, projet) au tableau qui va bien
+    addProjetItem(itemTemp, nouveauProjet);
+}
 
 Tache* TreeViewModel::getTacheFromItem(QStandardItem* item){
     for(int i=0; i<titNb; i++){
@@ -122,3 +133,26 @@ QStandardItem* TreeViewModel::getItemFromProjet(Projet* projet){
     }
     throw CalendarException("Pas d'item trouvé en lien avec cette tache");
 }
+
+void TreeViewModel::addTache(Projet* projet, Tache* tache){
+    // On ajoute l'item
+    QStandardItem* tacheItemTemp = new QStandardItem(QString::fromStdString(tache->getTitre()));
+    tacheItemTemp->setEditable(false);
+    getItemFromProjet(projet)->appendRow(tacheItemTemp);
+
+    // On ajoute le couple (item, tache) au tableau qui va bien
+    addTacheItem(tacheItemTemp, tache);
+}
+
+void TreeViewModel::addTache(Tache* tacheMere, Tache* tache){
+    // On ajoute l'item
+    QStandardItem* tacheItemTemp = new QStandardItem(QString::fromStdString(tache->getTitre()));
+    tacheItemTemp->setEditable(false);
+    getItemFromTache(tacheMere)->appendRow(tacheItemTemp);
+
+    // On ajoute le couple (item, tache) au tableau qui va bien
+    addTacheItem(tacheItemTemp, tache);
+}
+
+
+

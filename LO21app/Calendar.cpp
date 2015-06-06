@@ -150,16 +150,35 @@ Tache* Projet::trouverTache(const string& id)const{
     return 0;
 }
 
-Unitaire& Projet::ajouterUnitaire(const string& id, const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool preemp){
-    if (trouverTache(id)) throw CalendarException("erreur, Projet, tache deja existante");
-    Unitaire* newt=new Unitaire(dispo,deadline,id,t,duree,preemp);
+string Projet::genererId(){
+    string chaine;
+    char buffer[6];
+    char alphanum[] =
+        "0123456789"
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    do{
+        for (int i = 0; i < 5; ++i) {
+            buffer[i] = '0';
+            buffer[i] = alphanum[rand() % (sizeof(alphanum) - 1)];
+        }
+
+        buffer[5] = 0;
+        chaine.assign(buffer, buffer + 5);
+    } while (trouverTache(chaine));
+
+    return chaine;
+}
+
+Unitaire& Projet::ajouterUnitaire(const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool preemp){
+    string id = genererId();
+    Unitaire* newt=new Unitaire(dispo,deadline, id, t,duree,preemp);
     addItem(newt);
     return *newt;
 }
 
-Composite& Projet::ajouterComposite(const string& id, const string& t, const Date& dispo, const Date& deadline){
-    if (trouverTache(id)) throw CalendarException("erreur, Projet, tache deja existante");
-    Composite* newt=new Composite(id,t,dispo,deadline);
+Composite& Projet::ajouterComposite(const string& t, const Date& dispo, const Date& deadline){
+    string id = genererId();
+    Composite* newt=new Composite(id, t,dispo,deadline);
     addItem(newt);
     return *newt;
 }
@@ -234,7 +253,7 @@ void Projet::load(const string& f){
             while (fin.peek()=='\r') fin.ignore();
             while (fin.peek()=='\n') fin.ignore();
             std::cout<<"LOAD unitaire"<<id<<"-"<<titre<<"-"<<dispo<<"-"<<echeance<<"-"<<duree<<"-"<<preemp<<"\n";
-            ajouterUnitaire(id,titre,dispo,echeance,duree,preemp);
+            ajouterUnitaire(titre,dispo,echeance,duree,preemp);
         }
         if(type=="composite"){
             fin.getline(tmp,256); // get code
@@ -255,7 +274,7 @@ void Projet::load(const string& f){
             while (fin.peek()=='\r') fin.ignore();
             while (fin.peek()=='\n') fin.ignore();
             std::cout<<"LOAD composite"<<id<<"-"<<titre<<"-"<<dispo<<"-"<<echeance<<"\n";
-            ajouterComposite(id,titre,dispo,echeance);
+            ajouterComposite(titre,dispo,echeance);
         }
     }
     fin.close(); // close file
@@ -356,8 +375,27 @@ Projet& ProjetManager::getProjet(const string& id){
     return *t;
 }
 
-Projet& ProjetManager::ajouterProjet(const string& id, const string& nom, const string& file, const Date& dispo){
-    if (trouverProjet(id)) throw CalendarException("erreur, ProjetMangager, projet deja existant");
+string ProjetManager::genererId(){
+    string chaine;
+    char buffer[6];
+    char alphanum[] =
+        "0123456789"
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    do{
+        for (int i = 0; i < 5; ++i) {
+            buffer[i] = '0';
+            buffer[i] = alphanum[rand() % (sizeof(alphanum) - 1)];
+        }
+
+        buffer[5] = 0;
+        chaine.assign(buffer, buffer + 5);
+    } while (trouverProjet(chaine));
+
+    return chaine;
+}
+
+Projet& ProjetManager::ajouterProjet(const string& nom, const string& file, const Date& dispo){
+    string id = genererId();
     Projet* newt=new Projet(id,nom,file,dispo);
     addItem(newt);
     return *newt;

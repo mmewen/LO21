@@ -27,6 +27,7 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QLabel>
+#include <QSignalMapper>
 //#include <QTextEdit>
 //#include <QtXml>
 //#include <QFileDialog>
@@ -51,6 +52,7 @@ class MainWindow: public QMainWindow{
     QVBoxLayout *tachesView; //! Layout vertical contenant le treeView et les boutons liés
     QFormLayout *tachesFormLayout; //! Formulaire d'édition d'une tâche ou d'un projet
     QFormLayout *boutonsTreeView; //! Boutons d'ajout/supression de projet/tache
+    QTreeView *vue;
     TreeViewModel& treeView; //! Arborescence des projets et tâches
 
     void showProject();
@@ -64,6 +66,11 @@ public:
     void showProjet(const Projet& p);
 public slots:
     void treeViewClicked(const QModelIndex &index);
+    void slotAjouterProjet();
+    void slotAjouterTU();
+    void slotAjouterTC();
+//    void slotSaveProjet(QLineEdit *titre, QCalendarWidget *dispo);
+    void slotReloadProjet(QString id);
 //    quit();
 
 };

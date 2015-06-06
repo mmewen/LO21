@@ -45,19 +45,23 @@ class TreeViewModel {
     void printBranch(QStandardItem* , Tache* );
     void addProjetItem(QStandardItem* item, Projet* projet);
     void addTacheItem(QStandardItem* item, Tache* tache);
-
-
 public:
     static TreeViewModel& getInstance();
     static void libererInstance();
-    void printTree();
     QStandardItemModel* getModele() { return &modele; }
+
+    void printTree();
+    void addProjet(Projet* nouveauProjet);
+    void addTache(Projet* projet, Tache* tache);
+    void addTache(Tache* tacheMere, Tache* tache);
 
     Tache* getTacheFromItem(QStandardItem* item);
     QStandardItem* getItemFromTache(Tache* tache);
 
     Projet* getProjetFromItem(QStandardItem* item);
     QStandardItem* getItemFromProjet(Projet* projet);
+
+//    Projet* getProjetFromSelected();
 
     // add projet (projet)
     // remove projet (projet)
@@ -66,6 +70,12 @@ public slots:
 
 
 };
+
+
+
+
+
+
 
 // TODO:
 // - enregistrement changements

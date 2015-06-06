@@ -234,7 +234,7 @@ void MainWindow::clearTFL(){
 void MainWindow::slotAjouterProjet(){
     // Création du projet
     ProjetManager& pjm = ProjetManager::getInstance();
-    Projet& nouveauProjet = pjm.ajouterProjet("p5", "Nouveau projet", "pj5.xml", Date(4,6,2015)); // XXX /!\ id et nom de fichier !
+    Projet& nouveauProjet = pjm.ajouterProjet("Nouveau projet", "pj5.xml", Date(4,6,2015)); // XXX /!\ nom de fichier !
 
     // Ajout à la vue
     treeView.addProjet(&nouveauProjet);
@@ -257,7 +257,7 @@ void MainWindow::slotAjouterTU(){
         // Création de la tache
         Date aujourdhui;
         aujourdhui.setDateAujourdhui();
-        Unitaire& tache = projetParent->ajouterUnitaire("t5", "Nouvelle tache unitaire", aujourdhui, aujourdhui,Duree(1,30), false); // XXX /!\ id
+        Unitaire& tache = projetParent->ajouterUnitaire("Nouvelle tache unitaire", aujourdhui, aujourdhui,Duree(1,30), false);
 
         // Déplacement de la tâche au bon endroit
         if (item->parent() != 0) { // si la tache est composante
@@ -304,7 +304,7 @@ void MainWindow::slotAjouterTC(){
         // Création de la tache
         Date aujourdhui;
         aujourdhui.setDateAujourdhui();
-        Composite& tache = projetParent->ajouterComposite("t6", "Nouvelle tache composite", aujourdhui, aujourdhui); // XXX /!\ id
+        Composite& tache = projetParent->ajouterComposite("Nouvelle tache composite", aujourdhui, aujourdhui); // XXX /!\ id
 
         // Déplacement de la tâche au bon endroit
         if (item->parent() != 0) { // si la tache est composante

@@ -51,6 +51,7 @@ class MainWindow: public QMainWindow{
     QVBoxLayout *tachesView; //! Layout vertical contenant le treeView et les boutons liés
     QFormLayout *tachesFormLayout; //! Formulaire d'édition d'une tâche ou d'un projet
     QFormLayout *boutonsTreeView; //! Boutons d'ajout/supression de projet/tache
+    QTreeView *vue;
     TreeViewModel& treeView; //! Arborescence des projets et tâches
 
     void showProject();

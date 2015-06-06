@@ -10,6 +10,7 @@ MainWindow::MainWindow():
     tachesLayout(new QHBoxLayout),
     tachesFormLayout(0),
     boutonsTreeView(new QFormLayout),
+    vue(new QTreeView),
     treeView(TreeViewModel::getInstance())
     {
     this->setWindowTitle(QString::fromUtf8("LO21"));
@@ -23,7 +24,6 @@ MainWindow::MainWindow():
     tabs->addTab(planningTab,"Planning");
 
     // Tree onglet Taches (modèle/vue)
-    QTreeView *vue = new QTreeView();
     tachesLayout->addLayout(tachesView);
     tachesView->addWidget(vue);
     vue->setHeaderHidden(true);
@@ -241,20 +241,95 @@ void MainWindow::slotAjouterProjet(){
 }
 
 void MainWindow::slotAjouterTU(){
-    // Création du projet
-    ProjetManager& pjm = ProjetManager::getInstance();
-    Projet& nouveauProjet = pjm.ajouterProjet("p1", "Nouveau projet", "pj1.xml", Date(4,6,2015)); // XXX /!\ id et nom de fichier !
+    // Récupération du projet et de la tâche mère
+    QModelIndexList selectedIndexList = vue->selectionModel()->selectedIndexes();
+    if (selectedIndexList.size() == 1){ // si exactement un truc est sélectionné
+        QStandardItem *item, *parentProject;
+        item = treeView.getModele()->itemFromIndex(selectedIndexList.at(0));
 
-    // Ajout à la vue
-    treeView.addProjet(&nouveauProjet);
+        parentProject = item;
+        while (parentProject->parent() != 0){
+            parentProject = parentProject->parent();
+        }
+
+        Projet* projetParent = treeView.getProjetFromItem(parentProject);
+
+        // Création de la tache
+        Date aujourdhui;
+        aujourdhui.setDateAujourdhui();
+        Unitaire& tache = projetParent->ajouterUnitaire("t5", "Nouvelle tache unitaire", aujourdhui, aujourdhui,Duree(1,30), false); // XXX /!\ id
+
+        // Déplacement de la tâche au bon endroit
+        if (item->parent() != 0) { // si la tache est composante
+            Tache* tacheParente = treeView.getTacheFromItem(item);
+            if (typeid(*tacheParente) == typeid(Composite)){
+//                cout<<"Tache déplacée"<<endl;
+                projetParent->moveTacheTo(tacheParente, &tache);
+
+                treeView.addTache(tacheParente, &tache);
+            } else { // La mère n'est pas une tache composite, on la crée "à coté" de la tache unitaire sélectionnée
+                cout<<"Tache parent unitaire"<<endl;
+                if(item->parent()->parent() == 0){ // ie. on crée une tache dans un projet
+//                    cout<<"Tache créée à la racine à coté de la TU sélectionnée"<<endl;
+                    treeView.addTache(projetParent, &tache);
+                } else {
+                    Tache* tacheParente = treeView.getTacheFromItem(item->parent());
+                    projetParent->moveTacheTo(tacheParente, &tache);
+
+                    treeView.addTache(tacheParente, &tache);
+                }
+            }
+        } else {
+//            cout<<"Tache créée à la racine"<<endl;
+            treeView.addTache(projetParent, &tache);
+        }
+    }
+
 }
 
 void MainWindow::slotAjouterTC(){
-    // Création du projet
-    ProjetManager& pjm = ProjetManager::getInstance();
-    Projet& nouveauProjet = pjm.ajouterProjet("p1", "Nouveau projet", "pj1.xml", Date(4,6,2015)); // XXX /!\ id et nom de fichier !
+    // Récupération du projet et de la tâche mère
+    QModelIndexList selectedIndexList = vue->selectionModel()->selectedIndexes();
+    if (selectedIndexList.size() == 1){ // si exactement un truc est sélectionné
+        QStandardItem *item, *parentProject;
+        item = treeView.getModele()->itemFromIndex(selectedIndexList.at(0));
 
-    // Ajout à la vue
-    treeView.addProjet(&nouveauProjet);
+        parentProject = item;
+        while (parentProject->parent() != 0){
+            parentProject = parentProject->parent();
+        }
+
+        Projet* projetParent = treeView.getProjetFromItem(parentProject);
+
+        // Création de la tache
+        Date aujourdhui;
+        aujourdhui.setDateAujourdhui();
+        Composite& tache = projetParent->ajouterComposite("t6", "Nouvelle tache composite", aujourdhui, aujourdhui); // XXX /!\ id
+
+        // Déplacement de la tâche au bon endroit
+        if (item->parent() != 0) { // si la tache est composante
+            Tache* tacheParente = treeView.getTacheFromItem(item);
+            if (typeid(*tacheParente) == typeid(Composite)){
+//                cout<<"Tache déplacée"<<endl;
+                projetParent->moveTacheTo(tacheParente, &tache);
+
+                treeView.addTache(tacheParente, &tache);
+            } else { // La mère n'est pas une tache composite, on la crée "à coté" de la tache unitaire sélectionnée
+                cout<<"Tache parent unitaire"<<endl;
+                if(item->parent()->parent() == 0){ // ie. on crée une tache dans un projet
+//                    cout<<"Tache créée à la racine à coté de la TU sélectionnée"<<endl;
+                    treeView.addTache(projetParent, &tache);
+                } else {
+                    Tache* tacheParente = treeView.getTacheFromItem(item->parent());
+                    projetParent->moveTacheTo(tacheParente, &tache);
+
+                    treeView.addTache(tacheParente, &tache);
+                }
+            }
+        } else {
+//            cout<<"Tache créée à la racine"<<endl;
+            treeView.addTache(projetParent, &tache);
+        }
+    }
 }
 

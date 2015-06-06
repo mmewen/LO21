@@ -38,6 +38,9 @@ MainWindow::MainWindow():
     boutonsTreeView->addRow("Projet", buttonProjet);
     boutonsTreeView->addRow("Tâche unitaire", buttonTU);
     boutonsTreeView->addRow("Tâche composite", buttonTC);
+    connect(buttonProjet, SIGNAL(clicked()), this, SLOT(slotAjouterProjet()));
+    connect(buttonTU, SIGNAL(clicked()), this, SLOT(slotAjouterTU()));
+    connect(buttonTC, SIGNAL(clicked()), this, SLOT(slotAjouterTC()));
 
     QMenu *menuFichier = menuBar()->addMenu("&Fichier");
 //    QMenu *menuEdition = menuBar()->addMenu("&Edition");
@@ -224,5 +227,34 @@ void MainWindow::clearTFL(){
         }
         tachesFormLayout->deleteLater();
     }
+}
+
+
+
+void MainWindow::slotAjouterProjet(){
+    // Création du projet
+    ProjetManager& pjm = ProjetManager::getInstance();
+    Projet& nouveauProjet = pjm.ajouterProjet("p5", "Nouveau projet", "pj5.xml", Date(4,6,2015)); // XXX /!\ id et nom de fichier !
+
+    // Ajout à la vue
+    treeView.addProjet(&nouveauProjet);
+}
+
+void MainWindow::slotAjouterTU(){
+    // Création du projet
+    ProjetManager& pjm = ProjetManager::getInstance();
+    Projet& nouveauProjet = pjm.ajouterProjet("p1", "Nouveau projet", "pj1.xml", Date(4,6,2015)); // XXX /!\ id et nom de fichier !
+
+    // Ajout à la vue
+    treeView.addProjet(&nouveauProjet);
+}
+
+void MainWindow::slotAjouterTC(){
+    // Création du projet
+    ProjetManager& pjm = ProjetManager::getInstance();
+    Projet& nouveauProjet = pjm.ajouterProjet("p1", "Nouveau projet", "pj1.xml", Date(4,6,2015)); // XXX /!\ id et nom de fichier !
+
+    // Ajout à la vue
+    treeView.addProjet(&nouveauProjet);
 }
 

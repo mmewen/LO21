@@ -50,8 +50,10 @@ class TreeViewModel {
 public:
     static TreeViewModel& getInstance();
     static void libererInstance();
-    void printTree();
     QStandardItemModel* getModele() { return &modele; }
+
+    void printTree();
+    void addProjet(Projet* nouveauProjet);
 
     Tache* getTacheFromItem(QStandardItem* item);
     QStandardItem* getItemFromTache(Tache* tache);

@@ -64,6 +64,9 @@ public:
     void showProjet(const Projet& p);
 public slots:
     void treeViewClicked(const QModelIndex &index);
+    void slotAjouterProjet();
+    void slotAjouterTU();
+    void slotAjouterTC();
 //    quit();
 
 };

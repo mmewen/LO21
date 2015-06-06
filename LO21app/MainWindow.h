@@ -27,6 +27,7 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QLabel>
+#include <QSignalMapper>
 //#include <QTextEdit>
 //#include <QtXml>
 //#include <QFileDialog>
@@ -68,6 +69,8 @@ public slots:
     void slotAjouterProjet();
     void slotAjouterTU();
     void slotAjouterTC();
+//    void slotSaveProjet(QLineEdit *titre, QCalendarWidget *dispo);
+    void slotReloadProjet(QString id);
 //    quit();
 
 };

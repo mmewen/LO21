@@ -33,7 +33,7 @@ int main(int argc, char * argv[]) {
 
 
 
-    wind.showUnitaire(t11);
+//    wind.showUnitaire(t11);
 //    wind.showComposite(t2);
 
 

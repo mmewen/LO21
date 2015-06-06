@@ -185,11 +185,21 @@ void MainWindow::showProjet(const Projet& p){
     // mettre des taches prédécesseurs
     tachesFormLayout->addRow("", annuler);
     tachesFormLayout->addRow("", sauver);
+//    connect(sauver, SIGNAL(clicked()), this, SLOT(slotSaveProjet(titre, dispo)));
+
+    QSignalMapper* signalMapper = new QSignalMapper (this) ;
+    connect (annuler, SIGNAL(clicked()), signalMapper, SLOT(map())) ;
+    signalMapper -> setMapping (annuler, QString::fromStdString(p.getId())) ;
+    connect (signalMapper, SIGNAL(mapped(QString)), this, SLOT(slotReloadProjet(QString))) ;
 
 
     tachesLayout->addLayout(tachesFormLayout);
 }
 
+//void MainWindow::slotSaveProjet(QLineEdit *titre, QCalendarWidget *dispo){
+//    cout<<titre->text().toStdString();
+//    dispo->selectedDate();
+//}
 void MainWindow::treeViewClicked(const QModelIndex &index)
 {
     QStandardItem *item = treeView.getModele()->itemFromIndex(index);
@@ -332,4 +342,22 @@ void MainWindow::slotAjouterTC(){
         }
     }
 }
+
+void MainWindow::slotReloadProjet(QString id){
+    ProjetManager& pjm = ProjetManager::getInstance();
+    showProjet(pjm.getProjet(id.toStdString()));
+}
+
+
+//void MainWindow::slotReloadUnitaire(QString id){
+//    ProjetManager& pjm = ProjetManager::getInstance();
+//    showUnitaire(pjm.getProjet(id.toStdString()));
+//}
+
+
+//void MainWindow::slotReloadComposite(QString id){
+//    ProjetManager& pjm = ProjetManager::getInstance();
+//    showComposite(pjm.getProjet(id.toStdString()));
+//}
+
 

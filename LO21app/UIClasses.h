@@ -71,6 +71,12 @@ public slots:
 
 };
 
+
+
+
+
+
+
 // TODO:
 // - enregistrement changements
 // - +/- taches/projets

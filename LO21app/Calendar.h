@@ -128,6 +128,7 @@ public:
 class Evenement {
     Duree duree;
 public:
+    virtual ~Evenement(){}
     Evenement(Duree dur):duree(dur){}
     Duree getDuree() const { return duree; }
     void setDuree(const Duree& dur){ duree=dur; }
@@ -145,7 +146,7 @@ class Tache {
     Tache(const Tache& t);
     Tache& operator=(const Tache& t);
 public:
-    virtual ~Tache(){};
+    virtual ~Tache(){}
     Tache(const string& id, const string& t, const Date& dispo, const Date& deadline):
             prec(0), nbPred(0), maxPred(0), identificateur(id),titre(t),disponibilite(dispo),echeance(deadline){}
     void addItem(Tache* t);
@@ -204,7 +205,7 @@ public:
     void setFait(const Duree& f){ dureeFaite=f; }
     void setPreemp(){ preemptable=true; }
     void setNonPreemp(){ preemptable=false; }
-    void afficher(ostream& f) ;
+    virtual void afficher(ostream& f) ;
     void update(string id, string t, Date d, Date e, Duree dur, Duree dr, Duree df, bool p){
         setId(id); setTitre(t); setDatesDisponibiliteEcheance(d,e); setDuree(dur); setRestant(dr); setFait(df);
         if(dur.getDureeEnHeures()>=12)
@@ -252,7 +253,7 @@ public:
         void first(){ indice_tache=0; }
     };
     CompoIterator getCompoIterator(){ return CompoIterator(composition,nbCompo); }
-    void afficher(ostream& f) ;
+    virtual void afficher(ostream& f) ;
 };
 
 class Activite : public Evenement {
@@ -290,7 +291,26 @@ private:
 public:
     static ProgrammationManager& getInstance();
     static void libererInstance();
-    void ajouterProgrammation(const Evenement& e, const Date& d, const Horaire& h);
+    void ajouterProgrammation(Unitaire& e, const Date& d, const Horaire& h, Duree dur = Duree(0));
+    void ajouterProgrammation(Activite& e, const Date& d, const Horaire& h);
+    class Iterator{
+        friend class ProgrammationManager;
+        private:
+            Programmation** tab;
+            int nb;
+            int indice_prog;
+            Iterator(Programmation** t, int n):tab(t), nb(n), indice_prog(0){}
+        public:
+            Programmation& current() const {
+                if(indice_prog>=nb)
+                    throw "incrementation d'un iterateur en fin de sequence";
+                return *tab[indice_prog];
+            }
+            bool isDone() const { return indice_prog==nb; }
+            void next(){ ++indice_prog; }
+            void first(){ indice_prog=0; }
+        };
+    Iterator getIterator(){ return Iterator(programmations,nb); }
 };
 
 class Programmation {
@@ -300,7 +320,8 @@ class Programmation {
     Programmation(const Programmation& um);
     Programmation& operator=(const Programmation& um);
     Programmation(const Evenement& e, const Date& d, const Horaire& h):evt(&e), date(d), horaire(h){}
-    friend void ProgrammationManager::ajouterProgrammation(const Evenement& e, const Date& d, const Horaire& h);
+    friend void ProgrammationManager::ajouterProgrammation(Unitaire& e, const Date& d, const Horaire& h, Duree dur = Duree(0));
+    friend void ProgrammationManager::ajouterProgrammation(Activite& e, const Date& d, const Horaire& h);
 public:
     const Evenement& getEvenement() const { return *evt; }
     Date getDate() const { return date; }

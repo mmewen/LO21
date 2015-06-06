@@ -56,7 +56,7 @@ class MainWindow: public QMainWindow{
     void showProject();
     void clearTFL();
 public:
-    ~MainWindow(){};
+    ~MainWindow(){}
     MainWindow();
     void showUnitaire(const Unitaire& t);
     void saveUnitaire();

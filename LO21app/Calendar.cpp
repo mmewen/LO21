@@ -12,6 +12,14 @@ ostream& operator<<(ostream& fout, Tache& t){
 }
 
 void Tache::addItem(Tache* t){
+    if(getId()==t->getId())
+        throw CalendarException("erreur, Tache, precedence reflexive");
+    if(t->trouverTache(getId()))
+        throw CalendarException("erreur, Tache, precedence recursive");
+    if(getDateEcheance() < t->getDateDisponibilite())
+        throw CalendarException("erreur, Tache, dates de précédence non correspondantes");
+    if(trouverTache(t->getId()))
+        throw CalendarException("erreur, Tache, précédence déjà existante");
     if (nbPred==maxPred){
         Tache** newtab=new Tache*[maxPred+10];
         for(unsigned int i=0; i<nbPred; i++) newtab[i]=prec[i];
@@ -32,7 +40,8 @@ Tache* Tache::trouverTache(const string& id)const{
 
 Tache& Tache::getPrecedence(const string& id){
     Tache* t=trouverTache(id);
-    if (!t) throw CalendarException("erreur, Projet, tache inexistante");
+    if (!t)
+        throw CalendarException("erreur, Projet, tache inexistante");
     return *t;
 }
 
@@ -76,6 +85,14 @@ void Composite::afficher(ostream& f) {
 }
 
 void Composite::addCompo(Tache* t){
+    if(getId()==t->getId())
+        throw CalendarException("erreur, Composite, composition reflexive");
+    if(trouverCompo(t->getId()))
+        throw CalendarException("erreur, Composite, tache ajoutée déjà composante");
+    if(t->getDateDisponibilite() < getDateDisponibilite())
+        throw CalendarException("erreur, Composite, disponibilite de composition non correspondante");
+    if(getDateEcheance() < t->getDateEcheance())
+        throw CalendarException("erreur, Composite, echeance de composition non correspondante");
     if (nbCompo==nbMaxCompo){
         Tache** newtab=new Tache*[nbMaxCompo+10];
         for(unsigned int i=0; i<nbCompo; i++) newtab[i]=composition[i];
@@ -84,6 +101,12 @@ void Composite::addCompo(Tache* t){
         Tache** old=composition;
         composition=newtab;
         delete[] old;
+    }
+    Tache* prec = 0;
+    Tache::Iterator it = getIterator();
+    for(it.first();!it.isDone();it.next()){
+        prec = &(it.current());
+        t->addItem(prec);
     }
     composition[nbCompo++]=t;
 }
@@ -96,7 +119,8 @@ Tache* Composite::trouverCompo(const string& id)const{
 
 Tache& Composite::getCompo(const string& id){
     Tache* t=trouverCompo(id);
-    if (!t) throw CalendarException("erreur, Projet, tache inexistante");
+    if (!t)
+        throw CalendarException("erreur, Projet, tache inexistante");
     return *t;
 }
 
@@ -170,6 +194,8 @@ string Projet::genererId(){
 }
 
 Unitaire& Projet::ajouterUnitaire(const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool preemp){
+    if(dispo < getDispo())
+        throw CalendarException("erreur, Projet, disponibilite de tache precede disponibilité de projet");
     string id = genererId();
     Unitaire* newt=new Unitaire(dispo,deadline, id, t,duree,preemp);
     addItem(newt);
@@ -177,6 +203,8 @@ Unitaire& Projet::ajouterUnitaire(const string& t, const Date& dispo, const Date
 }
 
 Composite& Projet::ajouterComposite(const string& t, const Date& dispo, const Date& deadline){
+    if(dispo < getDispo())
+        throw CalendarException("erreur, Projet, disponibilite de tache precede disponibilité de projet");
     string id = genererId();
     Composite* newt=new Composite(id, t,dispo,deadline);
     addItem(newt);
@@ -186,7 +214,7 @@ Composite& Projet::ajouterComposite(const string& t, const Date& dispo, const Da
 Date Projet::getEcheance(){
     Iterator it = getIterator();
     Date echeance = it.current().getDateEcheance();
-    for( ; !it.isDone() ; it.next()){
+    for(it.first() ; !it.isDone() ; it.next()){
         if(echeance<it.current().getDateEcheance()){
             echeance = it.current().getDateEcheance();
         }
@@ -196,7 +224,8 @@ Date Projet::getEcheance(){
 
 Tache& Projet::getTache(const string& id){
     Tache* t=trouverTache(id);
-    if (!t) throw CalendarException("erreur, Projet, tache inexistante");
+    if (!t)
+        throw CalendarException("erreur, Projet, tache inexistante");
     return *t;
 }
 
@@ -434,6 +463,12 @@ void ProgrammationManager::addItem(Programmation* t){
     programmations[nb++]=t;
 }
 
+Programmation* ProgrammationManager::trouverProgrammation(Evenement& e)const{
+    for(unsigned int i=0; i<nb; i++)
+        if (&e==&programmations[i]->getEvenement()) return programmations[i];
+    return 0;
+}
+
 Programmation* ProgrammationManager::trouverProgrammation(const Evenement& e)const{
     for(unsigned int i=0; i<nb; i++)
         if (&e==&programmations[i]->getEvenement()) return programmations[i];
@@ -441,7 +476,8 @@ Programmation* ProgrammationManager::trouverProgrammation(const Evenement& e)con
 }
 
 void ProgrammationManager::ajouterProgrammation(Unitaire& e, const Date& d, const Horaire& h, Duree dur){
-    if (trouverProgrammation(e)) throw CalendarException("erreur, ProgrammationManager, Programmation deja existante");
+    if (trouverProgrammation(e))
+        throw CalendarException("erreur, ProgrammationManager, Programmation deja existante");
     ProgrammationManager& um = ProgrammationManager::getInstance();
     ProgrammationManager::Iterator it = um.getIterator();
     for(it.first();!it.isDone();it.next()){
@@ -475,6 +511,15 @@ void ProgrammationManager::ajouterProgrammation(Unitaire& e, const Date& d, cons
             e.setRestant(Duree(e.getRestant().getDureeEnMinutes()-dur.getDureeEnMinutes()));
             e.setFait(Duree(e.getFait().getDureeEnMinutes()+dur.getDureeEnMinutes()));
         }
+    }
+    if(d < e.getDateDisponibilite())
+        throw CalendarException("erreur, ProgrammationManager, programmation avant disponibilite");
+    if(e.getDateEcheance() < d)
+        throw CalendarException("erreur, ProgrammationManager, programmation après echeance");
+    Tache::Iterator it2 = e.getIterator();
+    for(it2.first();!it2.isDone();it2.next()){
+        if(!trouverProgrammation(dynamic_cast<Evenement&>(it2.current())))
+            throw CalendarException("erreur, ProgrammationManager, precedence non respectee");
     }
     Programmation* newt=new Programmation(e,d,h);
     addItem(newt);

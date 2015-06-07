@@ -291,6 +291,7 @@ private:
     unsigned int nb;
     unsigned int nbMax;
     void addItem(Programmation* t);
+    Programmation* trouverProgrammation(Evenement& e) const;
     Programmation* trouverProgrammation(const Evenement& e) const;
     ProgrammationManager():programmations(0),nb(0),nbMax(0){}
     ~ProgrammationManager();

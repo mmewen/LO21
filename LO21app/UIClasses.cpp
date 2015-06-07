@@ -175,6 +175,7 @@ EditeurProjet::EditeurProjet(Projet* p):
     Editeur(),
     titre (new QLineEdit),
     dispo (new QCalendarWidget),
+    echeance (new QCalendarWidget),
     projet(p)
 {
     dispo->setMinimumDate(QDate::currentDate());
@@ -185,9 +186,11 @@ EditeurProjet::EditeurProjet(Projet* p):
     // Remplissage des champs
     titre->setText(QString::fromStdString(p->getNom()));
     dispo->setSelectedDate(p->getDispo().getQDate());
+    echeance->setSelectedDate(p->getEcheance().getQDate());
 
     formLayout->addRow("Titre de la tache", titre);
     formLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tard que les dates de début des tâches
+    formLayout->addRow("Echéance", echeance);
 
 
     // afficher autres trucs !!
@@ -334,7 +337,12 @@ void EditeurTC::slotSave(){
 //    Date::toTimingDate(dispo->selectedDate()) // marche pas, pourquoi ?
 }
 
-
+EditeurPrecedence::EditeurPrecedence(Tache *t):tache(t),Precedences(new QComboBox){
+    Tache::Iterator it = t->getIterator();
+    for(it.first();!it.isDone();it.next()){
+        Precedences->addItem(QString::fromStdString(it.current().getTitre()));
+    }
+}
 
 
 

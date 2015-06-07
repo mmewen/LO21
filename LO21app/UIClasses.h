@@ -14,6 +14,7 @@
 #include <QCheckBox>
 #include <QSpinBox>
 #include <QDate>
+#include <QComboBox>
 
 class TreeViewModel : public QObject {
     Q_OBJECT
@@ -100,6 +101,7 @@ class EditeurProjet : public Editeur{
     Q_OBJECT
     QLineEdit *titre;
     QCalendarWidget *dispo;
+    QCalendarWidget *echeance;
     Projet* projet;
 public:
     EditeurProjet(Projet* p);
@@ -151,6 +153,19 @@ public slots:
 signals:
     void tacheUpdated(Composite* tache);
 };
+
+class EditeurPrecedence : public QWidget
+{
+    Q_OBJECT
+public:
+    EditeurPrecedence(Tache *t);
+private:
+    Tache* tache;
+    QComboBox *Precedences;
+    QPushButton *Ajouter;
+    QFormLayout *Donnee;
+};
+
 
 
 

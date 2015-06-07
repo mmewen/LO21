@@ -155,18 +155,22 @@ void MainWindow::slotAjouterTU(){
         Projet* projetParent = treeView.getProjetFromItem(parentProject);
 
         // Création de la tache
-        Date aujourdhui;
-        aujourdhui.setDateAujourdhui();
-        Unitaire& tache = projetParent->ajouterUnitaire("Nouvelle tache unitaire", aujourdhui, aujourdhui,Duree(1,30), false);
+        //Date aujourdhui;
+        //aujourdhui.setDateAujourdhui();
+        //Unitaire& tache = projetParent->ajouterUnitaire("Nouvelle tache unitaire", aujourdhui, aujourdhui,Duree(1,30), false);
+        Date dispo;
+        dispo=projetParent->getDispo();
+        Unitaire& tache = projetParent->ajouterUnitaire("Nouvelle tache unitaire", dispo, dispo,Duree(1,30), false);
 
         // Déplacement de la tâche au bon endroit
         if (item->parent() != 0) { // si la tache est composante
             Tache* tacheParente = treeView.getTacheFromItem(item);
             if (typeid(*tacheParente) == typeid(Composite)){
 //                cout<<"Tache déplacée"<<endl;
-                projetParent->moveTacheTo(tacheParente, &tache);
+                    tache.setDatesDisponibiliteEcheance(tacheParente->getDateDisponibilite(),tacheParente->getDateEcheance());
+                    projetParent->moveTacheTo(tacheParente, &tache);
+                    treeView.addTache(tacheParente, &tache);
 
-                treeView.addTache(tacheParente, &tache);
             } else { // La mère n'est pas une tache composite, on la crée "à coté" de la tache unitaire sélectionnée
                 cout<<"Tache parent unitaire"<<endl;
                 if(item->parent()->parent() == 0){ // ie. on crée une tache dans un projet
@@ -174,9 +178,10 @@ void MainWindow::slotAjouterTU(){
                     treeView.addTache(projetParent, &tache);
                 } else {
                     Tache* tacheParente = treeView.getTacheFromItem(item->parent());
-                    projetParent->moveTacheTo(tacheParente, &tache);
+                        tache.setDatesDisponibiliteEcheance(tacheParente->getDateDisponibilite(),tacheParente->getDateEcheance());
+                        projetParent->moveTacheTo(tacheParente, &tache);
+                        treeView.addTache(tacheParente, &tache);
 
-                    treeView.addTache(tacheParente, &tache);
                 }
             }
         } else {
@@ -202,28 +207,35 @@ void MainWindow::slotAjouterTC(){
         Projet* projetParent = treeView.getProjetFromItem(parentProject);
 
         // Création de la tache
-        Date aujourdhui;
-        aujourdhui.setDateAujourdhui();
-        Composite& tache = projetParent->ajouterComposite("Nouvelle tache composite", aujourdhui, aujourdhui); // XXX /!\ id
+        //Date aujourdhui;
+        //aujourdhui.setDateAujourdhui();
+        //Composite& tache = projetParent->ajouterComposite("Nouvelle tache composite", aujourdhui, aujourdhui); // XXX /!\ id
+        Date dispo;
+        dispo=projetParent->getDispo();
+        Composite& tache = projetParent->ajouterComposite("Nouvelle tache composite", dispo, dispo);
 
         // Déplacement de la tâche au bon endroit
         if (item->parent() != 0) { // si la tache est composante
             Tache* tacheParente = treeView.getTacheFromItem(item);
             if (typeid(*tacheParente) == typeid(Composite)){
 //                cout<<"Tache déplacée"<<endl;
-                projetParent->moveTacheTo(tacheParente, &tache);
+                    tache.setDatesDisponibiliteEcheance(tacheParente->getDateDisponibilite(),tacheParente->getDateEcheance());
+                    projetParent->moveTacheTo(tacheParente, &tache);
+                    treeView.addTache(tacheParente, &tache);
 
-                treeView.addTache(tacheParente, &tache);
             } else { // La mère n'est pas une tache composite, on la crée "à coté" de la tache unitaire sélectionnée
                 cout<<"Tache parent unitaire"<<endl;
                 if(item->parent()->parent() == 0){ // ie. on crée une tache dans un projet
 //                    cout<<"Tache créée à la racine à coté de la TU sélectionnée"<<endl;
+                    tache.setDatesDisponibiliteEcheance(projetParent->getDispo(),projetParent->getDispo());
                     treeView.addTache(projetParent, &tache);
                 } else {
                     Tache* tacheParente = treeView.getTacheFromItem(item->parent());
-                    projetParent->moveTacheTo(tacheParente, &tache);
+                        tache.setDatesDisponibiliteEcheance(tacheParente->getDateDisponibilite(),tacheParente->getDateEcheance());
+                        projetParent->moveTacheTo(tacheParente, &tache);
+                        treeView.addTache(tacheParente, &tache);
 
-                    treeView.addTache(tacheParente, &tache);
+
                 }
             }
         } else {

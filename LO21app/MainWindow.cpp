@@ -2,16 +2,17 @@
 
 //! initialisation de la fenêtre principale
 MainWindow::MainWindow():
-    zoneCentrale(new QWidget),
-    tabs(new QTabWidget(zoneCentrale)),
-    planningTab(new QWidget()),
-    tachesTab(new QWidget()),
-    tachesView(new QVBoxLayout),
-    tachesLayout(new QHBoxLayout),
-    tachesFormLayout(0),
-    boutonsTreeView(new QFormLayout),
-    vue(new QTreeView),
-    treeView(TreeViewModel::getInstance())
+        zoneCentrale(new QWidget),
+        tabs(new QTabWidget(zoneCentrale)),
+        planningTab(new QWidget()),
+        tachesTab(new QWidget()),
+        tachesView(new QVBoxLayout),
+        tachesLayout(new QHBoxLayout),
+        tachesFormLayout(0),
+        editionScroll(new QScrollArea),
+        boutonsTreeView(new QFormLayout),
+        vue(new QTreeView),
+        treeView(TreeViewModel::getInstance())
     {
     this->setWindowTitle(QString::fromUtf8("LO21"));
     this->setFixedSize(W_WIDTH, W_HEIGHT);
@@ -42,6 +43,11 @@ MainWindow::MainWindow():
     connect(buttonTU, SIGNAL(clicked()), this, SLOT(slotAjouterTU()));
     connect(buttonTC, SIGNAL(clicked()), this, SLOT(slotAjouterTC()));
 
+    tachesLayout->addWidget(editionScroll);
+    QLabel *message = new QLabel("Cliquez sur une tache ou un projet pour pouvoir l'éditer");
+    editionScroll->setAlignment(Qt::AlignCenter | Qt::AlignHCenter);
+    editionScroll->setWidget(message);
+
     QMenu *menuFichier = menuBar()->addMenu("&Fichier");
 //    QMenu *menuEdition = menuBar()->addMenu("&Edition");
     QAction *actionQuitter = new QAction("&Quitter", this);
@@ -51,149 +57,33 @@ MainWindow::MainWindow():
     tachesTab->setLayout(tachesLayout);
     this->setCentralWidget(zoneCentrale);
 
-//    showProject();
     treeView.printTree();
 }
 
-//! affichage du contenu d'un projet
-void MainWindow::showProject(){
-    QLineEdit *titre = new QLineEdit;
-    QLineEdit *dispo = new QLineEdit;
-
-    tachesFormLayout = new QFormLayout;
-    tachesFormLayout->addRow("Titre du projet", titre);
-    tachesFormLayout->addRow("Disponibilité", dispo); // si on bouge la date, on bouge aussi les dates de début des taches
-    // nb de taches actuelles
-    // échéance calculée
-    // afficher l'identifiant
-
-    // bouton -> enregistrer
-
-    tachesLayout->addLayout(tachesFormLayout);
-
+void MainWindow::showUnitaire(Unitaire& t){
+    // XXXX faire fonction de ménage !
+    Editeur* edition = new EditeurTU(&t);
+    editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
+    editionScroll->setWidget(edition);
+    connect(edition, SIGNAL(tacheUpdated(Unitaire*)), &treeView, SLOT(updateName(Unitaire*)));
 }
 
-void MainWindow::showUnitaire(const Unitaire& t){
-    clearTFL();
 
-    QLineEdit *titre = new QLineEdit;
-
-    QCalendarWidget *dispo = new QCalendarWidget;
-    dispo->setMinimumDate(QDate::currentDate());
-
-    QCalendarWidget *echeance = new QCalendarWidget;
-    echeance->setMinimumDate(QDate::currentDate());
-
-    QSpinBox *duree = new QSpinBox;
-    QCheckBox *preemptible = new QCheckBox;
-
-    QPushButton *predecesseurs = new QPushButton("Gérer les contraintes de précédence");
-    QPushButton *annuler = new QPushButton("Annuler les modifications");
-    QPushButton *sauver = new QPushButton("Sauver les changements");
-
-    // Remplissage des champs
-    titre->setText(QString::fromStdString(t.getTitre()));
-    dispo->setSelectedDate(t.getDateDisponibilite().getQDate());
-    echeance->setSelectedDate(t.getDateEcheance().getQDate());
-    duree->setValue(t.getDuree().getDureeEnMinutes());
-    preemptible->setChecked(t.isPreemp());
-
-    tachesFormLayout = new QFormLayout;
-    tachesFormLayout->addRow("Titre de la tache", titre);
-    tachesFormLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tôt que le début du projet !
-    tachesFormLayout->addRow("Échéance", echeance); // vérifier qu'elle est après la disponibilité
-    tachesFormLayout->addRow("Durée (en minutes)", duree);
-    tachesFormLayout->addRow("Préemptible", preemptible);
-
-
-    // afficher durée faite
-    //          + durée restante
-
-    // mettre des taches prédécesseurs
-    tachesFormLayout->addRow("", predecesseurs);
-    tachesFormLayout->addRow("", annuler);
-    tachesFormLayout->addRow("", sauver);
-
-
-    tachesLayout->addLayout(tachesFormLayout);
+void MainWindow::showComposite(Composite& t){
+    // XXXX faire fonction de ménage !
+    Editeur* edition = new EditeurTC(&t);
+    editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
+    editionScroll->setWidget(edition);
+    connect(edition, SIGNAL(tacheUpdated(Composite*)), &treeView, SLOT(updateName(Composite*)));
 }
 
-void saveUnitaire(){
-    QDate date = QDate::fromString("1MM12car2003", "d'MM'MMcaryyyy");
-}
-
-void MainWindow::showComposite(const Composite& t){
-    clearTFL();
-
-    QLineEdit *titre = new QLineEdit;
-
-    QCalendarWidget *dispo = new QCalendarWidget;
-    dispo->setMinimumDate(QDate::currentDate());
-
-    QCalendarWidget *echeance = new QCalendarWidget;
-    echeance->setMinimumDate(QDate::currentDate());
-
-    QPushButton *predecesseurs = new QPushButton("Gérer les contraintes de précédence");
-    QPushButton *annuler = new QPushButton("Annuler les modifications");
-    QPushButton *sauver = new QPushButton("Sauver les changements");
-
-    // Remplissage des champs
-    titre->setText(QString::fromStdString(t.getTitre()));
-    dispo->setSelectedDate(t.getDateDisponibilite().getQDate());
-    echeance->setSelectedDate(t.getDateEcheance().getQDate());
-
-    tachesFormLayout = new QFormLayout;
-    tachesFormLayout->addRow("Titre de la tache", titre);
-    tachesFormLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tôt que le début du projet !
-    tachesFormLayout->addRow("Échéance", echeance); // vérifier qu'elle est après la disponibilité
-
-
-    // afficher durée faite
-    //          + durée restante
-
-    // mettre des taches prédécesseurs
-    tachesFormLayout->addRow("", predecesseurs);
-    tachesFormLayout->addRow("", annuler);
-    tachesFormLayout->addRow("", sauver);
-
-
-    tachesLayout->addLayout(tachesFormLayout);
-}
-
-void MainWindow::showProjet(const Projet& p){
-    clearTFL();
-
-    QLineEdit *titre = new QLineEdit;
-
-    QCalendarWidget *dispo = new QCalendarWidget;
-    dispo->setMinimumDate(QDate::currentDate());
-
-    QPushButton *annuler = new QPushButton("Annuler les modifications");
-    QPushButton *sauver = new QPushButton("Sauver les changements");
-
-    // Remplissage des champs
-    titre->setText(QString::fromStdString(p.getNom()));
-    dispo->setSelectedDate(p.getDispo().getQDate());
-
-    tachesFormLayout = new QFormLayout;
-    tachesFormLayout->addRow("Titre de la tache", titre);
-    tachesFormLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tard que les dates de début des tâches
-
-
-    // afficher autres trucs !!
-
-    // mettre des taches prédécesseurs
-    tachesFormLayout->addRow("", annuler);
-    tachesFormLayout->addRow("", sauver);
-//    connect(sauver, SIGNAL(clicked()), this, SLOT(slotSaveProjet(titre, dispo)));
-
-    QSignalMapper* signalMapper = new QSignalMapper (this) ;
-    connect (annuler, SIGNAL(clicked()), signalMapper, SLOT(map())) ;
-    signalMapper -> setMapping (annuler, QString::fromStdString(p.getId())) ;
-    connect (signalMapper, SIGNAL(mapped(QString)), this, SLOT(slotReloadProjet(QString))) ;
-
-
-    tachesLayout->addLayout(tachesFormLayout);
+void MainWindow::showProjet(Projet& p){
+//    clearTFL(); // XXXX faire fonction de ménage !
+    Editeur* edition = new EditeurProjet(&p);
+//    editionScroll->children().at(0)->deleteLater();
+    editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
+    editionScroll->setWidget(edition);
+    connect(edition, SIGNAL(projetUpdated(Projet*)), &treeView, SLOT(updateName(Projet*)));
 }
 
 //void MainWindow::slotSaveProjet(QLineEdit *titre, QCalendarWidget *dispo){
@@ -341,11 +231,6 @@ void MainWindow::slotAjouterTC(){
             treeView.addTache(projetParent, &tache);
         }
     }
-}
-
-void MainWindow::slotReloadProjet(QString id){
-    ProjetManager& pjm = ProjetManager::getInstance();
-    showProjet(pjm.getProjet(id.toStdString()));
 }
 
 

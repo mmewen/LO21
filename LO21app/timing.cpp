@@ -82,6 +82,10 @@ Date Date::operator+(unsigned int nb_jours) const{
 	return d;
 }
 
+Date toTimingDate(QDate date){
+    return Date(date.day(), date.month(), date.year());
+}
+
 bool Horaire::operator<(const Horaire& h) const{
 	if (heure<h.heure) return true;
 	if (heure>h.heure) return false;

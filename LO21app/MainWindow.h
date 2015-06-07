@@ -20,14 +20,12 @@
 #include <QLineEdit>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include <QCheckBox>
 #include <QDate>
-#include <QCalendarWidget>
-#include <QSpinBox>
 #include <QPushButton>
 #include <QGridLayout>
 #include <QLabel>
 #include <QSignalMapper>
+#include <QScrollArea>
 //#include <QTextEdit>
 //#include <QtXml>
 //#include <QFileDialog>
@@ -51,26 +49,24 @@ class MainWindow: public QMainWindow{
     QHBoxLayout *tachesLayout; //! Layout horizontal contenant le layout du treeview à gauche et celui du formulaire à droite
     QVBoxLayout *tachesView; //! Layout vertical contenant le treeView et les boutons liés
     QFormLayout *tachesFormLayout; //! Formulaire d'édition d'une tâche ou d'un projet
+    QScrollArea *editionScroll; //! Zone de scroll contenant l'édition d'une tache/d'un projet
     QFormLayout *boutonsTreeView; //! Boutons d'ajout/supression de projet/tache
     QTreeView *vue;
     TreeViewModel& treeView; //! Arborescence des projets et tâches
 
-    void showProject();
     void clearTFL();
 public:
     ~MainWindow(){};
     MainWindow();
-    void showUnitaire(const Unitaire& t);
+    void showUnitaire(Unitaire& t);
     void saveUnitaire();
-    void showComposite(const Composite& t);
-    void showProjet(const Projet& p);
+    void showComposite(Composite& t);
+    void showProjet(Projet& p);
 public slots:
     void treeViewClicked(const QModelIndex &index);
     void slotAjouterProjet();
     void slotAjouterTU();
     void slotAjouterTC();
-//    void slotSaveProjet(QLineEdit *titre, QCalendarWidget *dispo);
-    void slotReloadProjet(QString id);
 //    quit();
 
 };

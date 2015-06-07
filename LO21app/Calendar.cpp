@@ -334,6 +334,12 @@ void Projet::Iterator::suppr(){
     } else throw ("Suppression de tache impossible");
 }
 
+void Projet::update(const string& nom, const Date& d){
+    this->nom = nom;
+    this->dispo = d;
+    cout<<"saved:"<<this->nom<<endl;
+}
+
 
 
 

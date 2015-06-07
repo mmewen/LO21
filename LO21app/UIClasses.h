@@ -3,10 +3,20 @@
 
 #include<QStandardItemModel>
 #include <QStandardItem>
+#include <QLineEdit>
 #include <typeinfo>
+#include <QFormLayout>
+#include <QPushButton>
+#include <QCalendarWidget>
+#include <QSignalMapper>
 #include "Calendar.h"
+#include "timing.h"
+#include <QCheckBox>
+#include <QSpinBox>
+#include <QDate>
 
-class TreeViewModel {
+class TreeViewModel : public QObject {
+    Q_OBJECT
     // Structures :
     struct CoupleItemProjet {
         Projet* projet;
@@ -61,15 +71,88 @@ public:
     Projet* getProjetFromItem(QStandardItem* item);
     QStandardItem* getItemFromProjet(Projet* projet);
 
+public slots:
+    void updateName(Projet* projet);
+    void updateName(Unitaire* tache);
+    void updateName(Composite* tache);
+
 //    Projet* getProjetFromSelected();
 
     // add projet (projet)
     // remove projet (projet)
     // idem pour les 2 types de taches
-public slots:
 
 
 };
+
+class Editeur : public QWidget{
+    Q_OBJECT
+public:
+    QFormLayout *formLayout;
+    virtual ~Editeur(){}
+    Editeur(): formLayout(new QFormLayout) {}
+public slots:
+    virtual void slotSave() = 0;
+    virtual void slotReload() = 0;
+};
+
+class EditeurProjet : public Editeur{
+    Q_OBJECT
+    QLineEdit *titre;
+    QCalendarWidget *dispo;
+    Projet* projet;
+public:
+    EditeurProjet(Projet* p);
+    virtual ~EditeurProjet() {}
+public slots:
+    void slotSave();
+    void slotReload();
+signals:
+    void projetUpdated(Projet* projet);
+};
+
+class EditeurTache : public Editeur{
+    Q_OBJECT
+public:
+    QLineEdit *titre;
+    QCalendarWidget *dispo;
+    QCalendarWidget *echeance;
+    QPushButton *annuler;
+    QPushButton *sauver;
+    QPushButton *predecesseurs;
+    EditeurTache();
+    virtual ~EditeurTache() {}
+};
+
+class EditeurTU : public EditeurTache{
+    Q_OBJECT
+    QSpinBox *duree;
+    QCheckBox *preemptible;
+    Unitaire* tache;
+public:
+    virtual ~EditeurTU(){}
+    EditeurTU(Unitaire *t);
+public slots:
+    void slotSave();
+    void slotReload();
+signals:
+    void tacheUpdated(Unitaire* tache);
+};
+
+class EditeurTC : public EditeurTache{
+    Q_OBJECT
+    Composite* tache;
+public:
+    virtual ~EditeurTC(){}
+    EditeurTC(Composite *t);
+public slots:
+    void slotSave();
+    void slotReload();
+signals:
+    void tacheUpdated(Composite* tache);
+};
+
+
 
 
 
@@ -79,8 +162,10 @@ public slots:
 
 // TODO:
 // - enregistrement changements
-// - +/- taches/projets
+// - maj treeview à l'enregistrement
 // - précédences
+// - faire les free qui vont bien
+// - suppr taches/projets ?
 
 // Penser à :
 // mettre des const

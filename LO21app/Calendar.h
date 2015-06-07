@@ -103,6 +103,7 @@ public:
     void moveTacheTo(Tache* tMere, Tache* tFille);
     void load(const string& f);
     void save(const string& f);
+    void update(const string& nom, const Date& d);
     const Tache& getTache(const string& code) const;
     class Iterator{
         friend class Projet;
@@ -216,6 +217,15 @@ public:
             else setNonPreemp();
         }
     }
+    void update(string t, Date d, Date e, Duree dur, bool p){
+        setTitre(t); setDatesDisponibiliteEcheance(d,e); setDuree(dur);
+        if(dur.getDureeEnHeures()>=12)
+            setPreemp();
+        else{
+            if(p)setPreemp();
+            else setNonPreemp();
+        }
+    }
 };
 
 class Composite : public Tache {
@@ -234,6 +244,9 @@ public:
     const Tache& getCompo(const string& code) const;
     void update(string id, string t, Date d, Date e){
         setId(id); setTitre(t); setDatesDisponibiliteEcheance(d,e);
+    }
+    void update(string t, Date d, Date e){
+        setTitre(t); setDatesDisponibiliteEcheance(d,e);
     }
     friend class CompoIterator;
     class CompoIterator{

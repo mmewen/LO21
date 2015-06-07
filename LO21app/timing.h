@@ -44,6 +44,7 @@ namespace TIME {
 		int operator-(const Date& d) const; //<! Retourne le nombre de jours séparant les deux dates
 		Date demain() const; //<! Retourne la date du lendemain
 		Date operator+(unsigned int nb) const; //<!Retourne la date de dans nb jours
+        static Date toTimingDate(QDate d);
 	private:
 		// attributs
 		unsigned short int jour; // jour entre 1 et 31

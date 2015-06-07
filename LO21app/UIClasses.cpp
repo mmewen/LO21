@@ -154,5 +154,192 @@ void TreeViewModel::addTache(Tache* tacheMere, Tache* tache){
     addTacheItem(tacheItemTemp, tache);
 }
 
+void TreeViewModel::updateName(Projet* projet){
+    getItemFromProjet(projet)->setText(QString::fromStdString(projet->getNom()));
+}
+
+void TreeViewModel::updateName(Unitaire* tache){
+    getItemFromTache(tache)->setText(QString::fromStdString(tache->getTitre()));
+}
+
+void TreeViewModel::updateName(Composite* tache){
+    getItemFromTache(tache)->setText(QString::fromStdString(tache->getTitre()));
+}
+
+
+
+
+
+
+EditeurProjet::EditeurProjet(Projet* p):
+    Editeur(),
+    titre (new QLineEdit),
+    dispo (new QCalendarWidget),
+    projet(p)
+{
+    dispo->setMinimumDate(QDate::currentDate());
+
+    QPushButton *annuler = new QPushButton("Annuler les modifications");
+    QPushButton *sauver = new QPushButton("Sauver les changements");
+
+    // Remplissage des champs
+    titre->setText(QString::fromStdString(p->getNom()));
+    dispo->setSelectedDate(p->getDispo().getQDate());
+
+    formLayout->addRow("Titre de la tache", titre);
+    formLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tard que les dates de début des tâches
+
+
+    // afficher autres trucs !!
+
+    // mettre des taches prédécesseurs
+    formLayout->addRow("", annuler);
+    formLayout->addRow("", sauver);
+
+    this->setLayout(formLayout);
+    this->setFixedWidth(550);
+
+    connect(annuler, SIGNAL(clicked()), this, SLOT(slotReload()));
+    connect(sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
+}
+
+void EditeurProjet::slotReload(){
+    titre->setText(QString::fromStdString(projet->getNom()));
+    dispo->setSelectedDate(projet->getDispo().getQDate());
+}
+
+void EditeurProjet::slotSave(){
+    projet->update( titre->text().toStdString(),
+                    Date( dispo->selectedDate().day(), dispo->selectedDate().month(), dispo->selectedDate().year()) );
+    emit projetUpdated(projet);
+//    Date::toTimingDate(dispo->selectedDate()) // marche pas, pourquoi ?
+}
+
+EditeurTache::EditeurTache():
+    titre(new QLineEdit),
+    dispo(new QCalendarWidget),
+    echeance(new QCalendarWidget),
+    annuler(new QPushButton("Annuler les changements")),
+    sauver(new QPushButton("Enregistrer les changements")),
+    predecesseurs(new QPushButton("Ajouter des taches prédécesseurs"))
+{}
+
+
+EditeurTU::EditeurTU(Unitaire *t):
+    EditeurTache(),
+    duree (new QSpinBox),
+    preemptible (new QCheckBox),
+    tache(t)
+{
+    dispo->setMinimumDate(QDate::currentDate());
+    echeance->setMinimumDate(QDate::currentDate());
+
+    // Remplissage des champs
+    titre->setText(QString::fromStdString(t->getTitre()));
+    dispo->setSelectedDate(t->getDateDisponibilite().getQDate());
+    echeance->setSelectedDate(t->getDateEcheance().getQDate());
+    duree->setValue(t->getDuree().getDureeEnMinutes());
+    preemptible->setChecked(t->isPreemp());
+
+    formLayout = new QFormLayout;
+    formLayout->addRow("Titre de la tache", titre);
+    formLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tôt que le début du projet !
+    formLayout->addRow("Échéance", echeance); // vérifier qu'elle est après la disponibilité
+    formLayout->addRow("Durée (en minutes)", duree);
+    formLayout->addRow("Préemptible", preemptible);
+
+
+    // afficher durée faite
+    //          + durée restante
+
+    // mettre des taches prédécesseurs
+    formLayout->addRow("", predecesseurs);
+    formLayout->addRow("", annuler);
+    formLayout->addRow("", sauver);
+
+    this->setLayout(formLayout);
+    this->setFixedWidth(550);
+
+    connect(annuler, SIGNAL(clicked()), this, SLOT(slotReload()));
+    connect(sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
+}
+
+
+void EditeurTU::slotReload(){
+    titre->setText(QString::fromStdString(tache->getTitre()));
+    dispo->setSelectedDate(tache->getDateDisponibilite().getQDate());
+    echeance->setSelectedDate(tache->getDateEcheance().getQDate());
+    duree->setValue(tache->getDuree().getDureeEnMinutes());
+    preemptible->setChecked(tache->isPreemp());
+}
+
+void EditeurTU::slotSave(){
+    tache->update( titre->text().toStdString(),
+                   Date( dispo->selectedDate().day(), dispo->selectedDate().month(), dispo->selectedDate().year()),
+                   Date( echeance->selectedDate().day(), echeance->selectedDate().month(), echeance->selectedDate().year()),
+                   Duree( duree->value() ),
+                   preemptible->isChecked());
+    emit tacheUpdated(tache);
+    slotReload();
+//    Date::toTimingDate(dispo->selectedDate()) // marche pas, pourquoi ?
+}
+
+
+EditeurTC::EditeurTC(Composite *t):
+    EditeurTache(),
+    tache(t)
+{
+    dispo->setMinimumDate(QDate::currentDate());
+    echeance->setMinimumDate(QDate::currentDate());
+
+    // Remplissage des champs
+    titre->setText(QString::fromStdString(t->getTitre()));
+    dispo->setSelectedDate(t->getDateDisponibilite().getQDate());
+    echeance->setSelectedDate(t->getDateEcheance().getQDate());
+
+    formLayout = new QFormLayout;
+    formLayout->addRow("Titre de la tache", titre);
+    formLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tôt que le début du projet !
+    formLayout->addRow("Échéance", echeance); // vérifier qu'elle est après la disponibilité
+
+
+    // afficher durée faite
+    //          + durée restante
+
+    // mettre des taches prédécesseurs
+    formLayout->addRow("", predecesseurs);
+    formLayout->addRow("", annuler);
+    formLayout->addRow("", sauver);
+
+    this->setLayout(formLayout);
+    this->setFixedWidth(550);
+
+    connect(annuler, SIGNAL(clicked()), this, SLOT(slotReload()));
+    connect(sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
+}
+
+
+void EditeurTC::slotReload(){
+    titre->setText(QString::fromStdString(tache->getTitre()));
+    dispo->setSelectedDate(tache->getDateDisponibilite().getQDate());
+    echeance->setSelectedDate(tache->getDateEcheance().getQDate());
+}
+
+void EditeurTC::slotSave(){
+    tache->update( titre->text().toStdString(),
+                   Date( dispo->selectedDate().day(), dispo->selectedDate().month(), dispo->selectedDate().year()),
+                   Date( echeance->selectedDate().day(), echeance->selectedDate().month(), echeance->selectedDate().year()) );
+    emit tacheUpdated(tache);
+    slotReload();
+//    Date::toTimingDate(dispo->selectedDate()) // marche pas, pourquoi ?
+}
+
+
+
+
+
+
+
+
 
 

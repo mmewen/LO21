@@ -71,6 +71,7 @@ namespace TIME {
 		void setDuree(unsigned int heures, unsigned int minutes) { if (minutes>59) throw TimeException("erreur: initialisation duree invalide"); nb_minutes=heures*60+minutes; }
 		unsigned int getDureeEnMinutes() const { return nb_minutes; } //<!Retourne la duree en minutes
 		double getDureeEnHeures() const { return double(nb_minutes)/60; } //<!Retourne la duree en heures
+        unsigned int getDureeEnHeuresInt() const { return nb_minutes/60; } //<!Retourne la duree en heures tronquée à l'heure près
 		void afficher(std::ostream& f=std::cout) const { f<<std::setfill('0')<<std::setw(2)<<nb_minutes/60<<"H"<<std::setw(2)<<nb_minutes%60<<std::setfill(' '); } //<!Affiche la duree sous le format hhHmm
 	private:
 		unsigned int nb_minutes;
@@ -87,7 +88,13 @@ namespace TIME {
 		/*! \param h heure avec 0<=h<=23
 			\param m minute avec 0<=m<=59
 			*/
-		Horaire(unsigned short int  h, unsigned short int  m):heure(h),minute(m) {if (h>23||m>59) throw TimeException("erreur: initialisation horaire invalide");}
+        Horaire(unsigned short int  h, unsigned short int  m):heure(h),minute(m) {
+            while(m>59){
+                h++;
+                m=m%60;
+            }
+            if (h>23||m>59) throw TimeException("erreur: initialisation horaire invalide");
+        }
 		void setHoraire(unsigned short int h, unsigned short int m) { if (h>23||m>59) throw TimeException("erreur: initialisation horaire invalide"); heure=h; minute=m; }
 		void afficher(std::ostream& f=std::cout) const { f<<std::setfill('0')<<std::setw(2)<<heure<<"H"<<std::setfill('0')<<std::setw(2)<<minute<<std::setfill(' '); } //<!Affiche l'horaire sous le format hhHmm
 		unsigned short int getHeure() const { return heure; } //<!Retourne l'heure de l'horaire

@@ -440,8 +440,72 @@ Programmation* ProgrammationManager::trouverProgrammation(const Evenement& e)con
     return 0;
 }
 
-void ProgrammationManager::ajouterProgrammation(const Evenement& e, const Date& d, const Horaire& h){
+void ProgrammationManager::ajouterProgrammation(Unitaire& e, const Date& d, const Horaire& h, Duree dur){
     if (trouverProgrammation(e)) throw CalendarException("erreur, ProgrammationManager, Programmation deja existante");
+    ProgrammationManager& um = ProgrammationManager::getInstance();
+    ProgrammationManager::Iterator it = um.getIterator();
+    for(it.first();!it.isDone();it.next()){
+        Horaire horairefin = Horaire(it.current().getHoraire().getHeure()+it.current().getEvenement().getDuree().getDureeEnHeuresInt(),
+                                     it.current().getHoraire().getMinute()+(it.current().getEvenement().getDuree().getDureeEnMinutes())%60);
+        if(it.current().getDate()==d
+                && it.current().getHoraire() < h
+                && h < horairefin) // si les evenements sont le meme jours et que le nouveau commence avant la fin de l'ancien
+            throw CalendarException("erreur, ProgrammationManager, horaires chevauchant");
+        if(it.current().getDate().demain()==d
+                && horairefin < it.current().getHoraire()
+                && h < horairefin) // si les evenements sont à un jour d'écart et que l'ancien se termine après ou pendant le nouveau
+            throw CalendarException("erreur, ProgrammationManager, horaires chevauchant");
+        Horaire newhorairefin = Horaire(h.getHeure()+e.getDuree().getDureeEnHeuresInt(),
+                                        h.getMinute()+(e.getDuree().getDureeEnMinutes())%60);
+        if(it.current().getDate()==d
+                && h < it.current().getHoraire()
+                && it.current().getHoraire() < newhorairefin)
+            throw CalendarException("erreur, ProgrammationManager, horaires chevauchant");
+        if(d.demain()==it.current().getDate()
+                && newhorairefin < h
+                && h < horairefin)
+            throw CalendarException("erreur, ProgrammationManager, horaires chevauchant");
+    }
+    if(e.isPreemp()){
+        if(e.getRestant().getDureeEnMinutes() < dur.getDureeEnMinutes()){
+            e.setRestant(Duree(0));
+            e.setFait(e.getDuree());
+        }
+        else{
+            e.setRestant(Duree(e.getRestant().getDureeEnMinutes()-dur.getDureeEnMinutes()));
+            e.setFait(Duree(e.getFait().getDureeEnMinutes()+dur.getDureeEnMinutes()));
+        }
+    }
+    Programmation* newt=new Programmation(e,d,h);
+    addItem(newt);
+}
+
+void ProgrammationManager::ajouterProgrammation(Activite& e, const Date& d, const Horaire& h){
+    if (trouverProgrammation(e)) throw CalendarException("erreur, ProgrammationManager, Programmation deja existante");
+    ProgrammationManager& um = ProgrammationManager::getInstance();
+    ProgrammationManager::Iterator it = um.getIterator();
+    for(it.first();!it.isDone();it.next()){
+        Horaire horairefin = Horaire(it.current().getHoraire().getHeure()+it.current().getEvenement().getDuree().getDureeEnHeuresInt(),
+                                     it.current().getHoraire().getMinute()+(it.current().getEvenement().getDuree().getDureeEnMinutes())%60);
+        if(it.current().getDate()==d
+                && it.current().getHoraire() < h
+                && h < horairefin) // si les evenements sont le meme jours et que le nouveau commence avant la fin de l'ancien
+            throw CalendarException("erreur, ProgrammationManager, horaires chevauchant");
+        if(it.current().getDate().demain()==d
+                && horairefin < it.current().getHoraire()
+                && h < horairefin) // si les evenements sont à un jour d'écart et que l'ancien se termine après ou pendant le nouveau
+            throw CalendarException("erreur, ProgrammationManager, horaires chevauchant");
+        Horaire newhorairefin = Horaire(h.getHeure()+e.getDuree().getDureeEnHeuresInt(),
+                                        h.getMinute()+(e.getDuree().getDureeEnMinutes())%60);
+        if(it.current().getDate()==d
+                && h < it.current().getHoraire()
+                && it.current().getHoraire() < newhorairefin)
+            throw CalendarException("erreur, ProgrammationManager, horaires chevauchant");
+        if(d.demain()==it.current().getDate()
+                && newhorairefin < h
+                && h < horairefin)
+            throw CalendarException("erreur, ProgrammationManager, horaires chevauchant");
+    }
     Programmation* newt=new Programmation(e,d,h);
     addItem(newt);
 }

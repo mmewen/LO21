@@ -99,39 +99,68 @@ void TreeViewModel::addProjet(Projet* nouveauProjet){
 }
 
 Tache* TreeViewModel::getTacheFromItem(QStandardItem* item){
+    try{
     for(int i=0; i<titNb; i++){
         if (tabItemsTaches[i].item == item){
             return tabItemsTaches[i].tache;
         }
     }
     throw CalendarException("Pas de tache trouvée en lien avec cet item");
+    }
+    catch(CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
 }
 
+
 Projet* TreeViewModel::getProjetFromItem(QStandardItem* item){
+    try{
     for(int i=0; i<tipNb; i++){
         if (tabItemsProjets[i].item == item){
             return tabItemsProjets[i].projet;
         }
     }
     throw CalendarException("Pas de projet trouvé en lien avec cet item");
+    }
+    catch(CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
 }
 
 QStandardItem* TreeViewModel::getItemFromTache(Tache* tache){
+    try{
     for(int i=0; i<titNb; i++){
         if (tabItemsTaches[i].tache == tache){
             return tabItemsTaches[i].item;
         }
     }
     throw CalendarException("Pas d'item trouvé en lien avec cette tache");
+    }
+    catch(CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
 }
 
 QStandardItem* TreeViewModel::getItemFromProjet(Projet* projet){
+    try{
     for(int i=0; i<tipNb; i++){
         if (tabItemsProjets[i].projet == projet){
             return tabItemsProjets[i].item;
         }
     }
     throw CalendarException("Pas d'item trouvé en lien avec cette tache");
+    }
+    catch(CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
 }
 
 void TreeViewModel::addTache(Projet* projet, Tache* tache){
@@ -178,6 +207,7 @@ EditeurProjet::EditeurProjet(Projet* p):
     echeance (new QCalendarWidget),
     projet(p)
 {
+
     dispo->setMinimumDate(QDate::currentDate());
 
     QPushButton *annuler = new QPushButton("Annuler les modifications");
@@ -185,12 +215,19 @@ EditeurProjet::EditeurProjet(Projet* p):
 
     // Remplissage des champs
     titre->setText(QString::fromStdString(p->getNom()));
+    formLayout->addRow("Titre de la tache", titre);
+    try{
     dispo->setSelectedDate(p->getDispo().getQDate());
     echeance->setSelectedDate(p->getEcheance().getQDate());
 
-    formLayout->addRow("Titre de la tache", titre);
     formLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tard que les dates de début des tâches
     formLayout->addRow("Echéance", echeance);
+    }
+    catch(CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
 
 
     // afficher autres trucs !!
@@ -212,8 +249,15 @@ void EditeurProjet::slotReload(){
 }
 
 void EditeurProjet::slotSave(){
+    try{
     projet->update( titre->text().toStdString(),
                     Date( dispo->selectedDate().day(), dispo->selectedDate().month(), dispo->selectedDate().year()) );
+    }
+    catch(CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
     emit projetUpdated(projet);
 //    Date::toTimingDate(dispo->selectedDate()) // marche pas, pourquoi ?
 }
@@ -263,7 +307,9 @@ EditeurTU::EditeurTU(Unitaire *t):
     tache(t)
 {
     dispo->setMinimumDate(QDate::currentDate());
-    echeance->setMinimumDate(QDate::currentDate());
+    //echeance->setMinimumDate(QDate::currentDate());
+    echeance->setMinimumDate(t->getDateDisponibilite().getQDate());
+    dispo->setMaximumDate(t->getDateEcheance().getQDate());
 
     // Remplissage des champs
     titre->setText(QString::fromStdString(t->getTitre()));
@@ -295,11 +341,19 @@ void EditeurTU::slotReload(){
 }
 
 void EditeurTU::slotSave(){
+    try{
     tache->update( titre->text().toStdString(),
                    Date( dispo->selectedDate().day(), dispo->selectedDate().month(), dispo->selectedDate().year()),
                    Date( echeance->selectedDate().day(), echeance->selectedDate().month(), echeance->selectedDate().year()),
                    Duree( duree->value() ),
                    preemptible->isChecked());
+    }
+    catch(CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
+
     emit tacheUpdated(tache);
     slotReload();
 //    Date::toTimingDate(dispo->selectedDate()) // marche pas, pourquoi ?
@@ -311,7 +365,9 @@ EditeurTC::EditeurTC(Composite *t):
     tache(t)
 {
     dispo->setMinimumDate(QDate::currentDate());
-    echeance->setMinimumDate(QDate::currentDate());
+    //echeance->setMinimumDate(QDate::currentDate());
+    echeance->setMinimumDate(t->getDateDisponibilite().getQDate());
+    dispo->setMaximumDate(t->getDateEcheance().getQDate());
 
     // Remplissage des champs
     titre->setText(QString::fromStdString(t->getTitre()));
@@ -339,9 +395,16 @@ void EditeurTC::slotReload(){
 }
 
 void EditeurTC::slotSave(){
+    try{
     tache->update( titre->text().toStdString(),
                    Date( dispo->selectedDate().day(), dispo->selectedDate().month(), dispo->selectedDate().year()),
                    Date( echeance->selectedDate().day(), echeance->selectedDate().month(), echeance->selectedDate().year()) );
+    }
+    catch(CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
     emit tacheUpdated(tache);
     slotReload();
 //    Date::toTimingDate(dispo->selectedDate()) // marche pas, pourquoi ?
@@ -360,4 +423,77 @@ EditeurPrecedence::EditeurPrecedence(Tache *t):tache(t),Precedences(new QComboBo
 
 
 
+ProgrammationTache::ProgrammationTache(Unitaire* t):
+    formLayout(new QFormLayout),
+    tache(t),
+    titre(new QLabel),
+    date(new QCalendarWidget),
+    Sauver(new QPushButton("Enregistrer"))
+{
+    this->setWindowTitle(QString("Programmation de la tache ")+QString::fromStdString(tache->getTitre()));
+    date->setMinimumDate(QDate::currentDate());
 
+    // Remplissage des champs
+    titre->setText(QString::fromStdString(t->getTitre()));
+    date->setSelectedDate(QDate::currentDate());
+
+    hHoraire = new QSpinBox(this);
+    mHoraire = new QSpinBox(this);
+    hHoraire->setMinimum(0);
+    hHoraire->setSuffix("heure(s)");
+    hHoraire->setValue(0);
+    mHoraire->setMinimum(0);
+    mHoraire->setSuffix("minute(s)");
+    mHoraire->setValue(0);
+
+    if(!tache->isPreemp()){
+        hDuree = new QSpinBox(this);
+        mDuree = new QSpinBox(this);
+        hDuree->setMinimum(tache->getDuree().getDureeEnHeuresInt());
+        hDuree->setMaximum(tache->getDuree().getDureeEnHeuresInt());
+        hDuree->setSuffix("heure(s)");
+        hDuree->setValue(tache->getDuree().getDureeEnHeuresInt());
+        mDuree->setMinimum((tache->getDuree().getDureeEnMinutes())%60);
+        mDuree->setMaximum((tache->getDuree().getDureeEnMinutes())%60);
+        mDuree->setSuffix("minute(s)");
+        mDuree->setValue((tache->getDuree().getDureeEnMinutes())%60);
+    }
+    else{
+        hDuree = new QSpinBox(this);
+        mDuree = new QSpinBox(this);
+        hDuree->setMinimum(0);
+        hDuree->setSuffix("heure(s)");
+        hDuree->setValue(tache->getDuree().getDureeEnHeuresInt());
+        mDuree->setMinimum(0);
+        mDuree->setSuffix("minute(s)");
+        mDuree->setValue((tache->getDuree().getDureeEnMinutes())%60);
+    }
+
+    formLayout->addRow("Titre", titre);
+    formLayout->addRow("Date", date); // vérifier qu'elle correspond aux dispo/echeance
+    formLayout->addRow("Horaire", hHoraire);
+    formLayout->addRow("", mHoraire);
+    formLayout->addRow("Durée", hDuree);
+    formLayout->addRow("", mDuree);
+
+    formLayout->addRow("", Sauver);
+
+    connect(Sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
+}
+
+void ProgrammationTache::slotSave(){
+    try{
+        ProgrammationManager::getInstance().ajouterProgrammation(
+                    *tache,
+                    Date(date->selectedDate().day(), date->selectedDate().month(), date->selectedDate().year()),
+                    Horaire(hHoraire->value(),mHoraire->value()),
+                    Duree(hDuree->value(),mDuree->value()));
+        //les parametres de la tache sont mis à jour automatiquement par ajouterProgrammation
+    }
+    catch(CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
+    emit tacheProgrammee(tache);
+}

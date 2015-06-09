@@ -365,6 +365,11 @@ void Projet::Iterator::suppr(){
 
 void Projet::update(const string& nom, const Date& d){
     this->nom = nom;
+    Projet::Iterator it = getIterator();
+    for(it.first();!it.isDone();it.next()){
+        if(it.current().getDateDisponibilite() < d)
+            throw CalendarException("erreur, Projet, date de disponibilité > dates disponibilité Taches");
+    }
     this->dispo = d;
     cout<<"saved:"<<this->nom<<endl;
 }

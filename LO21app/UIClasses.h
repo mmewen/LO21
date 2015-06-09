@@ -18,11 +18,8 @@
 #include <QListWidgetItem>
 #include <QLabel>
 #include <QComboBox>
-<<<<<<< HEAD
 #include <QDialog>
-=======
 #include <QMessageBox>
->>>>>>> 0fcbdd852e0e48e76d30c88463f80d799fe1616d
 
 class TreeViewModel : public QObject {
     Q_OBJECT

@@ -18,9 +18,7 @@
 #include <QListWidgetItem>
 #include <QLabel>
 #include <QComboBox>
-
 #include <QDialog>
-
 #include <QMessageBox>
 
 

@@ -18,6 +18,7 @@
 #include <QListWidgetItem>
 #include <QLabel>
 #include <QComboBox>
+#include <QDialog>
 
 class TreeViewModel : public QObject {
     Q_OBJECT
@@ -143,6 +144,7 @@ public:
 public slots:
     void slotSave();
     void slotReload();
+    void slotEditionPredecesseurs();
 signals:
     void tacheUpdated(Unitaire* tache);
 };
@@ -156,11 +158,12 @@ public:
 public slots:
     void slotSave();
     void slotReload();
+    void slotEditionPredecesseurs();
 signals:
     void tacheUpdated(Composite* tache);
 };
 
-class EditeurPrecedence : public QWidget
+class EditeurPrecedence : public QDialog
 {
     Q_OBJECT
 public:

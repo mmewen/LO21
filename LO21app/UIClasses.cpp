@@ -251,9 +251,19 @@ void EditeurTache::printFinForm(Tache* t){
     this->setLayout(formLayout);
     this->setFixedWidth(550);
 
+    connect(predecesseurs, SIGNAL(clicked()), this, SLOT(slotEditionPredecesseurs()));
     connect(annuler, SIGNAL(clicked()), this, SLOT(slotReload()));
     connect(sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
 }
+
+void EditeurTU::slotEditionPredecesseurs(){
+    EditeurPrecedence *ep = new EditeurPrecedence(tache);
+}
+
+void EditeurTC::slotEditionPredecesseurs(){
+    EditeurPrecedence *ep = new EditeurPrecedence(tache);
+}
+
 
 
 EditeurTU::EditeurTU(Unitaire *t):
@@ -347,11 +357,22 @@ void EditeurTC::slotSave(){
 //    Date::toTimingDate(dispo->selectedDate()) // marche pas, pourquoi ?
 }
 
-EditeurPrecedence::EditeurPrecedence(Tache *t):tache(t),Precedences(new QComboBox){
+EditeurPrecedence::EditeurPrecedence(Tache *t):
+        tache(t),
+        QDialog(),
+        Precedences(new QComboBox),
+        Donnee(new QFormLayout)
+{
     Tache::Iterator it = t->getIterator();
     for(it.first();!it.isDone();it.next()){
         Precedences->addItem(QString::fromStdString(it.current().getTitre()));
     }
+    Donnee->addRow("Précédences", Precedences);
+    this->setLayout(Donnee);
+    this->setWindowTitle(QString::fromUtf8("Ajout d'une précédence"));
+
+    this->setModal(true);
+    this->exec();
 }
 
 

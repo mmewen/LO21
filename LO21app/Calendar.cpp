@@ -212,12 +212,17 @@ Composite& Projet::ajouterComposite(const string& t, const Date& dispo, const Da
 }
 
 Date Projet::getEcheance(){
-    Iterator it = getIterator();
-    Date echeance = it.current().getDateEcheance();
-    for(it.first() ; !it.isDone() ; it.next()){
-        if(echeance<it.current().getDateEcheance()){
-            echeance = it.current().getDateEcheance();
+    Date echeance;
+    if (getNbTaches() > 0 ){
+        Iterator it = getIterator();
+        echeance = it.current().getDateEcheance();
+        for(it.first() ; !it.isDone() ; it.next()){
+            if(echeance<it.current().getDateEcheance()){
+                echeance = it.current().getDateEcheance();
+            }
         }
+    } else {
+        echeance = Date(1,1,3000);
     }
     return echeance;
 }

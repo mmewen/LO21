@@ -99,6 +99,7 @@ public:
     string getNom() const { return nom; }
     string getFile() const { return file; }
     Date getDispo() const { return dispo; }
+    unsigned int getNbTaches() const { return nb; }
     Date getEcheance();
     void moveTacheTo(Tache* tMere, Tache* tFille);
     void load(const string& f);
@@ -115,8 +116,9 @@ public:
             Iterator(Tache** t, int n, bool s):tab(t), nb(n), indice_tache(0), allowSuppr(s){ }
         public:
             Tache& current() const {
-                if(indice_tache>=nb)
-                    throw "incrementation d'un iterateur en fin de sequence";
+                if(indice_tache>=nb){
+                    throw CalendarException("incrementation d'un iterateur en fin de sequence");
+                }
                 return *tab[indice_tache];
             }
             bool isDone() const { return indice_tache==nb; }

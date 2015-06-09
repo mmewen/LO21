@@ -129,9 +129,15 @@ public:
     QPushButton *predecesseurs;
     QListWidget *listePredecesseurs;
     QListWidgetItem** tabPredecesseurs;
+    int nbPred;
     EditeurTache();
     void printFinForm(Tache* t);
     virtual ~EditeurTache() {}
+public slots:
+    void slotEnable( string );
+    virtual void slotReload() = 0;
+signals:
+    void reloadAll();
 };
 
 class EditeurTU : public EditeurTache{
@@ -169,11 +175,26 @@ class EditeurPrecedence : public QDialog
     Q_OBJECT
 public:
     EditeurPrecedence(Tache *t);
+    string& getTacheIdFromIndex( int index );
+    void print();
 private:
+    struct coupleItemId {
+        string identifiant;
+        int index;
+    };
     Tache* tache;
-    QComboBox *Precedences;
+    QComboBox *precedencesPotentielles;
     QPushButton *Ajouter;
     QFormLayout *Donnee;
+    QPushButton *annuler;
+    QPushButton *ajouter;
+    coupleItemId couples[100];
+    int nbIndexes;
+public slots:
+    void slotAnnulation();
+    void slotAjout();
+signals:
+    void editionPrecedenceEnd( string );
 };
 
 class ProgrammationTache : public QWidget

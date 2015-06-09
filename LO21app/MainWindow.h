@@ -45,7 +45,7 @@ class MainWindow: public QMainWindow{
     // Widgets généraux
     QWidget *zoneCentrale; //! zone contenant les onglets
     QTabWidget *tabs; //! Widget gérant les onglets
-
+    Tache* t;
 
     // Widgets de l'agenda
     QWidget *planningTab; //! Onglet avec le planning
@@ -78,6 +78,8 @@ public slots:
     void slotAjouterProjet();
     void slotAjouterTU();
     void slotAjouterTC();
+    void slotShowTU();
+    void slotShowTC();
 //    quit();
 
 };

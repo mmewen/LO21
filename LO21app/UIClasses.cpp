@@ -217,11 +217,12 @@ EditeurProjet::EditeurProjet(Projet* p):
     titre->setText(QString::fromStdString(p->getNom()));
     formLayout->addRow("Titre de la tache", titre);
     try{
-    dispo->setSelectedDate(p->getDispo().getQDate());
-    echeance->setSelectedDate(p->getEcheance().getQDate());
+        dispo->setSelectedDate(p->getDispo().getQDate());
+        echeance->setSelectedDate(p->getEcheance().getQDate());
+        echeance->setEnabled(false);
 
-    formLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tard que les dates de début des tâches
-    formLayout->addRow("Echéance", echeance);
+        formLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tard que les dates de début des tâches
+        formLayout->addRow("Echéance", echeance);
     }
     catch(CalendarException e){
         QMessageBox *erreur = new QMessageBox;
@@ -270,7 +271,8 @@ EditeurTache::EditeurTache():
     sauver(new QPushButton("Enregistrer les changements")),
     predecesseurs(new QPushButton("Ajouter des taches prédécesseurs")),
     listePredecesseurs(new QListWidget),
-    tabPredecesseurs(new QListWidgetItem*[100])
+    tabPredecesseurs(new QListWidgetItem*[100]),
+    nbPred(0)
 {}
 
 void EditeurTache::printFinForm(Tache* t){
@@ -280,11 +282,12 @@ void EditeurTache::printFinForm(Tache* t){
             tabPredecesseurs[i] = new QListWidgetItem(QString::fromStdString(it.current().getTitre()), listePredecesseurs);
             i++;
         }
-        listePredecesseurs->setMaximumHeight(20);
+        nbPred = i;
+        listePredecesseurs->setMaximumHeight(50);
         formLayout->addRow("Prédecesseurs", listePredecesseurs);
     } else {
-        QLabel *mess = new QLabel("Cette tache n'a pas de prédécesseurs pour le moment !");
-        formLayout->addRow("Prédecesseurs", mess);
+        QLabel* truc = new QLabel("Cette tache n'a pas de prédécesseurs pour le moment !");
+        formLayout->addRow("Prédecesseurs", truc);
     }
 
     // mettre des taches prédécesseurs
@@ -301,11 +304,22 @@ void EditeurTache::printFinForm(Tache* t){
 }
 
 void EditeurTU::slotEditionPredecesseurs(){
+    this->setEnabled(false);
     EditeurPrecedence *ep = new EditeurPrecedence(tache);
+    connect(ep, SIGNAL(editionPrecedenceEnd( string )), this, SLOT(slotEnable( string )));
+    ep->print();
 }
 
 void EditeurTC::slotEditionPredecesseurs(){
+    this->setEnabled(false);
     EditeurPrecedence *ep = new EditeurPrecedence(tache);
+    connect(ep, SIGNAL(editionPrecedenceEnd( string )), this, SLOT(slotEnable( string )));
+    ep->print();
+}
+
+void EditeurTache::slotEnable( string s ){
+    this->setEnabled(true);
+    emit reloadAll();
 }
 
 
@@ -423,19 +437,66 @@ void EditeurTC::slotSave(){
 EditeurPrecedence::EditeurPrecedence(Tache *t):
         tache(t),
         QDialog(),
-        Precedences(new QComboBox),
-        Donnee(new QFormLayout)
+        precedencesPotentielles(new QComboBox),
+        Donnee(new QFormLayout),
+        annuler(new QPushButton("Annuler")),
+        ajouter(new QPushButton("Ajouter")),
+        nbIndexes(0)
 {
-    Tache::Iterator it = t->getIterator();
+    Projet::Iterator it = t->getProjet()->getIterator();
     for(it.first();!it.isDone();it.next()){
-        Precedences->addItem(QString::fromStdString(it.current().getTitre()));
+        try {
+            if (t->isPrecedencePotentielle(it.current().getId())){
+                precedencesPotentielles->addItem(QString::fromStdString(it.current().getTitre()));
+                couples[nbIndexes].identifiant = it.current().getId();
+                couples[nbIndexes++].index = precedencesPotentielles->count() - 1;
+
+//                cout<<"Ligne "<<nbIndexes<<" "<<couples[nbIndexes-1].identifiant<<" "<<couples[nbIndexes-1].index<<endl;
+            }
+        } catch (CalendarException e){
+            QMessageBox *erreur = new QMessageBox;
+            erreur->setText(QString::fromStdString(e.getInfo()));
+            erreur->exec();
+        }
     }
-    Donnee->addRow("Précédences", Precedences);
+    Donnee->addRow("Précédences", precedencesPotentielles);
+    Donnee->addRow("", annuler);
+    Donnee->addRow("", ajouter);
+    connect(annuler, SIGNAL(clicked()), this, SLOT(slotAnnulation()));
+    connect(ajouter, SIGNAL(clicked()), this, SLOT(slotAjout()));
+
     this->setLayout(Donnee);
     this->setWindowTitle(QString::fromUtf8("Ajout d'une précédence"));
-
     this->setModal(true);
+}
+
+string& EditeurPrecedence::getTacheIdFromIndex( int index ){
+    for (int i=0; (i<nbIndexes) && (i<100) ; i++){
+        if (couples[i].index == index)
+            return couples[i].identifiant;
+    }
+    throw CalendarException("Tache pas trouvée avec cet index !");
+}
+
+void EditeurPrecedence::print(){
     this->exec();
+}
+
+void EditeurPrecedence::slotAnnulation(){
+    emit editionPrecedenceEnd( "" );
+    this->close();
+}
+
+void EditeurPrecedence::slotAjout(){
+    try {
+        tache->addItem( &(tache->getProjet()->getTache( getTacheIdFromIndex(precedencesPotentielles->currentIndex()) ) ) );
+        emit editionPrecedenceEnd( tache->getProjet()->getTache( getTacheIdFromIndex(precedencesPotentielles->currentIndex())).getTitre() );
+    } catch (CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
+    this->close();
 }
 
 

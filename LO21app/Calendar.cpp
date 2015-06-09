@@ -49,6 +49,29 @@ const Tache& Tache::getPrecedence(const string& id)const{
     return const_cast<Tache*>(this)->getPrecedence(id);
 }
 
+bool Tache::isPrecedencePotentielle( const string& id ) {
+    // Si c'est la tâche actuelle
+    if ( id == identificateur )
+        return false;
+
+    // Si c'est déjà une tâche prédécesseur
+    for (Iterator it = getIterator() ; !it.isDone() ; it.next() ){
+        if ( it.current().getId() == id )
+            return false;
+    }
+
+    // Si la tâche n'existe pas, ce qui serait étrange
+    if ( projetParent->trouverTache(id) == 0  ){
+        throw CalendarException("Erreur étrange numéro XDFGVCF58214586");
+        return false;
+    }
+
+    return true;
+}
+
+
+
+
 //UNITAIRE
 void Unitaire::afficher(ostream& f) {
     f<<"unitaire \n";
@@ -128,6 +151,23 @@ const Tache& Composite::getCompo(const string& id)const{
     return const_cast<Composite*>(this)->getCompo(id);
 }
 
+bool Composite::isPrecedencePotentielle( const string& id ) {
+    if (!Tache::isPrecedencePotentielle( id ))
+        return false;
+
+    // Si c'est une des tâches filles
+    for( CompoIterator it = getCompoIterator() ; !it.isDone() ; it.next() ){
+        if ( it.current().getId() == id ){
+            return false;
+        }
+
+        if (!it.current().isPrecedencePotentielle( id ))
+            return false;
+    }
+
+    return true;
+}
+
 
 
 //PROJET
@@ -197,7 +237,7 @@ Unitaire& Projet::ajouterUnitaire(const string& t, const Date& dispo, const Date
     if(dispo < getDispo())
         throw CalendarException("erreur, Projet, disponibilite de tache precede disponibilité de projet");
     string id = genererId();
-    Unitaire* newt=new Unitaire(dispo,deadline, id, t,duree,preemp);
+    Unitaire* newt=new Unitaire(dispo,deadline, id, t,duree,preemp, this);
     addItem(newt);
     return *newt;
 }
@@ -206,7 +246,7 @@ Composite& Projet::ajouterComposite(const string& t, const Date& dispo, const Da
     if(dispo < getDispo())
         throw CalendarException("erreur, Projet, disponibilite de tache precede disponibilité de projet");
     string id = genererId();
-    Composite* newt=new Composite(id, t,dispo,deadline);
+    Composite* newt=new Composite(id, t,dispo,deadline, this);
     addItem(newt);
     return *newt;
 }

@@ -63,20 +63,24 @@ MainWindow::MainWindow():
 void MainWindow::showUnitaire(Unitaire& t){
     // XXXX faire fonction de ménage !
     Editeur* edition = new EditeurTU(&t);
+    this->t = &t;
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     editionScroll->setWidget(edition);
     editionScroll->setContentsMargins(11, 11, 11, 20);
     connect(edition, SIGNAL(tacheUpdated(Unitaire*)), &treeView, SLOT(updateName(Unitaire*)));
+    connect(edition, SIGNAL(reloadAll()), this, SLOT(slotShowTU()));
 }
 
 
 void MainWindow::showComposite(Composite& t){
     // XXXX faire fonction de ménage !
     Editeur* edition = new EditeurTC(&t);
+    this->t = &t;
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     editionScroll->setWidget(edition);
     editionScroll->setContentsMargins(11, 11, 11, 20);
     connect(edition, SIGNAL(tacheUpdated(Composite*)), &treeView, SLOT(updateName(Composite*)));
+    connect(edition, SIGNAL(reloadAll()), this, SLOT(slotShowTC()));
 }
 
 void MainWindow::showProjet(Projet& p){
@@ -175,7 +179,7 @@ void MainWindow::slotAjouterTU(){
                     treeView.addTache(tacheParente, &tache);
 
             } else { // La mère n'est pas une tache composite, on la crée "à coté" de la tache unitaire sélectionnée
-                cout<<"Tache parent unitaire"<<endl;
+//                cout<<"Tache parent unitaire"<<endl;
                 if(item->parent()->parent() == 0){ // ie. on crée une tache dans un projet
 //                    cout<<"Tache créée à la racine à coté de la TU sélectionnée"<<endl;
                     treeView.addTache(projetParent, &tache);
@@ -227,7 +231,7 @@ void MainWindow::slotAjouterTC(){
                     treeView.addTache(tacheParente, &tache);
 
             } else { // La mère n'est pas une tache composite, on la crée "à coté" de la tache unitaire sélectionnée
-                cout<<"Tache parent unitaire"<<endl;
+//                cout<<"Tache parent unitaire"<<endl;
                 if(item->parent()->parent() == 0){ // ie. on crée une tache dans un projet
 //                    cout<<"Tache créée à la racine à coté de la TU sélectionnée"<<endl;
                     tache.setDatesDisponibiliteEcheance(projetParent->getDispo(),projetParent->getDispo());
@@ -248,6 +252,12 @@ void MainWindow::slotAjouterTC(){
     }
 }
 
+void MainWindow::slotShowTU(){
+    showUnitaire(*(dynamic_cast<Unitaire*>(t)));
+}
 
+void MainWindow::slotShowTC(){
+    showComposite(*(dynamic_cast<Composite*>(t)));
+}
 
 

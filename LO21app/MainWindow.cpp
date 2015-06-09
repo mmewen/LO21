@@ -6,10 +6,10 @@ MainWindow::MainWindow():
         tabs(new QTabWidget(zoneCentrale)),
         planningTab(new QWidget()),
         tachesTab(new QWidget()),
-        tachesView(new QVBoxLayout),
         tachesLayout(new QHBoxLayout),
         tachesFormLayout(0),
         editionScroll(new QScrollArea),
+        tachesView(new QVBoxLayout),
         boutonsTreeView(new QFormLayout),
         vue(new QTreeView),
         treeView(TreeViewModel::getInstance())
@@ -21,8 +21,8 @@ MainWindow::MainWindow():
     QTabWidget *tabs = new QTabWidget(zoneCentrale);
     tabs->setFixedSize(W_WIDTH, W_HEIGHT);
 
-    tabs->addTab(tachesTab,"Tache");
-    tabs->addTab(planningTab,"Planning");
+    tabs->addTab(tachesTab,"Édition");
+    tabs->addTab(planningTab,"Agenda");
 
     // Tree onglet Taches (modèle/vue)
     tachesLayout->addLayout(tachesView);
@@ -65,6 +65,7 @@ void MainWindow::showUnitaire(Unitaire& t){
     Editeur* edition = new EditeurTU(&t);
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     editionScroll->setWidget(edition);
+    editionScroll->setContentsMargins(11, 11, 11, 20);
     connect(edition, SIGNAL(tacheUpdated(Unitaire*)), &treeView, SLOT(updateName(Unitaire*)));
 }
 
@@ -74,6 +75,7 @@ void MainWindow::showComposite(Composite& t){
     Editeur* edition = new EditeurTC(&t);
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     editionScroll->setWidget(edition);
+    editionScroll->setContentsMargins(11, 11, 11, 20);
     connect(edition, SIGNAL(tacheUpdated(Composite*)), &treeView, SLOT(updateName(Composite*)));
 }
 
@@ -83,6 +85,7 @@ void MainWindow::showProjet(Projet& p){
 //    editionScroll->children().at(0)->deleteLater();
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     editionScroll->setWidget(edition);
+    editionScroll->setContentsMargins(11, 11, 11, 20);
     connect(edition, SIGNAL(projetUpdated(Projet*)), &treeView, SLOT(updateName(Projet*)));
 }
 
@@ -234,15 +237,5 @@ void MainWindow::slotAjouterTC(){
 }
 
 
-//void MainWindow::slotReloadUnitaire(QString id){
-//    ProjetManager& pjm = ProjetManager::getInstance();
-//    showUnitaire(pjm.getProjet(id.toStdString()));
-//}
-
-
-//void MainWindow::slotReloadComposite(QString id){
-//    ProjetManager& pjm = ProjetManager::getInstance();
-//    showComposite(pjm.getProjet(id.toStdString()));
-//}
 
 

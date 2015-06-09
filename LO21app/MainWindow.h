@@ -42,17 +42,28 @@
 ///
 class MainWindow: public QMainWindow{
     Q_OBJECT
+    // Widgets généraux
     QWidget *zoneCentrale; //! zone contenant les onglets
     QTabWidget *tabs; //! Widget gérant les onglets
+
+
+    // Widgets de l'agenda
     QWidget *planningTab; //! Onglet avec le planning
+
+
+    // Widgets de l'onglet d'édition
     QWidget *tachesTab; //! Onglet avec l'édition des tâches
     QHBoxLayout *tachesLayout; //! Layout horizontal contenant le layout du treeview à gauche et celui du formulaire à droite
-    QVBoxLayout *tachesView; //! Layout vertical contenant le treeView et les boutons liés
+
+    // ... pour le formulaire d'édition
     QFormLayout *tachesFormLayout; //! Formulaire d'édition d'une tâche ou d'un projet
     QScrollArea *editionScroll; //! Zone de scroll contenant l'édition d'une tache/d'un projet
+
+    // ... pour le treeview
+    QVBoxLayout *tachesView; //! Layout vertical contenant le treeView et les boutons liés
     QFormLayout *boutonsTreeView; //! Boutons d'ajout/supression de projet/tache
-    QTreeView *vue;
-    TreeViewModel& treeView; //! Arborescence des projets et tâches
+    QTreeView *vue; //! Partie vue du TreeView
+    TreeViewModel& treeView; //! Partie modèle du Treeview : arborescence des projets et tâches
 
     void clearTFL();
 public:

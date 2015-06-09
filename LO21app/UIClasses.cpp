@@ -221,8 +221,36 @@ EditeurTache::EditeurTache():
     echeance(new QCalendarWidget),
     annuler(new QPushButton("Annuler les changements")),
     sauver(new QPushButton("Enregistrer les changements")),
-    predecesseurs(new QPushButton("Ajouter des taches prédécesseurs"))
+    predecesseurs(new QPushButton("Ajouter des taches prédécesseurs")),
+    listePredecesseurs(new QListWidget),
+    tabPredecesseurs(new QListWidgetItem*[100])
 {}
+
+void EditeurTache::printFinForm(Tache* t){
+    if (t->isPrecedence()){
+        int i = 0;
+        for (Unitaire::Iterator it = t->getIterator(); !it.isDone() && (i<100); it.next()){
+            tabPredecesseurs[i] = new QListWidgetItem(QString::fromStdString(it.current().getTitre()), listePredecesseurs);
+            i++;
+        }
+        listePredecesseurs->setMaximumHeight(20);
+        formLayout->addRow("Prédecesseurs", listePredecesseurs);
+    } else {
+        QLabel *mess = new QLabel("Cette tache n'a pas de prédécesseurs pour le moment !");
+        formLayout->addRow("Prédecesseurs", mess);
+    }
+
+    // mettre des taches prédécesseurs
+    formLayout->addRow("", predecesseurs);
+    formLayout->addRow("", annuler);
+    formLayout->addRow("", sauver);
+
+    this->setLayout(formLayout);
+    this->setFixedWidth(550);
+
+    connect(annuler, SIGNAL(clicked()), this, SLOT(slotReload()));
+    connect(sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
+}
 
 
 EditeurTU::EditeurTU(Unitaire *t):
@@ -251,17 +279,7 @@ EditeurTU::EditeurTU(Unitaire *t):
 
     // afficher durée faite
     //          + durée restante
-
-    // mettre des taches prédécesseurs
-    formLayout->addRow("", predecesseurs);
-    formLayout->addRow("", annuler);
-    formLayout->addRow("", sauver);
-
-    this->setLayout(formLayout);
-    this->setFixedWidth(550);
-
-    connect(annuler, SIGNAL(clicked()), this, SLOT(slotReload()));
-    connect(sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
+    printFinForm(tache);
 }
 
 
@@ -307,15 +325,7 @@ EditeurTC::EditeurTC(Composite *t):
     //          + durée restante
 
     // mettre des taches prédécesseurs
-    formLayout->addRow("", predecesseurs);
-    formLayout->addRow("", annuler);
-    formLayout->addRow("", sauver);
-
-    this->setLayout(formLayout);
-    this->setFixedWidth(550);
-
-    connect(annuler, SIGNAL(clicked()), this, SLOT(slotReload()));
-    connect(sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
+    printFinForm(tache);
 }
 
 

@@ -12,6 +12,7 @@ ostream& operator<<(ostream& fout, Tache& t){
 }
 
 void Tache::addItem(Tache* t){
+    // XXX vérifier qu'on a le droit de l'ajouter !!
     if (nbPred==maxPred){
         Tache** newtab=new Tache*[maxPred+10];
         for(unsigned int i=0; i<nbPred; i++) newtab[i]=prec[i];

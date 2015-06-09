@@ -14,6 +14,9 @@
 #include <QCheckBox>
 #include <QSpinBox>
 #include <QDate>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QLabel>
 
 class TreeViewModel : public QObject {
     Q_OBJECT
@@ -120,7 +123,10 @@ public:
     QPushButton *annuler;
     QPushButton *sauver;
     QPushButton *predecesseurs;
+    QListWidget *listePredecesseurs;
+    QListWidgetItem** tabPredecesseurs;
     EditeurTache();
+    void printFinForm(Tache* t);
     virtual ~EditeurTache() {}
 };
 

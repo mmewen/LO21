@@ -78,6 +78,8 @@ public slots:
     void slotAjouterProjet();
     void slotAjouterTU();
     void slotAjouterTC();
+    void slotProgrammerTU();
+    void slotProgrammerActivite();
 //    quit();
 
 };

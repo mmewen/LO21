@@ -36,12 +36,18 @@ MainWindow::MainWindow():
     QPushButton *buttonProjet = new QPushButton("+");
     QPushButton *buttonTU = new QPushButton("+");
     QPushButton *buttonTC = new QPushButton("+");
+    QPushButton *buttonPU = new QPushButton("Programmer");
+    QPushButton *buttonPA = new QPushButton("Programmer");
     boutonsTreeView->addRow("Projet", buttonProjet);
     boutonsTreeView->addRow("Tâche unitaire", buttonTU);
     boutonsTreeView->addRow("Tâche composite", buttonTC);
+    boutonsTreeView->addRow("Tâche unitaire", buttonPU);
+    boutonsTreeView->addRow("Activité", buttonPA);
     connect(buttonProjet, SIGNAL(clicked()), this, SLOT(slotAjouterProjet()));
     connect(buttonTU, SIGNAL(clicked()), this, SLOT(slotAjouterTU()));
     connect(buttonTC, SIGNAL(clicked()), this, SLOT(slotAjouterTC()));
+    connect(buttonPU, SIGNAL(clicked()), this, SLOT(slotProgrammerTU()));
+    connect(buttonPA, SIGNAL(clicked()), this, SLOT(slotProgrammerActivite()));
 
     tachesLayout->addWidget(editionScroll);
     QLabel *message = new QLabel("Cliquez sur une tache ou un projet pour pouvoir l'éditer");
@@ -250,4 +256,27 @@ void MainWindow::slotAjouterTC(){
 
 
 
+void MainWindow::slotProgrammerTU(){
+    // Récupération du projet et de la tâche mère
+    QModelIndexList selectedIndexList = vue->selectionModel()->selectedIndexes();
+    if (selectedIndexList.size() == 1){ // si exactement un truc est sélectionné
+        QStandardItem *item, *parentProject;
+        item = treeView.getModele()->itemFromIndex(selectedIndexList.at(0));
 
+        parentProject = item;
+        while (parentProject->parent() != 0){
+            parentProject = parentProject->parent();
+        }
+
+        if (item->parent() != 0) {
+            Tache* tache = treeView.getTacheFromItem(item);
+            if (typeid(*tache) == typeid(Unitaire)){
+                ProgrammationTache *ep = new ProgrammationTache(dynamic_cast<Unitaire*>(tache));
+            }
+        }
+    }
+}
+
+void MainWindow::slotProgrammerActivite(){
+    ProgrammationActivite *ep = new ProgrammationActivite();
+}

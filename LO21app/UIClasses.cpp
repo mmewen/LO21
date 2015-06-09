@@ -445,6 +445,7 @@ EditeurPrecedence::EditeurPrecedence(Tache *t):
 
 
 ProgrammationTache::ProgrammationTache(Unitaire* t):
+    QDialog(),
     formLayout(new QFormLayout),
     tache(t),
     titre(new QLabel),
@@ -452,7 +453,8 @@ ProgrammationTache::ProgrammationTache(Unitaire* t):
     Sauver(new QPushButton("Enregistrer"))
 {
     this->setWindowTitle(QString("Programmation de la tache ")+QString::fromStdString(tache->getTitre()));
-    date->setMinimumDate(QDate::currentDate());
+    date->setMinimumDate(t->getDateDisponibilite().getQDate());
+    date->setMaximumDate(t->getDateEcheance().getQDate());
 
     // Remplissage des champs
     titre->setText(QString::fromStdString(t->getTitre()));
@@ -500,6 +502,8 @@ ProgrammationTache::ProgrammationTache(Unitaire* t):
     formLayout->addRow("", Sauver);
 
     connect(Sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
+
+    this->exec();
 }
 
 void ProgrammationTache::slotSave(){
@@ -517,4 +521,72 @@ void ProgrammationTache::slotSave(){
         erreur->exec();
     }
     emit tacheProgrammee(tache);
+}
+
+ProgrammationActivite::ProgrammationActivite():
+    QDialog(),
+    formLayout(new QFormLayout),
+    titre(new QLineEdit),
+    lieu(new QLineEdit),
+    date(new QCalendarWidget),
+    Sauver(new QPushButton("Enregistrer"))
+{
+    this->setWindowTitle(QString("Programmation d'une activité"));
+    titre->setText(QString("Nouvelle activité"));
+    date->setMinimumDate(QDate::currentDate());
+
+    // Remplissage des champs
+    titre->setText(QString("Nouvelle activité"));
+    lieu->setText(QString(""));
+    date->setSelectedDate(QDate::currentDate());
+
+    hHoraire = new QSpinBox(this);
+    mHoraire = new QSpinBox(this);
+    hHoraire->setMinimum(0);
+    hHoraire->setSuffix("heure(s)");
+    hHoraire->setValue(0);
+    mHoraire->setMinimum(0);
+    mHoraire->setSuffix("minute(s)");
+    mHoraire->setValue(0);
+
+    hDuree = new QSpinBox(this);
+    mDuree = new QSpinBox(this);
+    hDuree->setMinimum(0);
+    hDuree->setSuffix("heure(s)");
+    hDuree->setValue(0);
+    mDuree->setMinimum(0);
+    mDuree->setSuffix("minute(s)");
+    mDuree->setValue(0);
+
+    formLayout->addRow("Titre", titre);
+    formLayout->addRow("Lieu", lieu);
+    formLayout->addRow("Date", date);
+    formLayout->addRow("Horaire", hHoraire);
+    formLayout->addRow("", mHoraire);
+    formLayout->addRow("Durée", hDuree);
+    formLayout->addRow("", mDuree);
+
+    formLayout->addRow("", Sauver);
+
+    connect(Sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
+
+    this->exec();
+}
+
+void ProgrammationActivite::slotSave(){
+    Activite* activite = new Activite(titre->text().toStdString(),
+                                      lieu->text().toStdString(),
+                                      Duree(hDuree->value(), mDuree->value()));
+    try{
+        ProgrammationManager::getInstance().ajouterProgrammation(
+                    *activite,
+                    Date(date->selectedDate().day(), date->selectedDate().month(), date->selectedDate().year()),
+                    Horaire(hHoraire->value(),mHoraire->value()));
+    }
+    catch(CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
+    emit activiteProgrammee(activite);
 }

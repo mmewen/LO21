@@ -287,7 +287,12 @@ public:
     Activite(const string& t, const string& l, Duree dur): Evenement(dur), titre(t), lieu(l) {}
     string getTitre() const { return titre; }
     string getLieu() const { return lieu; }
+    void setTitre(const string& t) { titre=t; }
+    void setLieu(const string& l) { lieu=l; }
     //Duree getDuree() const { return duree; }
+    void update(string t, string l, Duree d){
+        setTitre(t); setLieu(l); setDuree(d);
+    }
 };
 
 class Programmation;

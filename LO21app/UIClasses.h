@@ -21,6 +21,7 @@
 #include <QDialog>
 #include <QMessageBox>
 
+
 class TreeViewModel : public QObject {
     Q_OBJECT
     // Structures :
@@ -197,7 +198,7 @@ signals:
     void editionPrecedenceEnd( string );
 };
 
-class ProgrammationTache : public QWidget
+class ProgrammationTache : public QDialog
 {
     Q_OBJECT
     Unitaire *tache;
@@ -217,6 +218,26 @@ signals:
     void tacheProgrammee(Unitaire* tache);
 };
 
+class ProgrammationActivite : public QDialog
+{
+    Q_OBJECT
+    QPushButton *Sauver;
+public:
+    QLineEdit *titre;
+    QLineEdit *lieu;
+    QSpinBox *hHoraire;
+    QSpinBox *mHoraire;
+    QSpinBox *hDuree;
+    QSpinBox *mDuree;
+    QCalendarWidget *date;
+    QFormLayout *formLayout;
+    ProgrammationActivite();
+public slots:
+    virtual void slotSave();
+signals:
+    void activiteProgrammee(Activite* activite);
+};
+
 
 
 
@@ -227,8 +248,8 @@ signals:
 
 
 // TODO:
-// - enregistrement changements
-// - maj treeview à l'enregistrement
+// X enregistrement changements
+// X maj treeview à l'enregistrement
 // - précédences
 // - faire les free qui vont bien
 // - suppr taches/projets ?

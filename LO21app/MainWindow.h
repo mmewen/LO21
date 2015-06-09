@@ -80,6 +80,8 @@ public slots:
     void slotAjouterTC();
     void slotShowTU();
     void slotShowTC();
+    void slotProgrammerTU();
+    void slotProgrammerActivite();
 //    quit();
 
 };

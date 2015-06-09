@@ -18,7 +18,11 @@
 #include <QListWidgetItem>
 #include <QLabel>
 #include <QComboBox>
+<<<<<<< HEAD
 #include <QDialog>
+=======
+#include <QMessageBox>
+>>>>>>> 0fcbdd852e0e48e76d30c88463f80d799fe1616d
 
 class TreeViewModel : public QObject {
     Q_OBJECT
@@ -173,6 +177,26 @@ private:
     QComboBox *Precedences;
     QPushButton *Ajouter;
     QFormLayout *Donnee;
+};
+
+class ProgrammationTache : public QWidget
+{
+    Q_OBJECT
+    Unitaire *tache;
+    QPushButton *Sauver;
+public:
+    QLabel *titre;
+    QSpinBox *hHoraire;
+    QSpinBox *mHoraire;
+    QSpinBox *hDuree;
+    QSpinBox *mDuree;
+    QCalendarWidget *date;
+    QFormLayout *formLayout;
+    ProgrammationTache(Unitaire* t);
+public slots:
+    virtual void slotSave();
+signals:
+    void tacheProgrammee(Unitaire* tache);
 };
 
 

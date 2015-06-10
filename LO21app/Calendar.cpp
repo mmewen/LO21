@@ -50,21 +50,29 @@ const Tache& Tache::getPrecedence(const string& id)const{
 }
 
 bool Tache::isPrecedencePotentielle( const string& id ) {
-    // Si c'est la tâche actuelle
-    if ( id == identificateur )
-        return false;
-
-    // Si c'est déjà une tâche prédécesseur
-    for (Iterator it = getIterator() ; !it.isDone() ; it.next() ){
-        if ( it.current().getId() == id )
-            return false;
-    }
-
     // Si la tâche n'existe pas, ce qui serait étrange
     if ( projetParent->trouverTache(id) == 0  ){
         throw CalendarException("Erreur étrange numéro XDFGVCF58214586");
         return false;
     }
+
+    // Si c'est la tâche actuelle
+    if ( id == identificateur )
+        return false;
+
+    // Si c'est déjà une tâche prédécesseur
+    if(this->trouverTache(id))
+        return false;
+
+    // Si la tâche commence trop tard
+    if(this->getDateEcheance() < projetParent->trouverTache(id)->getDateDisponibilite())
+        return false;
+
+    // Si la tâche est successeur
+    if(projetParent->trouverTache(id)->trouverTache(getId()))
+        return false;
+
+
 
     return true;
 }
@@ -107,6 +115,21 @@ void Composite::afficher(ostream& f) {
     }
 }
 
+void Composite::addItem(Tache* t){
+    Tache::addItem(t);
+//    Projet::Iterator it = getProjet()->getIterator();
+//    for(it.first();!it.isDone();it.next()){
+//        if(typeid(it.current())==typeid(Composite*)){
+//            Composite* c = &dynamic_cast<Composite>(it.current());
+//            if(c.getCompo(this->getId())){
+//                Tache::Iterator it2 = getIterator();
+//                for(it2.first();!it2.isDone();it2.next())
+//                    c.addItem(&it2.current());
+//            }
+//        }
+//    }
+}
+
 void Composite::addCompo(Tache* t){
     if(getId()==t->getId())
         throw CalendarException("erreur, Composite, composition reflexive");
@@ -125,6 +148,7 @@ void Composite::addCompo(Tache* t){
         composition=newtab;
         delete[] old;
     }
+
     Tache* prec = 0;
     Tache::Iterator it = getIterator();
     for(it.first();!it.isDone();it.next()){
@@ -132,6 +156,7 @@ void Composite::addCompo(Tache* t){
         t->addItem(prec);
     }
     composition[nbCompo++]=t;
+    this->addItem(t);
 }
 
 Tache* Composite::trouverCompo(const string& id)const{

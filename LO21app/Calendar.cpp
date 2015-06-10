@@ -512,6 +512,7 @@ void ProgrammationManager::addItem(Programmation* t){
         delete[] old;
     }
     programmations[nb++]=t;
+    emit programmationsChanged();
 }
 
 Programmation* ProgrammationManager::trouverProgrammation(Evenement& e)const{

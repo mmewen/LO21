@@ -23,29 +23,74 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>60</y>
+     <y>70</y>
      <width>831</width>
-     <height>581</height>
+     <height>501</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QHBoxLayout" name="hLayoutSemaine">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+     <layout class="QVBoxLayout" name="vLayoutLundi"/>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_3"/>
+     <layout class="QVBoxLayout" name="vLayoutMardi"/>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2"/>
+     <widget class="Line" name="line_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout"/>
+     <layout class="QVBoxLayout" name="vLayoutMercredi"/>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_4"/>
+     <widget class="Line" name="line_3">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="vLayoutJeudi"/>
+    </item>
+    <item>
+     <widget class="Line" name="line_4">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="vLayoutVendredi"/>
+    </item>
+    <item>
+     <widget class="Line" name="line_5">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="vLayoutSamedi"/>
+    </item>
+    <item>
+     <widget class="Line" name="line_6">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="vLayoutDimanche"/>
     </item>
    </layout>
   </widget>
@@ -58,7 +103,7 @@
      <height>41</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_5">
+   <layout class="QHBoxLayout" name="hLayoutSelectSemaine">
     <item>
      <spacer name="horizontalSpacer">
       <property name="orientation">
@@ -83,7 +128,17 @@
      </widget>
     </item>
     <item>
-     <widget class="QDateEdit" name="dateEdit">
+     <widget class="QDateEdit" name="semaineSelector">
+      <property name="dateTime">
+       <datetime>
+        <hour>0</hour>
+        <minute>0</minute>
+        <second>0</second>
+        <year>2015</year>
+        <month>6</month>
+        <day>10</day>
+       </datetime>
+      </property>
       <property name="calendarPopup">
        <bool>true</bool>
       </property>

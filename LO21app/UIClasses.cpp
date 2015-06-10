@@ -254,8 +254,7 @@ void EditeurProjet::slotReload(){
 
 void EditeurProjet::slotSave(){
     try{
-    projet->update( titre->text().toStdString(),
-                    Date( dispo->selectedDate().day(), dispo->selectedDate().month(), dispo->selectedDate().year()) );
+    projet->update( titre->text().toStdString(), Date::toTimingDate(dispo->selectedDate()) );
     }
     catch(CalendarException e){
         QMessageBox *erreur = new QMessageBox;
@@ -263,7 +262,6 @@ void EditeurProjet::slotSave(){
         erreur->exec();
     }
     emit projetUpdated(projet);
-//    Date::toTimingDate(dispo->selectedDate()) // marche pas, pourquoi ?
 }
 
 EditeurTache::EditeurTache():
@@ -378,8 +376,8 @@ void EditeurTU::slotReload(){
 void EditeurTU::slotSave(){
     try{
     tache->update( titre->text().toStdString(),
-                   Date( dispo->selectedDate().day(), dispo->selectedDate().month(), dispo->selectedDate().year()),
-                   Date( echeance->selectedDate().day(), echeance->selectedDate().month(), echeance->selectedDate().year()),
+                   Date::toTimingDate(dispo->selectedDate()),
+                   Date::toTimingDate(echeance->selectedDate()),
                    Duree( duree->value() ),
                    preemptible->isChecked());
     }
@@ -391,7 +389,6 @@ void EditeurTU::slotSave(){
 
     emit tacheUpdated(tache);
     slotReload();
-//    Date::toTimingDate(dispo->selectedDate()) // marche pas, pourquoi ?
 }
 
 
@@ -435,9 +432,7 @@ void EditeurTC::slotReload(){
 
 void EditeurTC::slotSave(){
     try{
-    tache->update( titre->text().toStdString(),
-                   Date( dispo->selectedDate().day(), dispo->selectedDate().month(), dispo->selectedDate().year()),
-                   Date( echeance->selectedDate().day(), echeance->selectedDate().month(), echeance->selectedDate().year()) );
+    tache->update( titre->text().toStdString(), Date::toTimingDate(dispo->selectedDate()), Date::toTimingDate(echeance->selectedDate()) );
     }
     catch(CalendarException e){
         QMessageBox *erreur = new QMessageBox;
@@ -446,7 +441,6 @@ void EditeurTC::slotSave(){
     }
     emit tacheUpdated(tache);
     slotReload();
-//    Date::toTimingDate(dispo->selectedDate()) // marche pas, pourquoi ?
 }
 
 EditeurPrecedence::EditeurPrecedence(Tache *t):

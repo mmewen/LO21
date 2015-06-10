@@ -6,7 +6,7 @@ MainWindow::MainWindow():
         tabs(new QTabWidget(zoneCentrale)),
         planningTab(new QWidget()),
         agendaLayout(new QHBoxLayout()),
-        agenda(new AgendaView()),
+        agenda(new AgendaViewClass()),
         tachesTab(new QWidget()),
         tachesLayout(new QHBoxLayout),
         edition(0),
@@ -59,6 +59,9 @@ MainWindow::MainWindow():
     QLabel *message = new QLabel("Cliquez sur une tache ou un projet pour pouvoir l'éditer");
     editionScroll->setAlignment(Qt::AlignCenter | Qt::AlignHCenter);
     editionScroll->setWidget(message);
+
+    connect( &ProgrammationManager::getInstance() , SIGNAL(programmationsChanged()), agenda, SLOT(slotEventsChanged()));
+
 
     QMenu *menuFichier = menuBar()->addMenu("&Fichier");
 //    QMenu *menuEdition = menuBar()->addMenu("&Edition");

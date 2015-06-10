@@ -82,7 +82,7 @@ Date Date::operator+(unsigned int nb_jours) const{
 	return d;
 }
 
-Date toTimingDate(QDate date){
+Date Date::toTimingDate(QDate date){
     return Date(date.day(), date.month(), date.year());
 }
 

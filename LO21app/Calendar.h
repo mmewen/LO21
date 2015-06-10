@@ -297,7 +297,8 @@ public:
 
 class Programmation;
 
-class ProgrammationManager {
+class ProgrammationManager : public QObject {
+    Q_OBJECT
 private:
     Programmation** programmations;
     unsigned int nb;
@@ -339,6 +340,8 @@ public:
             void first(){ indice_prog=0; }
         };
     Iterator getIterator(){ return Iterator(programmations,nb); }
+signals:
+    void programmationsChanged();
 };
 
 class Programmation {

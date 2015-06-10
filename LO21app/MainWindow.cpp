@@ -7,14 +7,14 @@ MainWindow::MainWindow():
         planningTab(new QWidget()),
         tachesTab(new QWidget()),
         tachesLayout(new QHBoxLayout),
-        tachesFormLayout(0),
+        edition(0),
         editionScroll(new QScrollArea),
         tachesView(new QVBoxLayout),
         boutonsTreeView(new QFormLayout),
         vue(new QTreeView),
         treeView(TreeViewModel::getInstance())
     {
-    this->setWindowTitle(QString::fromUtf8("LO21"));
+    this->setWindowTitle(QString::fromUtf8("Pistache"));
     this->setFixedSize(W_WIDTH, W_HEIGHT);
 
     // Onglets
@@ -28,7 +28,7 @@ MainWindow::MainWindow():
     tachesLayout->addLayout(tachesView);
     tachesView->addWidget(vue);
     vue->setHeaderHidden(true);
-    vue->setFixedSize(300,0.7*W_HEIGHT);
+    vue->setFixedSize(300,0.65*W_HEIGHT);
     vue->setModel(treeView.getModele());
     connect(vue, SIGNAL(clicked(QModelIndex)), this, SLOT(treeViewClicked(QModelIndex)));
 
@@ -68,7 +68,7 @@ MainWindow::MainWindow():
 
 void MainWindow::showUnitaire(Unitaire& t){
     // XXXX faire fonction de ménage !
-    Editeur* edition = new EditeurTU(&t);
+    edition = new EditeurTU(&t);
     this->t = &t;
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     editionScroll->setWidget(edition);
@@ -80,7 +80,7 @@ void MainWindow::showUnitaire(Unitaire& t){
 
 void MainWindow::showComposite(Composite& t){
     // XXXX faire fonction de ménage !
-    Editeur* edition = new EditeurTC(&t);
+    edition = new EditeurTC(&t);
     this->t = &t;
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     editionScroll->setWidget(edition);
@@ -91,7 +91,7 @@ void MainWindow::showComposite(Composite& t){
 
 void MainWindow::showProjet(Projet& p){
 //    clearTFL(); // XXXX faire fonction de ménage !
-    Editeur* edition = new EditeurProjet(&p);
+    edition = new EditeurProjet(&p);
 //    editionScroll->children().at(0)->deleteLater();
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     editionScroll->setWidget(edition);
@@ -99,10 +99,6 @@ void MainWindow::showProjet(Projet& p){
     connect(edition, SIGNAL(projetUpdated(Projet*)), &treeView, SLOT(updateName(Projet*)));
 }
 
-//void MainWindow::slotSaveProjet(QLineEdit *titre, QCalendarWidget *dispo){
-//    cout<<titre->text().toStdString();
-//    dispo->selectedDate();
-//}
 void MainWindow::treeViewClicked(const QModelIndex &index)
 {
     QStandardItem *item = treeView.getModele()->itemFromIndex(index);
@@ -128,19 +124,19 @@ void MainWindow::treeViewClicked(const QModelIndex &index)
 }
 
 
-void MainWindow::clearTFL(){
-    QLayoutItem *child;
+//void MainWindow::clearTFL(){
+//    QLayoutItem *child;
 
-    if (tachesFormLayout != 0){
-        int count = tachesFormLayout->count();
-        while ( count-- != 0) {
-            child = tachesFormLayout->takeAt(0);
-            child->widget()->setParent(NULL);
-            tachesFormLayout->removeItem(child);
-        }
-        tachesFormLayout->deleteLater();
-    }
-}
+//    if (tachesFormLayout != 0){
+//        int count = tachesFormLayout->count();
+//        while ( count-- != 0) {
+//            child = tachesFormLayout->takeAt(0);
+//            child->widget()->setParent(NULL);
+//            tachesFormLayout->removeItem(child);
+//        }
+//        tachesFormLayout->deleteLater();
+//    }
+//}
 
 
 
@@ -201,6 +197,10 @@ void MainWindow::slotAjouterTU(){
 //            cout<<"Tache créée à la racine"<<endl;
             treeView.addTache(projetParent, &tache);
         }
+    } else {
+        QMessageBox msgBox;
+        msgBox.setText("Veuillez sélectionner un projet dans lequel ajouter cette tache avant de cliquer, bisous <3");
+        msgBox.exec();
     }
 
 }
@@ -255,6 +255,10 @@ void MainWindow::slotAjouterTC(){
 //            cout<<"Tache créée à la racine"<<endl;
             treeView.addTache(projetParent, &tache);
         }
+    } else {
+        QMessageBox msgBox;
+        msgBox.setText("Veuillez sélectionner un projet dans lequel ajouter cette tache !");
+        msgBox.exec();
     }
 }
 
@@ -281,12 +285,20 @@ void MainWindow::slotProgrammerTU(){
         if (item->parent() != 0) {
             Tache* tache = treeView.getTacheFromItem(item);
             if (typeid(*tache) == typeid(Unitaire)){
-                ProgrammationTache *ep = new ProgrammationTache(dynamic_cast<Unitaire*>(tache));
+                edition->setEnabled(false);
+                ProgrammationTache *pt = new ProgrammationTache(dynamic_cast<Unitaire*>(tache));
+                connect(pt, SIGNAL(tacheProgrammee()), edition, SLOT(slotEnable()));
+                connect(pt, SIGNAL(rejected()), edition, SLOT(slotEnable()));
+                pt->exec();
             }
         }
     }
 }
 
 void MainWindow::slotProgrammerActivite(){
-    ProgrammationActivite *ep = new ProgrammationActivite();
+    edition->setEnabled(false);
+    ProgrammationActivite *pa = new ProgrammationActivite();
+    connect(pa, SIGNAL(activiteProgrammee()), edition, SLOT(slotEnable()));
+    connect(pa, SIGNAL(rejected()), edition, SLOT(slotEnable()));
+    pa->exec();
 }

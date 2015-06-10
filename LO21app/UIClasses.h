@@ -135,7 +135,7 @@ public:
     void printFinForm(Tache* t);
     virtual ~EditeurTache() {}
 public slots:
-    void slotEnable( string );
+    void slotEnable();
     virtual void slotReload() = 0;
 signals:
     void reloadAll();
@@ -195,7 +195,7 @@ public slots:
     void slotAnnulation();
     void slotAjout();
 signals:
-    void editionPrecedenceEnd( string );
+    void editionPrecedenceEnd();
 };
 
 class ProgrammationTache : public QDialog
@@ -215,7 +215,7 @@ public:
 public slots:
     virtual void slotSave();
 signals:
-    void tacheProgrammee(Unitaire* tache);
+    void tacheProgrammee();
 };
 
 class ProgrammationActivite : public QDialog
@@ -235,7 +235,7 @@ public:
 public slots:
     virtual void slotSave();
 signals:
-    void activiteProgrammee(Activite* activite);
+    void activiteProgrammee();
 };
 
 

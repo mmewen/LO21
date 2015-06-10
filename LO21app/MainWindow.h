@@ -54,6 +54,7 @@ class MainWindow: public QMainWindow{
     // Widgets de l'onglet d'édition
     QWidget *tachesTab; //! Onglet avec l'édition des tâches
     QHBoxLayout *tachesLayout; //! Layout horizontal contenant le layout du treeview à gauche et celui du formulaire à droite
+    Editeur* edition;
 
     // ... pour le formulaire d'édition
     QFormLayout *tachesFormLayout; //! Formulaire d'édition d'une tâche ou d'un projet
@@ -65,7 +66,7 @@ class MainWindow: public QMainWindow{
     QTreeView *vue; //! Partie vue du TreeView
     TreeViewModel& treeView; //! Partie modèle du Treeview : arborescence des projets et tâches
 
-    void clearTFL();
+//    void clearTFL();
 public:
     ~MainWindow(){}
     MainWindow();

@@ -306,18 +306,18 @@ void EditeurTache::printFinForm(Tache* t){
 void EditeurTU::slotEditionPredecesseurs(){
     this->setEnabled(false);
     EditeurPrecedence *ep = new EditeurPrecedence(tache);
-    connect(ep, SIGNAL(editionPrecedenceEnd( string )), this, SLOT(slotEnable( string )));
+    connect(ep, SIGNAL(editionPrecedenceEnd()), this, SLOT(slotEnable()));
     ep->print();
 }
 
 void EditeurTC::slotEditionPredecesseurs(){
     this->setEnabled(false);
     EditeurPrecedence *ep = new EditeurPrecedence(tache);
-    connect(ep, SIGNAL(editionPrecedenceEnd( string )), this, SLOT(slotEnable( string )));
+    connect(ep, SIGNAL(editionPrecedenceEnd()), this, SLOT(slotEnable()));
     ep->print();
 }
 
-void EditeurTache::slotEnable( string s ){
+void EditeurTache::slotEnable(){
     this->setEnabled(true);
     emit reloadAll();
 }
@@ -483,14 +483,16 @@ void EditeurPrecedence::print(){
 }
 
 void EditeurPrecedence::slotAnnulation(){
-    emit editionPrecedenceEnd( "" );
+//    emit editionPrecedenceEnd( "" );
+    emit editionPrecedenceEnd();
     this->close();
 }
 
 void EditeurPrecedence::slotAjout(){
     try {
         tache->addItem( &(tache->getProjet()->getTache( getTacheIdFromIndex(precedencesPotentielles->currentIndex()) ) ) );
-        emit editionPrecedenceEnd( tache->getProjet()->getTache( getTacheIdFromIndex(precedencesPotentielles->currentIndex())).getTitre() );
+//        emit editionPrecedenceEnd( tache->getProjet()->getTache( getTacheIdFromIndex(precedencesPotentielles->currentIndex())).getTitre() );
+        emit editionPrecedenceEnd();
     } catch (CalendarException e){
         QMessageBox *erreur = new QMessageBox;
         erreur->setText(QString::fromStdString(e.getInfo()));
@@ -562,9 +564,8 @@ ProgrammationTache::ProgrammationTache(Unitaire* t):
 
     formLayout->addRow("", Sauver);
 
+    this->setLayout(formLayout);
     connect(Sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
-
-    this->exec();
 }
 
 void ProgrammationTache::slotSave(){
@@ -581,7 +582,8 @@ void ProgrammationTache::slotSave(){
         erreur->setText(QString::fromStdString(e.getInfo()));
         erreur->exec();
     }
-    emit tacheProgrammee(tache);
+    emit tacheProgrammee();
+    this->close();
 }
 
 ProgrammationActivite::ProgrammationActivite():
@@ -629,9 +631,8 @@ ProgrammationActivite::ProgrammationActivite():
 
     formLayout->addRow("", Sauver);
 
+    this->setLayout(formLayout);
     connect(Sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
-
-    this->exec();
 }
 
 void ProgrammationActivite::slotSave(){
@@ -649,5 +650,6 @@ void ProgrammationActivite::slotSave(){
         erreur->setText(QString::fromStdString(e.getInfo()));
         erreur->exec();
     }
-    emit activiteProgrammee(activite);
+    emit activiteProgrammee();
+    this->close();
 }

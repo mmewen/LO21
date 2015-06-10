@@ -152,10 +152,11 @@ class Tache {
     Tache(const Tache& t);
     Tache& operator=(const Tache& t);
 public:
+    Projet* getProjet() const { return projetParent; }
     virtual ~Tache(){}
     Tache(const string& id, const string& t, const Date& dispo, const Date& deadline, Projet* p):
             prec(0), nbPred(0), maxPred(0), identificateur(id),titre(t),disponibilite(dispo),echeance(deadline), projetParent(p){}
-    void addItem(Tache* t);
+    virtual void addItem(Tache* t);
     Tache& getPrecedence(const string& id);
     const Tache& getPrecedence(const string& code) const;
     bool isPrecedence() const { return nbPred>0?true:false; }
@@ -207,6 +208,7 @@ class Unitaire : public Tache, public Evenement {
     friend Unitaire& Projet::ajouterUnitaire(const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool premp);
 public:
     //Duree getDuree() const { return duree; }
+    virtual void addItem(Tache* t){Tache::addItem(t);}
     bool isPreemp() const { return preemptable; }
     Duree getFait() const { return dureeFaite; }
     Duree getRestant() const { Duree dR = Duree(getDuree().getDureeEnMinutes()+getFait().getDureeEnMinutes()); return dR; }
@@ -246,6 +248,7 @@ private:
     Composite(string id, string t, Date d, Date e, Projet* p):Tache(id,t,d,e,p),composition(0),nbCompo(0),nbMaxCompo(0){}
     friend Composite& Projet::ajouterComposite(const string& t, const Date& dispo, const Date& deadline);
 public:
+    virtual void addItem(Tache* t);
     void addCompo(Tache* t);
     Tache& getCompo(const string& id);
     const Tache& getCompo(const string& code) const;

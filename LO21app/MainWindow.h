@@ -4,6 +4,7 @@
 // Includes
 #include "Calendar.h"
 #include "UIClasses.h"
+#include "agendaview.h"
 
 #include <QString>
 #include <QMainWindow>
@@ -49,6 +50,8 @@ class MainWindow: public QMainWindow{
 
     // Widgets de l'agenda
     QWidget *planningTab; //! Onglet avec le planning
+    QHBoxLayout *agendaLayout; //! Layout global de l'onglet
+    AgendaView *agenda; //! Widget global de l'onglet
 
 
     // Widgets de l'onglet d'édition

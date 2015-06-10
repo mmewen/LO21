@@ -164,6 +164,7 @@ bool Composite::isPrecedencePotentielle( const string& id ) {
         if (!it.current().isPrecedencePotentielle( id ))
             return false;
     }
+    cout<<endl;
 
     return true;
 }

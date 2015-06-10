@@ -5,6 +5,8 @@ MainWindow::MainWindow():
         zoneCentrale(new QWidget),
         tabs(new QTabWidget(zoneCentrale)),
         planningTab(new QWidget()),
+        agendaLayout(new QHBoxLayout()),
+        agenda(new AgendaView()),
         tachesTab(new QWidget()),
         tachesLayout(new QHBoxLayout),
         edition(0),
@@ -23,6 +25,10 @@ MainWindow::MainWindow():
 
     tabs->addTab(tachesTab,"Édition");
     tabs->addTab(planningTab,"Agenda");
+
+    // Onglet Agenda :
+    agendaLayout->addWidget(agenda);
+    planningTab->setLayout(agendaLayout);
 
     // Tree onglet Taches (modèle/vue)
     tachesLayout->addLayout(tachesView);
@@ -67,7 +73,6 @@ MainWindow::MainWindow():
 }
 
 void MainWindow::showUnitaire(Unitaire& t){
-    // XXXX faire fonction de ménage !
     edition = new EditeurTU(&t);
     this->t = &t;
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
@@ -79,7 +84,6 @@ void MainWindow::showUnitaire(Unitaire& t){
 
 
 void MainWindow::showComposite(Composite& t){
-    // XXXX faire fonction de ménage !
     edition = new EditeurTC(&t);
     this->t = &t;
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
@@ -90,9 +94,7 @@ void MainWindow::showComposite(Composite& t){
 }
 
 void MainWindow::showProjet(Projet& p){
-//    clearTFL(); // XXXX faire fonction de ménage !
     edition = new EditeurProjet(&p);
-//    editionScroll->children().at(0)->deleteLater();
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     editionScroll->setWidget(edition);
     editionScroll->setContentsMargins(11, 11, 11, 20);
@@ -222,7 +224,7 @@ void MainWindow::slotAjouterTC(){
         // Création de la tache
         //Date aujourdhui;
         //aujourdhui.setDateAujourdhui();
-        //Composite& tache = projetParent->ajouterComposite("Nouvelle tache composite", aujourdhui, aujourdhui); // XXX /!\ id
+        //Composite& tache = projetParent->ajouterComposite("Nouvelle tache composite", aujourdhui, aujourdhui);
         Date dispo;
         dispo=projetParent->getDispo();
         Composite& tache = projetParent->ajouterComposite("Nouvelle tache composite", dispo, dispo);

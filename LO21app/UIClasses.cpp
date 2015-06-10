@@ -218,7 +218,9 @@ EditeurProjet::EditeurProjet(Projet* p):
     formLayout->addRow("Titre de la tache", titre);
     try{
         dispo->setSelectedDate(p->getDispo().getQDate());
+        dispo->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
         echeance->setSelectedDate(p->getEcheance().getQDate());
+        echeance->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
         echeance->setEnabled(false);
 
         formLayout->addRow("Disponibilité", dispo); // vérifier que ça n'est pas plus tard que les dates de début des tâches
@@ -247,6 +249,7 @@ EditeurProjet::EditeurProjet(Projet* p):
 void EditeurProjet::slotReload(){
     titre->setText(QString::fromStdString(projet->getNom()));
     dispo->setSelectedDate(projet->getDispo().getQDate());
+    dispo->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
 }
 
 void EditeurProjet::slotSave(){
@@ -304,17 +307,21 @@ void EditeurTache::printFinForm(Tache* t){
 }
 
 void EditeurTU::slotEditionPredecesseurs(){
-    this->setEnabled(false);
     EditeurPrecedence *ep = new EditeurPrecedence(tache);
     connect(ep, SIGNAL(editionPrecedenceEnd()), this, SLOT(slotEnable()));
-    ep->print();
+    if (!ep->empty()){
+        this->setEnabled(false);
+        ep->exec();
+    }
 }
 
 void EditeurTC::slotEditionPredecesseurs(){
-    this->setEnabled(false);
     EditeurPrecedence *ep = new EditeurPrecedence(tache);
     connect(ep, SIGNAL(editionPrecedenceEnd()), this, SLOT(slotEnable()));
-    ep->print();
+    if (!ep->empty()){
+        this->setEnabled(false);
+        ep->exec();
+    }
 }
 
 void EditeurTache::slotEnable(){
@@ -338,7 +345,9 @@ EditeurTU::EditeurTU(Unitaire *t):
     // Remplissage des champs
     titre->setText(QString::fromStdString(t->getTitre()));
     dispo->setSelectedDate(t->getDateDisponibilite().getQDate());
+    dispo->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
     echeance->setSelectedDate(t->getDateEcheance().getQDate());
+    echeance->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
     duree->setValue(t->getDuree().getDureeEnMinutes());
     preemptible->setChecked(t->isPreemp());
 
@@ -359,7 +368,9 @@ EditeurTU::EditeurTU(Unitaire *t):
 void EditeurTU::slotReload(){
     titre->setText(QString::fromStdString(tache->getTitre()));
     dispo->setSelectedDate(tache->getDateDisponibilite().getQDate());
+    dispo->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
     echeance->setSelectedDate(tache->getDateEcheance().getQDate());
+    echeance->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
     duree->setValue(tache->getDuree().getDureeEnMinutes());
     preemptible->setChecked(tache->isPreemp());
 }
@@ -392,11 +403,13 @@ EditeurTC::EditeurTC(Composite *t):
     //echeance->setMinimumDate(QDate::currentDate());
     echeance->setMinimumDate(t->getDateDisponibilite().getQDate());
     dispo->setMaximumDate(t->getDateEcheance().getQDate());
+    dispo->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
 
     // Remplissage des champs
     titre->setText(QString::fromStdString(t->getTitre()));
     dispo->setSelectedDate(t->getDateDisponibilite().getQDate());
     echeance->setSelectedDate(t->getDateEcheance().getQDate());
+    echeance->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
 
     formLayout = new QFormLayout;
     formLayout->addRow("Titre de la tache", titre);
@@ -416,6 +429,8 @@ void EditeurTC::slotReload(){
     titre->setText(QString::fromStdString(tache->getTitre()));
     dispo->setSelectedDate(tache->getDateDisponibilite().getQDate());
     echeance->setSelectedDate(tache->getDateEcheance().getQDate());
+    dispo->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
+    echeance->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
 }
 
 void EditeurTC::slotSave(){
@@ -459,15 +474,24 @@ EditeurPrecedence::EditeurPrecedence(Tache *t):
             erreur->exec();
         }
     }
-    Donnee->addRow("Précédences", precedencesPotentielles);
-    Donnee->addRow("", annuler);
-    Donnee->addRow("", ajouter);
-    connect(annuler, SIGNAL(clicked()), this, SLOT(slotAnnulation()));
-    connect(ajouter, SIGNAL(clicked()), this, SLOT(slotAjout()));
 
-    this->setLayout(Donnee);
-    this->setWindowTitle(QString::fromUtf8("Ajout d'une précédence"));
-    this->setModal(true);
+    if(nbIndexes == 0){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText( "Pas de précédence potentielle !" );
+        erreur->exec();
+        emit editionPrecedenceEnd();
+    } else {
+        Donnee->addRow("Précédences", precedencesPotentielles);
+        Donnee->addRow("", annuler);
+        Donnee->addRow("", ajouter);
+        connect(annuler, SIGNAL(clicked()), this, SLOT(slotAnnulation()));
+        connect(ajouter, SIGNAL(clicked()), this, SLOT(slotAjout()));
+
+        this->setLayout(Donnee);
+        this->setWindowTitle(QString::fromUtf8("Ajout d'une précédence"));
+        this->setModal(true);
+    }
+
 }
 
 string& EditeurPrecedence::getTacheIdFromIndex( int index ){
@@ -476,10 +500,6 @@ string& EditeurPrecedence::getTacheIdFromIndex( int index ){
             return couples[i].identifiant;
     }
     throw CalendarException("Tache pas trouvée avec cet index !");
-}
-
-void EditeurPrecedence::print(){
-    this->exec();
 }
 
 void EditeurPrecedence::slotAnnulation(){

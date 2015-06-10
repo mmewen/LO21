@@ -159,7 +159,7 @@ public:
     Tache& getPrecedence(const string& id);
     const Tache& getPrecedence(const string& code) const;
     bool isPrecedence() const { return nbPred>0?true:false; }
-    bool isPrecedencePotentielle( const string& id );
+    virtual bool isPrecedencePotentielle( const string& id );
     string getId() const { return identificateur; }
     string getTitre() const { return titre; }
     Date getDateDisponibilite() const {  return disponibilite; }

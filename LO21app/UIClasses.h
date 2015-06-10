@@ -177,7 +177,7 @@ class EditeurPrecedence : public QDialog
 public:
     EditeurPrecedence(Tache *t);
     string& getTacheIdFromIndex( int index );
-    void print();
+    bool empty() const { return nbIndexes==0; }
 private:
     struct coupleItemId {
         string identifiant;

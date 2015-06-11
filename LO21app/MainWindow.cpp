@@ -290,13 +290,33 @@ void MainWindow::slotProgrammerTU(){
         if (item->parent() != 0) {
             Tache* tache = treeView.getTacheFromItem(item);
             if (typeid(*tache) == typeid(Unitaire)){
+                if(dynamic_cast<Unitaire*>(tache)->getRestant().getDureeEnMinutes()==0){
+                    QMessageBox msgBox;
+                    msgBox.setText("La tache a déjà été entièrement programmée");
+                    msgBox.exec();
+                }
                 edition->setEnabled(false);
                 ProgrammationTache *pt = new ProgrammationTache(dynamic_cast<Unitaire*>(tache));
                 connect(pt, SIGNAL(tacheProgrammee()), edition, SLOT(slotEnable()));
                 connect(pt, SIGNAL(rejected()), edition, SLOT(slotEnable()));
                 pt->exec();
             }
+            else{
+                QMessageBox msgBox;
+                msgBox.setText("La tache sélectionnée n'est pas unitaire");
+                msgBox.exec();
+            }
         }
+        else{
+            QMessageBox msgBox;
+            msgBox.setText("Sélectionnez une tache unitaire à programmer");
+            msgBox.exec();
+        }
+    }
+    else{
+        QMessageBox msgBox;
+        msgBox.setText("Sélectionnez une tache unitaire à programmer");
+        msgBox.exec();
     }
 }
 

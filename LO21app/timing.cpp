@@ -57,6 +57,11 @@ bool Date::operator<(const Date& d) const{
 	return false;
 }
 
+bool Date::operator<=(const Date& d) const {
+    if ((*this < d) || (*this == d)) return true;
+    return false;
+}
+
 int Date::operator-(const Date& d) const{
 	int n=(annee-d.annee)*365+(annee-d.annee)/4;
 	n+=int((mois-d.mois)*30.5);

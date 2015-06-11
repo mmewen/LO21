@@ -649,3 +649,13 @@ ProgrammationManager& ProgrammationManager::operator=(const ProgrammationManager
     return *this;
 }
 */
+
+QString Evenement::getNom() const{
+    if ( typeid(*this) == typeid(Unitaire) ){
+        return QString::fromStdString( dynamic_cast<const Unitaire*>(this)->getTitre());
+    } else if ( typeid(*this) == typeid(Activite) ){
+        return QString::fromStdString( dynamic_cast<const Activite*>(this)->getTitre());
+    } else {
+        throw CalendarException("Erreur de type d'évènement...");
+    }
+}

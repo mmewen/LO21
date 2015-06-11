@@ -2,6 +2,7 @@
 #define AGENDAVIEW_H
 
 #include "Calendar.h"
+#include "eventwidget.h"
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -22,6 +23,7 @@ public:
     ~AgendaViewClass();
 public slots:
     void slotEventsChanged();
+    void slotEventsChanged(const QDateTime & date);
 
 private:
     Ui::AgendaView *ui;

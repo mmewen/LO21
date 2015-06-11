@@ -18,6 +18,11 @@ AgendaViewClass::AgendaViewClass(QWidget *parent) :
     layoutSemaine[5] = ui->vLayoutSamedi;
     layoutSemaine[6] = ui->vLayoutDimanche;
 
+    connect(ui->semaineSelector, SIGNAL(editingFinished()), this, SLOT(slotEventsChanged()));
+
+//    connect(ui->semaineSelector, SIGNAL(dateTimeChanged(const QDateTime & datetime)), this, SLOT(slotEventsChanged(const QDateTime&)));
+
+
     showSemaine();
 }
 
@@ -41,7 +46,7 @@ void AgendaViewClass::showSemaine(){
     Programmation* progsDeLaSemaine[100];
     int nbProgs = 0;
     for( ProgrammationManager::Iterator it = ProgrammationManager::getInstance().getIterator(); !it.isDone() && (nbProgs<100) ; it.next() ){
-        if ( (lundi < it.current().getDate()) && (it.current().getDate() < lundi+6) ){
+        if ( (lundi <= it.current().getDate()) && (it.current().getDate() < lundi+7) ){
             progsDeLaSemaine[nbProgs++] = &it.current();
         }
     }
@@ -72,16 +77,9 @@ void AgendaViewClass::showSemaine(){
         }
 
         // On l'affiche
-        QString texte;
-        if ( typeid(progTemp->getEvenement()) == typeid(Unitaire) ){
-            texte = QString::fromStdString( dynamic_cast<const Unitaire&>(progTemp->getEvenement()).getTitre());
-        } else if ( typeid(progTemp->getEvenement()) == typeid(Activite) ){
-            texte = QString::fromStdString( dynamic_cast<const Activite&>(progTemp->getEvenement()).getTitre());
-        } else {
-            throw CalendarException("Erreur de type d'évènement...");
-        }
-        QLabel* nouvelEvent = new QLabel( texte );
-        layoutSemaine[ progTemp->getDate().getQDate().dayOfWeek() - 1 ]->addWidget(nouvelEvent);
+        EventWidget* nouvelEvent = new EventWidget( progTemp );
+        layoutSemaine[ progTemp->getDate().getQDate().dayOfWeek() - 1 ]->addWidget( nouvelEvent );
+
 
         // Si besoin, on l'ajoute sur le jour suivant
 
@@ -102,5 +100,10 @@ void AgendaViewClass::clearSemaine(){
 
 
 void AgendaViewClass::slotEventsChanged(){
+    showSemaine();
+}
+
+
+void AgendaViewClass::slotEventsChanged(const QDateTime & date){
     showSemaine();
 }

@@ -41,6 +41,7 @@ namespace TIME {
 		void afficher(std::ostream& f=std::cout) const; //!< affiche le date sous le format JJ/MM/AAAA
 		bool operator==(const Date& d) const; //<! d1==d2 retourne vrai si les deux dates sont égales
 		bool operator<(const Date& d) const; //<! Compare deux dates dans le temps : d1<d2 retourne true si d1 est avant d2
+        bool operator<=(const Date& d) const; //<! Compare deux dates dans le temps : d1<=d2 retourne true si d1 est avant ou bien égale à d2
 		int operator-(const Date& d) const; //<! Retourne le nombre de jours séparant les deux dates
 		Date demain() const; //<! Retourne la date du lendemain
 		Date operator+(unsigned int nb) const; //<!Retourne la date de dans nb jours

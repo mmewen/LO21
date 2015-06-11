@@ -7,14 +7,17 @@ SOURCES += \
     Calendar.cpp \
     MainWindow.cpp \
     UIClasses.cpp \
-    agendaview.cpp
+    agendaview.cpp \
+    eventwidget.cpp
 
 HEADERS += \
     timing.h \
     Calendar.h \
     MainWindow.h \
     UIClasses.h \
-    agendaview.h
+    agendaview.h \
+    eventwidget.h
 
 FORMS += \
-    agendaview.ui
+    agendaview.ui \
+    eventwidget.ui

@@ -1,9 +1,13 @@
 #ifndef CALENDAR_h
 #define CALENDAR_h
+
 #include<string>
 #include<iostream>
 #include<typeinfo>
+#include<QObject>
+
 #include "timing.h"
+
 using namespace std;
 using namespace TIME;
 
@@ -136,6 +140,7 @@ public:
     virtual ~Evenement(){}
     Evenement(Duree dur):duree(dur){}
     Duree getDuree() const { return duree; }
+    QString getNom() const;
     void setDuree(const Duree& dur){ duree=dur; }
 };
 

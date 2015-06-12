@@ -208,7 +208,13 @@ EditeurProjet::EditeurProjet(Projet* p):
     projet(p)
 {
 
-    dispo->setMinimumDate(QDate::currentDate());
+    //dispo->setMinimumDate(QDate::currentDate());
+    dispo->setMaximumDate(p->getEcheance().getQDate());
+    Projet::Iterator it=p->getIterator();
+    for(it.first();!it.isDone();it.next()){
+        if(it.current().getDateDisponibilite().getQDate() < dispo->maximumDate())
+            dispo->setMaximumDate(it.current().getDateDisponibilite().getQDate());
+    }
 
     QPushButton *annuler = new QPushButton("Annuler les modifications");
     QPushButton *sauver = new QPushButton("Sauver les changements");
@@ -335,10 +341,10 @@ EditeurTU::EditeurTU(Unitaire *t):
     preemptible (new QCheckBox),
     tache(t)
 {
-    dispo->setMinimumDate(QDate::currentDate());
+    dispo->setMinimumDate(t->getProjet()->getDispo().getQDate());
     //echeance->setMinimumDate(QDate::currentDate());
-    echeance->setMinimumDate(t->getDateDisponibilite().getQDate());
-    dispo->setMaximumDate(t->getDateEcheance().getQDate());
+    echeance->setMinimumDate(t->getProjet()->getDispo().getQDate());
+    dispo->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
 
     // Remplissage des champs
     titre->setText(QString::fromStdString(t->getTitre()));
@@ -396,10 +402,16 @@ EditeurTC::EditeurTC(Composite *t):
     EditeurTache(),
     tache(t)
 {
-    dispo->setMinimumDate(QDate::currentDate());
-    //echeance->setMinimumDate(QDate::currentDate());
-    echeance->setMinimumDate(t->getDateDisponibilite().getQDate());
     dispo->setMaximumDate(t->getDateEcheance().getQDate());
+    Composite::CompoIterator it=t->getCompoIterator();
+    for(it.first();!it.isDone();it.next()){
+        if(it.current().getDateDisponibilite().getQDate() < dispo->maximumDate())
+            dispo->setMaximumDate(it.current().getDateDisponibilite().getQDate());
+    }
+
+    dispo->setMinimumDate(t->getProjet()->getDispo().getQDate());
+    //echeance->setMinimumDate(QDate::currentDate());
+    echeance->setMinimumDate(t->getProjet()->getDispo().getQDate());
     dispo->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
 
     // Remplissage des champs
@@ -540,8 +552,9 @@ ProgrammationTache::ProgrammationTache(Unitaire* t):
     hHoraire = new QSpinBox(this);
     mHoraire = new QSpinBox(this);
     hHoraire->setMinimum(0);
+    hHoraire->setMaximum(23);
     hHoraire->setSuffix("heure(s)");
-    hHoraire->setValue(0);
+    hHoraire->setValue(12);
     mHoraire->setMinimum(0);
     mHoraire->setSuffix("minute(s)");
     mHoraire->setValue(0);
@@ -563,14 +576,14 @@ ProgrammationTache::ProgrammationTache(Unitaire* t):
         mDuree = new QSpinBox(this);
         hDuree->setMinimum(0);
         hDuree->setSuffix("heure(s)");
-        hDuree->setValue(tache->getDuree().getDureeEnHeuresInt());
+        hDuree->setValue(tache->getRestant().getDureeEnHeuresInt());
         mDuree->setMinimum(0);
         mDuree->setSuffix("minute(s)");
-        mDuree->setValue((tache->getDuree().getDureeEnMinutes())%60);
+        mDuree->setValue((tache->getRestant().getDureeEnMinutes())%60);
     }
 
     formLayout->addRow("Titre", titre);
-    formLayout->addRow("Date", date); // vérifier qu'elle correspond aux dispo/echeance
+    formLayout->addRow("Date", date);
     formLayout->addRow("Horaire", hHoraire);
     formLayout->addRow("", mHoraire);
     formLayout->addRow("Durée", hDuree);
@@ -620,8 +633,9 @@ ProgrammationActivite::ProgrammationActivite():
     hHoraire = new QSpinBox(this);
     mHoraire = new QSpinBox(this);
     hHoraire->setMinimum(0);
+    hHoraire->setMaximum(23);
     hHoraire->setSuffix("heure(s)");
-    hHoraire->setValue(0);
+    hHoraire->setValue(12);
     mHoraire->setMinimum(0);
     mHoraire->setSuffix("minute(s)");
     mHoraire->setValue(0);
@@ -657,7 +671,8 @@ void ProgrammationActivite::slotSave(){
         ProgrammationManager::getInstance().ajouterProgrammation(
                     *activite,
                     Date(date->selectedDate().day(), date->selectedDate().month(), date->selectedDate().year()),
-                    Horaire(hHoraire->value(),mHoraire->value()));
+                    Horaire(hHoraire->value(),mHoraire->value()),
+                    Duree(hDuree->value(),mDuree->value()));
     }
     catch(CalendarException e){
         QMessageBox *erreur = new QMessageBox;

@@ -4,9 +4,7 @@
 #include<string>
 #include<iostream>
 #include<typeinfo>
-#include<QObject>
-
-#include "timing.h"
+#include<QObject>#include "timing.h"
 
 using namespace std;
 using namespace TIME;
@@ -200,12 +198,11 @@ public:
 
 class Unitaire : public Tache, public Evenement {
     //Duree duree; //si non-preemtable -> duree<=12h
-    Duree dureeRestante;
     Duree dureeFaite;
     bool preemptable;
     Unitaire(const Unitaire& t);
     Unitaire& operator=(const Unitaire& t);
-    Unitaire(Date d, Date e, string id, string t, Duree dur, bool p, Projet *pro):Tache(id, t, d, e, pro),Evenement(dur),dureeRestante(dur),dureeFaite(0),preemptable(p){
+    Unitaire(Date d, Date e, string id, string t, Duree dur, bool p, Projet *pro):Tache(id, t, d, e, pro),Evenement(dur),dureeFaite(0),preemptable(p){
         if(dur.getDureeEnHeures()>=12){
             preemptable=true;
         }
@@ -216,14 +213,13 @@ public:
     virtual void addItem(Tache* t){Tache::addItem(t);}
     bool isPreemp() const { return preemptable; }
     Duree getFait() const { return dureeFaite; }
-    Duree getRestant() const { Duree dR = Duree(getDuree().getDureeEnMinutes()+getFait().getDureeEnMinutes()); return dR; }
-    void setRestant(const Duree& r){ dureeRestante=r; }
+    Duree getRestant() const { Duree dR = Duree(getDuree().getDureeEnMinutes() - getFait().getDureeEnMinutes()); return dR; }
     void setFait(const Duree& f){ dureeFaite=f; }
     void setPreemp(){ preemptable=true; }
     void setNonPreemp(){ preemptable=false; }
     virtual void afficher(ostream& f) ;
-    void update(string id, string t, Date d, Date e, Duree dur, Duree dr, Duree df, bool p){
-        setId(id); setTitre(t); setDatesDisponibiliteEcheance(d,e); setDuree(dur); setRestant(dr); setFait(df);
+    void update(string id, string t, Date d, Date e, Duree dur, Duree df, bool p){
+        setId(id); setTitre(t); setDatesDisponibiliteEcheance(d,e); setDuree(dur); setFait(df);
         if(dur.getDureeEnHeures()>=12)
             setPreemp();
         else{
@@ -328,8 +324,8 @@ private:
 public:
     static ProgrammationManager& getInstance();
     static void libererInstance();
-    void ajouterProgrammation(Unitaire& e, const Date& d, const Horaire& h, Duree dur = Duree(0));
-    void ajouterProgrammation(Activite& e, const Date& d, const Horaire& h);
+    void ajouterProgrammation(Unitaire& e, const Date& d, const Horaire& h, Duree dur);
+    void ajouterProgrammation(Activite& e, const Date& d, const Horaire& h, const Duree& dur);
     class Iterator{
         friend class ProgrammationManager;
         private:
@@ -356,15 +352,17 @@ class Programmation {
     const Evenement* evt;
     Date date;
     Horaire horaire;
+    Duree duree;
     Programmation(const Programmation& um);
     Programmation& operator=(const Programmation& um);
-    Programmation(const Evenement& e, const Date& d, const Horaire& h):evt(&e), date(d), horaire(h){}
-    friend void ProgrammationManager::ajouterProgrammation(Unitaire& e, const Date& d, const Horaire& h, Duree dur = Duree(0));
-    friend void ProgrammationManager::ajouterProgrammation(Activite& e, const Date& d, const Horaire& h);
+    Programmation(const Evenement& e, const Date& d, const Horaire& h, const Duree& dur):evt(&e), date(d), horaire(h), duree(dur){}
+    friend void ProgrammationManager::ajouterProgrammation(Unitaire& e, const Date& d, const Horaire& h, Duree dur);
+    friend void ProgrammationManager::ajouterProgrammation(Activite& e, const Date& d, const Horaire& h, const Duree& dur);
 public:
     const Evenement& getEvenement() const { return *evt; }
     Date getDate() const { return date; }
     Horaire getHoraire() const { return horaire; }
+    Duree getDuree() const { return duree; }
 };
 
 ostream& operator<<(ostream& f, const Tache& t);

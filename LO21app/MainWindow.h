@@ -51,7 +51,7 @@ class MainWindow: public QMainWindow{
     // Widgets de l'agenda
     QWidget *planningTab; //! Onglet avec le planning
     QHBoxLayout *agendaLayout; //! Layout global de l'onglet
-    AgendaViewClass *agenda; //! Widget global de l'onglet
+    AgendaView *agenda; //! Widget global de l'onglet
 
 
     // Widgets de l'onglet d'édition

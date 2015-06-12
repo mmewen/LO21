@@ -13,7 +13,7 @@ namespace Ui {
 class AgendaView;
 }
 
-class AgendaViewClass : public QWidget
+class AgendaView : public QWidget
 {
     Q_OBJECT
     Date getLundiSelectionne();
@@ -21,11 +21,11 @@ class AgendaViewClass : public QWidget
     void showSemaine();
     void clearSemaine();
 public:
-    explicit AgendaViewClass(QWidget *parent = 0);
-    ~AgendaViewClass();
+    explicit AgendaView(QWidget *parent = 0);
+    ~AgendaView();
 public slots:
     void slotEventsChanged();
-    void slotEventsChanged(const QDateTime & date);
+    void slotEventsChanged(const QDate& date);
 
 private:
     Ui::AgendaView *ui;

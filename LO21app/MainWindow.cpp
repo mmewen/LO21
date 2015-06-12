@@ -6,7 +6,7 @@ MainWindow::MainWindow():
         tabs(new QTabWidget(zoneCentrale)),
         planningTab(new QWidget()),
         agendaLayout(new QHBoxLayout()),
-        agenda(new AgendaViewClass()),
+        agenda(new AgendaView()),
         tachesTab(new QWidget()),
         tachesLayout(new QHBoxLayout),
         edition(0),

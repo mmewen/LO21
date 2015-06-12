@@ -38,6 +38,11 @@ namespace TIME {
 		unsigned short int  getMois() const { return mois; } //<! Retourne le mois de la date
 		unsigned int getAnnee() const { return annee; } //<! Retourne l'année de la date
         QDate getQDate() const { return QDate(annee, mois, jour); } //<! Retourne l'année de la date
+        std::string getJourMoisString() const {
+            std::stringstream sstm;
+            sstm << jour << '/'<< mois;
+            return sstm.str();
+        } //<!Retourne l'heure sous forme de chaine
 		void setDate(unsigned short int j, unsigned short int m, unsigned int a); //!< initialisation de la date
 		void setDateAujourdhui(); //!< initialisation de la date avec la date d'aujourd'hui
 		void afficher(std::ostream& f=std::cout) const; //!< affiche le date sous le format JJ/MM/AAAA

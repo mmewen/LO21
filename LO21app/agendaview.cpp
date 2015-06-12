@@ -1,7 +1,7 @@
 #include "agendaview.h"
 #include "ui_agendaview.h"
 
-AgendaViewClass::AgendaViewClass(QWidget *parent) :
+AgendaView::AgendaView(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AgendaView)
 {
@@ -18,23 +18,22 @@ AgendaViewClass::AgendaViewClass(QWidget *parent) :
     layoutSemaine[5] = ui->vLayoutSamedi;
     layoutSemaine[6] = ui->vLayoutDimanche;
 
-    connect(ui->semaineSelector, SIGNAL(editingFinished()), this, SLOT(slotEventsChanged()));
-
+    QObject::connect(ui->semaineSelector, SIGNAL(userDateChanged(QDate)), this, SLOT(slotEventsChanged(QDate)));
     showSemaine();
 }
 
-AgendaViewClass::~AgendaViewClass()
+AgendaView::~AgendaView()
 {
     delete ui;
 }
 
-Date AgendaViewClass::getLundiSelectionne(){
+Date AgendaView::getLundiSelectionne(){
     QDate temp = ui->semaineSelector->date();
     temp = temp.addDays( - ( temp.dayOfWeek() - 1 ) ); // on prend le lundi en soustrayant le numéro de jour
     return Date::toTimingDate( temp );
 }
 
-void AgendaViewClass::showSemaine(){
+void AgendaView::showSemaine(){
     clearSemaine();
 
     // On met le titre bien
@@ -59,7 +58,7 @@ void AgendaViewClass::showSemaine(){
 
     QLabel* nomJour;
     for(int k=0; k<7 ; k++){
-        nomJour = new QLabel(QDate::longDayName(k+1));
+        nomJour = new QLabel(QDate::longDayName(k+1) + ' ' + QString::fromStdString((lundi+k).getJourMoisString()));
         layoutSemaine[k]->setAlignment(Qt::AlignTop | Qt::AlignCenter);
         layoutSemaine[k]->addWidget( nomJour );
     }
@@ -83,6 +82,7 @@ void AgendaViewClass::showSemaine(){
         // On l'affiche
         EventWidget* nouvelEvent = new EventWidget( progTemp );
         layoutSemaine[ progTemp->getDate().getQDate().dayOfWeek() - 1 ]->addWidget( nouvelEvent );
+        cout<<endl<<"Hauteur : "<<nouvelEvent->height()<<endl;
 
 
         // Si besoin, on l'ajoute sur le jour suivant
@@ -92,7 +92,7 @@ void AgendaViewClass::showSemaine(){
     }
 }
 
-void AgendaViewClass::clearSemaine(){
+void AgendaView::clearSemaine(){
     for(int k=0; k<7 ; k++){
         QLayoutItem *child;
         while ((child = layoutSemaine[k]->takeAt(0)) != 0) {
@@ -103,11 +103,11 @@ void AgendaViewClass::clearSemaine(){
 }
 
 
-void AgendaViewClass::slotEventsChanged(){
+void AgendaView::slotEventsChanged(){
     showSemaine();
 }
 
 
-void AgendaViewClass::slotEventsChanged(const QDateTime & date){
+void AgendaView::slotEventsChanged(const QDate& date){
     showSemaine();
 }

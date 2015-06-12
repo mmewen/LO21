@@ -576,9 +576,14 @@ ProgrammationTache::ProgrammationTache(Unitaire* t):
         hDuree = new QSpinBox(this);
         mDuree = new QSpinBox(this);
         hDuree->setMinimum(0);
+        if(tache->getDuree().getDureeEnMinutes()<12*60)
+            hDuree->setMaximum(tache->getDuree().getDureeEnHeuresInt());
+        else
+            hDuree->setMaximum(12);
         hDuree->setSuffix("heure(s)");
         hDuree->setValue(tache->getRestant().getDureeEnHeuresInt());
         mDuree->setMinimum(0);
+        mDuree->setMaximum(59);
         mDuree->setSuffix("minute(s)");
         mDuree->setValue((tache->getRestant().getDureeEnMinutes())%60);
     }
@@ -624,7 +629,7 @@ ProgrammationActivite::ProgrammationActivite():
 {
     this->setWindowTitle(QString("Programmation d'une activité"));
     titre->setText(QString("Nouvelle activité"));
-    date->setMinimumDate(QDate::currentDate());
+    //date->setMinimumDate(QDate::currentDate());
 
     // Remplissage des champs
     titre->setText(QString("Nouvelle activité"));
@@ -644,9 +649,11 @@ ProgrammationActivite::ProgrammationActivite():
     hDuree = new QSpinBox(this);
     mDuree = new QSpinBox(this);
     hDuree->setMinimum(0);
+    hDuree->setMaximum(12);
     hDuree->setSuffix("heure(s)");
     hDuree->setValue(0);
     mDuree->setMinimum(0);
+    mDuree->setMaximum(59);
     mDuree->setSuffix("minute(s)");
     mDuree->setValue(0);
 

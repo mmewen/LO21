@@ -90,6 +90,7 @@ void Unitaire::afficher(ostream& f) {
     f<<"duree"<<getDuree()<<"\n";
     f<<"preemptive"<<isPreemp()<<"\n";
     f<<"precedence"<<"\n";
+    f<<getNbPred()<<"\n";
     Unitaire::Iterator it = getIterator();
     for(it.first(); !it.isDone(); it.next()){
         f<<it.current().getId()<<"\n";
@@ -104,11 +105,13 @@ void Composite::afficher(ostream& f) {
     f<<"date dispo"<<getDateDisponibilite()<<"\n";
     f<<"date echeance"<<getDateEcheance()<<"\n";
     f<<"precedence"<<"\n";
+    f<<getNbPred()<<"\n";
     Composite::Iterator it = getIterator();
     for(it.first(); !it.isDone(); it.next()){
         f<<it.current().getId()<<"\n";
     }
     f<<"composition"<<"\n";
+    f<<getNbCompo()<<"\n";
     Composite::CompoIterator it2 = getCompoIterator();
     for(it2.first(); !it2.isDone(); it2.next()){
         f<<it2.current().getId()<<"\n";
@@ -316,7 +319,7 @@ Projet& Projet::operator=(const Projet& um){
     return *this;
 }
 */
-
+/*
 void Projet::load(const string& f){
     if (file!=f) this->~Projet();
     file=f;
@@ -379,7 +382,8 @@ void Projet::load(const string& f){
     }
     fin.close(); // close file
 }
-
+*/
+/*
 void  Projet::save(const string& f){
     file=f;
     ofstream fout(f.c_str(),ofstream::trunc); // toutes les taches existantes sont écrasées
@@ -387,6 +391,73 @@ void  Projet::save(const string& f){
         fout<<*taches[i];
     }
     fout.close();
+}
+*/
+void  Projet::save(const string& f){
+    file=f;
+    QFile newfile( QString::fromStdString(file));
+    if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text))
+        throw CalendarException("erreur sauvegarde tâches : ouverture fichier xml");
+    QXmlStreamWriter stream(&newfile);
+    stream.setAutoFormatting(true);
+    stream.writeStartDocument();
+    stream.writeStartElement("Projet");
+    stream.writeTextElement("identificateur",QString::fromStdString(getId()));
+    stream.writeTextElement("titre",QString::fromStdString(getNom()));
+    stream.writeTextElement("disponibilite",getDispo().getQDate().toString(Qt::ISODate));
+    stream.writeStartElement("taches");
+    Projet::Iterator it = getIterator();
+    for(it.first();!it.isDone();it.next()){
+        if(typeid(it.current())==typeid(Unitaire&)){
+            stream.writeStartElement("tache unitaire");
+            stream.writeAttribute("preemptive", (dynamic_cast<Unitaire&>(it.current()).isPreemp())?"true":"false");
+            stream.writeTextElement("identificateur",QString::fromStdString(it.current().getId()));
+            stream.writeTextElement("titre",QString::fromStdString(it.current().getTitre()));
+            stream.writeTextElement("disponibilite",it.current().getDateDisponibilite().getQDate().toString(Qt::ISODate));
+            stream.writeTextElement("echeance",it.current().getDateEcheance().getQDate().toString(Qt::ISODate));
+            QString str;
+            str.setNum(dynamic_cast<Unitaire&>(it.current()).getDuree().getDureeEnMinutes());
+            stream.writeTextElement("duree",str);
+            stream.writeStartElement("precedences");
+            Tache::Iterator it2 = it.current().getIterator();
+            for(it2.first();!it2.isDone();it2.next()){
+                stream.writeStartElement("tache");
+                stream.writeTextElement("identificateur",QString::fromStdString(it2.current().getId()));
+                stream.writeEndElement();
+            }
+            stream.writeEndElement();
+            stream.writeEndElement();
+        }
+        else
+        if(typeid(it.current())==typeid(Composite&)){
+            stream.writeStartElement("tache composite");
+            stream.writeTextElement("identificateur",QString::fromStdString(it.current().getId()));
+            stream.writeTextElement("titre",QString::fromStdString(it.current().getTitre()));
+            stream.writeTextElement("disponibilite",it.current().getDateDisponibilite().getQDate().toString(Qt::ISODate));
+            stream.writeTextElement("echeance",it.current().getDateEcheance().getQDate().toString(Qt::ISODate));
+            stream.writeStartElement("precedences");
+            Tache::Iterator it2 = it.current().getIterator();
+            for(it2.first();!it2.isDone();it2.next()){
+                stream.writeStartElement("tache");
+                stream.writeTextElement("identificateur",QString::fromStdString(it2.current().getId()));
+                stream.writeEndElement();
+            }
+            stream.writeEndElement();
+            stream.writeStartElement("composition");
+            Composite::CompoIterator it3 = dynamic_cast<Composite&>(it.current()).getCompoIterator();
+            for(it3.first();!it3.isDone();it3.next()){
+                stream.writeStartElement("tache");
+                stream.writeTextElement("identificateur",QString::fromStdString(it3.current().getId()));
+                stream.writeEndElement();
+            }
+            stream.writeEndElement();
+            stream.writeEndElement();
+        }
+    }
+    stream.writeEndElement();
+    stream.writeEndElement();
+    stream.writeEndDocument();
+    newfile.close();
 }
 
 void Projet::moveTacheTo(Tache* tMere, Tache* tFille){
@@ -555,6 +626,10 @@ Programmation* ProgrammationManager::trouverProgrammation(const Evenement& e)con
 void ProgrammationManager::ajouterProgrammation(Unitaire& e, const Date& d, const Horaire& h, Duree dur){
     if(dur.getDureeEnMinutes()==0)
         throw CalendarException("erreur, ProgrammationManager, programmation d'une durée nulle");
+    if(e.getRestant().getDureeEnMinutes()<dur.getDureeEnMinutes())
+        throw CalendarException("erreur, ProgrammationManager, programmation d'une durée trop grande");
+    if(12*60<dur.getDureeEnMinutes())
+        throw CalendarException("erreur, ProgrammationManager, programmation d'une durée supérieure à 12 heures. Faites des pauses !");
     if(!e.isPreemp())
         if (trouverProgrammation(e))
             throw CalendarException("erreur, ProgrammationManager, Programmation deja existante");
@@ -604,6 +679,8 @@ void ProgrammationManager::ajouterProgrammation(Unitaire& e, const Date& d, cons
 void ProgrammationManager::ajouterProgrammation(Activite& e, const Date& d, const Horaire& h, const Duree& dur){
     if(dur.getDureeEnMinutes()==0)
         throw CalendarException("erreur, ProgrammationManager, programmation d'une durée nulle");
+    if(12*60<dur.getDureeEnMinutes())
+        throw CalendarException("erreur, ProgrammationManager, programmation d'une durée supérieure à 12 heures. Faites des pauses !");
     if (trouverProgrammation(e)) throw CalendarException("erreur, ProgrammationManager, Programmation deja existante");
     ProgrammationManager& um = ProgrammationManager::getInstance();
     ProgrammationManager::Iterator it = um.getIterator();
@@ -654,7 +731,7 @@ QString Evenement::getNom() const{
     if ( typeid(*this) == typeid(Unitaire) ){
         return QString::fromStdString( dynamic_cast<const Unitaire*>(this)->getTitre());
     } else if ( typeid(*this) == typeid(Activite) ){
-        return QString::fromStdString( dynamic_cast<const Activite*>(this)->getTitre());
+        return QString::fromStdString( dynamic_cast<const Activite*>(this)->getTitre() + "\n" + dynamic_cast<const Activite*>(this)->getLieu());
     } else {
         throw CalendarException("Erreur de type d'évènement...");
     }

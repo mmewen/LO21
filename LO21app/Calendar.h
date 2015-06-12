@@ -5,6 +5,8 @@
 #include<iostream>
 #include<typeinfo>
 #include<QObject>
+#include<QFile>
+#include<QXmlStreamWriter>
 #include "timing.h"
 
 using namespace std;
@@ -105,7 +107,7 @@ public:
     unsigned int getNbTaches() const { return nb; }
     Date getEcheance();
     void moveTacheTo(Tache* tMere, Tache* tFille);
-    void load(const string& f);
+    //void load(const string& f);
     void save(const string& f);
     void update(const string& nom, const Date& d);
     const Tache& getTache(const string& code) const;
@@ -156,6 +158,7 @@ class Tache {
     Tache(const Tache& t);
     Tache& operator=(const Tache& t);
 public:
+    unsigned int getNbPred(){return nbPred; }
     Projet* getProjet() const { return projetParent; }
     virtual ~Tache(){}
     Tache(const string& id, const string& t, const Date& dispo, const Date& deadline, Projet* p):
@@ -220,6 +223,8 @@ public:
     void setNonPreemp(){ preemptable=false; }
     virtual void afficher(ostream& f) ;
     void update(string id, string t, Date d, Date e, Duree dur, Duree df, bool p){
+        if(getRestant().getDureeEnMinutes()==0)
+            throw CalendarException("La tache a été entièrement programmée et n'est plus modifiable");
         setId(id); setTitre(t); setDatesDisponibiliteEcheance(d,e); setDuree(dur); setFait(df);
         if(dur.getDureeEnHeures()>=12)
             setPreemp();
@@ -250,6 +255,7 @@ private:
     Composite(string id, string t, Date d, Date e, Projet* p):Tache(id,t,d,e,p),composition(0),nbCompo(0),nbMaxCompo(0){}
     friend Composite& Projet::ajouterComposite(const string& t, const Date& dispo, const Date& deadline);
 public:
+    unsigned int getNbCompo(){return nbCompo; }
     virtual void addItem(Tache* t);
     void addCompo(Tache* t);
     Tache& getCompo(const string& id);
@@ -327,6 +333,7 @@ public:
     static void libererInstance();
     void ajouterProgrammation(Unitaire& e, const Date& d, const Horaire& h, Duree dur);
     void ajouterProgrammation(Activite& e, const Date& d, const Horaire& h, const Duree& dur);
+    void  save(const string& f);
     class Iterator{
         friend class ProgrammationManager;
         private:

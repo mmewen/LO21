@@ -8,6 +8,8 @@
 #include <QVBoxLayout>
 #include <stdlib.h>
 #include <string>
+#include <QFileDialog>
+#include <QMessageBox>
 
 namespace Ui {
 class AgendaView;
@@ -20,12 +22,14 @@ class AgendaView : public QWidget
     QVBoxLayout* layoutSemaine[7];
     void showSemaine();
     void clearSemaine();
+    void save(const string &f);
 public:
     explicit AgendaView(QWidget *parent = 0);
     ~AgendaView();
 public slots:
     void slotEventsChanged();
     void slotEventsChanged(const QDate& date);
+    void slotExporter();
 
 private:
     Ui::AgendaView *ui;

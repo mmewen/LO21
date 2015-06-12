@@ -19,6 +19,7 @@ AgendaView::AgendaView(QWidget *parent) :
     layoutSemaine[6] = ui->vLayoutDimanche;
 
     QObject::connect(ui->semaineSelector, SIGNAL(userDateChanged(QDate)), this, SLOT(slotEventsChanged(QDate)));
+    //QObject::connect(Exporterlasemaine, SIGNAL(clicked()), this, SLOT(slotExporter()));
     showSemaine();
 }
 
@@ -110,4 +111,88 @@ void AgendaView::slotEventsChanged(){
 
 void AgendaView::slotEventsChanged(const QDate& date){
     showSemaine();
+}
+
+void AgendaView::slotExporter(){
+    try{
+        QMessageBox msgBox;
+        msgBox.setText("Dans un monde parfait, les projets s'enregistrent, MAINTENANT !");
+
+        QString fileName = QFileDialog::getSaveFileName(this->parentWidget(),
+                                                        QString::fromStdString("Exporter la semaine"),
+                                                        "export.xml",
+                                                        "Fichier XML (*.xml)");
+
+        this->save( fileName.toStdString() );
+        msgBox.exec();
+    }
+    catch(CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
+}
+
+
+void AgendaView::save(const string &f){
+    ostringstream numsemaine, annee;
+    numsemaine << ui->semaineSelector->date().weekNumber();
+    annee << ui->semaineSelector->date().year();
+
+    QFile newfile( QString::fromStdString(f));
+    if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text))
+        throw CalendarException("erreur sauvegarde tâches : ouverture fichier xml");
+    QXmlStreamWriter stream(&newfile);
+    stream.setAutoFormatting(true);
+    stream.writeStartDocument();
+    stream.writeStartElement("Programmation");
+    stream.writeTextElement("annee",QString::fromStdString(annee.str()));
+    stream.writeTextElement("semaine",QString::fromStdString(numsemaine.str()));
+    stream.writeStartElement("programmations");
+    Date lundi = AgendaView::getLundiSelectionne();
+
+    // On récupère les programmations de la semaine
+    Programmation* progsDeLaSemaine[100];
+    int nbProgs = 0;
+    for( ProgrammationManager::Iterator it = ProgrammationManager::getInstance().getIterator(); !it.isDone() && (nbProgs<100) ; it.next() ){
+        if ( (lundi <= it.current().getDate()) && (it.current().getDate() < lundi+7) ){
+            progsDeLaSemaine[nbProgs++] = &it.current();
+        }
+    }
+
+
+    for (int i = nbProgs-1 ; i>=0 ; i--){
+        // On cherche la plus tôt pas encore affichée
+        Programmation* progTemp = 0;
+        int indice = -1;
+
+        for (int j = 0 ; j < nbProgs ; j++){
+            if ( (progsDeLaSemaine[j] != 0) && ( (progTemp == 0) || ((progTemp != 0) && ( progsDeLaSemaine[j]->getDate() < progTemp->getDate() )))){
+                progTemp = progsDeLaSemaine[j];
+                indice = j;
+            }
+        }
+        if ((indice == -1) || (progTemp == 0)){
+            throw CalendarException("Erreur lors de la recherche de la tâche la plus tôt");
+        }
+
+        stream.writeStartElement("programmation");
+        stream.writeTextElement("date",progTemp->getDate().getQDate().toString(Qt::ISODate));
+        stream.writeTextElement("horaire",QString::fromStdString(progTemp->getHoraire().toString()));
+        stream.writeTextElement("titre",progTemp->getEvenement().getNom());
+        if(typeid(progTemp->getEvenement())==typeid(Activite&)){
+            stream.writeTextElement("lieu",QString::fromStdString(dynamic_cast<const Activite&>(progTemp->getEvenement()).getLieu()));
+        }
+        QString str;
+        str.setNum(progTemp->getDuree().getDureeEnMinutes());
+        stream.writeTextElement("duree",str);
+        stream.writeEndElement();
+
+        // On vide la case
+        progsDeLaSemaine[indice] = 0;
+    }
+    stream.writeEndElement();
+    stream.writeEndElement();
+    stream.writeEndDocument();
+    newfile.close();
 }

@@ -409,7 +409,7 @@ void  Projet::save(const string& f){
     Projet::Iterator it = getIterator();
     for(it.first();!it.isDone();it.next()){
         if(typeid(it.current())==typeid(Unitaire&)){
-            stream.writeStartElement("tache unitaire");
+            stream.writeStartElement("tache_unitaire");
             stream.writeAttribute("preemptive", (dynamic_cast<Unitaire&>(it.current()).isPreemp())?"true":"false");
             stream.writeTextElement("identificateur",QString::fromStdString(it.current().getId()));
             stream.writeTextElement("titre",QString::fromStdString(it.current().getTitre()));
@@ -430,7 +430,7 @@ void  Projet::save(const string& f){
         }
         else
         if(typeid(it.current())==typeid(Composite&)){
-            stream.writeStartElement("tache composite");
+            stream.writeStartElement("tache_composite");
             stream.writeTextElement("identificateur",QString::fromStdString(it.current().getId()));
             stream.writeTextElement("titre",QString::fromStdString(it.current().getTitre()));
             stream.writeTextElement("disponibilite",it.current().getDateDisponibilite().getQDate().toString(Qt::ISODate));
@@ -726,6 +726,8 @@ ProgrammationManager& ProgrammationManager::operator=(const ProgrammationManager
     return *this;
 }
 */
+
+
 
 QString Evenement::getNom() const{
     if ( typeid(*this) == typeid(Unitaire) ){

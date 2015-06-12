@@ -216,8 +216,9 @@ EditeurProjet::EditeurProjet(Projet* p):
             dispo->setMaximumDate(it.current().getDateDisponibilite().getQDate());
     }
 
-    QPushButton *annuler = new QPushButton("Annuler les modifications");
     QPushButton *sauver = new QPushButton("Sauver les changements");
+    QPushButton *annuler = new QPushButton("Annuler les modifications");
+    QPushButton *exporter = new QPushButton("Exporter le projet en XML");
 
     // Remplissage des champs
     titre->setText(QString::fromStdString(p->getNom()));
@@ -242,14 +243,16 @@ EditeurProjet::EditeurProjet(Projet* p):
     // afficher autres trucs !!
 
     // mettre des taches prédécesseurs
-    formLayout->addRow("", annuler);
     formLayout->addRow("", sauver);
+    formLayout->addRow("", annuler);
+    formLayout->addRow("", exporter);
 
     this->setLayout(formLayout);
     this->setFixedWidth(550);
 
     connect(annuler, SIGNAL(clicked()), this, SLOT(slotReload()));
     connect(sauver, SIGNAL(clicked()), this, SLOT(slotSave()));
+    connect(exporter, SIGNAL(clicked()), this, SLOT(slotExporter()));
 }
 
 void EditeurProjet::slotReload(){
@@ -269,6 +272,27 @@ void EditeurProjet::slotSave(){
     }
     emit projetUpdated(projet);
 }
+
+void EditeurProjet::slotExporter(){
+    try{
+        QMessageBox msgBox;
+        msgBox.setText("Dans un monde parfait, les projets s'enregistrent, MAINTENANT !");
+
+        QString fileName = QFileDialog::getSaveFileName(this->parentWidget(),
+                                                        QString::fromStdString("Exporter le projet "+this->projet->getNom()),
+                                                        "export.xml",
+                                                        "Fichier XML (*.xml)");
+
+        this->projet->save( fileName.toStdString() );
+        msgBox.exec();
+    }
+    catch(CalendarException e){
+        QMessageBox *erreur = new QMessageBox;
+        erreur->setText(QString::fromStdString(e.getInfo()));
+        erreur->exec();
+    }
+}
+
 
 EditeurTache::EditeurTache():
     titre(new QLineEdit),
@@ -299,8 +323,8 @@ void EditeurTache::printFinForm(Tache* t){
 
     // mettre des taches prédécesseurs
     formLayout->addRow("", predecesseurs);
-    formLayout->addRow("", annuler);
     formLayout->addRow("", sauver);
+    formLayout->addRow("", annuler);
 
     this->setLayout(formLayout);
     this->setFixedWidth(650);

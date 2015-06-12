@@ -20,6 +20,7 @@
 #include <QComboBox>
 #include <QDialog>
 #include <QMessageBox>
+#include <QFileDialog>
 
 
 class TreeViewModel : public QObject {
@@ -114,6 +115,7 @@ public:
     virtual ~EditeurProjet() {}
 public slots:
     void slotSave();
+    void slotExporter();
     void slotReload();
 signals:
     void projetUpdated(Projet* projet);

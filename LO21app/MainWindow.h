@@ -86,6 +86,7 @@ public slots:
     void slotShowTC();
     void slotProgrammerTU();
     void slotProgrammerActivite();
+    void slotSave();
 //    quit();
 
 };

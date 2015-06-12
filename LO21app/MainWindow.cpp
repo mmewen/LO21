@@ -64,9 +64,11 @@ MainWindow::MainWindow():
 
 
     QMenu *menuFichier = menuBar()->addMenu("&Fichier");
-//    QMenu *menuEdition = menuBar()->addMenu("&Edition");
     QAction *actionQuitter = new QAction("&Quitter", this);
+    QAction *enregistrer = new QAction("&Enregistrer", this);
+    menuFichier->addAction(enregistrer);
     menuFichier->addAction(actionQuitter);
+    connect(enregistrer, SIGNAL(triggered()), this, SLOT(slotSave()));
     connect(actionQuitter, SIGNAL(triggered()), this, SLOT(close()));
 
     tachesTab->setLayout(tachesLayout);
@@ -326,4 +328,11 @@ void MainWindow::slotProgrammerActivite(){
     connect(pa, SIGNAL(activiteProgrammee()), edition, SLOT(slotEnable()));
     connect(pa, SIGNAL(rejected()), edition, SLOT(slotEnable()));
     pa->exec();
+}
+
+
+void MainWindow::slotSave(){
+    QMessageBox msgBox;
+    msgBox.setText("Dans un monde parfait, les projets s'enregistrent, MAINTENANT !");
+    msgBox.exec();
 }

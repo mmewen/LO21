@@ -20,9 +20,6 @@ AgendaViewClass::AgendaViewClass(QWidget *parent) :
 
     connect(ui->semaineSelector, SIGNAL(editingFinished()), this, SLOT(slotEventsChanged()));
 
-//    connect(ui->semaineSelector, SIGNAL(dateTimeChanged(const QDateTime & datetime)), this, SLOT(slotEventsChanged(const QDateTime&)));
-
-
     showSemaine();
 }
 
@@ -39,6 +36,13 @@ Date AgendaViewClass::getLundiSelectionne(){
 
 void AgendaViewClass::showSemaine(){
     clearSemaine();
+
+    // On met le titre bien
+    ostringstream numsemaine, annee;
+    numsemaine << ui->semaineSelector->date().weekNumber();
+    annee << ui->semaineSelector->date().year();
+    ui->titre->setText( QString::fromStdString("Semaine numéro "+numsemaine.str()+", année "+annee.str() ) );
+
 
     Date lundi = getLundiSelectionne();
 

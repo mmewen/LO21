@@ -6,6 +6,8 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
+#include <stdlib.h>
+#include <string>
 
 namespace Ui {
 class AgendaView;

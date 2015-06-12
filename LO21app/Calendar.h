@@ -4,7 +4,8 @@
 #include<string>
 #include<iostream>
 #include<typeinfo>
-#include<QObject>#include "timing.h"
+#include<QObject>
+#include "timing.h"
 
 using namespace std;
 using namespace TIME;

@@ -353,6 +353,7 @@ EditeurTU::EditeurTU(Unitaire *t):
     echeance->setSelectedDate(t->getDateEcheance().getQDate());
     echeance->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
     duree->setValue(t->getDuree().getDureeEnMinutes());
+    duree->setMaximum(24*60);
     preemptible->setChecked(t->isPreemp());
 
     formLayout = new QFormLayout;

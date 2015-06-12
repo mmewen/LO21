@@ -297,11 +297,13 @@ void MainWindow::slotProgrammerTU(){
                     msgBox.setText("La tache a déjà été entièrement programmée");
                     msgBox.exec();
                 }
-                edition->setEnabled(false);
-                ProgrammationTache *pt = new ProgrammationTache(dynamic_cast<Unitaire*>(tache));
-                connect(pt, SIGNAL(tacheProgrammee()), edition, SLOT(slotEnable()));
-                connect(pt, SIGNAL(rejected()), edition, SLOT(slotEnable()));
-                pt->exec();
+                else{
+                    edition->setEnabled(false);
+                    ProgrammationTache *pt = new ProgrammationTache(dynamic_cast<Unitaire*>(tache));
+                    connect(pt, SIGNAL(tacheProgrammee()), edition, SLOT(slotEnable()));
+                    connect(pt, SIGNAL(rejected()), edition, SLOT(slotEnable()));
+                    pt->exec();
+                }
             }
             else{
                 QMessageBox msgBox;
@@ -323,10 +325,10 @@ void MainWindow::slotProgrammerTU(){
 }
 
 void MainWindow::slotProgrammerActivite(){
-    edition->setEnabled(false);
+    //edition->setEnabled(false);
     ProgrammationActivite *pa = new ProgrammationActivite();
     connect(pa, SIGNAL(activiteProgrammee()), edition, SLOT(slotEnable()));
-    connect(pa, SIGNAL(rejected()), edition, SLOT(slotEnable()));
+    //connect(pa, SIGNAL(rejected()), edition, SLOT(slotEnable()));
     pa->exec();
 }
 

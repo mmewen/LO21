@@ -33,7 +33,7 @@
 //#include <QList>
 
 // Constantes
-#define W_WIDTH 900
+#define W_WIDTH 1100
 #define W_HEIGHT 700
 
 

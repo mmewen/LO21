@@ -297,7 +297,7 @@ void EditeurTache::printFinForm(Tache* t){
     formLayout->addRow("", sauver);
 
     this->setLayout(formLayout);
-    this->setFixedWidth(550);
+    this->setFixedWidth(650);
 
     connect(predecesseurs, SIGNAL(clicked()), this, SLOT(slotEditionPredecesseurs()));
     connect(annuler, SIGNAL(clicked()), this, SLOT(slotReload()));

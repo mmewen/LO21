@@ -3,8 +3,6 @@
 
 
 
-ostream& operator<<(ostream& f, const Programmation& p);
-
 //TACHE
 ostream& operator<<(ostream& fout, Tache& t){
     t.afficher(fout);
@@ -137,17 +135,6 @@ void Composite::afficher(ostream& f) {
 
 void Composite::addItem(Tache* t){
     Tache::addItem(t);
-//    Projet::Iterator it = getProjet()->getIterator();
-//    for(it.first();!it.isDone();it.next()){
-//        if(typeid(it.current())==typeid(Composite*)){
-//            Composite* c = &dynamic_cast<Composite>(it.current());
-//            if(c.getCompo(this->getId())){
-//                Tache::Iterator it2 = getIterator();
-//                for(it2.first();!it2.isDone();it2.next())
-//                    c.addItem(&it2.current());
-//            }
-//        }
-//    }
 }
 
 void Composite::addCompo(Tache* t){

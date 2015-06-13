@@ -320,7 +320,7 @@ public:
 
 /*! \class Activite
         \brief Classe d'evenement basique programmable, héritant d'Evenement
-        La classe possède un titre et un lieu
+        La classe possède un titre et un lieu.
 */
 class Activite : public Evenement {
 private:
@@ -342,6 +342,10 @@ public:
 
 class Programmation;
 
+/*! \class ProgrammationManager
+        \brief Classe composite de Programmation
+        La classe applique le designe pattern singleton et possède un iterateur sur le tableau de pointeurs de Programmations.
+*/
 class ProgrammationManager : public QObject {
     Q_OBJECT
 private:
@@ -390,6 +394,9 @@ signals:
     void programmationsChanged();
 };
 
+/*! \class Programmation
+        \brief Classe donnant une date, un horaire et une durée à une Evenement, classe composant ProgrammationManager
+*/
 class Programmation {
     const Evenement* evt;
     Date date;

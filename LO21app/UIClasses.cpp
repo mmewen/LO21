@@ -3,7 +3,6 @@
 TreeViewModel::Handler TreeViewModel::handler=TreeViewModel::Handler();
 
 TreeViewModel& TreeViewModel::getInstance(){
-    //! Retourne l'instance de la classe
     if (handler.instance==0) handler.instance=new TreeViewModel();
     return *(handler.instance);
 }
@@ -19,7 +18,6 @@ TreeViewModel::~TreeViewModel(){
 }
 
 void TreeViewModel::addProjetItem(QStandardItem* item, Projet* projet){
-    //! Ajoute le couple (projet item) au tableau tabItemsProjets
     if (tipNb==tipNbMax){
         CoupleItemProjet* newtab = new CoupleItemProjet[tipNbMax+10];
         for(int i=0; i<tipNb; i++) newtab[i]=tabItemsProjets[i];
@@ -34,7 +32,6 @@ void TreeViewModel::addProjetItem(QStandardItem* item, Projet* projet){
 }
 
 void TreeViewModel::addTacheItem(QStandardItem* item, Tache* tache){
-     //! Ajoute le couple (tache item) au tableau tabItemsTaches
     if (titNb==titNbMax){
         CoupleItemTache* newtab = new CoupleItemTache[titNbMax+10];
         for(int i=0; i<titNb; i++) newtab[i]=tabItemsTaches[i];
@@ -50,7 +47,6 @@ void TreeViewModel::addTacheItem(QStandardItem* item, Tache* tache){
 
 
 void TreeViewModel::printTree(){
-    //! Affiche l'arbre complet au lancement de l'application
     ProjetManager& pjm = ProjetManager::getInstance();
     QStandardItem *parentItem = modele.invisibleRootItem();
 
@@ -76,7 +72,6 @@ void TreeViewModel::printTree(){
 }
 
 void TreeViewModel::printBranch(QStandardItem* parentItem, Tache* tache){
-    //! Affiche le contenu d'une tache composite récursivement
     // On ajoute l'item
     QStandardItem* tacheItemTemp = new QStandardItem(QString::fromStdString(tache->getTitre()));
     tacheItemTemp->setEditable(false);
@@ -95,7 +90,6 @@ void TreeViewModel::printBranch(QStandardItem* parentItem, Tache* tache){
 }
 
 void TreeViewModel::addProjet(Projet* nouveauProjet){
-    //! Ajoute un projet à la racine (virtuelle) de l'arbre à l'ajout d'un projet
     QStandardItem *parentItem = modele.invisibleRootItem();
 
     // On ajoute la ligne
@@ -195,7 +189,6 @@ void TreeViewModel::addTache(Tache* tacheMere, Tache* tache){
 }
 
 void TreeViewModel::setIcon(QStandardItem* item, int statut){
-    //! Met l'icone qui va bien sur chaque item
     if(statut==2)
         item->setIcon(*icone2);
     else if(statut==1)

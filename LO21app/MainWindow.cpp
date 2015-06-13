@@ -130,22 +130,6 @@ void MainWindow::treeViewClicked(const QModelIndex &index)
 }
 
 
-//void MainWindow::clearTFL(){
-//    QLayoutItem *child;
-
-//    if (tachesFormLayout != 0){
-//        int count = tachesFormLayout->count();
-//        while ( count-- != 0) {
-//            child = tachesFormLayout->takeAt(0);
-//            child->widget()->setParent(NULL);
-//            tachesFormLayout->removeItem(child);
-//        }
-//        tachesFormLayout->deleteLater();
-//    }
-//}
-
-
-
 void MainWindow::slotAjouterProjet(){
     // Création du projet
     ProjetManager& pjm = ProjetManager::getInstance();

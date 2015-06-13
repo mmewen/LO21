@@ -19,7 +19,7 @@ AgendaView::AgendaView(QWidget *parent) :
     layoutSemaine[6] = ui->vLayoutDimanche;
 
     QObject::connect(ui->semaineSelector, SIGNAL(userDateChanged(QDate)), this, SLOT(slotEventsChanged(QDate)));
-    //QObject::connect(Exporterlasemaine, SIGNAL(clicked()), this, SLOT(slotExporter()));
+    QObject::connect(ui->exporterLaSemaine, SIGNAL(clicked()), this, SLOT(slotExporter()));
     showSemaine();
 }
 
@@ -57,6 +57,10 @@ void AgendaView::showSemaine(){
 
     cout<<nbProgs<<" programmations cette semaine"<<endl;
 
+    if (nbProgs==0)
+        ui->exporterLaSemaine->setEnabled(false);
+
+
     QLabel* nomJour;
     for(int k=0; k<7 ; k++){
         nomJour = new QLabel(QDate::longDayName(k+1) + ' ' + QString::fromStdString((lundi+k).getJourMoisString()));
@@ -83,10 +87,9 @@ void AgendaView::showSemaine(){
         // On l'affiche
         EventWidget* nouvelEvent = new EventWidget( progTemp );
         layoutSemaine[ progTemp->getDate().getQDate().dayOfWeek() - 1 ]->addWidget( nouvelEvent );
-        cout<<endl<<"Hauteur : "<<nouvelEvent->height()<<endl;
+//        cout<<endl<<"Hauteur : "<<nouvelEvent->height()<<endl;
 
-
-        // Si besoin, on l'ajoute sur le jour suivant
+        ui->exporterLaSemaine->setEnabled(true);
 
         // On vide la case
         progsDeLaSemaine[indice] = 0;
@@ -116,12 +119,12 @@ void AgendaView::slotEventsChanged(const QDate& date){
 void AgendaView::slotExporter(){
     try{
         QMessageBox msgBox;
-        msgBox.setText("Dans un monde parfait, les projets s'enregistrent, MAINTENANT !");
+        msgBox.setText("Dans un monde parfait, la semaine s'enregistre, MAINTENANT !");
 
         QString fileName = QFileDialog::getSaveFileName(this->parentWidget(),
-                                                        QString::fromStdString("Exporter la semaine"),
-                                                        "export.xml",
-                                                        "Fichier XML (*.xml)");
+                QString::fromStdString("Exporter la semaine"),
+                "export_semaine.xml",
+                "Fichier XML (*.xml)");
 
         this->save( fileName.toStdString() );
         msgBox.exec();

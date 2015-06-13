@@ -14,6 +14,8 @@ EventWidget::EventWidget( Programmation* prog, QWidget *parent) :
 
     // On met une taille proportionnelle à la durée
 //    this->setMinimumHeight( (4*(prog->getDuree().getDureeEnMinutes() * 500) / (24*60))<100?100:(4*(prog->getDuree().getDureeEnMinutes() * 500) / (24*60)) );
+    this->setMinimumHeight( 102 );
+
 //    cout<<endl<<"Hauteur idéale:"<<(4*(prog->getDuree().getDureeEnMinutes() * 500) / (24*60))<<endl<<"Hauteur réelle:"<<this->height()<<endl;
 }
 

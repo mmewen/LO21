@@ -97,6 +97,23 @@ void Unitaire::afficher(ostream& f) {
     }
 }
 
+int Unitaire::getStatut(){
+    // Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
+
+    if (getDateEcheance() < Date::toTimingDate(QDate::currentDate())) // si la deadline est passée
+        return 2;
+
+    if ( getRestant().isNull() ){
+        return 2;
+    }
+    if ( getFait().isNull() ){
+        return 0;
+    }
+
+    return 1;
+}
+
+
 //COMPOSITE
 void Composite::afficher(ostream& f) {
     f<<"composite \n";
@@ -196,6 +213,48 @@ bool Composite::isPrecedencePotentielle( const string& id ) {
 
     return true;
 }
+
+
+int Composite::getStatut(){
+    // Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
+
+    if (getDateEcheance() < Date::toTimingDate(QDate::currentDate())) // si la deadline est passée
+        return 2;
+
+    if (getNbCompo() != 0) {
+        int statutTemp;
+        bool fini = true, commence = false;
+        for( Composite::CompoIterator it = getCompoIterator() ; !it.isDone() ;it.next() ){
+            statutTemp = it.current().getStatut();
+
+            if (statutTemp != 2){
+                fini = false;
+            }
+
+            if (statutTemp != 0){
+                commence = true;
+            }
+        }
+
+        if ( commence && !fini){
+            return 1; // en cours
+        }
+
+        if ( !commence ){
+            return 0; // pas commencé
+        }
+
+        if ( fini ){
+            return 2; // fini
+        }
+
+    } else {
+        return 0;
+    }
+}
+
+
+
 
 
 
@@ -514,6 +573,45 @@ void Projet::update(const string& nom, const Date& d){
     }
     this->dispo = d;
     cout<<"saved:"<<this->nom<<endl;
+}
+
+int Projet::getStatut(){
+    // Retourne le statut du projet : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
+
+    if (getEcheance() < Date::toTimingDate(QDate::currentDate())) // si la deadline est passée
+        return 2;
+
+    if (getNbTaches() != 0) {
+        int statutTemp;
+        bool fini = true, commence = false;
+        for( Projet::Iterator it = getIterator() ; !it.isDone() ;it.next() ){
+            statutTemp = it.current().getStatut();
+
+            if (statutTemp != 2){
+                fini = false;
+            }
+
+            if (statutTemp != 0){
+                commence = true;
+            }
+        }
+
+        if ( commence && !fini){
+            return 1; // en cours
+        }
+
+        if ( !commence ){
+            return 0; // pas commencé
+        }
+
+        if ( fini ){
+            return 2; // fini
+        }
+
+
+    } else {
+        return 0;
+    }
 }
 
 

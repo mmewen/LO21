@@ -81,6 +81,7 @@ namespace TIME {
 		double getDureeEnHeures() const { return double(nb_minutes)/60; } //<!Retourne la duree en heures
         unsigned int getDureeEnHeuresInt() const { return nb_minutes/60; } //<!Retourne la duree en heures tronquée à l'heure près
 		void afficher(std::ostream& f=std::cout) const { f<<std::setfill('0')<<std::setw(2)<<nb_minutes/60<<"H"<<std::setw(2)<<nb_minutes%60<<std::setfill(' '); } //<!Affiche la duree sous le format hhHmm
+        bool isNull() { return nb_minutes==0; }
 	private:
 		unsigned int nb_minutes;
 	};

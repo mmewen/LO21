@@ -249,24 +249,4 @@ signals:
 };
 
 
-
-
-
-
-
-
-
-
-// TODO:
-// X enregistrement changements
-// X maj treeview à l'enregistrement
-// - précédences
-// - faire les free qui vont bien
-// - suppr taches/projets ?
-
-// Penser à :
-// mettre des const
-// mettre des try catch
-// insert : beginInsertRows() and endInsertRows()
-
 #endif // UICLASSES_H

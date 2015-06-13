@@ -13,7 +13,9 @@ void TreeViewModel::libererInstance(){
 }
 
 TreeViewModel::~TreeViewModel(){
-    delete icone0, icone1, icone2;
+    delete icone0;
+    delete icone1;
+    delete icone2;
     modele.clear();
 }
 
@@ -115,6 +117,7 @@ Tache* TreeViewModel::getTacheFromItem(QStandardItem* item){
         erreur->setText(QString::fromStdString(e.getInfo()));
         erreur->exec();
     }
+    return 0;
 }
 
 
@@ -132,6 +135,7 @@ Projet* TreeViewModel::getProjetFromItem(QStandardItem* item){
         erreur->setText(QString::fromStdString(e.getInfo()));
         erreur->exec();
     }
+    return 0;
 }
 
 QStandardItem* TreeViewModel::getItemFromTache(Tache* tache){
@@ -148,6 +152,7 @@ QStandardItem* TreeViewModel::getItemFromTache(Tache* tache){
         erreur->setText(QString::fromStdString(e.getInfo()));
         erreur->exec();
     }
+    return 0;
 }
 
 QStandardItem* TreeViewModel::getItemFromProjet(Projet* projet){
@@ -164,6 +169,7 @@ QStandardItem* TreeViewModel::getItemFromProjet(Projet* projet){
         erreur->setText(QString::fromStdString(e.getInfo()));
         erreur->exec();
     }
+    return 0;
 }
 
 void TreeViewModel::addTache(Projet* projet, Tache* tache){

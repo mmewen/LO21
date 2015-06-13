@@ -21,6 +21,7 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QIcon>
 
 
 class TreeViewModel : public QObject {
@@ -46,12 +47,16 @@ class TreeViewModel : public QObject {
     CoupleItemTache* tabItemsTaches; // le tableau qui lie chaque tâche à un item
     int titNb, titNbMax;
 
+    QIcon* icone0;
+    QIcon* icone1;
+    QIcon* icone2;
 
     // Méthodes privées générales :
-    TreeViewModel(): tabItemsProjets(0), tipNb(0), tipNbMax(0), tabItemsTaches(0), titNb(0), titNbMax(0) {}
+    TreeViewModel(): tabItemsProjets(0), tipNb(0), tipNbMax(0), tabItemsTaches(0), titNb(0), titNbMax(0),
+         icone0(new QIcon("dot0.png")), icone1(new QIcon("dot1.png")), icone2(new QIcon("dot2.png")) {}
 //    ~TreeViewModel(){for(unsigned int i=0; i<nb; i++) delete projets[i]; delete[] projets;}
     ~TreeViewModel();
-    TreeViewModel(const TreeViewModel&);
+    TreeViewModel (const TreeViewModel&);
     struct Handler{
         TreeViewModel* instance;
         Handler():instance(0){}
@@ -63,6 +68,7 @@ class TreeViewModel : public QObject {
     void printBranch(QStandardItem* , Tache* );
     void addProjetItem(QStandardItem* item, Projet* projet);
     void addTacheItem(QStandardItem* item, Tache* tache);
+    void setIcon(QStandardItem* item, int statut);
 public:
     static TreeViewModel& getInstance();
     static void libererInstance();
@@ -78,6 +84,8 @@ public:
 
     Projet* getProjetFromItem(QStandardItem* item);
     QStandardItem* getItemFromProjet(Projet* projet);
+
+    void updateIcons(Tache* t);
 
 public slots:
     void updateName(Projet* projet);

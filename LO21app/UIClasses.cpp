@@ -13,6 +13,7 @@ void TreeViewModel::libererInstance(){
 }
 
 TreeViewModel::~TreeViewModel(){
+    delete icone0, icone1, icone2;
     modele.clear();
 }
 
@@ -52,14 +53,9 @@ void TreeViewModel::printTree(){
     for(ProjetManager::Iterator it = pjm.getIterator(); !it.isDone(); it.next()){
 
         // On ajoute la ligne
-        QStandardItem* itemTemp;
-        if(it.current().getStatut()==2)
-            itemTemp = new QStandardItem(QString::fromStdString("* " + it.current().getNom()));
-        else if(it.current().getStatut()==1)
-            itemTemp = new QStandardItem(QString::fromStdString("+ " + it.current().getNom()));
-        else if(it.current().getStatut()==0)
-            itemTemp = new QStandardItem(QString::fromStdString("o " + it.current().getNom()));
+        QStandardItem* itemTemp = new QStandardItem(QString::fromStdString(it.current().getNom()));
         itemTemp->setEditable(false);
+        setIcon(itemTemp, it.current().getStatut());
         parentItem->appendRow(itemTemp);
 
         // On ajoute le couple (item, projet) au tableau qui va bien
@@ -77,14 +73,9 @@ void TreeViewModel::printTree(){
 void TreeViewModel::printBranch(QStandardItem* parentItem, Tache* tache){
 
     // On ajoute l'item
-    QStandardItem* tacheItemTemp;
-    if(tache->getStatut()==2)
-        tacheItemTemp = new QStandardItem(QString::fromStdString("* " + tache->getTitre()));
-    else if(tache->getStatut()==1)
-        tacheItemTemp = new QStandardItem(QString::fromStdString("+ " + tache->getTitre()));
-    else if(tache->getStatut()==0)
-        tacheItemTemp = new QStandardItem(QString::fromStdString("o " + tache->getTitre()));
+    QStandardItem* tacheItemTemp = new QStandardItem(QString::fromStdString(tache->getTitre()));
     tacheItemTemp->setEditable(false);
+    setIcon(tacheItemTemp, tache->getStatut());
     parentItem->appendRow(tacheItemTemp);
 
     // On ajoute le couple (item, tache) au tableau qui va bien aussi
@@ -189,37 +180,51 @@ void TreeViewModel::addTache(Tache* tacheMere, Tache* tache){
     // On ajoute l'item
     QStandardItem* tacheItemTemp = new QStandardItem(QString::fromStdString(tache->getTitre()));
     tacheItemTemp->setEditable(false);
+    setIcon(tacheItemTemp, tache->getStatut());
+
     getItemFromTache(tacheMere)->appendRow(tacheItemTemp);
 
     // On ajoute le couple (item, tache) au tableau qui va bien
     addTacheItem(tacheItemTemp, tache);
 }
 
+void TreeViewModel::setIcon(QStandardItem* item, int statut){
+    if(statut==2)
+        item->setIcon(*icone2);
+    else if(statut==1)
+        item->setIcon(*icone1);
+    else if(statut==0)
+        item->setIcon(*icone0);
+//    QIcon* icone0;
+//    QIcon* icone1;
+//    QIcon* icone2;
+//    QIcon("dot0.svg")
+//    item->setText("cdfb");
+}
+
 void TreeViewModel::updateName(Projet* projet){
-    if(projet->getStatut()==2)
-        getItemFromProjet(projet)->setText(QString::fromStdString("* " + projet->getNom()));
-    else if(projet->getStatut()==1)
-        getItemFromProjet(projet)->setText(QString::fromStdString("+ " + projet->getNom()));
-    else if(projet->getStatut()==0)
-        getItemFromProjet(projet)->setText(QString::fromStdString("o " + projet->getNom()));
+    getItemFromProjet(projet)->setText(QString::fromStdString(projet->getNom()));
+    setIcon(getItemFromProjet(projet), projet->getStatut());
 }
 
 void TreeViewModel::updateName(Unitaire* tache){
-    if(tache->getStatut()==2)
-        getItemFromTache(tache)->setText(QString::fromStdString("* " + tache->getTitre()));
-    else if(tache->getStatut()==1)
-        getItemFromTache(tache)->setText(QString::fromStdString("+ " + tache->getTitre()));
-    else if(tache->getStatut()==0)
-        getItemFromTache(tache)->setText(QString::fromStdString("o " + tache->getTitre()));
+    getItemFromTache(tache)->setText(QString::fromStdString(tache->getTitre()));
+    setIcon(getItemFromTache(tache), tache->getStatut());
 }
 
 void TreeViewModel::updateName(Composite* tache){
-    if(tache->getStatut()==2)
-        getItemFromTache(tache)->setText(QString::fromStdString("* " + tache->getTitre()));
-    else if(tache->getStatut()==1)
-        getItemFromTache(tache)->setText(QString::fromStdString("+ " + tache->getTitre()));
-    else if(tache->getStatut()==0)
-        getItemFromTache(tache)->setText(QString::fromStdString("o " + tache->getTitre()));
+    getItemFromTache(tache)->setText(QString::fromStdString(tache->getTitre()));
+    setIcon(getItemFromTache(tache), tache->getStatut());
+}
+
+void TreeViewModel::updateIcons(Tache* t){
+    setIcon( getItemFromTache(t), t->getStatut() );
+
+    QStandardItem* current = getItemFromTache(t);
+    while ((current = current->parent())->parent() != 0){
+        setIcon( current, getTacheFromItem(current)->getStatut() );
+    }
+    setIcon( current, getProjetFromItem(current)->getStatut() );
 }
 
 

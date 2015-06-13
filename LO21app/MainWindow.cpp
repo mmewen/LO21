@@ -75,6 +75,7 @@ MainWindow::MainWindow():
 }
 
 void MainWindow::showUnitaire(Unitaire& t){
+    treeView.updateIcons(&t);
     edition = new EditeurTU(&t);
     this->t = &t;
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
@@ -86,6 +87,7 @@ void MainWindow::showUnitaire(Unitaire& t){
 
 
 void MainWindow::showComposite(Composite& t){
+    treeView.updateIcons(&t);
     edition = new EditeurTC(&t);
     this->t = &t;
     editionScroll->setAlignment(Qt::AlignHCenter | Qt::AlignTop);

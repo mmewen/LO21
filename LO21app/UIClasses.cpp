@@ -52,7 +52,13 @@ void TreeViewModel::printTree(){
     for(ProjetManager::Iterator it = pjm.getIterator(); !it.isDone(); it.next()){
 
         // On ajoute la ligne
-        QStandardItem* itemTemp = new QStandardItem(QString::fromStdString(it.current().getNom()));
+        QStandardItem* itemTemp;
+        if(it.current().getStatut()==2)
+            itemTemp = new QStandardItem(QString::fromStdString("* " + it.current().getNom()));
+        else if(it.current().getStatut()==1)
+            itemTemp = new QStandardItem(QString::fromStdString("+ " + it.current().getNom()));
+        else if(it.current().getStatut()==0)
+            itemTemp = new QStandardItem(QString::fromStdString("o " + it.current().getNom()));
         itemTemp->setEditable(false);
         parentItem->appendRow(itemTemp);
 
@@ -71,7 +77,13 @@ void TreeViewModel::printTree(){
 void TreeViewModel::printBranch(QStandardItem* parentItem, Tache* tache){
 
     // On ajoute l'item
-    QStandardItem* tacheItemTemp = new QStandardItem(QString::fromStdString(tache->getTitre()));
+    QStandardItem* tacheItemTemp;
+    if(tache->getStatut()==2)
+        tacheItemTemp = new QStandardItem(QString::fromStdString("* " + tache->getTitre()));
+    else if(tache->getStatut()==1)
+        tacheItemTemp = new QStandardItem(QString::fromStdString("+ " + tache->getTitre()));
+    else if(tache->getStatut()==0)
+        tacheItemTemp = new QStandardItem(QString::fromStdString("o " + tache->getTitre()));
     tacheItemTemp->setEditable(false);
     parentItem->appendRow(tacheItemTemp);
 
@@ -184,15 +196,30 @@ void TreeViewModel::addTache(Tache* tacheMere, Tache* tache){
 }
 
 void TreeViewModel::updateName(Projet* projet){
-    getItemFromProjet(projet)->setText(QString::fromStdString(projet->getNom()));
+    if(projet->getStatut()==2)
+        getItemFromProjet(projet)->setText(QString::fromStdString("* " + projet->getNom()));
+    else if(projet->getStatut()==1)
+        getItemFromProjet(projet)->setText(QString::fromStdString("+ " + projet->getNom()));
+    else if(projet->getStatut()==0)
+        getItemFromProjet(projet)->setText(QString::fromStdString("o " + projet->getNom()));
 }
 
 void TreeViewModel::updateName(Unitaire* tache){
-    getItemFromTache(tache)->setText(QString::fromStdString(tache->getTitre()));
+    if(tache->getStatut()==2)
+        getItemFromTache(tache)->setText(QString::fromStdString("* " + tache->getTitre()));
+    else if(tache->getStatut()==1)
+        getItemFromTache(tache)->setText(QString::fromStdString("+ " + tache->getTitre()));
+    else if(tache->getStatut()==0)
+        getItemFromTache(tache)->setText(QString::fromStdString("o " + tache->getTitre()));
 }
 
 void TreeViewModel::updateName(Composite* tache){
-    getItemFromTache(tache)->setText(QString::fromStdString(tache->getTitre()));
+    if(tache->getStatut()==2)
+        getItemFromTache(tache)->setText(QString::fromStdString("* " + tache->getTitre()));
+    else if(tache->getStatut()==1)
+        getItemFromTache(tache)->setText(QString::fromStdString("+ " + tache->getTitre()));
+    else if(tache->getStatut()==0)
+        getItemFromTache(tache)->setText(QString::fromStdString("o " + tache->getTitre()));
 }
 
 

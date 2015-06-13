@@ -366,92 +366,6 @@ const Tache& Projet::getTache(const string& id)const{
     return const_cast<Projet*>(this)->getTache(id);
 }
 
-/*
-Projet::Projet(const Projet& um):nb(um.nb),nbMax(um.nbMax), taches(new Tache*[um.nb]){
-    for(unsigned int i=0; i<nb; i++) taches[i]=new Tache(*um.taches[i]);
-}
-
-Projet& Projet::operator=(const Projet& um){
-    if (this==&um) return *this;
-    this->~Projet();
-    for(unsigned int i=0; i<um.nb; i++) addItem(new Tache(*um.taches[i]));
-    return *this;
-}
-*/
-/*
-void Projet::load(const string& f){
-    if (file!=f) this->~Projet();
-    file=f;
-    ifstream fin(file.c_str()); // open file
-    if (!fin) throw CalendarException("erreur, lors de l'ouverture du fichier de taches");
-    char tmp[256];
-    while (!fin.eof()&&fin.good()){
-        fin.getline(tmp,256); // get code
-        if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture identificateur tache");
-        string type=tmp;
-        if(type=="unitaire"){
-            fin.getline(tmp,256); // get code
-            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture identificateur tache");
-            string id=tmp;
-            fin.getline(tmp,256); // get titre
-            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture titre tache");
-            string titre=tmp;
-
-            Date dispo;
-            fin>>dispo;
-            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture date disponibilite");
-
-            Date echeance;
-            fin>>echeance;
-            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture date echeance");
-
-            Duree duree;
-            fin>>duree;
-            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture duree tache");
-
-            bool preemp;
-            fin>>preemp;
-            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture bool preemp");
-            while (fin.peek()=='\r') fin.ignore();
-            while (fin.peek()=='\n') fin.ignore();
-            std::cout<<"LOAD unitaire"<<id<<"-"<<titre<<"-"<<dispo<<"-"<<echeance<<"-"<<duree<<"-"<<preemp<<"\n";
-            ajouterUnitaire(titre,dispo,echeance,duree,preemp);
-        }
-        if(type=="composite"){
-            fin.getline(tmp,256); // get code
-            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture identificateur tache");
-            string id=tmp;
-            fin.getline(tmp,256); // get titre
-            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture titre tache");
-            string titre=tmp;
-
-            Date dispo;
-            fin>>dispo;
-            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture date disponibilite");
-
-            Date echeance;
-            fin>>echeance;
-            if (fin.bad()) throw CalendarException("erreur, fichier taches, lecture date echeance");
-
-            while (fin.peek()=='\r') fin.ignore();
-            while (fin.peek()=='\n') fin.ignore();
-            std::cout<<"LOAD composite"<<id<<"-"<<titre<<"-"<<dispo<<"-"<<echeance<<"\n";
-            ajouterComposite(titre,dispo,echeance);
-        }
-    }
-    fin.close(); // close file
-}
-*/
-/*
-void  Projet::save(const string& f){
-    file=f;
-    ofstream fout(f.c_str(),ofstream::trunc); // toutes les taches existantes sont écrasées
-    for(unsigned int i=0; i<nb; i++){
-        fout<<*taches[i];
-    }
-    fout.close();
-}
-*/
 void  Projet::save(const string& f){
     file=f;
     QFile newfile( QString::fromStdString(file));
@@ -754,9 +668,7 @@ void ProgrammationManager::ajouterProgrammation(Unitaire& e, const Date& d, cons
                 && h < horairefin)
             throw CalendarException("erreur, ProgrammationManager, horaires chevauchant");
     }
-    if(e.isPreemp()){
-        e.setFait(Duree(e.getFait().getDureeEnMinutes()+dur.getDureeEnMinutes()));
-    }
+    e.setFait(Duree(e.getFait().getDureeEnMinutes()+dur.getDureeEnMinutes()));
     if(d < e.getDateDisponibilite())
         throw CalendarException("erreur, ProgrammationManager, programmation avant disponibilite");
     if(e.getDateEcheance() < d)
@@ -811,20 +723,6 @@ ProgrammationManager::~ProgrammationManager(){
     for(unsigned int i=0; i<nb; i++) delete programmations[i];
     delete[] programmations;
 }
-
-/*
-ProgrammationManager::ProgrammationManager(const ProgrammationManager& um):nb(um.nb),nbMax(um.nbMax), programmations(new Programmation*[um.nb]){
-    for(unsigned int i=0; i<nb; i++) programmations[i]=new Programmation(*um.programmations[i]);
-}
-
-ProgrammationManager& ProgrammationManager::operator=(const ProgrammationManager& um){
-    if (this==&um) return *this;
-    this->~ProgrammationManager();
-    for(unsigned int i=0; i<um.nb; i++) addItem(new Programmation(*um.programmations[i]));
-    return *this;
-}
-*/
-
 
 
 QString Evenement::getNom() const{

@@ -47,6 +47,7 @@ void TreeViewModel::addTacheItem(QStandardItem* item, Tache* tache){
     tabItemsTaches[titNb++].item=item;
 }
 
+
 void TreeViewModel::printTree(){
     ProjetManager& pjm = ProjetManager::getInstance();
     QStandardItem *parentItem = modele.invisibleRootItem();
@@ -73,7 +74,6 @@ void TreeViewModel::printTree(){
 }
 
 void TreeViewModel::printBranch(QStandardItem* parentItem, Tache* tache){
-
     // On ajoute l'item
     QStandardItem* tacheItemTemp = new QStandardItem(QString::fromStdString(tache->getTitre()));
     tacheItemTemp->setEditable(false);

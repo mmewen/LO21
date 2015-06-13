@@ -117,7 +117,7 @@ public:
     Date getDispo() const { return dispo; }
     unsigned int getNbTaches() const { return nb; }
     Date getEcheance();
-    int getStatut(); //<! Retourne le statut du projet : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
+    int getStatut(); //! Retourne le statut du projet : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
     void moveTacheTo(Tache* tMere, Tache* tFille);
     //void load(const string& f);
     void save(const string& f);
@@ -192,7 +192,7 @@ public:
     Date getDateDisponibilite() const {  return disponibilite; }
     Date getDateEcheance() const {  return echeance; }
     Projet* getProjet() { return projetParent; }
-    virtual int getStatut() = 0; //<! Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
+    virtual int getStatut() = 0; //! Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
     void setId(const string& id) { identificateur=id; }
     void setTitre(const string& t) { titre=t; }
     void setDatesDisponibiliteEcheance(const Date& disp, const Date& e) {
@@ -241,7 +241,7 @@ public:
     bool isPreemp() const { return preemptable; }
     Duree getFait() const { return dureeFaite; }
     Duree getRestant() const { Duree dR = Duree(getDuree().getDureeEnMinutes() - getFait().getDureeEnMinutes()); return dR; }
-    int getStatut(); //<! Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
+    int getStatut(); //! Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
     void setFait(const Duree& f){ dureeFaite=f; }
     void setPreemp(){ preemptable=true; }
     void setNonPreemp(){ preemptable=false; }
@@ -288,7 +288,7 @@ public:
     void addCompo(Tache* t);
     Tache& getCompo(const string& id);
     const Tache& getCompo(const string& code) const;
-    int getStatut(); //<! Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
+    int getStatut(); //! Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
     bool isPrecedencePotentielle( const string& id );
     void update(string id, string t, Date d, Date e){
         setId(id); setTitre(t); setDatesDisponibiliteEcheance(d,e);

@@ -38,15 +38,17 @@
 
 
 
-/// \class MainWindow
-/// \brief Conserve les pointeurs vers les principaux widgets de la fenêtre. S'occupe des actions générales sur ceux-ci.
-///
+/*! \class MainWindow
+ \brief Conserve les pointeurs vers les principaux widgets de la fenêtre. S'occupe des actions générales sur ceux-ci.
+
+ Cette classe fait appel aux fonctions d'affichage de UIClasses.h
+*/
 class MainWindow: public QMainWindow{
     Q_OBJECT
     // Widgets généraux
     QWidget *zoneCentrale; //! zone contenant les onglets
     QTabWidget *tabs; //! Widget gérant les onglets
-    Tache* t;
+    Tache* t; //! Tache en cours d'édition
 
     // Widgets de l'agenda
     QWidget *planningTab; //! Onglet avec le planning
@@ -73,26 +75,20 @@ class MainWindow: public QMainWindow{
 public:
     ~MainWindow(){}
     MainWindow();
-    void showUnitaire(Unitaire& t);
-    void saveUnitaire();
-    void showComposite(Composite& t);
-    void showProjet(Projet& p);
+    void showUnitaire(Unitaire& t); //! Affiche l'édition d'une tache unitaire
+    void saveUnitaire(); //! Enregistre une tache unitaire
+    void showComposite(Composite& t); //! Affiche l'édition d' tache composite
+    void showProjet(Projet& p); //! Affiche l'édition d'un projet
 public slots:
-    void treeViewClicked(const QModelIndex &index);
-    void slotAjouterProjet();
-    void slotAjouterTU();
-    void slotAjouterTC();
-    void slotShowTU();
-    void slotShowTC();
-    void slotProgrammerTU();
-    void slotProgrammerActivite();
-//    quit();
+    void treeViewClicked(const QModelIndex &index); //! On traite le clic sur l'item index de la vue TreeView
+    void slotAjouterProjet(); //! Ajoute un projet dans le système et sur l'arbre
+    void slotAjouterTU(); //! Ajoute une tache unitaire dans le système et sur l'arbre
+    void slotAjouterTC(); //! Ajoute une tache composite dans le système et sur l'arbre
+    void slotShowTU(); //! Lance l'affichage de l'édition de la tache t
+    void slotShowTC(); //! Lance l'affichage de l'édition de la tache t
+    void slotProgrammerTU(); //! Lance le dialogue pour programmer une tache unitaire
+    void slotProgrammerActivite(); //! Lance le dialogue pour programmer une activité
 
 };
 
 #endif // MAINWINDOW_H
-
-// TODO :
-/*
- * faire des fonctions Show plus jolies
- */

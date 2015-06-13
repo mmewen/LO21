@@ -182,10 +182,12 @@ void AgendaView::save(const string &f){
         stream.writeStartElement("programmation");
         stream.writeTextElement("date",progTemp->getDate().getQDate().toString(Qt::ISODate));
         stream.writeTextElement("horaire",QString::fromStdString(progTemp->getHoraire().toString()));
-        stream.writeTextElement("titre",progTemp->getEvenement().getNom());
         if(typeid(progTemp->getEvenement())==typeid(Activite&)){
+            stream.writeTextElement("titre",QString::fromStdString(dynamic_cast<const Activite&>(progTemp->getEvenement()).getTitre()));
             stream.writeTextElement("lieu",QString::fromStdString(dynamic_cast<const Activite&>(progTemp->getEvenement()).getLieu()));
         }
+        else
+            stream.writeTextElement("titre",QString::fromStdString(dynamic_cast<const Unitaire&>(progTemp->getEvenement()).getTitre()));
         QString str;
         str.setNum(progTemp->getDuree().getDureeEnMinutes());
         stream.writeTextElement("duree",str);

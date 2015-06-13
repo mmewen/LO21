@@ -254,7 +254,12 @@ int Composite::getStatut(){
 }
 
 
-
+//ACTIVITE
+void Activite::afficher(ostream& f) {
+    f<<"activite \n";
+    f<<"nom "<<getNom().toStdString()<<"\n";
+    f<<"duree "<<getDuree()<<"\n";
+}
 
 
 

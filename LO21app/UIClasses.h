@@ -46,12 +46,12 @@ class TreeViewModel : public QObject {
 
 
     // Variables :
-    QStandardItemModel modele; // le modèle
+    QStandardItemModel modele; //! le modèle d'items
 
-    CoupleItemProjet* tabItemsProjets; // le tableau qui lie un projet à un item
+    CoupleItemProjet* tabItemsProjets; //! le tableau qui lie un projet à un item
     int tipNb, tipNbMax;
 
-    CoupleItemTache* tabItemsTaches; // le tableau qui lie chaque tâche à un item
+    CoupleItemTache* tabItemsTaches; //! le tableau qui lie chaque tâche à un item
     int titNb, titNbMax;
 
     QIcon* icone0;

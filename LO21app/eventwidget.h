@@ -9,10 +9,14 @@ namespace Ui {
 class EventWidget;
 }
 
+/*! \class EventWidget
+        \brief Classe UI affichant un évènement dans l'agenda
+
+*/
 class EventWidget : public QWidget
 {
     Q_OBJECT
-    Programmation* programmation;
+    Programmation* programmation; //! Pointeur vers la programmation liée au widget
 public:
     explicit EventWidget(  Programmation*, QWidget *parent = 0 );
     ~EventWidget();

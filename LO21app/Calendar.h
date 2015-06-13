@@ -144,6 +144,7 @@ public:
     Duree getDuree() const { return duree; }
     QString getNom() const;
     void setDuree(const Duree& dur){ duree=dur; }
+    virtual void afficher(ostream& f)=0;
 };
 
 class Tache {
@@ -308,6 +309,7 @@ public:
     void update(string t, string l, Duree d){
         setTitre(t); setLieu(l); setDuree(d);
     }
+    virtual void afficher(ostream& f) ;
 };
 
 class Programmation;

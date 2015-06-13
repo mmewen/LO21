@@ -251,6 +251,7 @@ int Composite::getStatut(){
     } else {
         return 0;
     }
+    return -1;
 }
 
 
@@ -531,6 +532,7 @@ int Projet::getStatut(){
     } else {
         return 0;
     }
+    return -1;
 }
 
 

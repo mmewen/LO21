@@ -13,8 +13,12 @@ using namespace std;
 using namespace TIME;
 
 
+/*! \class CalendarException
+        \brief Classe permettant de gérer les exceptions du projet non liées au namespace TIME
+*/
 class CalendarException{
 public:
+    //! Constructeur à partir d'un string
     CalendarException(const string& message):info(message){}
     string getInfo() const { return info; }
 private:
@@ -23,6 +27,10 @@ private:
 
 class Projet;
 
+/*! \class ProjetManager
+        \brief Classe composite des Projets
+        La classe applique le designe pattern singleton et possède un iterateur sur le tableau de pointeurs de Projets.
+*/
 class ProjetManager {
 private:
     Projet** projets;
@@ -72,6 +80,9 @@ class Tache;
 class Unitaire;
 class Composite;
 
+/*! \class Projet
+        \brief Classe de projets composite des Taches et composant ProjetManager
+*/
 class Projet {
 private:
     Tache** taches;
@@ -136,6 +147,9 @@ public:
     Iterator getNCIterator(){ return Iterator(tachesNonComposantes,nbNC, true); }
 };
 
+/*! \class Evenement
+        \brief Classe abstraite d'éléments pouvant être programmés
+*/
 class Evenement {
     Duree duree;
 public:
@@ -147,6 +161,9 @@ public:
     virtual void afficher(ostream& f)=0;
 };
 
+/*! \class Tache
+        \brief Classe abstraite de taches composant Projet
+*/
 class Tache {
     Tache** prec;
     unsigned int nbPred;
@@ -203,8 +220,12 @@ public:
     virtual void afficher(ostream& f) =0;
 };
 
+/*! \class Unitaire
+        \brief Classe de taches programmables, héritant de Tachet et d'Evenement
+        La classe de taches pouvant être programmées, en plusieurs fois si préemptive, en une seule fois sinon.
+        La classe est forcément préemptive si sa durée dépasse 12h.
+*/
 class Unitaire : public Tache, public Evenement {
-    //Duree duree; //si non-preemtable -> duree<=12h
     Duree dureeFaite;
     bool preemptable;
     Unitaire(const Unitaire& t);
@@ -216,7 +237,6 @@ class Unitaire : public Tache, public Evenement {
     }
     friend Unitaire& Projet::ajouterUnitaire(const string& t, const Date& dispo, const Date& deadline, const Duree& duree, const bool premp);
 public:
-    //Duree getDuree() const { return duree; }
     virtual void addItem(Tache* t){Tache::addItem(t);}
     bool isPreemp() const { return preemptable; }
     Duree getFait() const { return dureeFaite; }
@@ -248,6 +268,10 @@ public:
     }
 };
 
+/*! \class Composite
+        \brief Classe d'ensembles de taches, héritant de Tache
+        La classe possède un pointeur de Taches qui représente les composants de la tache composite.
+*/
 class Composite : public Tache {
 private:
     Tache** composition;
@@ -294,6 +318,10 @@ public:
     virtual void afficher(ostream& f) ;
 };
 
+/*! \class Activite
+        \brief Classe d'evenement basique programmable, héritant d'Evenement
+        La classe possède un titre et un lieu.
+*/
 class Activite : public Evenement {
 private:
     string titre;
@@ -314,6 +342,10 @@ public:
 
 class Programmation;
 
+/*! \class ProgrammationManager
+        \brief Classe composite de Programmation
+        La classe applique le designe pattern singleton et possède un iterateur sur le tableau de pointeurs de Programmations.
+*/
 class ProgrammationManager : public QObject {
     Q_OBJECT
 private:
@@ -362,6 +394,9 @@ signals:
     void programmationsChanged();
 };
 
+/*! \class Programmation
+        \brief Classe donnant une date, un horaire et une durée à une Evenement, classe composant ProgrammationManager
+*/
 class Programmation {
     const Evenement* evt;
     Date date;

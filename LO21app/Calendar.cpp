@@ -662,7 +662,6 @@ void ProgrammationManager::ajouterProgrammation(Unitaire& e, const Date& d, cons
                 && h < horairefin)
             throw CalendarException("erreur, ProgrammationManager, horaires chevauchant");
     }
-    e.setFait(Duree(e.getFait().getDureeEnMinutes()+dur.getDureeEnMinutes()));
     if(d < e.getDateDisponibilite())
         throw CalendarException("erreur, ProgrammationManager, programmation avant disponibilite");
     if(e.getDateEcheance() < d)
@@ -676,6 +675,7 @@ void ProgrammationManager::ajouterProgrammation(Unitaire& e, const Date& d, cons
                     && h<trouverProgrammation(dynamic_cast<Evenement&>(it2.current()))->getHoraire()))
             throw CalendarException("erreur, ProgrammationManager, precedence non terminée");
     }
+    e.setFait(Duree(e.getFait().getDureeEnMinutes()+dur.getDureeEnMinutes()));
     Programmation* newt=new Programmation(e,d,h,dur);
     addItem(newt);
 }

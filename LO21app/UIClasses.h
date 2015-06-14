@@ -46,17 +46,19 @@ class TreeViewModel : public QObject {
 
 
     // Variables :
-    QStandardItemModel modele; //! le modèle d'items
+    //! le modèle d'items du TreeView
+    QStandardItemModel modele; 
 
-    CoupleItemProjet* tabItemsProjets; //! le tableau qui lie un projet à un item
+    //! le tableau qui lie un projet à un item
+    CoupleItemProjet* tabItemsProjets; 
     int tipNb, tipNbMax;
 
-    CoupleItemTache* tabItemsTaches; //! le tableau qui lie chaque tâche à un item
+    //! le tableau qui lie chaque tâche à un item
+    CoupleItemTache* tabItemsTaches; 
     int titNb, titNbMax;
 
-    QIcon* icone0;
-    QIcon* icone1;
-    QIcon* icone2;
+    //! les icones de l'arbre
+    QIcon *icone0, *icone1, *icone2; 
 
     // Méthodes privées générales :
     TreeViewModel(): tabItemsProjets(0), tipNb(0), tipNbMax(0), tabItemsTaches(0), titNb(0), titNbMax(0),
@@ -71,31 +73,49 @@ class TreeViewModel : public QObject {
     static Handler handler;
 
     // Méthodes privées d'affichage :
-    void printBranch(QStandardItem* , Tache* );//! Affiche le contenu d'une tache composite récursivement
-    void addProjetItem(QStandardItem* item, Projet* projet);//! Ajoute le couple (projet item) au tableau tabItemsProjets
-    void addTacheItem(QStandardItem* item, Tache* tache);//! Ajoute le couple (tache item) au tableau tabItemsTaches
-    void setIcon(QStandardItem* item, int statut);//! Met l'icone qui va bien sur chaque item
+    //! Affiche le contenu d'une tache composite récursivement
+    void printBranch(QStandardItem* , Tache* );
+    //! Ajoute le couple (projet item) au tableau tabItemsProjets
+    void addProjetItem(QStandardItem* item, Projet* projet);
+    //! Ajoute le couple (tache item) au tableau tabItemsTaches
+    void addTacheItem(QStandardItem* item, Tache* tache);
+    //! Met l'icone qui va bien sur chaque item
+    void setIcon(QStandardItem* item, int statut);
 public:
-    static TreeViewModel& getInstance();//! Retourne l'instance de la classe
+    //! Retourne l'instance de la classe
+    static TreeViewModel& getInstance();
     static void libererInstance();
-    QStandardItemModel* getModele() { return &modele; } //! Retourne une référence sur le modèle du TreeView
-    void printTree(); //! Affiche l'arbre complet au lancement de l'application
-    void addProjet(Projet* nouveauProjet);//! Ajoute un projet à la racine (virtuelle) de l'arbre à l'ajout d'un projet
-    void addTache(Projet* projet, Tache* tache);  //! Ajoute une tache à un projet
-    void addTache(Tache* tacheMere, Tache* tache);  //! Ajoute une tache à une tache mère (composite)
+    //! Retourne une référence sur le modèle du TreeView
+    QStandardItemModel* getModele() { return &modele; } 
+    //! Affiche l'arbre complet au lancement de l'application
+    void printTree(); 
+    //! Ajoute un projet à la racine (virtuelle) de l'arbre à l'ajout d'un projet
+    void addProjet(Projet* nouveauProjet);
+    //! Ajoute une tache à un projet
+    void addTache(Projet* projet, Tache* tache);  
+    //! Ajoute une tache à une tache mère (composite)
+    void addTache(Tache* tacheMere, Tache* tache);  
 
-    Tache* getTacheFromItem(QStandardItem* item);  //! Retourne une tache à partir d'un item de l'arbre
-    QStandardItem* getItemFromTache(Tache* tache);  //! Retourne l'item de l'arbre lié à une tache
+    //! Retourne une tache à partir d'un item de l'arbre
+    Tache* getTacheFromItem(QStandardItem* item);  
+    //! Retourne l'item de l'arbre lié à une tache
+    QStandardItem* getItemFromTache(Tache* tache);  
 
-    Projet* getProjetFromItem(QStandardItem* item);  //! Retourne un projet à partir d'un item de l'arbre
-    QStandardItem* getItemFromProjet(Projet* projet);  //! Retourne l'item associé à un projet
+    //! Retourne un projet à partir d'un item de l'arbre
+    Projet* getProjetFromItem(QStandardItem* item);  
+    //! Retourne l'item associé à un projet
+    QStandardItem* getItemFromProjet(Projet* projet);  
 
-    void updateIcons(Tache* t);  //! Met à jour les icones de la tache t et de ses parents (quand une tache est programmée)
+    //! Met à jour les icones de la tache t et de ses parents (quand une tache est programmée)
+    void updateIcons(Tache* t);  
 
 public slots:
-    void updateName(Projet* projet);  //! Met à jour le nom d'un projet
-    void updateName(Unitaire* tache);  //! Met à jour le nom d'une tache unitaire
-    void updateName(Composite* tache);  //! Met à jour le nom d'une tache composite
+    //! Met à jour le nom d'un projet
+    void updateName(Projet* projet);  
+    //! Met à jour le nom d'une tache unitaire
+    void updateName(Unitaire* tache);  
+    //! Met à jour le nom d'une tache composite
+    void updateName(Composite* tache);  
 };
 
 
@@ -111,8 +131,10 @@ public:
     virtual ~Editeur(){}
     Editeur(): formLayout(new QFormLayout) {}
 public slots:
-    virtual void slotSave() = 0;  //! Fonction virtuelle pure dédiée à la sauvegarde de la tache ou du projet en cours d'édition
-    virtual void slotReload() = 0;  //! Fonction virtuelle pure remettant à zéro le formulaire d'édition
+    //! Fonction virtuelle pure dédiée à la sauvegarde de la tache ou du projet en cours d'édition
+    virtual void slotSave() = 0; 
+    //! Fonction virtuelle pure remettant à zéro le formulaire d'édition
+    virtual void slotReload() = 0;  
 };
 
 /*! \class EditeurProjet
@@ -131,10 +153,12 @@ public:
     virtual ~EditeurProjet() {}
 public slots:
     void slotSave();
-    void slotExporter();  //! Exporte le projet sous forme d'un fichier XML
+    //! Exporte le projet sous forme d'un fichier XML
+    void slotExporter();  
     void slotReload();
 signals:
-    void projetUpdated(Projet* projet);  //! Le projet passé en paramètre a été modifié
+    //! Le projet passé en paramètre a été modifié
+    void projetUpdated(Projet* projet);  
 };
 
 /*! \class EditeurTache
@@ -153,13 +177,16 @@ public:
     QListWidgetItem** tabPredecesseurs;
     int nbPred;
     EditeurTache();
-    void printFinForm(Tache* t);  //! Affiche la fin du formulaire d'édition de tache, qui est commun aux unitaires et composites
+    //! Affiche la fin du formulaire d'édition de tache, qui est commun aux unitaires et composites
+    void printFinForm(Tache* t);  
     virtual ~EditeurTache() {}
 public slots:
-    void slotEnable();  //! Active le widget
+    //! Active le widget
+    void slotEnable();  
     virtual void slotReload() = 0;
 signals:
-    void reloadAll();  //! Demande d'actualisation du widget d'édition
+    //! Demande d'actualisation du widget d'édition
+    void reloadAll();  
 };
 
 /*! \class EditeurTU
@@ -176,9 +203,11 @@ public:
 public slots:
     void slotSave();
     void slotReload();
-    void slotEditionPredecesseurs();  //! Edite les prédécesseurs de la tache unitaire actuelle
+    //! Edite les prédécesseurs de la tache unitaire actuelle
+    void slotEditionPredecesseurs();  
 signals:
-    void tacheUpdated(Unitaire* tache);  //! Une tache unitaire vient d'etre éditée
+    //! Une tache unitaire vient d'etre éditée
+    void tacheUpdated(Unitaire* tache);  
 };
 
 /*! \class EditeurTC
@@ -193,9 +222,11 @@ public:
 public slots:
     void slotSave();
     void slotReload();
-    void slotEditionPredecesseurs();  //! Edite les préférences de la tache composite actuelle
+    //! Edite les préférences de la tache composite actuelle
+    void slotEditionPredecesseurs();  
 signals:
-    void tacheUpdated(Composite* tache);  //! Une tache composite vient d'etre éditée
+    //! Une tache composite vient d'etre éditée
+    void tacheUpdated(Composite* tache);  
 };
 
 /*! \class EditeurPrecedence
@@ -206,8 +237,10 @@ class EditeurPrecedence : public QDialog
     Q_OBJECT
 public:
     EditeurPrecedence(Tache *t);
-    string& getTacheIdFromIndex( int index );  //! Retourne l'id de la tache choisie dans la Combobox
-    bool empty() const { return nbIndexes==0; }  //! Retourne true s'il n'y a pas de précédence possible (entraine la non ouverture du dialogue)
+    //! Retourne l'id de la tache choisie dans la Combobox
+    string& getTacheIdFromIndex( int index );  
+    //! Retourne true s'il n'y a pas de précédence possible (entraine la non ouverture du dialogue)
+    bool empty() const { return nbIndexes==0; }  
 private:
     struct coupleItemId {
         string identifiant;
@@ -222,10 +255,13 @@ private:
     coupleItemId couples[100];
     int nbIndexes;
 public slots:
-    void slotAnnulation();  //! Termine l'édition des précédences et ferme
-    void slotAjout();  //! Ajoute la précédence et ferme le dialogue
+    //! Termine l'édition des précédences et ferme
+    void slotAnnulation();  
+    //! Ajoute la précédence et ferme le dialogue
+    void slotAjout();  
 signals:
-    void editionPrecedenceEnd();  //! L'édition des précédences est terminée (validée ou annulée)
+    //! L'édition des précédences est terminée (validée ou annulée)
+    void editionPrecedenceEnd();  
 };
 
 /*! \class ProgrammationTache
@@ -250,7 +286,8 @@ public:
 public slots:
     virtual void slotSave();
 signals:
-    void tacheProgrammee();  //! Une tache a été programmée
+    //! Une tache a été programmée
+    void tacheProgrammee();  
 };
 
 /*! \class ProgrammationActivite
@@ -275,7 +312,8 @@ public:
 public slots:
     virtual void slotSave();
 signals:
-    void activiteProgrammee();  //! Une activité a été programmée
+    //! Une activité a été programmée
+    void activiteProgrammee();  
 };
 
 #endif // UICLASSES_H

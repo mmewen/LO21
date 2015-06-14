@@ -46,48 +46,74 @@
 class MainWindow: public QMainWindow{
     Q_OBJECT
     // Widgets généraux
-    QWidget *zoneCentrale; //! zone contenant les onglets
-    QTabWidget *tabs; //! Widget gérant les onglets
-    Tache* t; //! Tache en cours d'édition
+    //! zone contenant les onglets
+    QWidget *zoneCentrale; 
+    //! Widget gérant les onglets
+    QTabWidget *tabs; 
+    //! Tache en cours d'édition
+    Tache* t; 
 
     // Widgets de l'agenda
-    QWidget *planningTab; //! Onglet avec le planning
-    QHBoxLayout *agendaLayout; //! Layout global de l'onglet
-    AgendaView *agenda; //! Widget global de l'onglet
+    //! Onglet avec le planning
+    QWidget *planningTab; 
+    //! Layout global de l'onglet
+    QHBoxLayout *agendaLayout; 
+    //! Widget global de l'onglet
+    AgendaView *agenda; 
 
 
     // Widgets de l'onglet d'édition
-    QWidget *tachesTab; //! Onglet avec l'édition des tâches
-    QHBoxLayout *tachesLayout; //! Layout horizontal contenant le layout du treeview à gauche et celui du formulaire à droite
+    //! Onglet avec l'édition des tâches
+    QWidget *tachesTab; 
+    //! Layout horizontal contenant le layout du treeview à gauche et celui du formulaire à droite
+    QHBoxLayout *tachesLayout; 
     Editeur* edition;
 
     // ... pour le formulaire d'édition
-    QFormLayout *tachesFormLayout; //! Formulaire d'édition d'une tâche ou d'un projet
-    QScrollArea *editionScroll; //! Zone de scroll contenant l'édition d'une tache/d'un projet
+    //! Formulaire d'édition d'une tâche ou d'un projet
+    QFormLayout *tachesFormLayout; 
+    //! Zone de scroll contenant l'édition d'une tache/d'un projet
+    QScrollArea *editionScroll; 
 
     // ... pour le treeview
-    QVBoxLayout *tachesView; //! Layout vertical contenant le treeView et les boutons liés
-    QFormLayout *boutonsTreeView; //! Boutons d'ajout/supression de projet/tache
-    QTreeView *vue; //! Partie vue du TreeView
-    TreeViewModel& treeView; //! Partie modèle du Treeview : arborescence des projets et tâches
+    //! Layout vertical contenant le treeView et les boutons liés
+    QVBoxLayout *tachesView; 
+    //! Boutons d'ajout/supression de projet/tache
+    QFormLayout *boutonsTreeView; 
+    //! Partie vue du TreeView
+    QTreeView *vue; 
+    //! Partie modèle du Treeview : arborescence des projets et tâches
+    TreeViewModel& treeView; 
 
 //    void clearTFL();
 public:
     ~MainWindow(){}
     MainWindow();
-    void showUnitaire(Unitaire& t); //! Affiche l'édition d'une tache unitaire
-    void saveUnitaire(); //! Enregistre une tache unitaire
-    void showComposite(Composite& t); //! Affiche l'édition d' tache composite
-    void showProjet(Projet& p); //! Affiche l'édition d'un projet
+    //! Affiche l'édition d'une tache unitaire
+    void showUnitaire(Unitaire& t); 
+    //! Enregistre une tache unitaire
+    void saveUnitaire(); 
+    //! Affiche l'édition d' tache composite
+    void showComposite(Composite& t); 
+    //! Affiche l'édition d'un projet
+    void showProjet(Projet& p); 
 public slots:
-    void treeViewClicked(const QModelIndex &index); //! On traite le clic sur l'item index de la vue TreeView
-    void slotAjouterProjet(); //! Ajoute un projet dans le système et sur l'arbre
-    void slotAjouterTU(); //! Ajoute une tache unitaire dans le système et sur l'arbre
-    void slotAjouterTC(); //! Ajoute une tache composite dans le système et sur l'arbre
-    void slotShowTU(); //! Lance l'affichage de l'édition de la tache t
-    void slotShowTC(); //! Lance l'affichage de l'édition de la tache t
-    void slotProgrammerTU(); //! Lance le dialogue pour programmer une tache unitaire
-    void slotProgrammerActivite(); //! Lance le dialogue pour programmer une activité
+    //! On traite le clic sur l'item index de la vue TreeView
+    void treeViewClicked(const QModelIndex &index); 
+    //! Ajoute un projet dans le système et sur l'arbre
+    void slotAjouterProjet(); 
+    //! Ajoute une tache unitaire dans le système et sur l'arbre
+    void slotAjouterTU(); 
+    //! Ajoute une tache composite dans le système et sur l'arbre
+    void slotAjouterTC(); 
+    //! Lance l'affichage de l'édition de la tache t
+    void slotShowTU(); 
+    //! Lance l'affichage de l'édition de la tache t
+    void slotShowTC(); 
+    //! Lance le dialogue pour programmer une tache unitaire
+    void slotProgrammerTU(); 
+    //! Lance le dialogue pour programmer une activité
+    void slotProgrammerActivite(); 
 
 };
 

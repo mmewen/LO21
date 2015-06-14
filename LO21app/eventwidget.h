@@ -16,7 +16,8 @@ class EventWidget;
 class EventWidget : public QWidget
 {
     Q_OBJECT
-    Programmation* programmation; //! Pointeur vers la programmation liée au widget
+    //! Pointeur vers la programmation liée au widget
+    Programmation* programmation; 
 public:
     explicit EventWidget(  Programmation*, QWidget *parent = 0 );
     ~EventWidget();

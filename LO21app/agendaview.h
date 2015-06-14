@@ -24,18 +24,26 @@ ainsi que l'ensemble de layouts des jours de la semaine.
 class AgendaView : public QWidget
 {
     Q_OBJECT
-    Date getLundiSelectionne(); //! Retourne la date du lundi du début de la semaine du jour sélectionné dans le calendrier
-    QVBoxLayout* layoutSemaine[7]; //! Un tableau de pointeurs sur les layouts verticaux des jours de la semaine
-    void showSemaine(); //! Affiche la semaine correspondant à la date sélectionnée
-    void clearSemaine(); //! Efface la semaine
-    void save(const string &f); //! Exporte la semaine en XML
+    //! Retourne la date du lundi du début de la semaine du jour sélectionné dans le calendrier
+    Date getLundiSelectionne(); 
+    //! Un tableau de pointeurs sur les layouts verticaux des jours de la semaine
+    QVBoxLayout* layoutSemaine[7]; 
+    //! Affiche la semaine correspondant à la date sélectionnée
+    void showSemaine(); 
+    //! Efface la semaine
+    void clearSemaine(); 
+    //! Exporte la semaine en XML
+    void save(const string &f); 
 public:
     explicit AgendaView(QWidget *parent = 0);
     ~AgendaView();
 public slots:
-    void slotEventsChanged(); //! Appelle l'affichage de semaine
-    void slotEventsChanged(const QDate& date); //! Appelle l'affichage de semaine
-    void slotExporter(); //! Appelle l'exportation
+    //! Appelle l'affichage de semaine
+    void slotEventsChanged(); 
+    //! Appelle l'affichage de semaine
+    void slotEventsChanged(const QDate& date); 
+    //! Appelle l'exportation
+    void slotExporter(); 
 
 private:
     Ui::AgendaView *ui;

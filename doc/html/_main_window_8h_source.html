@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>LO21 | Gestion de projets - Deryckère et Michel: LO21app/MainWindow.h Source File</title>
+<title>LO21 | Pistache: LO21app/MainWindow.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,9 +24,9 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logomini.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">LO21 | Gestion de projets - Deryckère et Michel
+   <div id="projectname">LO21 | Pistache
    </div>
-   <div id="projectbrief">Projet de LO21 où l&#39;utilisateur peut créer des projets, des tâches et des évènements.</div>
+   <div id="projectbrief">Projet de LO21 de Loïc Deryckère et Mewen Michel</div>
   </td>
  </tr>
  </tbody>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -63,6 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -89,61 +91,124 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">MainWindow.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef MAINWINDOW_H</span></div>
+<a href="_main_window_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef MAINWINDOW_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define MAINWINDOW_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Includes</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;QMainWindow&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;QWidget&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;QMenu&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;QMenuBar&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;QAction&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;QTabWidget&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QStandardItemModel&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QStandardItem&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;QTreeView&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;QFormLayout&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;QLineEdit&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;QHBoxLayout&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//#include &lt;QPushButton&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//#include &lt;QLineEdit&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//#include &lt;QTextEdit&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">//#include &lt;QVBoxLayout&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//#include &lt;QtXml&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//#include &lt;QFileDialog&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">//#include &lt;QTreeWidget&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//#include &lt;QList&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//#include &lt;QTreeWidgetItem&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// Constantes</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define W_WIDTH 700</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define W_HEIGHT 500</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_main_window.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_main_window.html">MainWindow</a>: <span class="keyword">public</span> QMainWindow{</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    QWidget *zoneCentrale;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    QTabWidget *tabs;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    QWidget *planningTab;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    QWidget *tachesTab;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    QHBoxLayout *tachesLayout;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    QFormLayout *tachesFormLayout;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> showProject();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_main_window.html#a34c4b4207b46d11a4100c9b19f0e81bb">MainWindow</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">//public slots:</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//    quit();</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif // MAINWINDOW_H</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_calendar_8h.html">Calendar.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_u_i_classes_8h.html">UIClasses.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="agendaview_8h.html">agendaview.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;QMainWindow&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;QWidget&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QMenu&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QMenuBar&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;QAction&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;QTabWidget&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;QStandardItemModel&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;QStandardItem&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;QModelIndex&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;QTreeView&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;QFormLayout&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;QLineEdit&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;QHBoxLayout&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;QVBoxLayout&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;QDate&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;QPushButton&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;QGridLayout&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;QLabel&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;QSignalMapper&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;QScrollArea&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">//#include &lt;QTextEdit&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">//#include &lt;QtXml&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">//#include &lt;QFileDialog&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">//#include &lt;QList&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// Constantes</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="_main_window_8h.html#a921a8595db82694a0ed9992b9dce1399">   36</a></span>&#160;<span class="preprocessor">#define W_WIDTH 1100</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="_main_window_8h.html#a0bb30e7a160522a2b0f55d44929bf4eb">   37</a></span>&#160;<span class="preprocessor">#define W_HEIGHT 700</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_main_window.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_main_window.html">MainWindow</a>: <span class="keyword">public</span> QMainWindow{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// Widgets généraux</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"></span>    QWidget *zoneCentrale; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    QTabWidget *tabs; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_tache.html">Tache</a>* t; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// Widgets de l&#39;agenda</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"></span>    QWidget *planningTab; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    QHBoxLayout *agendaLayout; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="class_agenda_view.html">AgendaView</a> *agenda; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// Widgets de l&#39;onglet d&#39;édition</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment"></span>    QWidget *tachesTab; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    QHBoxLayout *tachesLayout; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="class_editeur.html">Editeur</a>* edition;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// ... pour le formulaire d&#39;édition</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"></span>    QFormLayout *tachesFormLayout; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    QScrollArea *editionScroll; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">// ... pour le treeview</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"></span>    QVBoxLayout *tachesView; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    QFormLayout *boutonsTreeView; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    QTreeView *vue; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="class_tree_view_model.html">TreeViewModel</a>&amp; treeView; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">//    void clearTFL();</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7">   90</a></span>&#160;    <a class="code" href="class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7">~MainWindow</a>(){}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="class_main_window.html#a34c4b4207b46d11a4100c9b19f0e81bb">MainWindow</a>();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_main_window.html#a7bbdf27e0ee846803813e53a39a3bf01">showUnitaire</a>(<a class="code" href="class_unitaire.html">Unitaire</a>&amp; t); </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_main_window.html#a4d74b656f89425afefef0505508befe7">saveUnitaire</a>(); </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_main_window.html#aad741802f157d624081f9588a120f016">showComposite</a>(<a class="code" href="class_composite.html">Composite</a>&amp; t); </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_main_window.html#a1dfed2a765d3fa7bfb340dd37a5350f1">showProjet</a>(<a class="code" href="class_projet.html">Projet</a>&amp; p); </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_main_window.html#a4e6f43d07f77bfa5ef816fdaeddb2f9c">treeViewClicked</a>(<span class="keyword">const</span> QModelIndex &amp;index); </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_main_window.html#a9221bf94c502faa7f0cb55835dc4f576">slotAjouterProjet</a>(); </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_main_window.html#addf6fb45b7869279d5c7b746dfe61429">slotAjouterTU</a>(); </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_main_window.html#a4201a4ae86be39f54071eedb95af8291">slotAjouterTC</a>(); </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_main_window.html#a2022b216fafd6461b8b959e791fee853">slotShowTU</a>(); </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_main_window.html#a72cb9533595d3347763e3e485ac01fd6">slotShowTC</a>(); </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_main_window.html#a22bdfd5758d79d8a0dd6b55817f053a0">slotProgrammerTU</a>(); </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_main_window.html#ac54011d65e21b9a451a255c8ab2856d0">slotProgrammerActivite</a>(); </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;};</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif // MAINWINDOW_H</span></div>
+<div class="ttc" id="class_composite_html"><div class="ttname"><a href="class_composite.html">Composite</a></div><div class="ttdoc">Classe d&#39;ensembles de taches, héritant de Tache La classe possède un pointeur de Taches qui représent...</div><div class="ttdef"><b>Definition:</b> Calendar.h:385</div></div>
+<div class="ttc" id="class_main_window_html_a4d74b656f89425afefef0505508befe7"><div class="ttname"><a href="class_main_window.html#a4d74b656f89425afefef0505508befe7">MainWindow::saveUnitaire</a></div><div class="ttdeci">void saveUnitaire()</div><div class="ttdoc">Enregistre une tache unitaire. </div></div>
+<div class="ttc" id="class_main_window_html_a1dfed2a765d3fa7bfb340dd37a5350f1"><div class="ttname"><a href="class_main_window.html#a1dfed2a765d3fa7bfb340dd37a5350f1">MainWindow::showProjet</a></div><div class="ttdeci">void showProjet(Projet &amp;p)</div><div class="ttdoc">Affiche l&#39;édition d&#39;un projet. </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:100</div></div>
+<div class="ttc" id="class_main_window_html_ac54011d65e21b9a451a255c8ab2856d0"><div class="ttname"><a href="class_main_window.html#ac54011d65e21b9a451a255c8ab2856d0">MainWindow::slotProgrammerActivite</a></div><div class="ttdeci">void slotProgrammerActivite()</div><div class="ttdoc">Lance le dialogue pour programmer une activité </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:310</div></div>
 <div class="ttc" id="class_main_window_html_a34c4b4207b46d11a4100c9b19f0e81bb"><div class="ttname"><a href="class_main_window.html#a34c4b4207b46d11a4100c9b19f0e81bb">MainWindow::MainWindow</a></div><div class="ttdeci">MainWindow()</div><div class="ttdoc">initialisation de la fenêtre principale </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:4</div></div>
-<div class="ttc" id="class_main_window_html"><div class="ttname"><a href="class_main_window.html">MainWindow</a></div><div class="ttdoc">Conserve les pointeurs vers les principaux widgets de la fenêtre. S&#39;occupe des actions générales sur ...</div><div class="ttdef"><b>Definition:</b> MainWindow.h:37</div></div>
+<div class="ttc" id="class_agenda_view_html"><div class="ttname"><a href="class_agenda_view.html">AgendaView</a></div><div class="ttdoc">Classe d&#39;UI gérant le contenu de l&#39;onglet Agenda. </div><div class="ttdef"><b>Definition:</b> agendaview.h:24</div></div>
+<div class="ttc" id="class_main_window_html_ae98d00a93bc118200eeef9f9bba1dba7"><div class="ttname"><a href="class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7">MainWindow::~MainWindow</a></div><div class="ttdeci">~MainWindow()</div><div class="ttdef"><b>Definition:</b> MainWindow.h:90</div></div>
+<div class="ttc" id="class_main_window_html_aad741802f157d624081f9588a120f016"><div class="ttname"><a href="class_main_window.html#aad741802f157d624081f9588a120f016">MainWindow::showComposite</a></div><div class="ttdeci">void showComposite(Composite &amp;t)</div><div class="ttdoc">Affiche l&#39;édition d&#39; tache composite. </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:89</div></div>
+<div class="ttc" id="class_main_window_html_a4e6f43d07f77bfa5ef816fdaeddb2f9c"><div class="ttname"><a href="class_main_window.html#a4e6f43d07f77bfa5ef816fdaeddb2f9c">MainWindow::treeViewClicked</a></div><div class="ttdeci">void treeViewClicked(const QModelIndex &amp;index)</div><div class="ttdoc">On traite le clic sur l&#39;item index de la vue TreeView. </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:108</div></div>
+<div class="ttc" id="_u_i_classes_8h_html"><div class="ttname"><a href="_u_i_classes_8h.html">UIClasses.h</a></div></div>
+<div class="ttc" id="class_main_window_html_a9221bf94c502faa7f0cb55835dc4f576"><div class="ttname"><a href="class_main_window.html#a9221bf94c502faa7f0cb55835dc4f576">MainWindow::slotAjouterProjet</a></div><div class="ttdeci">void slotAjouterProjet()</div><div class="ttdoc">Ajoute un projet dans le système et sur l&#39;arbre. </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:133</div></div>
+<div class="ttc" id="class_editeur_html"><div class="ttname"><a href="class_editeur.html">Editeur</a></div><div class="ttdoc">Classe abstraite pour le widget d&#39;édition (partie droite de l&#39;onglet d&#39;édition) </div><div class="ttdef"><b>Definition:</b> UIClasses.h:127</div></div>
+<div class="ttc" id="class_main_window_html_a4201a4ae86be39f54071eedb95af8291"><div class="ttname"><a href="class_main_window.html#a4201a4ae86be39f54071eedb95af8291">MainWindow::slotAjouterTC</a></div><div class="ttdeci">void slotAjouterTC()</div><div class="ttdoc">Ajoute une tache composite dans le système et sur l&#39;arbre. </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:198</div></div>
+<div class="ttc" id="agendaview_8h_html"><div class="ttname"><a href="agendaview_8h.html">agendaview.h</a></div></div>
+<div class="ttc" id="class_tree_view_model_html"><div class="ttname"><a href="class_tree_view_model.html">TreeViewModel</a></div><div class="ttdoc">Gestionnaire singloton du modèle du TreeView  </div><div class="ttdef"><b>Definition:</b> UIClasses.h:34</div></div>
+<div class="ttc" id="class_tache_html"><div class="ttname"><a href="class_tache.html">Tache</a></div><div class="ttdoc">Classe abstraite de taches composant Projet. </div><div class="ttdef"><b>Definition:</b> Calendar.h:226</div></div>
+<div class="ttc" id="class_main_window_html_a2022b216fafd6461b8b959e791fee853"><div class="ttname"><a href="class_main_window.html#a2022b216fafd6461b8b959e791fee853">MainWindow::slotShowTU</a></div><div class="ttdeci">void slotShowTU()</div><div class="ttdoc">Lance l&#39;affichage de l&#39;édition de la tache t. </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:255</div></div>
+<div class="ttc" id="_calendar_8h_html"><div class="ttname"><a href="_calendar_8h.html">Calendar.h</a></div></div>
+<div class="ttc" id="class_main_window_html_a22bdfd5758d79d8a0dd6b55817f053a0"><div class="ttname"><a href="class_main_window.html#a22bdfd5758d79d8a0dd6b55817f053a0">MainWindow::slotProgrammerTU</a></div><div class="ttdeci">void slotProgrammerTU()</div><div class="ttdoc">Lance le dialogue pour programmer une tache unitaire. </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:263</div></div>
+<div class="ttc" id="class_main_window_html_a72cb9533595d3347763e3e485ac01fd6"><div class="ttname"><a href="class_main_window.html#a72cb9533595d3347763e3e485ac01fd6">MainWindow::slotShowTC</a></div><div class="ttdeci">void slotShowTC()</div><div class="ttdoc">Lance l&#39;affichage de l&#39;édition de la tache t. </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:259</div></div>
+<div class="ttc" id="class_projet_html"><div class="ttname"><a href="class_projet.html">Projet</a></div><div class="ttdoc">Classe de projets composite des Taches et composant ProjetManager. </div><div class="ttdef"><b>Definition:</b> Calendar.h:103</div></div>
+<div class="ttc" id="class_main_window_html"><div class="ttname"><a href="class_main_window.html">MainWindow</a></div><div class="ttdoc">Conserve les pointeurs vers les principaux widgets de la fenêtre. S&#39;occupe des actions générales sur ...</div><div class="ttdef"><b>Definition:</b> MainWindow.h:46</div></div>
+<div class="ttc" id="class_unitaire_html"><div class="ttname"><a href="class_unitaire.html">Unitaire</a></div><div class="ttdoc">Classe de taches programmables, héritant de Tachet et d&#39;Evenement La classe de taches pouvant être pr...</div><div class="ttdef"><b>Definition:</b> Calendar.h:320</div></div>
+<div class="ttc" id="class_main_window_html_a7bbdf27e0ee846803813e53a39a3bf01"><div class="ttname"><a href="class_main_window.html#a7bbdf27e0ee846803813e53a39a3bf01">MainWindow::showUnitaire</a></div><div class="ttdeci">void showUnitaire(Unitaire &amp;t)</div><div class="ttdoc">Affiche l&#39;édition d&#39;une tache unitaire. </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:77</div></div>
+<div class="ttc" id="class_main_window_html_addf6fb45b7869279d5c7b746dfe61429"><div class="ttname"><a href="class_main_window.html#addf6fb45b7869279d5c7b746dfe61429">MainWindow::slotAjouterTU</a></div><div class="ttdeci">void slotAjouterTU()</div><div class="ttdoc">Ajoute une tache unitaire dans le système et sur l&#39;arbre. </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:142</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 29 2015 09:31:29 for LO21 | Gestion de projets - Deryckère et Michel by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 20:59:15 for LO21 | Pistache by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

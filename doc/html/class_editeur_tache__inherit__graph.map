@@ -1,0 +1,5 @@
+<map id="EditeurTache" name="EditeurTache">
+<area shape="rect" id="node4" href="$class_editeur_t_c.html" title="EditeurTache de taches composite. " alt="" coords="5,229,87,256"/>
+<area shape="rect" id="node5" href="$class_editeur_t_u.html" title="EditeurTache de taches unitaires. " alt="" coords="111,229,192,256"/>
+<area shape="rect" id="node2" href="$class_editeur.html" title="Classe abstraite pour le widget d&#39;édition (partie droite de l&#39;onglet d&#39;édition) " alt="" coords="67,80,129,107"/>
+</map>

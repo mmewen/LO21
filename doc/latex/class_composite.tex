@@ -2,7 +2,7 @@
 \label{class_composite}\index{Composite@{Composite}}
 
 
-\hyperlink{class_tache}{Tache} qui peut contenir des tâches mais ne peut pas être programmée.  
+Classe d\textquotesingle{}ensembles de taches, héritant de \hyperlink{class_tache}{Tache} La classe possède un pointeur de Taches qui représente les composants de la tache composite.  
 
 
 
@@ -24,32 +24,222 @@ Collaboration diagram for Composite\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=186pt]{class_composite__coll__graph}
+\includegraphics[width=144pt]{class_composite__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{class_composite_1_1iterator}{iterator}
+class \hyperlink{class_composite_1_1_compo_iterator}{Compo\+Iterator}
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_composite_a63c52493ad8add53951157a418fa0971}{}\hyperlink{class_composite_1_1iterator}{iterator} {\bfseries getiterator} ()\label{class_composite_a63c52493ad8add53951157a418fa0971}
-
-\end{DoxyCompactItemize}
+unsigned int \hyperlink{class_composite_a8f2329eb1c8e193a820243948b9a9cf7}{get\+Nb\+Compo} ()
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de taches composantes. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_composite_ab0d63970716648141fbc24e7d77815a2}{add\+Item} (\hyperlink{class_tache}{Tache} $\ast$t)
+\begin{DoxyCompactList}\small\item\em Ajoute le pointeur de tache dans le tableau de précédence. \end{DoxyCompactList}\item 
+void \hyperlink{class_composite_ad8dce9e36cfb7386331babc980c382ff}{add\+Compo} (\hyperlink{class_tache}{Tache} $\ast$t)
+\begin{DoxyCompactList}\small\item\em Ajoute la pointeur de tache dans composition. \end{DoxyCompactList}\item 
+\hyperlink{class_tache}{Tache} \& \hyperlink{class_composite_af4ed8de948b2e2ffbd5a190aa1bc5260}{get\+Compo} (const string \&id)
+\begin{DoxyCompactList}\small\item\em Renvoie la référence vers la tache correspondant à id si elle existe dans composition. \end{DoxyCompactList}\item 
+const \hyperlink{class_tache}{Tache} \& \hyperlink{class_composite_a490a29347d32a8916f6a636e6de6d1ed}{get\+Compo} (const string \&code) const 
+\begin{DoxyCompactList}\small\item\em Renvoie la const référence vers la tache correspondant à id si elle existe dans composition. \end{DoxyCompactList}\item 
+int \hyperlink{class_composite_a6def8410e8a78678b488d1610266ee5b}{get\+Statut} ()
+\begin{DoxyCompactList}\small\item\em Retourne le statut de la tache \+: 0 = rien n\textquotesingle{}est fait, 1 = en cours, 2 = terminé/deadline passée. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_composite_a4dd23b6bafdc87f05f0cb7d19e459f94}{is\+Finished} (const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d, const \hyperlink{class_t_i_m_e_1_1_horaire}{Horaire} \&h)
+\begin{DoxyCompactList}\small\item\em Renvoie 1 si la tache a été terminée à la date d et l\textquotesingle{}horaire h, 0 sinon. \end{DoxyCompactList}\item 
+bool \hyperlink{class_composite_a38fbb5005db8a763fec1c8c04f63e1e0}{is\+Precedence\+Potentielle} (const string \&id)
+\begin{DoxyCompactList}\small\item\em Indique si la tache correspondant à id est une précédence potentielle ou non. \end{DoxyCompactList}\item 
+void \hyperlink{class_composite_ab57477d717423de47a26eb6981ab5914}{update} (string id, string t, \hyperlink{class_t_i_m_e_1_1_date}{Date} d, \hyperlink{class_t_i_m_e_1_1_date}{Date} e)
+\item 
+void \hyperlink{class_composite_a872bf1fe01072258e23d5e9c25f8b57a}{update} (string t, \hyperlink{class_t_i_m_e_1_1_date}{Date} d, \hyperlink{class_t_i_m_e_1_1_date}{Date} e)
+\item 
+\hyperlink{class_composite_1_1_compo_iterator}{Compo\+Iterator} \hyperlink{class_composite_a21cf28bf7b0aa43af3804145c7e0b25f}{get\+Compo\+Iterator} ()
+\begin{DoxyCompactList}\small\item\em Retourne un iterateur sur le tableau de composition. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_composite_a36da340a18bdf872a180c9657c5996c2}{afficher} (ostream \&f)
+\begin{DoxyCompactList}\small\item\em Affiche les attributs de la tache composite. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_composite_a67171474c4da6cc8efe0c7fafefd2b2d}{}class {\bfseries iterator}\label{class_composite_a67171474c4da6cc8efe0c7fafefd2b2d}
-
+class \hyperlink{class_composite_a99b8848e80b13dbf3ce3c48846cdf20a}{Compo\+Iterator}
+\item 
+\hyperlink{class_composite}{Composite} \& \hyperlink{class_composite_a8bbbf008527c73203db26f0f44c5e9d8}{Projet\+::ajouter\+Composite} (const string \&t, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&dispo, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&deadline)
 \end{DoxyCompactItemize}
-\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
-\hyperlink{class_tache}{Tache} qui peut contenir des tâches mais ne peut pas être programmée. 
+Classe d\textquotesingle{}ensembles de taches, héritant de \hyperlink{class_tache}{Tache} La classe possède un pointeur de Taches qui représente les composants de la tache composite. 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\subsection{Member Function Documentation}
+\hypertarget{class_composite_ad8dce9e36cfb7386331babc980c382ff}{}\index{Composite@{Composite}!add\+Compo@{add\+Compo}}
+\index{add\+Compo@{add\+Compo}!Composite@{Composite}}
+\subsubsection[{add\+Compo}]{\setlength{\rightskip}{0pt plus 5cm}void Composite\+::add\+Compo (
+\begin{DoxyParamCaption}
+\item[{{\bf Tache} $\ast$}]{t}
+\end{DoxyParamCaption}
+)}\label{class_composite_ad8dce9e36cfb7386331babc980c382ff}
+
+
+Ajoute la pointeur de tache dans composition. 
+
+\hypertarget{class_composite_ab0d63970716648141fbc24e7d77815a2}{}\index{Composite@{Composite}!add\+Item@{add\+Item}}
+\index{add\+Item@{add\+Item}!Composite@{Composite}}
+\subsubsection[{add\+Item}]{\setlength{\rightskip}{0pt plus 5cm}void Composite\+::add\+Item (
+\begin{DoxyParamCaption}
+\item[{{\bf Tache} $\ast$}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_composite_ab0d63970716648141fbc24e7d77815a2}
+
+
+Ajoute le pointeur de tache dans le tableau de précédence. 
+
+
+
+Reimplemented from \hyperlink{class_tache_a6a13b4138a46f22e632bf9d35f155c09}{Tache}.
+
+\hypertarget{class_composite_a36da340a18bdf872a180c9657c5996c2}{}\index{Composite@{Composite}!afficher@{afficher}}
+\index{afficher@{afficher}!Composite@{Composite}}
+\subsubsection[{afficher}]{\setlength{\rightskip}{0pt plus 5cm}void Composite\+::afficher (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_composite_a36da340a18bdf872a180c9657c5996c2}
+
+
+Affiche les attributs de la tache composite. 
+
+
+
+Implements \hyperlink{class_tache_a2f86a1a329eb7eee7c8ef4491439bc1c}{Tache}.
+
+\hypertarget{class_composite_af4ed8de948b2e2ffbd5a190aa1bc5260}{}\index{Composite@{Composite}!get\+Compo@{get\+Compo}}
+\index{get\+Compo@{get\+Compo}!Composite@{Composite}}
+\subsubsection[{get\+Compo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tache} \& Composite\+::get\+Compo (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{id}
+\end{DoxyParamCaption}
+)}\label{class_composite_af4ed8de948b2e2ffbd5a190aa1bc5260}
+
+
+Renvoie la référence vers la tache correspondant à id si elle existe dans composition. 
+
+\hypertarget{class_composite_a490a29347d32a8916f6a636e6de6d1ed}{}\index{Composite@{Composite}!get\+Compo@{get\+Compo}}
+\index{get\+Compo@{get\+Compo}!Composite@{Composite}}
+\subsubsection[{get\+Compo}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Tache} \& Composite\+::get\+Compo (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{code}
+\end{DoxyParamCaption}
+) const}\label{class_composite_a490a29347d32a8916f6a636e6de6d1ed}
+
+
+Renvoie la const référence vers la tache correspondant à id si elle existe dans composition. 
+
+\hypertarget{class_composite_a21cf28bf7b0aa43af3804145c7e0b25f}{}\index{Composite@{Composite}!get\+Compo\+Iterator@{get\+Compo\+Iterator}}
+\index{get\+Compo\+Iterator@{get\+Compo\+Iterator}!Composite@{Composite}}
+\subsubsection[{get\+Compo\+Iterator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Compo\+Iterator} Composite\+::get\+Compo\+Iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_composite_a21cf28bf7b0aa43af3804145c7e0b25f}
+
+
+Retourne un iterateur sur le tableau de composition. 
+
+\hypertarget{class_composite_a8f2329eb1c8e193a820243948b9a9cf7}{}\index{Composite@{Composite}!get\+Nb\+Compo@{get\+Nb\+Compo}}
+\index{get\+Nb\+Compo@{get\+Nb\+Compo}!Composite@{Composite}}
+\subsubsection[{get\+Nb\+Compo}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Composite\+::get\+Nb\+Compo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_composite_a8f2329eb1c8e193a820243948b9a9cf7}
+
+
+Retourne le nombre de taches composantes. 
+
+\hypertarget{class_composite_a6def8410e8a78678b488d1610266ee5b}{}\index{Composite@{Composite}!get\+Statut@{get\+Statut}}
+\index{get\+Statut@{get\+Statut}!Composite@{Composite}}
+\subsubsection[{get\+Statut}]{\setlength{\rightskip}{0pt plus 5cm}int Composite\+::get\+Statut (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_composite_a6def8410e8a78678b488d1610266ee5b}
+
+
+Retourne le statut de la tache \+: 0 = rien n\textquotesingle{}est fait, 1 = en cours, 2 = terminé/deadline passée. 
+
+
+
+Implements \hyperlink{class_tache_ac60426a56aec80b995f30456fc60a256}{Tache}.
+
+\hypertarget{class_composite_a4dd23b6bafdc87f05f0cb7d19e459f94}{}\index{Composite@{Composite}!is\+Finished@{is\+Finished}}
+\index{is\+Finished@{is\+Finished}!Composite@{Composite}}
+\subsubsection[{is\+Finished}]{\setlength{\rightskip}{0pt plus 5cm}int Composite\+::is\+Finished (
+\begin{DoxyParamCaption}
+\item[{const {\bf Date} \&}]{d, }
+\item[{const {\bf Horaire} \&}]{h}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_composite_a4dd23b6bafdc87f05f0cb7d19e459f94}
+
+
+Renvoie 1 si la tache a été terminée à la date d et l\textquotesingle{}horaire h, 0 sinon. 
+
+
+
+Implements \hyperlink{class_tache_a495d9d787ef400a510e625e4e51014bd}{Tache}.
+
+\hypertarget{class_composite_a38fbb5005db8a763fec1c8c04f63e1e0}{}\index{Composite@{Composite}!is\+Precedence\+Potentielle@{is\+Precedence\+Potentielle}}
+\index{is\+Precedence\+Potentielle@{is\+Precedence\+Potentielle}!Composite@{Composite}}
+\subsubsection[{is\+Precedence\+Potentielle}]{\setlength{\rightskip}{0pt plus 5cm}bool Composite\+::is\+Precedence\+Potentielle (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_composite_a38fbb5005db8a763fec1c8c04f63e1e0}
+
+
+Indique si la tache correspondant à id est une précédence potentielle ou non. 
+
+
+
+Reimplemented from \hyperlink{class_tache_ae873dc0bfe552ea39c34f430d56f3846}{Tache}.
+
+\hypertarget{class_composite_ab57477d717423de47a26eb6981ab5914}{}\index{Composite@{Composite}!update@{update}}
+\index{update@{update}!Composite@{Composite}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Composite\+::update (
+\begin{DoxyParamCaption}
+\item[{string}]{id, }
+\item[{string}]{t, }
+\item[{{\bf Date}}]{d, }
+\item[{{\bf Date}}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_composite_ab57477d717423de47a26eb6981ab5914}
+Met à jour les attributs identificateur, titre, dates de \hyperlink{class_composite}{Composite} \hypertarget{class_composite_a872bf1fe01072258e23d5e9c25f8b57a}{}\index{Composite@{Composite}!update@{update}}
+\index{update@{update}!Composite@{Composite}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Composite\+::update (
+\begin{DoxyParamCaption}
+\item[{string}]{t, }
+\item[{{\bf Date}}]{d, }
+\item[{{\bf Date}}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_composite_a872bf1fe01072258e23d5e9c25f8b57a}
+Met à jour les attributes titre et dates de composite 
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_composite_a99b8848e80b13dbf3ce3c48846cdf20a}{}\index{Composite@{Composite}!Compo\+Iterator@{Compo\+Iterator}}
+\index{Compo\+Iterator@{Compo\+Iterator}!Composite@{Composite}}
+\subsubsection[{Compo\+Iterator}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Compo\+Iterator}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_composite_a99b8848e80b13dbf3ce3c48846cdf20a}
+\hypertarget{class_composite_a8bbbf008527c73203db26f0f44c5e9d8}{}\index{Composite@{Composite}!Projet\+::ajouter\+Composite@{Projet\+::ajouter\+Composite}}
+\index{Projet\+::ajouter\+Composite@{Projet\+::ajouter\+Composite}!Composite@{Composite}}
+\subsubsection[{Projet\+::ajouter\+Composite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Composite}\& {\bf Projet\+::ajouter\+Composite} (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{t, }
+\item[{const {\bf Date} \&}]{dispo, }
+\item[{const {\bf Date} \&}]{deadline}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_composite_a8bbbf008527c73203db26f0f44c5e9d8}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-L\+O21app/Calendar.\+h\end{DoxyCompactItemize}
+L\+O21app/\hyperlink{_calendar_8h}{Calendar.\+h}\item 
+L\+O21app/\hyperlink{_calendar_8cpp}{Calendar.\+cpp}\end{DoxyCompactItemize}

@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_activite.html" title="Activite" alt="" coords="5,5,72,32"/>
+<area shape="rect" id="node2" href="$class_agenda_view.html" title="Classe d&#39;UI gérant le contenu de l&#39;onglet Agenda. " alt="" coords="128,5,223,32"/>
+<area shape="rect" id="node3" href="$class_editeur.html" title="Classe abstraite pour le widget d&#39;édition (partie droite de l&#39;onglet d&#39;édition) " alt="" coords="144,56,207,83"/>
+<area shape="rect" id="node8" href="$class_event_widget.html" title="Classe UI affichant un évènement dans l&#39;agenda. " alt="" coords="127,107,224,133"/>
+<area shape="rect" id="node4" href="$class_editeur_projet.html" title="Classe pour l&#39;Editeur de projet. " alt="" coords="273,31,370,57"/>
+<area shape="rect" id="node5" href="$class_editeur_tache.html" title="Classe abstraite pour l&#39;Editeur de taches. " alt="" coords="272,81,371,108"/>
+<area shape="rect" id="node6" href="$class_editeur_t_c.html" title="EditeurTache de taches composite. " alt="" coords="419,56,500,83"/>
+<area shape="rect" id="node7" href="$class_editeur_t_u.html" title="EditeurTache de taches unitaires. " alt="" coords="419,107,500,133"/>
 </map>

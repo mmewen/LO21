@@ -2,7 +2,7 @@
 \label{class_unitaire}\index{Unitaire@{Unitaire}}
 
 
-\hyperlink{class_tache}{Tache} programmable.  
+Classe de taches programmables, héritant de Tachet et d\textquotesingle{}\hyperlink{class_evenement}{Evenement} La classe de taches pouvant être programmées, en plusieurs fois si préemptive, en une seule fois sinon. La classe est forcément préemptive si sa durée dépasse 12h.  
 
 
 
@@ -15,7 +15,7 @@ Inheritance diagram for Unitaire\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=130pt]{class_unitaire__inherit__graph}
+\includegraphics[width=208pt]{class_unitaire__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -24,44 +24,215 @@ Collaboration diagram for Unitaire\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=240pt]{class_unitaire__coll__graph}
+\includegraphics[width=208pt]{class_unitaire__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_unitaire_aee42e9fae46a5be23802afe5c6c08a31}{}\hyperlink{class_t_i_m_e_1_1_duree}{Duree} \hyperlink{class_unitaire_aee42e9fae46a5be23802afe5c6c08a31}{get\+Duree} () const \label{class_unitaire_aee42e9fae46a5be23802afe5c6c08a31}
-
-\begin{DoxyCompactList}\small\item\em accesseur \end{DoxyCompactList}\item 
-\hypertarget{class_unitaire_adba3a8de0fe6273cea7eecda3520bfcd}{}bool \hyperlink{class_unitaire_adba3a8de0fe6273cea7eecda3520bfcd}{is\+Preemp} () const \label{class_unitaire_adba3a8de0fe6273cea7eecda3520bfcd}
-
-\begin{DoxyCompactList}\small\item\em accesseur \end{DoxyCompactList}\item 
-\hypertarget{class_unitaire_a9ab243102aa0572048a956204532b201}{}\hyperlink{class_t_i_m_e_1_1_duree}{Duree} \hyperlink{class_unitaire_a9ab243102aa0572048a956204532b201}{get\+Fait} () const \label{class_unitaire_a9ab243102aa0572048a956204532b201}
-
-\begin{DoxyCompactList}\small\item\em accesseur \end{DoxyCompactList}\item 
-\hypertarget{class_unitaire_a2fa3fa1073200a18c9a2706b37eb78e6}{}\hyperlink{class_t_i_m_e_1_1_duree}{Duree} \hyperlink{class_unitaire_a2fa3fa1073200a18c9a2706b37eb78e6}{get\+Restant} () const \label{class_unitaire_a2fa3fa1073200a18c9a2706b37eb78e6}
-
-\begin{DoxyCompactList}\small\item\em accesseur, retour calculé \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Public Attributes}
+virtual void \hyperlink{class_unitaire_a804454c39eb010aa67bd622a009df840}{add\+Item} (\hyperlink{class_tache}{Tache} $\ast$t)
+\begin{DoxyCompactList}\small\item\em Ajoute la tache pointée aux tableau de précédences prec. \end{DoxyCompactList}\item 
+bool \hyperlink{class_unitaire_adba3a8de0fe6273cea7eecda3520bfcd}{is\+Preemp} () const 
+\begin{DoxyCompactList}\small\item\em Indique si la tache est préemptable ou non. \end{DoxyCompactList}\item 
+\hyperlink{class_t_i_m_e_1_1_duree}{Duree} \hyperlink{class_unitaire_a9ab243102aa0572048a956204532b201}{get\+Fait} () const 
+\begin{DoxyCompactList}\small\item\em Retourne la durée faite de la tache. \end{DoxyCompactList}\item 
+\hyperlink{class_t_i_m_e_1_1_duree}{Duree} \hyperlink{class_unitaire_a2fa3fa1073200a18c9a2706b37eb78e6}{get\+Restant} () const 
+\begin{DoxyCompactList}\small\item\em Retourne la durée restante à programmer de la tache, calculée en soustrayant la durée totale avec la dutée faite. \end{DoxyCompactList}\item 
+int \hyperlink{class_unitaire_aadf6c5718aff37f1a7589240059e9e98}{get\+Statut} ()
+\begin{DoxyCompactList}\small\item\em Retourne le statut de la tache \+: 0 = rien n\textquotesingle{}est fait, 1 = en cours, 2 = terminé/deadline passée. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_unitaire_affee1a6cda05a1032eba560196af99b9}{is\+Finished} (const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d, const \hyperlink{class_t_i_m_e_1_1_horaire}{Horaire} \&h)
+\begin{DoxyCompactList}\small\item\em Renvoie 1 si la tache a été terminée à la date d et l\textquotesingle{}horaire h, 0 sinon. \end{DoxyCompactList}\item 
+void \hyperlink{class_unitaire_ad9ef9d9bb2b47520c3c609d822364964}{set\+Fait} (const \hyperlink{class_t_i_m_e_1_1_duree}{Duree} \&f)
+\begin{DoxyCompactList}\small\item\em Modifie la durée faite de la tache. \end{DoxyCompactList}\item 
+void \hyperlink{class_unitaire_aa4893599f98385c26884441655331bc2}{set\+Preemp} ()
+\begin{DoxyCompactList}\small\item\em Rend la tache préemptable. \end{DoxyCompactList}\item 
+void \hyperlink{class_unitaire_a8bb9a65dc5b0d03a44353edfae06580d}{set\+Non\+Preemp} ()
+\begin{DoxyCompactList}\small\item\em Rend, si possible, la tache preemptable. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_unitaire_a98bd645b84e0bd2f378e13774324f7b7}{afficher} (ostream \&f)
+\begin{DoxyCompactList}\small\item\em Affiche les attributs de la tache. \end{DoxyCompactList}\item 
+void \hyperlink{class_unitaire_a965c3d4d8ba7864ae28a24a5d514dec5}{update} (string id, string t, \hyperlink{class_t_i_m_e_1_1_date}{Date} d, \hyperlink{class_t_i_m_e_1_1_date}{Date} e, \hyperlink{class_t_i_m_e_1_1_duree}{Duree} dur, \hyperlink{class_t_i_m_e_1_1_duree}{Duree} df, bool p)
+\item 
+void \hyperlink{class_unitaire_a2f189cf8c1bc7d22b805e6bfd1aa0bd7}{update} (string t, \hyperlink{class_t_i_m_e_1_1_date}{Date} d, \hyperlink{class_t_i_m_e_1_1_date}{Date} e, \hyperlink{class_t_i_m_e_1_1_duree}{Duree} dur, bool p)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_unitaire_afb536168ed579d6380142ab6d8afdff1}{}\hyperlink{class_t_i_m_e_1_1_duree}{Duree} {\bfseries duree}\label{class_unitaire_afb536168ed579d6380142ab6d8afdff1}
-
-\item 
-\hypertarget{class_unitaire_a2279ae0e8b3dd31b5cdd51e55fb882e3}{}\hyperlink{class_t_i_m_e_1_1_duree}{Duree} {\bfseries duree\+Restante}\label{class_unitaire_a2279ae0e8b3dd31b5cdd51e55fb882e3}
-
-\item 
-\hypertarget{class_unitaire_a48d055a358e530bdb46b226a9234bad6}{}\hyperlink{class_t_i_m_e_1_1_duree}{Duree} {\bfseries duree\+Faite}\label{class_unitaire_a48d055a358e530bdb46b226a9234bad6}
-
-\item 
-\hypertarget{class_unitaire_ab1e8bb26f23031559fcbcd7450820dc5}{}bool {\bfseries preemptable}\label{class_unitaire_ab1e8bb26f23031559fcbcd7450820dc5}
-
+\hyperlink{class_unitaire}{Unitaire} \& \hyperlink{class_unitaire_af32ab372e13abfb17b253ade6390cfd3}{Projet\+::ajouter\+Unitaire} (const string \&t, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&dispo, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&deadline, const \hyperlink{class_t_i_m_e_1_1_duree}{Duree} \&duree, const bool premp)
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-\hyperlink{class_tache}{Tache} programmable. 
+Classe de taches programmables, héritant de Tachet et d\textquotesingle{}\hyperlink{class_evenement}{Evenement} La classe de taches pouvant être programmées, en plusieurs fois si préemptive, en une seule fois sinon. La classe est forcément préemptive si sa durée dépasse 12h. 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\subsection{Member Function Documentation}
+\hypertarget{class_unitaire_a804454c39eb010aa67bd622a009df840}{}\index{Unitaire@{Unitaire}!add\+Item@{add\+Item}}
+\index{add\+Item@{add\+Item}!Unitaire@{Unitaire}}
+\subsubsection[{add\+Item}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Unitaire\+::add\+Item (
+\begin{DoxyParamCaption}
+\item[{{\bf Tache} $\ast$}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{class_unitaire_a804454c39eb010aa67bd622a009df840}
+
+
+Ajoute la tache pointée aux tableau de précédences prec. 
+
+
+
+Reimplemented from \hyperlink{class_tache_a6a13b4138a46f22e632bf9d35f155c09}{Tache}.
+
+\hypertarget{class_unitaire_a98bd645b84e0bd2f378e13774324f7b7}{}\index{Unitaire@{Unitaire}!afficher@{afficher}}
+\index{afficher@{afficher}!Unitaire@{Unitaire}}
+\subsubsection[{afficher}]{\setlength{\rightskip}{0pt plus 5cm}void Unitaire\+::afficher (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_unitaire_a98bd645b84e0bd2f378e13774324f7b7}
+
+
+Affiche les attributs de la tache. 
+
+
+
+Implements \hyperlink{class_evenement_af217f0cd3d421e3f113a13536ee63593}{Evenement}.
+
+\hypertarget{class_unitaire_a9ab243102aa0572048a956204532b201}{}\index{Unitaire@{Unitaire}!get\+Fait@{get\+Fait}}
+\index{get\+Fait@{get\+Fait}!Unitaire@{Unitaire}}
+\subsubsection[{get\+Fait}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Duree} Unitaire\+::get\+Fait (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_unitaire_a9ab243102aa0572048a956204532b201}
+
+
+Retourne la durée faite de la tache. 
+
+\hypertarget{class_unitaire_a2fa3fa1073200a18c9a2706b37eb78e6}{}\index{Unitaire@{Unitaire}!get\+Restant@{get\+Restant}}
+\index{get\+Restant@{get\+Restant}!Unitaire@{Unitaire}}
+\subsubsection[{get\+Restant}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Duree} Unitaire\+::get\+Restant (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_unitaire_a2fa3fa1073200a18c9a2706b37eb78e6}
+
+
+Retourne la durée restante à programmer de la tache, calculée en soustrayant la durée totale avec la dutée faite. 
+
+\hypertarget{class_unitaire_aadf6c5718aff37f1a7589240059e9e98}{}\index{Unitaire@{Unitaire}!get\+Statut@{get\+Statut}}
+\index{get\+Statut@{get\+Statut}!Unitaire@{Unitaire}}
+\subsubsection[{get\+Statut}]{\setlength{\rightskip}{0pt plus 5cm}int Unitaire\+::get\+Statut (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_unitaire_aadf6c5718aff37f1a7589240059e9e98}
+
+
+Retourne le statut de la tache \+: 0 = rien n\textquotesingle{}est fait, 1 = en cours, 2 = terminé/deadline passée. 
+
+
+
+Implements \hyperlink{class_tache_ac60426a56aec80b995f30456fc60a256}{Tache}.
+
+\hypertarget{class_unitaire_affee1a6cda05a1032eba560196af99b9}{}\index{Unitaire@{Unitaire}!is\+Finished@{is\+Finished}}
+\index{is\+Finished@{is\+Finished}!Unitaire@{Unitaire}}
+\subsubsection[{is\+Finished}]{\setlength{\rightskip}{0pt plus 5cm}int Unitaire\+::is\+Finished (
+\begin{DoxyParamCaption}
+\item[{const {\bf Date} \&}]{d, }
+\item[{const {\bf Horaire} \&}]{h}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_unitaire_affee1a6cda05a1032eba560196af99b9}
+
+
+Renvoie 1 si la tache a été terminée à la date d et l\textquotesingle{}horaire h, 0 sinon. 
+
+
+
+Implements \hyperlink{class_tache_a495d9d787ef400a510e625e4e51014bd}{Tache}.
+
+\hypertarget{class_unitaire_adba3a8de0fe6273cea7eecda3520bfcd}{}\index{Unitaire@{Unitaire}!is\+Preemp@{is\+Preemp}}
+\index{is\+Preemp@{is\+Preemp}!Unitaire@{Unitaire}}
+\subsubsection[{is\+Preemp}]{\setlength{\rightskip}{0pt plus 5cm}bool Unitaire\+::is\+Preemp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_unitaire_adba3a8de0fe6273cea7eecda3520bfcd}
+
+
+Indique si la tache est préemptable ou non. 
+
+\hypertarget{class_unitaire_ad9ef9d9bb2b47520c3c609d822364964}{}\index{Unitaire@{Unitaire}!set\+Fait@{set\+Fait}}
+\index{set\+Fait@{set\+Fait}!Unitaire@{Unitaire}}
+\subsubsection[{set\+Fait}]{\setlength{\rightskip}{0pt plus 5cm}void Unitaire\+::set\+Fait (
+\begin{DoxyParamCaption}
+\item[{const {\bf Duree} \&}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_unitaire_ad9ef9d9bb2b47520c3c609d822364964}
+
+
+Modifie la durée faite de la tache. 
+
+\hypertarget{class_unitaire_a8bb9a65dc5b0d03a44353edfae06580d}{}\index{Unitaire@{Unitaire}!set\+Non\+Preemp@{set\+Non\+Preemp}}
+\index{set\+Non\+Preemp@{set\+Non\+Preemp}!Unitaire@{Unitaire}}
+\subsubsection[{set\+Non\+Preemp}]{\setlength{\rightskip}{0pt plus 5cm}void Unitaire\+::set\+Non\+Preemp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_unitaire_a8bb9a65dc5b0d03a44353edfae06580d}
+
+
+Rend, si possible, la tache preemptable. 
+
+\hypertarget{class_unitaire_aa4893599f98385c26884441655331bc2}{}\index{Unitaire@{Unitaire}!set\+Preemp@{set\+Preemp}}
+\index{set\+Preemp@{set\+Preemp}!Unitaire@{Unitaire}}
+\subsubsection[{set\+Preemp}]{\setlength{\rightskip}{0pt plus 5cm}void Unitaire\+::set\+Preemp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_unitaire_aa4893599f98385c26884441655331bc2}
+
+
+Rend la tache préemptable. 
+
+\hypertarget{class_unitaire_a965c3d4d8ba7864ae28a24a5d514dec5}{}\index{Unitaire@{Unitaire}!update@{update}}
+\index{update@{update}!Unitaire@{Unitaire}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Unitaire\+::update (
+\begin{DoxyParamCaption}
+\item[{string}]{id, }
+\item[{string}]{t, }
+\item[{{\bf Date}}]{d, }
+\item[{{\bf Date}}]{e, }
+\item[{{\bf Duree}}]{dur, }
+\item[{{\bf Duree}}]{df, }
+\item[{bool}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_unitaire_a965c3d4d8ba7864ae28a24a5d514dec5}
+Met à jour la tache en modifiant ses attributs à partir des paramètres donnés \+: id, titre, disponibilité, échéance, durée, durée faite et préemptabilité \hypertarget{class_unitaire_a2f189cf8c1bc7d22b805e6bfd1aa0bd7}{}\index{Unitaire@{Unitaire}!update@{update}}
+\index{update@{update}!Unitaire@{Unitaire}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Unitaire\+::update (
+\begin{DoxyParamCaption}
+\item[{string}]{t, }
+\item[{{\bf Date}}]{d, }
+\item[{{\bf Date}}]{e, }
+\item[{{\bf Duree}}]{dur, }
+\item[{bool}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_unitaire_a2f189cf8c1bc7d22b805e6bfd1aa0bd7}
+Met à jour la tache en modifiant ses attributs à partir des paramètres donnés \+: id, titre, disponibilité, échéance, durée et préemptabilité 
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_unitaire_af32ab372e13abfb17b253ade6390cfd3}{}\index{Unitaire@{Unitaire}!Projet\+::ajouter\+Unitaire@{Projet\+::ajouter\+Unitaire}}
+\index{Projet\+::ajouter\+Unitaire@{Projet\+::ajouter\+Unitaire}!Unitaire@{Unitaire}}
+\subsubsection[{Projet\+::ajouter\+Unitaire}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Unitaire}\& {\bf Projet\+::ajouter\+Unitaire} (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{t, }
+\item[{const {\bf Date} \&}]{dispo, }
+\item[{const {\bf Date} \&}]{deadline, }
+\item[{const {\bf Duree} \&}]{duree, }
+\item[{const bool}]{premp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_unitaire_af32ab372e13abfb17b253ade6390cfd3}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-L\+O21app/Calendar.\+h\end{DoxyCompactItemize}
+L\+O21app/\hyperlink{_calendar_8h}{Calendar.\+h}\item 
+L\+O21app/\hyperlink{_calendar_8cpp}{Calendar.\+cpp}\end{DoxyCompactItemize}

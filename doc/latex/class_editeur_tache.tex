@@ -1,0 +1,170 @@
+\hypertarget{class_editeur_tache}{}\section{Editeur\+Tache Class Reference}
+\label{class_editeur_tache}\index{Editeur\+Tache@{Editeur\+Tache}}
+
+
+Classe abstraite pour l\textquotesingle{}\hyperlink{class_editeur}{Editeur} de taches.  
+
+
+
+
+{\ttfamily \#include $<$U\+I\+Classes.\+h$>$}
+
+
+
+Inheritance diagram for Editeur\+Tache\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_editeur_tache__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Editeur\+Tache\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=154pt]{class_editeur_tache__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_editeur_tache_a3da47f10289e4a6d06a758e15b9cf75b}{slot\+Enable} ()
+\begin{DoxyCompactList}\small\item\em Active le widget. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_editeur_tache_a74d5b6312857eb3eb906d91e62120117}{slot\+Reload} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_editeur_tache_adf24ca27b5a0b0280b83c3f73d4e6bfa}{reload\+All} ()
+\begin{DoxyCompactList}\small\item\em Demande d\textquotesingle{}actualisation du widget d\textquotesingle{}édition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_editeur_tache_af009a1d4c96dab70e199d53060f039e0}{Editeur\+Tache} ()
+\item 
+void \hyperlink{class_editeur_tache_a6f5dab1963119064dc44f0ec27dd2d59}{print\+Fin\+Form} (\hyperlink{class_tache}{Tache} $\ast$t)
+\begin{DoxyCompactList}\small\item\em Affiche la fin du formulaire d\textquotesingle{}édition de tache, qui est commun aux unitaires et composites. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_editeur_tache_a68ce9a1be85d6ed5f27414fbc776080b}{$\sim$\+Editeur\+Tache} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Line\+Edit $\ast$ \hyperlink{class_editeur_tache_a188e190433234ece59f36b9f633013da}{titre}
+\item 
+Q\+Calendar\+Widget $\ast$ \hyperlink{class_editeur_tache_a7a608a687eb98bf443067908744b3f94}{dispo}
+\item 
+Q\+Calendar\+Widget $\ast$ \hyperlink{class_editeur_tache_a93278524e408b25fec5671a6d1266fe1}{echeance}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{class_editeur_tache_ab6339fa7828a4dabf8f126f1d09661ff}{annuler}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{class_editeur_tache_a4b5c16b951e61f07047bd7ee4bf6d026}{sauver}
+\item 
+Q\+Push\+Button $\ast$ \hyperlink{class_editeur_tache_a18dc840a560062902f3cc5e382c03d6f}{predecesseurs}
+\item 
+Q\+List\+Widget $\ast$ \hyperlink{class_editeur_tache_ab16d5f996e09c161b95952f3e868a9f5}{liste\+Predecesseurs}
+\item 
+Q\+List\+Widget\+Item $\ast$$\ast$ \hyperlink{class_editeur_tache_ac5571067515d4f44d85d206b4e68ffc2}{tab\+Predecesseurs}
+\item 
+int \hyperlink{class_editeur_tache_acfe4d83f7a169b6f537e36876ec1ce84}{nb\+Pred}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe abstraite pour l\textquotesingle{}\hyperlink{class_editeur}{Editeur} de taches. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_editeur_tache_af009a1d4c96dab70e199d53060f039e0}{}\index{Editeur\+Tache@{Editeur\+Tache}!Editeur\+Tache@{Editeur\+Tache}}
+\index{Editeur\+Tache@{Editeur\+Tache}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{Editeur\+Tache}]{\setlength{\rightskip}{0pt plus 5cm}Editeur\+Tache\+::\+Editeur\+Tache (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_editeur_tache_af009a1d4c96dab70e199d53060f039e0}
+\hypertarget{class_editeur_tache_a68ce9a1be85d6ed5f27414fbc776080b}{}\index{Editeur\+Tache@{Editeur\+Tache}!````~Editeur\+Tache@{$\sim$\+Editeur\+Tache}}
+\index{````~Editeur\+Tache@{$\sim$\+Editeur\+Tache}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{$\sim$\+Editeur\+Tache}]{\setlength{\rightskip}{0pt plus 5cm}virtual Editeur\+Tache\+::$\sim$\+Editeur\+Tache (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{class_editeur_tache_a68ce9a1be85d6ed5f27414fbc776080b}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_editeur_tache_a6f5dab1963119064dc44f0ec27dd2d59}{}\index{Editeur\+Tache@{Editeur\+Tache}!print\+Fin\+Form@{print\+Fin\+Form}}
+\index{print\+Fin\+Form@{print\+Fin\+Form}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{print\+Fin\+Form}]{\setlength{\rightskip}{0pt plus 5cm}void Editeur\+Tache\+::print\+Fin\+Form (
+\begin{DoxyParamCaption}
+\item[{{\bf Tache} $\ast$}]{t}
+\end{DoxyParamCaption}
+)}\label{class_editeur_tache_a6f5dab1963119064dc44f0ec27dd2d59}
+
+
+Affiche la fin du formulaire d\textquotesingle{}édition de tache, qui est commun aux unitaires et composites. 
+
+\hypertarget{class_editeur_tache_adf24ca27b5a0b0280b83c3f73d4e6bfa}{}\index{Editeur\+Tache@{Editeur\+Tache}!reload\+All@{reload\+All}}
+\index{reload\+All@{reload\+All}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{reload\+All}]{\setlength{\rightskip}{0pt plus 5cm}void Editeur\+Tache\+::reload\+All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_editeur_tache_adf24ca27b5a0b0280b83c3f73d4e6bfa}
+
+
+Demande d\textquotesingle{}actualisation du widget d\textquotesingle{}édition. 
+
+\hypertarget{class_editeur_tache_a3da47f10289e4a6d06a758e15b9cf75b}{}\index{Editeur\+Tache@{Editeur\+Tache}!slot\+Enable@{slot\+Enable}}
+\index{slot\+Enable@{slot\+Enable}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{slot\+Enable}]{\setlength{\rightskip}{0pt plus 5cm}void Editeur\+Tache\+::slot\+Enable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_editeur_tache_a3da47f10289e4a6d06a758e15b9cf75b}
+
+
+Active le widget. 
+
+\hypertarget{class_editeur_tache_a74d5b6312857eb3eb906d91e62120117}{}\index{Editeur\+Tache@{Editeur\+Tache}!slot\+Reload@{slot\+Reload}}
+\index{slot\+Reload@{slot\+Reload}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{slot\+Reload}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Editeur\+Tache\+::slot\+Reload (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}\label{class_editeur_tache_a74d5b6312857eb3eb906d91e62120117}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_editeur_tache_ab6339fa7828a4dabf8f126f1d09661ff}{}\index{Editeur\+Tache@{Editeur\+Tache}!annuler@{annuler}}
+\index{annuler@{annuler}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{annuler}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ Editeur\+Tache\+::annuler}\label{class_editeur_tache_ab6339fa7828a4dabf8f126f1d09661ff}
+\hypertarget{class_editeur_tache_a7a608a687eb98bf443067908744b3f94}{}\index{Editeur\+Tache@{Editeur\+Tache}!dispo@{dispo}}
+\index{dispo@{dispo}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{dispo}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Calendar\+Widget$\ast$ Editeur\+Tache\+::dispo}\label{class_editeur_tache_a7a608a687eb98bf443067908744b3f94}
+\hypertarget{class_editeur_tache_a93278524e408b25fec5671a6d1266fe1}{}\index{Editeur\+Tache@{Editeur\+Tache}!echeance@{echeance}}
+\index{echeance@{echeance}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{echeance}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Calendar\+Widget$\ast$ Editeur\+Tache\+::echeance}\label{class_editeur_tache_a93278524e408b25fec5671a6d1266fe1}
+\hypertarget{class_editeur_tache_ab16d5f996e09c161b95952f3e868a9f5}{}\index{Editeur\+Tache@{Editeur\+Tache}!liste\+Predecesseurs@{liste\+Predecesseurs}}
+\index{liste\+Predecesseurs@{liste\+Predecesseurs}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{liste\+Predecesseurs}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List\+Widget$\ast$ Editeur\+Tache\+::liste\+Predecesseurs}\label{class_editeur_tache_ab16d5f996e09c161b95952f3e868a9f5}
+\hypertarget{class_editeur_tache_acfe4d83f7a169b6f537e36876ec1ce84}{}\index{Editeur\+Tache@{Editeur\+Tache}!nb\+Pred@{nb\+Pred}}
+\index{nb\+Pred@{nb\+Pred}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{nb\+Pred}]{\setlength{\rightskip}{0pt plus 5cm}int Editeur\+Tache\+::nb\+Pred}\label{class_editeur_tache_acfe4d83f7a169b6f537e36876ec1ce84}
+\hypertarget{class_editeur_tache_a18dc840a560062902f3cc5e382c03d6f}{}\index{Editeur\+Tache@{Editeur\+Tache}!predecesseurs@{predecesseurs}}
+\index{predecesseurs@{predecesseurs}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{predecesseurs}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ Editeur\+Tache\+::predecesseurs}\label{class_editeur_tache_a18dc840a560062902f3cc5e382c03d6f}
+\hypertarget{class_editeur_tache_a4b5c16b951e61f07047bd7ee4bf6d026}{}\index{Editeur\+Tache@{Editeur\+Tache}!sauver@{sauver}}
+\index{sauver@{sauver}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{sauver}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Push\+Button$\ast$ Editeur\+Tache\+::sauver}\label{class_editeur_tache_a4b5c16b951e61f07047bd7ee4bf6d026}
+\hypertarget{class_editeur_tache_ac5571067515d4f44d85d206b4e68ffc2}{}\index{Editeur\+Tache@{Editeur\+Tache}!tab\+Predecesseurs@{tab\+Predecesseurs}}
+\index{tab\+Predecesseurs@{tab\+Predecesseurs}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{tab\+Predecesseurs}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List\+Widget\+Item$\ast$$\ast$ Editeur\+Tache\+::tab\+Predecesseurs}\label{class_editeur_tache_ac5571067515d4f44d85d206b4e68ffc2}
+\hypertarget{class_editeur_tache_a188e190433234ece59f36b9f633013da}{}\index{Editeur\+Tache@{Editeur\+Tache}!titre@{titre}}
+\index{titre@{titre}!Editeur\+Tache@{Editeur\+Tache}}
+\subsubsection[{titre}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Line\+Edit$\ast$ Editeur\+Tache\+::titre}\label{class_editeur_tache_a188e190433234ece59f36b9f633013da}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+L\+O21app/\hyperlink{_u_i_classes_8h}{U\+I\+Classes.\+h}\item 
+L\+O21app/\hyperlink{_u_i_classes_8cpp}{U\+I\+Classes.\+cpp}\end{DoxyCompactItemize}

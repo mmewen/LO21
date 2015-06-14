@@ -2,7 +2,7 @@
 \label{class_t_i_m_e_1_1_intervalle}\index{T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}}
 
 
-Classe permettant de manipuler des intervalles de dates L\textquotesingle{}utilisation de cette classe nécessite des dates valides au sens commun du terme. Déclenchement d\textquotesingle{}exception dans le cas contraire.  
+Classe permettant de manipuler des intervalles de dates L\textquotesingle{}utilisation de cette classe nï¿½cessite des dates valides au sens commun du terme. Dï¿½clenchement d\textquotesingle{}exception dans le cas contraire.  
 
 
 
@@ -13,29 +13,23 @@ Classe permettant de manipuler des intervalles de dates L\textquotesingle{}utili
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_t_i_m_e_1_1_intervalle_a98b63f9c55a777090ec224d61ab26427}{Intervalle} (const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&f)
-\begin{DoxyCompactList}\small\item\em Constructeur à partir de deux dates. \end{DoxyCompactList}\item 
-\hypertarget{class_t_i_m_e_1_1_intervalle_a729d464967de6618da00b772357dc923}{}void {\bfseries afficher} (std\+::ostream \&f=std\+::cout) const \label{class_t_i_m_e_1_1_intervalle_a729d464967de6618da00b772357dc923}
-
-\item 
-\hypertarget{class_t_i_m_e_1_1_intervalle_a8a9980c16e051af5e08135815cc3d074}{}\hyperlink{class_t_i_m_e_1_1_date}{Date} {\bfseries get\+Debut} () const \label{class_t_i_m_e_1_1_intervalle_a8a9980c16e051af5e08135815cc3d074}
-
-\item 
-\hypertarget{class_t_i_m_e_1_1_intervalle_a20a035fb9d9720ef94e62e1ef45845c3}{}\hyperlink{class_t_i_m_e_1_1_date}{Date} {\bfseries get\+Fin} () const \label{class_t_i_m_e_1_1_intervalle_a20a035fb9d9720ef94e62e1ef45845c3}
-
-\item 
-\hypertarget{class_t_i_m_e_1_1_intervalle_adec63857259b690f79de8d16b0ca0c4d}{}int {\bfseries get\+Duree} () const \label{class_t_i_m_e_1_1_intervalle_adec63857259b690f79de8d16b0ca0c4d}
-
-\item 
-\hypertarget{class_t_i_m_e_1_1_intervalle_a8f7dca71eb9d8648fa30225360df4fda}{}bool {\bfseries operator\&\&} (const \hyperlink{class_t_i_m_e_1_1_intervalle}{Intervalle} \&v) const \label{class_t_i_m_e_1_1_intervalle_a8f7dca71eb9d8648fa30225360df4fda}
-
-\item 
-\hypertarget{class_t_i_m_e_1_1_intervalle_a9dfead5501b190507a2ffa5c29450ffe}{}\hyperlink{class_t_i_m_e_1_1_intervalle}{Intervalle} {\bfseries operator+} (const \hyperlink{class_t_i_m_e_1_1_intervalle}{Intervalle} \&i) const \label{class_t_i_m_e_1_1_intervalle_a9dfead5501b190507a2ffa5c29450ffe}
-
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructeur ï¿½ partir de deux dates. \end{DoxyCompactList}\item 
+void \hyperlink{class_t_i_m_e_1_1_intervalle_a729d464967de6618da00b772357dc923}{afficher} (std\+::ostream \&f=std\+::cout) const 
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}intervalle de dates. \end{DoxyCompactList}\item 
+\hyperlink{class_t_i_m_e_1_1_date}{Date} \hyperlink{class_t_i_m_e_1_1_intervalle_a8a9980c16e051af5e08135815cc3d074}{get\+Debut} () const 
+\begin{DoxyCompactList}\small\item\em Retourne la date de dï¿½but de l\textquotesingle{}intervalle. \end{DoxyCompactList}\item 
+\hyperlink{class_t_i_m_e_1_1_date}{Date} \hyperlink{class_t_i_m_e_1_1_intervalle_a20a035fb9d9720ef94e62e1ef45845c3}{get\+Fin} () const 
+\begin{DoxyCompactList}\small\item\em Retourne la date de fin de l\textquotesingle{}intervalle. \end{DoxyCompactList}\item 
+int \hyperlink{class_t_i_m_e_1_1_intervalle_adec63857259b690f79de8d16b0ca0c4d}{get\+Duree} () const 
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de jours s\textquotesingle{}ï¿½coulant entre le dï¿½but et la fin de l\textquotesingle{}intervalle. \end{DoxyCompactList}\item 
+bool \hyperlink{class_t_i_m_e_1_1_intervalle_a8f7dca71eb9d8648fa30225360df4fda}{operator\&\&} (const \hyperlink{class_t_i_m_e_1_1_intervalle}{Intervalle} \&v) const 
+\begin{DoxyCompactList}\small\item\em I1\&\&I2 Retourne vrai si il y a intersection entre I1 et I2. \end{DoxyCompactList}\item 
+\hyperlink{class_t_i_m_e_1_1_intervalle}{Intervalle} \hyperlink{class_t_i_m_e_1_1_intervalle_a9dfead5501b190507a2ffa5c29450ffe}{operator+} (const \hyperlink{class_t_i_m_e_1_1_intervalle}{Intervalle} \&i) const 
+\begin{DoxyCompactList}\small\item\em I1+\+I2 Retourne un intervalle union des 2 intervalles I1 et I2 qui se touchent, ie I2.\+debut est le jour du lendemain de I1.\+fin. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Classe permettant de manipuler des intervalles de dates L\textquotesingle{}utilisation de cette classe nécessite des dates valides au sens commun du terme. Déclenchement d\textquotesingle{}exception dans le cas contraire. 
+Classe permettant de manipuler des intervalles de dates L\textquotesingle{}utilisation de cette classe nï¿½cessite des dates valides au sens commun du terme. Dï¿½clenchement d\textquotesingle{}exception dans le cas contraire. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_t_i_m_e_1_1_intervalle_a98b63f9c55a777090ec224d61ab26427}{}\index{T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}!Intervalle@{Intervalle}}
@@ -48,18 +42,87 @@ Classe permettant de manipuler des intervalles de dates L\textquotesingle{}utili
 )}\label{class_t_i_m_e_1_1_intervalle_a98b63f9c55a777090ec224d61ab26427}
 
 
-Constructeur à partir de deux dates. 
+Constructeur ï¿½ partir de deux dates. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em d} & date de début de l\textquotesingle{}intervalle \\
+{\em d} & date de dï¿½but de l\textquotesingle{}intervalle \\
 \hline
 {\em f} & date de fin de l\textquotesingle{}intervalle. On doit avoir d$<$=f \\
 \hline
 \end{DoxyParams}
 
 
+\subsection{Member Function Documentation}
+\hypertarget{class_t_i_m_e_1_1_intervalle_a729d464967de6618da00b772357dc923}{}\index{T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}!afficher@{afficher}}
+\index{afficher@{afficher}!T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}}
+\subsubsection[{afficher}]{\setlength{\rightskip}{0pt plus 5cm}void Intervalle\+::afficher (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{f = {\ttfamily std\+:\+:cout}}
+\end{DoxyParamCaption}
+) const}\label{class_t_i_m_e_1_1_intervalle_a729d464967de6618da00b772357dc923}
+
+
+Affiche l\textquotesingle{}intervalle de dates. 
+
+\hypertarget{class_t_i_m_e_1_1_intervalle_a8a9980c16e051af5e08135815cc3d074}{}\index{T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}!get\+Debut@{get\+Debut}}
+\index{get\+Debut@{get\+Debut}!T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}}
+\subsubsection[{get\+Debut}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Date} T\+I\+M\+E\+::\+Intervalle\+::get\+Debut (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_t_i_m_e_1_1_intervalle_a8a9980c16e051af5e08135815cc3d074}
+
+
+Retourne la date de dï¿½but de l\textquotesingle{}intervalle. 
+
+\hypertarget{class_t_i_m_e_1_1_intervalle_adec63857259b690f79de8d16b0ca0c4d}{}\index{T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}!get\+Duree@{get\+Duree}}
+\index{get\+Duree@{get\+Duree}!T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}}
+\subsubsection[{get\+Duree}]{\setlength{\rightskip}{0pt plus 5cm}int T\+I\+M\+E\+::\+Intervalle\+::get\+Duree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_t_i_m_e_1_1_intervalle_adec63857259b690f79de8d16b0ca0c4d}
+
+
+Retourne le nombre de jours s\textquotesingle{}ï¿½coulant entre le dï¿½but et la fin de l\textquotesingle{}intervalle. 
+
+\hypertarget{class_t_i_m_e_1_1_intervalle_a20a035fb9d9720ef94e62e1ef45845c3}{}\index{T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}!get\+Fin@{get\+Fin}}
+\index{get\+Fin@{get\+Fin}!T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}}
+\subsubsection[{get\+Fin}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Date} T\+I\+M\+E\+::\+Intervalle\+::get\+Fin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_t_i_m_e_1_1_intervalle_a20a035fb9d9720ef94e62e1ef45845c3}
+
+
+Retourne la date de fin de l\textquotesingle{}intervalle. 
+
+\hypertarget{class_t_i_m_e_1_1_intervalle_a8f7dca71eb9d8648fa30225360df4fda}{}\index{T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}!operator\&\&@{operator\&\&}}
+\index{operator\&\&@{operator\&\&}!T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}}
+\subsubsection[{operator\&\&}]{\setlength{\rightskip}{0pt plus 5cm}bool Intervalle\+::operator\&\& (
+\begin{DoxyParamCaption}
+\item[{const {\bf Intervalle} \&}]{v}
+\end{DoxyParamCaption}
+) const}\label{class_t_i_m_e_1_1_intervalle_a8f7dca71eb9d8648fa30225360df4fda}
+
+
+I1\&\&I2 Retourne vrai si il y a intersection entre I1 et I2. 
+
+\hypertarget{class_t_i_m_e_1_1_intervalle_a9dfead5501b190507a2ffa5c29450ffe}{}\index{T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}!operator+@{operator+}}
+\index{operator+@{operator+}!T\+I\+M\+E\+::\+Intervalle@{T\+I\+M\+E\+::\+Intervalle}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Intervalle} Intervalle\+::operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Intervalle} \&}]{i}
+\end{DoxyParamCaption}
+) const}\label{class_t_i_m_e_1_1_intervalle_a9dfead5501b190507a2ffa5c29450ffe}
+
+
+I1+\+I2 Retourne un intervalle union des 2 intervalles I1 et I2 qui se touchent, ie I2.\+debut est le jour du lendemain de I1.\+fin. 
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-L\+O21app/timing.\+h\item 
-L\+O21app/timing.\+cpp\end{DoxyCompactItemize}
+L\+O21app/\hyperlink{timing_8h}{timing.\+h}\item 
+L\+O21app/\hyperlink{timing_8cpp}{timing.\+cpp}\end{DoxyCompactItemize}

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>LO21 | Gestion de projets - Deryckère et Michel: ProgrammationManager Class Reference</title>
+<title>LO21 | Pistache: ProgrammationManager Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,9 +24,9 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logomini.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">LO21 | Gestion de projets - Deryckère et Michel
+   <div id="projectname">LO21 | Pistache
    </div>
-   <div id="projectbrief">Projet de LO21 où l&#39;utilisateur peut créer des projets, des tâches et des évènements.</div>
+   <div id="projectbrief">Projet de LO21 de Loïc Deryckère et Mewen Michel</div>
   </td>
  </tr>
  </tbody>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -85,40 +86,296 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_programmation_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ProgrammationManager Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Gestion des évènements ou taches programmés.  
+<p>Classe composite de <a class="el" href="class_programmation.html" title="Classe donnant une date, un horaire et une durée à une Evenement, classe composant ProgrammationManag...">Programmation</a> La classe applique le designe pattern singleton et possède un iterateur sur le tableau de pointeurs de Programmations.  
  <a href="class_programmation_manager.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_calendar_8h_source.html">Calendar.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ProgrammationManager:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_programmation_manager__inherit__graph.png" border="0" usemap="#_programmation_manager_inherit__map" alt="Inheritance graph"/></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for ProgrammationManager:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_programmation_manager__coll__graph.png" border="0" usemap="#_programmation_manager_coll__map" alt="Collaboration graph"/></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_programmation_manager_1_1_iterator.html">Iterator</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
+Signals</h2></td></tr>
+<tr class="memitem:ad6f6dbec484d80425f498460650a0649"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_programmation_manager.html#ad6f6dbec484d80425f498460650a0649">programmationsChanged</a> ()</td></tr>
+<tr class="memdesc:ad6f6dbec484d80425f498460650a0649"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal de changement de programmation.  <a href="#ad6f6dbec484d80425f498460650a0649">More...</a><br /></td></tr>
+<tr class="separator:ad6f6dbec484d80425f498460650a0649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2f846196abea78a761b71bdc5eb6afd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2f846196abea78a761b71bdc5eb6afd6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ProgrammationManager</b> (const <a class="el" href="class_programmation_manager.html">ProgrammationManager</a> &amp;um)</td></tr>
-<tr class="separator:a2f846196abea78a761b71bdc5eb6afd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a547fb5ab78a25298cba270a13ef3e8a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a547fb5ab78a25298cba270a13ef3e8a7"></a>
-<a class="el" href="class_programmation_manager.html">ProgrammationManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_programmation_manager.html">ProgrammationManager</a> &amp;um)</td></tr>
-<tr class="separator:a547fb5ab78a25298cba270a13ef3e8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa53a6a561512c95c09baedc4f788c45b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa53a6a561512c95c09baedc4f788c45b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ajouterProgrammation</b> (const <a class="el" href="class_unitaire.html">Unitaire</a> &amp;t, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;d, const <a class="el" href="class_t_i_m_e_1_1_horaire.html">Horaire</a> &amp;h)</td></tr>
-<tr class="separator:aa53a6a561512c95c09baedc4f788c45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43fd958e37bf4a78b845006aa5551bec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_programmation.html">Programmation</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_programmation_manager.html#a43fd958e37bf4a78b845006aa5551bec">trouverProgrammation</a> (<a class="el" href="class_evenement.html">Evenement</a> &amp;e) const </td></tr>
+<tr class="memdesc:a43fd958e37bf4a78b845006aa5551bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le pointeur de la programmation de l'événement correspondant si elle existe dans le tableau.  <a href="#a43fd958e37bf4a78b845006aa5551bec">More...</a><br /></td></tr>
+<tr class="separator:a43fd958e37bf4a78b845006aa5551bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab52ba49ca1d79add9f6d83f8f9386b7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_programmation.html">Programmation</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_programmation_manager.html#ab52ba49ca1d79add9f6d83f8f9386b7e">trouverProgrammation</a> (const <a class="el" href="class_evenement.html">Evenement</a> &amp;e) const </td></tr>
+<tr class="memdesc:ab52ba49ca1d79add9f6d83f8f9386b7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le pointeur de la programmation de l'événement const correspondant si elle existe dans le tableau.  <a href="#ab52ba49ca1d79add9f6d83f8f9386b7e">More...</a><br /></td></tr>
+<tr class="separator:ab52ba49ca1d79add9f6d83f8f9386b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b6067aba53b0389d30c485c9a544769"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_programmation_manager.html#a8b6067aba53b0389d30c485c9a544769">ajouterProgrammation</a> (<a class="el" href="class_unitaire.html">Unitaire</a> &amp;e, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;d, const <a class="el" href="class_t_i_m_e_1_1_horaire.html">Horaire</a> &amp;h, <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> dur)</td></tr>
+<tr class="memdesc:a8b6067aba53b0389d30c485c9a544769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée une programmation d'une <a class="el" href="class_tache.html" title="Classe abstraite de taches composant Projet. ">Tache</a> <a class="el" href="class_unitaire.html" title="Classe de taches programmables, héritant de Tachet et d&#39;Evenement La classe de taches pouvant être pr...">Unitaire</a> et stocke le pointeur dans le tableau programmations.  <a href="#a8b6067aba53b0389d30c485c9a544769">More...</a><br /></td></tr>
+<tr class="separator:a8b6067aba53b0389d30c485c9a544769"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3451eabd67b35163c6213eed9b2f3733"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_programmation_manager.html#a3451eabd67b35163c6213eed9b2f3733">ajouterProgrammation</a> (<a class="el" href="class_activite.html">Activite</a> &amp;e, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;d, const <a class="el" href="class_t_i_m_e_1_1_horaire.html">Horaire</a> &amp;h, const <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> &amp;dur)</td></tr>
+<tr class="memdesc:a3451eabd67b35163c6213eed9b2f3733"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée une programmation d'une Activité et stocke le pointeur dans le tableau programmations.  <a href="#a3451eabd67b35163c6213eed9b2f3733">More...</a><br /></td></tr>
+<tr class="separator:a3451eabd67b35163c6213eed9b2f3733"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaff6e0852f9e7ec4aeb47f6ef976fdf9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_programmation_manager_1_1_iterator.html">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_programmation_manager.html#aaff6e0852f9e7ec4aeb47f6ef976fdf9">getIterator</a> ()</td></tr>
+<tr class="memdesc:aaff6e0852f9e7ec4aeb47f6ef976fdf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie un iterateur sur programmations.  <a href="#aaff6e0852f9e7ec4aeb47f6ef976fdf9">More...</a><br /></td></tr>
+<tr class="separator:aaff6e0852f9e7ec4aeb47f6ef976fdf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a9da2fc647972756d1f8cdf91d4017c25"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_programmation_manager.html">ProgrammationManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_programmation_manager.html#a9da2fc647972756d1f8cdf91d4017c25">getInstance</a> ()</td></tr>
+<tr class="memdesc:a9da2fc647972756d1f8cdf91d4017c25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la seule instance de <a class="el" href="class_programmation_manager.html" title="Classe composite de Programmation La classe applique le designe pattern singleton et possède un itera...">ProgrammationManager</a>.  <a href="#a9da2fc647972756d1f8cdf91d4017c25">More...</a><br /></td></tr>
+<tr class="separator:a9da2fc647972756d1f8cdf91d4017c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94e3fcb28ea7c632dc6750c33949d712"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_programmation_manager.html#a94e3fcb28ea7c632dc6750c33949d712">libererInstance</a> ()</td></tr>
+<tr class="memdesc:a94e3fcb28ea7c632dc6750c33949d712"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère l'unique instance de <a class="el" href="class_programmation_manager.html" title="Classe composite de Programmation La classe applique le designe pattern singleton et possède un itera...">ProgrammationManager</a>.  <a href="#a94e3fcb28ea7c632dc6750c33949d712">More...</a><br /></td></tr>
+<tr class="separator:a94e3fcb28ea7c632dc6750c33949d712"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Gestion des évènements ou taches programmés. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>Classe composite de <a class="el" href="class_programmation.html" title="Classe donnant une date, un horaire et une durée à une Evenement, classe composant ProgrammationManag...">Programmation</a> La classe applique le designe pattern singleton et possède un iterateur sur le tableau de pointeurs de Programmations. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a8b6067aba53b0389d30c485c9a544769"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ProgrammationManager::ajouterProgrammation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_unitaire.html">Unitaire</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_horaire.html">Horaire</a> &amp;&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td>
+          <td class="paramname"><em>dur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée une programmation d'une <a class="el" href="class_tache.html" title="Classe abstraite de taches composant Projet. ">Tache</a> <a class="el" href="class_unitaire.html" title="Classe de taches programmables, héritant de Tachet et d&#39;Evenement La classe de taches pouvant être pr...">Unitaire</a> et stocke le pointeur dans le tableau programmations. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3451eabd67b35163c6213eed9b2f3733"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ProgrammationManager::ajouterProgrammation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_activite.html">Activite</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_horaire.html">Horaire</a> &amp;&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> &amp;&#160;</td>
+          <td class="paramname"><em>dur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée une programmation d'une Activité et stocke le pointeur dans le tableau programmations. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9da2fc647972756d1f8cdf91d4017c25"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a> &amp; ProgrammationManager::getInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie la seule instance de <a class="el" href="class_programmation_manager.html" title="Classe composite de Programmation La classe applique le designe pattern singleton et possède un itera...">ProgrammationManager</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="aaff6e0852f9e7ec4aeb47f6ef976fdf9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_programmation_manager_1_1_iterator.html">Iterator</a> ProgrammationManager::getIterator </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie un iterateur sur programmations. </p>
+
+</div>
+</div>
+<a class="anchor" id="a94e3fcb28ea7c632dc6750c33949d712"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ProgrammationManager::libererInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Libère l'unique instance de <a class="el" href="class_programmation_manager.html" title="Classe composite de Programmation La classe applique le designe pattern singleton et possède un itera...">ProgrammationManager</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad6f6dbec484d80425f498460650a0649"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ProgrammationManager::programmationsChanged </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Signal de changement de programmation. </p>
+
+</div>
+</div>
+<a class="anchor" id="a43fd958e37bf4a78b845006aa5551bec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_programmation.html">Programmation</a> * ProgrammationManager::trouverProgrammation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_evenement.html">Evenement</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie le pointeur de la programmation de l'événement correspondant si elle existe dans le tableau. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab52ba49ca1d79add9f6d83f8f9386b7e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_programmation.html">Programmation</a> * ProgrammationManager::trouverProgrammation </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_evenement.html">Evenement</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie le pointeur de la programmation de l'événement const correspondant si elle existe dans le tableau. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>LO21app/<a class="el" href="_calendar_8h_source.html">Calendar.h</a></li>
-<li>LO21app/Calendar.cpp</li>
+<li>LO21app/<a class="el" href="_calendar_8cpp.html">Calendar.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 29 2015 09:31:29 for LO21 | Gestion de projets - Deryckère et Michel by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 20:59:15 for LO21 | Pistache by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

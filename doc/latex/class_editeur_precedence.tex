@@ -1,0 +1,127 @@
+\hypertarget{class_editeur_precedence}{}\section{Editeur\+Precedence Class Reference}
+\label{class_editeur_precedence}\index{Editeur\+Precedence@{Editeur\+Precedence}}
+
+
+\hyperlink{class_editeur}{Editeur} des précédences de la tache appelante.  
+
+
+
+
+{\ttfamily \#include $<$U\+I\+Classes.\+h$>$}
+
+
+
+Inheritance diagram for Editeur\+Precedence\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{class_editeur_precedence__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Editeur\+Precedence\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{class_editeur_precedence__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_editeur_precedence_a6553c232071fb5b260266f42ff68e034}{slot\+Annulation} ()
+\begin{DoxyCompactList}\small\item\em Termine l\textquotesingle{}édition des précédences et ferme. \end{DoxyCompactList}\item 
+void \hyperlink{class_editeur_precedence_a8afea493809dd7de5adf873cf53c2269}{slot\+Ajout} ()
+\begin{DoxyCompactList}\small\item\em Ajoute la précédence et ferme le dialogue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_editeur_precedence_abc08fe095980f3562b33d5d77db2b78c}{edition\+Precedence\+End} ()
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}édition des précédences est terminée (validée ou annulée) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_editeur_precedence_a60f724870e7782eb7173899301697de7}{Editeur\+Precedence} (\hyperlink{class_tache}{Tache} $\ast$t)
+\item 
+string \& \hyperlink{class_editeur_precedence_a4daa5c22356a9d1bd1dff590f8c48493}{get\+Tache\+Id\+From\+Index} (int index)
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}id de la tache choisie dans la Combobox. \end{DoxyCompactList}\item 
+bool \hyperlink{class_editeur_precedence_a23123b51c204c65e76950b3c5fa0145d}{empty} () const 
+\begin{DoxyCompactList}\small\item\em Retourne true s\textquotesingle{}il n\textquotesingle{}y a pas de précédence possible (entraine la non ouverture du dialogue) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_editeur}{Editeur} des précédences de la tache appelante. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_editeur_precedence_a60f724870e7782eb7173899301697de7}{}\index{Editeur\+Precedence@{Editeur\+Precedence}!Editeur\+Precedence@{Editeur\+Precedence}}
+\index{Editeur\+Precedence@{Editeur\+Precedence}!Editeur\+Precedence@{Editeur\+Precedence}}
+\subsubsection[{Editeur\+Precedence}]{\setlength{\rightskip}{0pt plus 5cm}Editeur\+Precedence\+::\+Editeur\+Precedence (
+\begin{DoxyParamCaption}
+\item[{{\bf Tache} $\ast$}]{t}
+\end{DoxyParamCaption}
+)}\label{class_editeur_precedence_a60f724870e7782eb7173899301697de7}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_editeur_precedence_abc08fe095980f3562b33d5d77db2b78c}{}\index{Editeur\+Precedence@{Editeur\+Precedence}!edition\+Precedence\+End@{edition\+Precedence\+End}}
+\index{edition\+Precedence\+End@{edition\+Precedence\+End}!Editeur\+Precedence@{Editeur\+Precedence}}
+\subsubsection[{edition\+Precedence\+End}]{\setlength{\rightskip}{0pt plus 5cm}void Editeur\+Precedence\+::edition\+Precedence\+End (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_editeur_precedence_abc08fe095980f3562b33d5d77db2b78c}
+
+
+L\textquotesingle{}édition des précédences est terminée (validée ou annulée) 
+
+\hypertarget{class_editeur_precedence_a23123b51c204c65e76950b3c5fa0145d}{}\index{Editeur\+Precedence@{Editeur\+Precedence}!empty@{empty}}
+\index{empty@{empty}!Editeur\+Precedence@{Editeur\+Precedence}}
+\subsubsection[{empty}]{\setlength{\rightskip}{0pt plus 5cm}bool Editeur\+Precedence\+::empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_editeur_precedence_a23123b51c204c65e76950b3c5fa0145d}
+
+
+Retourne true s\textquotesingle{}il n\textquotesingle{}y a pas de précédence possible (entraine la non ouverture du dialogue) 
+
+\hypertarget{class_editeur_precedence_a4daa5c22356a9d1bd1dff590f8c48493}{}\index{Editeur\+Precedence@{Editeur\+Precedence}!get\+Tache\+Id\+From\+Index@{get\+Tache\+Id\+From\+Index}}
+\index{get\+Tache\+Id\+From\+Index@{get\+Tache\+Id\+From\+Index}!Editeur\+Precedence@{Editeur\+Precedence}}
+\subsubsection[{get\+Tache\+Id\+From\+Index}]{\setlength{\rightskip}{0pt plus 5cm}string \& Editeur\+Precedence\+::get\+Tache\+Id\+From\+Index (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\label{class_editeur_precedence_a4daa5c22356a9d1bd1dff590f8c48493}
+
+
+Retourne l\textquotesingle{}id de la tache choisie dans la Combobox. 
+
+\hypertarget{class_editeur_precedence_a8afea493809dd7de5adf873cf53c2269}{}\index{Editeur\+Precedence@{Editeur\+Precedence}!slot\+Ajout@{slot\+Ajout}}
+\index{slot\+Ajout@{slot\+Ajout}!Editeur\+Precedence@{Editeur\+Precedence}}
+\subsubsection[{slot\+Ajout}]{\setlength{\rightskip}{0pt plus 5cm}void Editeur\+Precedence\+::slot\+Ajout (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_editeur_precedence_a8afea493809dd7de5adf873cf53c2269}
+
+
+Ajoute la précédence et ferme le dialogue. 
+
+\hypertarget{class_editeur_precedence_a6553c232071fb5b260266f42ff68e034}{}\index{Editeur\+Precedence@{Editeur\+Precedence}!slot\+Annulation@{slot\+Annulation}}
+\index{slot\+Annulation@{slot\+Annulation}!Editeur\+Precedence@{Editeur\+Precedence}}
+\subsubsection[{slot\+Annulation}]{\setlength{\rightskip}{0pt plus 5cm}void Editeur\+Precedence\+::slot\+Annulation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_editeur_precedence_a6553c232071fb5b260266f42ff68e034}
+
+
+Termine l\textquotesingle{}édition des précédences et ferme. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+L\+O21app/\hyperlink{_u_i_classes_8h}{U\+I\+Classes.\+h}\item 
+L\+O21app/\hyperlink{_u_i_classes_8cpp}{U\+I\+Classes.\+cpp}\end{DoxyCompactItemize}

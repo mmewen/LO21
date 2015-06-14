@@ -1,22 +1,107 @@
 \hypertarget{class_programmation}{}\section{Programmation Class Reference}
 \label{class_programmation}\index{Programmation@{Programmation}}
+
+
+Classe donnant une date, un horaire et une durée à une \hyperlink{class_evenement}{Evenement}, classe composant \hyperlink{class_programmation_manager}{Programmation\+Manager}.  
+
+
+
+
+{\ttfamily \#include $<$Calendar.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_programmation_a2c557f9f87c56133c658e2b14cd68ab9}{}{\bfseries Programmation} (const \hyperlink{class_unitaire}{Unitaire} \&t, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d, const \hyperlink{class_t_i_m_e_1_1_horaire}{Horaire} \&h)\label{class_programmation_a2c557f9f87c56133c658e2b14cd68ab9}
-
+const \hyperlink{class_evenement}{Evenement} \& \hyperlink{class_programmation_ad206ec323cdb7dba4006b8915b1a165e}{get\+Evenement} () const 
+\begin{DoxyCompactList}\small\item\em Renvoie la référence sur l\textquotesingle{}événement programmé \end{DoxyCompactList}\item 
+\hyperlink{class_t_i_m_e_1_1_date}{Date} \hyperlink{class_programmation_abab51a44ecfa15becd790571d80074e8}{get\+Date} () const 
+\begin{DoxyCompactList}\small\item\em Renvoie la date de la programmation. \end{DoxyCompactList}\item 
+\hyperlink{class_t_i_m_e_1_1_horaire}{Horaire} \hyperlink{class_programmation_af4b33fc2e67826566fff3ba43f637c4f}{get\+Horaire} () const 
+\begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}horaire de la programmation. \end{DoxyCompactList}\item 
+\hyperlink{class_t_i_m_e_1_1_duree}{Duree} \hyperlink{class_programmation_a86e406352b60adb786c1dd5b8ae1888a}{get\+Duree} () const 
+\begin{DoxyCompactList}\small\item\em Renvoie la durée de la programmation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_programmation_a7395fca93b007fbd741e6a331b531ab9}{}const \hyperlink{class_tache}{Tache} \& \hyperlink{class_programmation_a7395fca93b007fbd741e6a331b531ab9}{get\+Tache} () const \label{class_programmation_a7395fca93b007fbd741e6a331b531ab9}
+void \hyperlink{class_programmation_a221c849e8b395f7a8012d9ba49ce5fc1}{Programmation\+Manager\+::ajouter\+Programmation} (\hyperlink{class_unitaire}{Unitaire} \&e, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d, const \hyperlink{class_t_i_m_e_1_1_horaire}{Horaire} \&h, \hyperlink{class_t_i_m_e_1_1_duree}{Duree} dur)
+\item 
+void \hyperlink{class_programmation_a134c124a1c7c68d5063f119e8bf3c251}{Programmation\+Manager\+::ajouter\+Programmation} (\hyperlink{class_activite}{Activite} \&e, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d, const \hyperlink{class_t_i_m_e_1_1_horaire}{Horaire} \&h, const \hyperlink{class_t_i_m_e_1_1_duree}{Duree} \&dur)
+\end{DoxyCompactItemize}
 
-\begin{DoxyCompactList}\small\item\em accesseur \end{DoxyCompactList}\item 
-\hypertarget{class_programmation_abab51a44ecfa15becd790571d80074e8}{}\hyperlink{class_t_i_m_e_1_1_date}{Date} \hyperlink{class_programmation_abab51a44ecfa15becd790571d80074e8}{get\+Date} () const \label{class_programmation_abab51a44ecfa15becd790571d80074e8}
 
-\begin{DoxyCompactList}\small\item\em accesseur \end{DoxyCompactList}\item 
-\hypertarget{class_programmation_af4b33fc2e67826566fff3ba43f637c4f}{}\hyperlink{class_t_i_m_e_1_1_horaire}{Horaire} \hyperlink{class_programmation_af4b33fc2e67826566fff3ba43f637c4f}{get\+Horaire} () const \label{class_programmation_af4b33fc2e67826566fff3ba43f637c4f}
+\subsection{Detailed Description}
+Classe donnant une date, un horaire et une durée à une \hyperlink{class_evenement}{Evenement}, classe composant \hyperlink{class_programmation_manager}{Programmation\+Manager}. 
 
-\begin{DoxyCompactList}\small\item\em accesseur \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection{Member Function Documentation}
+\hypertarget{class_programmation_abab51a44ecfa15becd790571d80074e8}{}\index{Programmation@{Programmation}!get\+Date@{get\+Date}}
+\index{get\+Date@{get\+Date}!Programmation@{Programmation}}
+\subsubsection[{get\+Date}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Date} Programmation\+::get\+Date (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_programmation_abab51a44ecfa15becd790571d80074e8}
+
+
+Renvoie la date de la programmation. 
+
+\hypertarget{class_programmation_a86e406352b60adb786c1dd5b8ae1888a}{}\index{Programmation@{Programmation}!get\+Duree@{get\+Duree}}
+\index{get\+Duree@{get\+Duree}!Programmation@{Programmation}}
+\subsubsection[{get\+Duree}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Duree} Programmation\+::get\+Duree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_programmation_a86e406352b60adb786c1dd5b8ae1888a}
+
+
+Renvoie la durée de la programmation. 
+
+\hypertarget{class_programmation_ad206ec323cdb7dba4006b8915b1a165e}{}\index{Programmation@{Programmation}!get\+Evenement@{get\+Evenement}}
+\index{get\+Evenement@{get\+Evenement}!Programmation@{Programmation}}
+\subsubsection[{get\+Evenement}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Evenement}\& Programmation\+::get\+Evenement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_programmation_ad206ec323cdb7dba4006b8915b1a165e}
+
+
+Renvoie la référence sur l\textquotesingle{}événement programmé 
+
+\hypertarget{class_programmation_af4b33fc2e67826566fff3ba43f637c4f}{}\index{Programmation@{Programmation}!get\+Horaire@{get\+Horaire}}
+\index{get\+Horaire@{get\+Horaire}!Programmation@{Programmation}}
+\subsubsection[{get\+Horaire}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Horaire} Programmation\+::get\+Horaire (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_programmation_af4b33fc2e67826566fff3ba43f637c4f}
+
+
+Renvoie l\textquotesingle{}horaire de la programmation. 
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_programmation_a221c849e8b395f7a8012d9ba49ce5fc1}{}\index{Programmation@{Programmation}!Programmation\+Manager\+::ajouter\+Programmation@{Programmation\+Manager\+::ajouter\+Programmation}}
+\index{Programmation\+Manager\+::ajouter\+Programmation@{Programmation\+Manager\+::ajouter\+Programmation}!Programmation@{Programmation}}
+\subsubsection[{Programmation\+Manager\+::ajouter\+Programmation}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Programmation\+Manager\+::ajouter\+Programmation} (
+\begin{DoxyParamCaption}
+\item[{{\bf Unitaire} \&}]{e, }
+\item[{const {\bf Date} \&}]{d, }
+\item[{const {\bf Horaire} \&}]{h, }
+\item[{{\bf Duree}}]{dur}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_programmation_a221c849e8b395f7a8012d9ba49ce5fc1}
+\hypertarget{class_programmation_a134c124a1c7c68d5063f119e8bf3c251}{}\index{Programmation@{Programmation}!Programmation\+Manager\+::ajouter\+Programmation@{Programmation\+Manager\+::ajouter\+Programmation}}
+\index{Programmation\+Manager\+::ajouter\+Programmation@{Programmation\+Manager\+::ajouter\+Programmation}!Programmation@{Programmation}}
+\subsubsection[{Programmation\+Manager\+::ajouter\+Programmation}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Programmation\+Manager\+::ajouter\+Programmation} (
+\begin{DoxyParamCaption}
+\item[{{\bf Activite} \&}]{e, }
+\item[{const {\bf Date} \&}]{d, }
+\item[{const {\bf Horaire} \&}]{h, }
+\item[{const {\bf Duree} \&}]{dur}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_programmation_a134c124a1c7c68d5063f119e8bf3c251}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-L\+O21app/Calendar.\+h\end{DoxyCompactItemize}
+L\+O21app/\hyperlink{_calendar_8h}{Calendar.\+h}\end{DoxyCompactItemize}

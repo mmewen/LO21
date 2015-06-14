@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>LO21 | Gestion de projets - Deryckère et Michel: Activite Class Reference</title>
+<title>LO21 | Pistache: Activite Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,9 +24,9 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logomini.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">LO21 | Gestion de projets - Deryckère et Michel
+   <div id="projectname">LO21 | Pistache
    </div>
-   <div id="projectbrief">Projet de LO21 où l&#39;utilisateur peut créer des projets, des tâches et des évènements.</div>
+   <div id="projectbrief">Projet de LO21 de Loïc Deryckère et Mewen Michel</div>
   </td>
  </tr>
  </tbody>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -91,29 +92,290 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Activite Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classe d'evenement basique programmable, héritant d'<a class="el" href="class_evenement.html" title="Classe abstraite d&#39;éléments pouvant être programmés. ">Evenement</a> La classe possède un titre et un lieu.  
+ <a href="class_activite.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_calendar_8h_source.html">Calendar.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Activite:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_activite__inherit__graph.png" border="0" usemap="#_activite_inherit__map" alt="Inheritance graph"/></div>
+<map name="_activite_inherit__map" id="_activite_inherit__map">
+<area shape="rect" id="node2" href="class_evenement.html" title="Classe abstraite d&#39;éléments pouvant être programmés. " alt="" coords="5,5,93,32"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Activite:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_activite__coll__graph.png" border="0" usemap="#_activite_coll__map" alt="Collaboration graph"/></div>
+<map name="_activite_coll__map" id="_activite_coll__map">
+<area shape="rect" id="node2" href="class_evenement.html" title="Classe abstraite d&#39;éléments pouvant être programmés. " alt="" coords="5,5,93,32"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab0e1e83e41d35906dffc14530826075e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0e1e83e41d35906dffc14530826075e"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_activite.html#ab0e1e83e41d35906dffc14530826075e">getTitre</a> () const </td></tr>
-<tr class="memdesc:ab0e1e83e41d35906dffc14530826075e"><td class="mdescLeft">&#160;</td><td class="mdescRight">accesseur <br /></td></tr>
+<tr class="memitem:a06098c0f62244f4b60d250325b738094"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_activite.html#a06098c0f62244f4b60d250325b738094">Activite</a> (const string &amp;t, const string &amp;l, <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> dur)</td></tr>
+<tr class="memdesc:a06098c0f62244f4b60d250325b738094"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur d'activité  <a href="#a06098c0f62244f4b60d250325b738094">More...</a><br /></td></tr>
+<tr class="separator:a06098c0f62244f4b60d250325b738094"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0e1e83e41d35906dffc14530826075e"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_activite.html#ab0e1e83e41d35906dffc14530826075e">getTitre</a> () const </td></tr>
+<tr class="memdesc:ab0e1e83e41d35906dffc14530826075e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le titre.  <a href="#ab0e1e83e41d35906dffc14530826075e">More...</a><br /></td></tr>
 <tr class="separator:ab0e1e83e41d35906dffc14530826075e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a695b4d43546d5715977381a7070d66d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a695b4d43546d5715977381a7070d66d6"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_activite.html#a695b4d43546d5715977381a7070d66d6">getLieu</a> () const </td></tr>
-<tr class="memdesc:a695b4d43546d5715977381a7070d66d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">accesseur <br /></td></tr>
+<tr class="memitem:a695b4d43546d5715977381a7070d66d6"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_activite.html#a695b4d43546d5715977381a7070d66d6">getLieu</a> () const </td></tr>
+<tr class="memdesc:a695b4d43546d5715977381a7070d66d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le lieu.  <a href="#a695b4d43546d5715977381a7070d66d6">More...</a><br /></td></tr>
 <tr class="separator:a695b4d43546d5715977381a7070d66d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a201ae71f21859cb31fd24c3fd8b1875f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a201ae71f21859cb31fd24c3fd8b1875f"></a>
-<a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_activite.html#a201ae71f21859cb31fd24c3fd8b1875f">getDuree</a> () const </td></tr>
-<tr class="memdesc:a201ae71f21859cb31fd24c3fd8b1875f"><td class="mdescLeft">&#160;</td><td class="mdescRight">accesseur <br /></td></tr>
-<tr class="separator:a201ae71f21859cb31fd24c3fd8b1875f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a510383c92c6d87877e074032fa8519ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_activite.html#a510383c92c6d87877e074032fa8519ee">setTitre</a> (const string &amp;t)</td></tr>
+<tr class="memdesc:a510383c92c6d87877e074032fa8519ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie le titre.  <a href="#a510383c92c6d87877e074032fa8519ee">More...</a><br /></td></tr>
+<tr class="separator:a510383c92c6d87877e074032fa8519ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1240cc984d5508b99feb99175bc05750"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_activite.html#a1240cc984d5508b99feb99175bc05750">setLieu</a> (const string &amp;l)</td></tr>
+<tr class="memdesc:a1240cc984d5508b99feb99175bc05750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie le lieu.  <a href="#a1240cc984d5508b99feb99175bc05750">More...</a><br /></td></tr>
+<tr class="separator:a1240cc984d5508b99feb99175bc05750"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a513d49fbf721923d0db22a646ec606be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_activite.html#a513d49fbf721923d0db22a646ec606be">update</a> (string t, string l, <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> d)</td></tr>
+<tr class="separator:a513d49fbf721923d0db22a646ec606be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf748b87edc5e4a5b78bd5e9364946f3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_activite.html#acf748b87edc5e4a5b78bd5e9364946f3">afficher</a> (ostream &amp;f)</td></tr>
+<tr class="memdesc:acf748b87edc5e4a5b78bd5e9364946f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les attributs de l'activité  <a href="#acf748b87edc5e4a5b78bd5e9364946f3">More...</a><br /></td></tr>
+<tr class="separator:acf748b87edc5e4a5b78bd5e9364946f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_evenement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_evenement')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_evenement.html">Evenement</a></td></tr>
+<tr class="memitem:a55edc55f582f7992296b10e8a60476c8 inherit pub_methods_class_evenement"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_evenement.html#a55edc55f582f7992296b10e8a60476c8">~Evenement</a> ()</td></tr>
+<tr class="memdesc:a55edc55f582f7992296b10e8a60476c8 inherit pub_methods_class_evenement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur de l'événement.  <a href="#a55edc55f582f7992296b10e8a60476c8">More...</a><br /></td></tr>
+<tr class="separator:a55edc55f582f7992296b10e8a60476c8 inherit pub_methods_class_evenement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab538f1a96d3b5b63f8ce0e89f16bcafd inherit pub_methods_class_evenement"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_evenement.html#ab538f1a96d3b5b63f8ce0e89f16bcafd">Evenement</a> (<a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> dur)</td></tr>
+<tr class="memdesc:ab538f1a96d3b5b63f8ce0e89f16bcafd inherit pub_methods_class_evenement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de l'événement à partir d'une durée.  <a href="#ab538f1a96d3b5b63f8ce0e89f16bcafd">More...</a><br /></td></tr>
+<tr class="separator:ab538f1a96d3b5b63f8ce0e89f16bcafd inherit pub_methods_class_evenement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43c92d1917720282ac6ba3a598fac708 inherit pub_methods_class_evenement"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_evenement.html#a43c92d1917720282ac6ba3a598fac708">getDuree</a> () const </td></tr>
+<tr class="memdesc:a43c92d1917720282ac6ba3a598fac708 inherit pub_methods_class_evenement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la durée de l'événement.  <a href="#a43c92d1917720282ac6ba3a598fac708">More...</a><br /></td></tr>
+<tr class="separator:a43c92d1917720282ac6ba3a598fac708 inherit pub_methods_class_evenement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5f395f7681426893894fb73eb851459 inherit pub_methods_class_evenement"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_evenement.html#aa5f395f7681426893894fb73eb851459">getNom</a> () const </td></tr>
+<tr class="memdesc:aa5f395f7681426893894fb73eb851459 inherit pub_methods_class_evenement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nom et l'éventuel lieu de l'événement en QString.  <a href="#aa5f395f7681426893894fb73eb851459">More...</a><br /></td></tr>
+<tr class="separator:aa5f395f7681426893894fb73eb851459 inherit pub_methods_class_evenement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42e914b00d21eb4377d7c0a242a88e9a inherit pub_methods_class_evenement"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_evenement.html#a42e914b00d21eb4377d7c0a242a88e9a">setDuree</a> (const <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> &amp;dur)</td></tr>
+<tr class="memdesc:a42e914b00d21eb4377d7c0a242a88e9a inherit pub_methods_class_evenement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la durée de l'événement à partir du paramètre "dur".  <a href="#a42e914b00d21eb4377d7c0a242a88e9a">More...</a><br /></td></tr>
+<tr class="separator:a42e914b00d21eb4377d7c0a242a88e9a inherit pub_methods_class_evenement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Classe d'evenement basique programmable, héritant d'<a class="el" href="class_evenement.html" title="Classe abstraite d&#39;éléments pouvant être programmés. ">Evenement</a> La classe possède un titre et un lieu. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a06098c0f62244f4b60d250325b738094"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Activite::Activite </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td>
+          <td class="paramname"><em>dur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructeur d'activité </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="acf748b87edc5e4a5b78bd5e9364946f3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Activite::afficher </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Affiche les attributs de l'activité </p>
+
+<p>Implements <a class="el" href="class_evenement.html#af217f0cd3d421e3f113a13536ee63593">Evenement</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a695b4d43546d5715977381a7070d66d6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Activite::getLieu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne le lieu. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab0e1e83e41d35906dffc14530826075e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Activite::getTitre </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne le titre. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1240cc984d5508b99feb99175bc05750"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Activite::setLieu </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Modifie le lieu. </p>
+
+</div>
+</div>
+<a class="anchor" id="a510383c92c6d87877e074032fa8519ee"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Activite::setTitre </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Modifie le titre. </p>
+
+</div>
+</div>
+<a class="anchor" id="a513d49fbf721923d0db22a646ec606be"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Activite::update </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Met à jour le titre, le lieu et la durée de l'activité </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>LO21app/<a class="el" href="_calendar_8h_source.html">Calendar.h</a></li>
+<li>LO21app/<a class="el" href="_calendar_8cpp.html">Calendar.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 29 2015 09:31:29 for LO21 | Gestion de projets - Deryckère et Michel by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 20:59:15 for LO21 | Pistache by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

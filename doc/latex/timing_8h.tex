@@ -1,0 +1,117 @@
+\hypertarget{timing_8h}{}\section{L\+O21app/timing.h File Reference}
+\label{timing_8h}\index{L\+O21app/timing.\+h@{L\+O21app/timing.\+h}}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$iomanip$>$}\\*
+{\ttfamily \#include $<$Q\+Date$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+Include dependency graph for timing.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timing_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timing_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_t_i_m_e_1_1_time_exception}{T\+I\+M\+E\+::\+Time\+Exception}
+\begin{DoxyCompactList}\small\item\em Classe permettant de g�rer les exceptions des classes du namespace \hyperlink{namespace_t_i_m_e}{T\+I\+M\+E}. \end{DoxyCompactList}\item 
+class \hyperlink{class_t_i_m_e_1_1_date}{T\+I\+M\+E\+::\+Date}
+\begin{DoxyCompactList}\small\item\em Classe permettant de manipuler des dates standards L\textquotesingle{}utilisation de cette classe n�cessite des dates valides au sens commun du terme. D�clenchement d\textquotesingle{}exception dans le cas contraire. \end{DoxyCompactList}\item 
+class \hyperlink{class_t_i_m_e_1_1_duree}{T\+I\+M\+E\+::\+Duree}
+\begin{DoxyCompactList}\small\item\em Classe permettant de manipuler des durees L\textquotesingle{}utilisation de cette classe n�cessite des dates valides au sens commun du terme. D�clenchement d\textquotesingle{}exception dans le cas contraire. \end{DoxyCompactList}\item 
+class \hyperlink{class_t_i_m_e_1_1_horaire}{T\+I\+M\+E\+::\+Horaire}
+\begin{DoxyCompactList}\small\item\em Classe permettant de manipuler des horaires L\textquotesingle{}utilisation de cette classe n�cessite des dates valides au sens commun du terme. D�clenchement d\textquotesingle{}exception dans le cas contraire. \end{DoxyCompactList}\item 
+class \hyperlink{class_t_i_m_e_1_1_periode}{T\+I\+M\+E\+::\+Periode}
+\begin{DoxyCompactList}\small\item\em Classe permettant de manipuler des periodes exprim�es en jours/mois/ann�es L\textquotesingle{}utilisation de cette classe n�cessite des dates valides au sens commun du terme. D�clenchement d\textquotesingle{}exception dans le cas contraire. \end{DoxyCompactList}\item 
+class \hyperlink{class_t_i_m_e_1_1_intervalle}{T\+I\+M\+E\+::\+Intervalle}
+\begin{DoxyCompactList}\small\item\em Classe permettant de manipuler des intervalles de dates L\textquotesingle{}utilisation de cette classe n�cessite des dates valides au sens commun du terme. D�clenchement d\textquotesingle{}exception dans le cas contraire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespace_t_i_m_e}{T\+I\+M\+E}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{timing_8h_ac43123d4d5341918e1cc3530dffc7430}{operator$<$$<$} (std\+::ostream \&, const \hyperlink{class_t_i_m_e_1_1_date}{T\+I\+M\+E\+::\+Date} \&)
+\item 
+std\+::ostream \& \hyperlink{timing_8h_ae1f6c691e21b37d44214d6d4b0ad86ab}{operator$<$$<$} (std\+::ostream \&f, const \hyperlink{class_t_i_m_e_1_1_duree}{T\+I\+M\+E\+::\+Duree} \&d)
+\item 
+std\+::ostream \& \hyperlink{timing_8h_ae97cb466b4f8db674e3f74d4eb9b42af}{operator$<$$<$} (std\+::ostream \&f, const \hyperlink{class_t_i_m_e_1_1_horaire}{T\+I\+M\+E\+::\+Horaire} \&h)
+\item 
+std\+::ostream \& \hyperlink{timing_8h_a7c8e3a6dcb0679a2ab5dfac4ced581df}{operator$<$$<$} (std\+::ostream \&f, const \hyperlink{class_t_i_m_e_1_1_periode}{T\+I\+M\+E\+::\+Periode} \&p)
+\item 
+std\+::ostream \& \hyperlink{timing_8h_aa5e474731ba5f5a00e8135c3610019ee}{operator$<$$<$} (std\+::ostream \&f, const \hyperlink{class_t_i_m_e_1_1_intervalle}{T\+I\+M\+E\+::\+Intervalle} \&p)
+\item 
+std\+::istream \& \hyperlink{timing_8h_a81d8973cae1411887907e7a60aa58a2c}{operator$>$$>$} (std\+::istream \&, \hyperlink{class_t_i_m_e_1_1_date}{T\+I\+M\+E\+::\+Date} \&)
+\item 
+std\+::istream \& \hyperlink{timing_8h_ae9c16fb88eebdd4a4cf7bfc49c9e6f31}{operator$>$$>$} (std\+::istream \&, \hyperlink{class_t_i_m_e_1_1_duree}{T\+I\+M\+E\+::\+Duree} \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{timing_8h_ac43123d4d5341918e1cc3530dffc7430}{}\index{timing.\+h@{timing.\+h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!timing.\+h@{timing.\+h}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{, }
+\item[{const {\bf T\+I\+M\+E\+::\+Date} \&}]{}
+\end{DoxyParamCaption}
+)}\label{timing_8h_ac43123d4d5341918e1cc3530dffc7430}
+\hypertarget{timing_8h_ae1f6c691e21b37d44214d6d4b0ad86ab}{}\index{timing.\+h@{timing.\+h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!timing.\+h@{timing.\+h}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{f, }
+\item[{const {\bf T\+I\+M\+E\+::\+Duree} \&}]{d}
+\end{DoxyParamCaption}
+)}\label{timing_8h_ae1f6c691e21b37d44214d6d4b0ad86ab}
+\hypertarget{timing_8h_ae97cb466b4f8db674e3f74d4eb9b42af}{}\index{timing.\+h@{timing.\+h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!timing.\+h@{timing.\+h}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{f, }
+\item[{const {\bf T\+I\+M\+E\+::\+Horaire} \&}]{h}
+\end{DoxyParamCaption}
+)}\label{timing_8h_ae97cb466b4f8db674e3f74d4eb9b42af}
+\hypertarget{timing_8h_a7c8e3a6dcb0679a2ab5dfac4ced581df}{}\index{timing.\+h@{timing.\+h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!timing.\+h@{timing.\+h}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{f, }
+\item[{const {\bf T\+I\+M\+E\+::\+Periode} \&}]{p}
+\end{DoxyParamCaption}
+)}\label{timing_8h_a7c8e3a6dcb0679a2ab5dfac4ced581df}
+\hypertarget{timing_8h_aa5e474731ba5f5a00e8135c3610019ee}{}\index{timing.\+h@{timing.\+h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!timing.\+h@{timing.\+h}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{f, }
+\item[{const {\bf T\+I\+M\+E\+::\+Intervalle} \&}]{p}
+\end{DoxyParamCaption}
+)}\label{timing_8h_aa5e474731ba5f5a00e8135c3610019ee}
+\hypertarget{timing_8h_a81d8973cae1411887907e7a60aa58a2c}{}\index{timing.\+h@{timing.\+h}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!timing.\+h@{timing.\+h}}
+\subsubsection[{operator$>$$>$}]{\setlength{\rightskip}{0pt plus 5cm}std\+::istream\& operator$>$$>$ (
+\begin{DoxyParamCaption}
+\item[{std\+::istream \&}]{, }
+\item[{{\bf T\+I\+M\+E\+::\+Date} \&}]{}
+\end{DoxyParamCaption}
+)}\label{timing_8h_a81d8973cae1411887907e7a60aa58a2c}
+\hypertarget{timing_8h_ae9c16fb88eebdd4a4cf7bfc49c9e6f31}{}\index{timing.\+h@{timing.\+h}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!timing.\+h@{timing.\+h}}
+\subsubsection[{operator$>$$>$}]{\setlength{\rightskip}{0pt plus 5cm}std\+::istream\& operator$>$$>$ (
+\begin{DoxyParamCaption}
+\item[{std\+::istream \&}]{, }
+\item[{{\bf T\+I\+M\+E\+::\+Duree} \&}]{}
+\end{DoxyParamCaption}
+)}\label{timing_8h_ae9c16fb88eebdd4a4cf7bfc49c9e6f31}

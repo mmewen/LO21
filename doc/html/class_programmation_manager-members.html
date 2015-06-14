@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>LO21 | Gestion de projets - Deryckère et Michel: Member List</title>
+<title>LO21 | Pistache: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,9 +24,9 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logomini.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">LO21 | Gestion de projets - Deryckère et Michel
+   <div id="projectname">LO21 | Pistache
    </div>
-   <div id="projectbrief">Projet de LO21 où l&#39;utilisateur peut créer des projets, des tâches et des évènements.</div>
+   <div id="projectbrief">Projet de LO21 de Loïc Deryckère et Mewen Michel</div>
   </td>
  </tr>
  </tbody>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -91,15 +92,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="class_programmation_manager.html">ProgrammationManager</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>ajouterProgrammation</b>(const Unitaire &amp;t, const Date &amp;d, const Horaire &amp;h) (defined in <a class="el" href="class_programmation_manager.html">ProgrammationManager</a>)</td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>operator=</b>(const ProgrammationManager &amp;um) (defined in <a class="el" href="class_programmation_manager.html">ProgrammationManager</a>)</td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>ProgrammationManager</b>() (defined in <a class="el" href="class_programmation_manager.html">ProgrammationManager</a>)</td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>ProgrammationManager</b>(const ProgrammationManager &amp;um) (defined in <a class="el" href="class_programmation_manager.html">ProgrammationManager</a>)</td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~ProgrammationManager</b>() (defined in <a class="el" href="class_programmation_manager.html">ProgrammationManager</a>)</td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_programmation_manager.html#a8b6067aba53b0389d30c485c9a544769">ajouterProgrammation</a>(Unitaire &amp;e, const Date &amp;d, const Horaire &amp;h, Duree dur)</td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_programmation_manager.html#a3451eabd67b35163c6213eed9b2f3733">ajouterProgrammation</a>(Activite &amp;e, const Date &amp;d, const Horaire &amp;h, const Duree &amp;dur)</td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_programmation_manager.html#a9da2fc647972756d1f8cdf91d4017c25">getInstance</a>()</td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_programmation_manager.html#aaff6e0852f9e7ec4aeb47f6ef976fdf9">getIterator</a>()</td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_programmation_manager.html#a94e3fcb28ea7c632dc6750c33949d712">libererInstance</a>()</td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_programmation_manager.html#ad6f6dbec484d80425f498460650a0649">programmationsChanged</a>()</td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"><span class="mlabel">signal</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_programmation_manager.html#a43fd958e37bf4a78b845006aa5551bec">trouverProgrammation</a>(Evenement &amp;e) const </td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_programmation_manager.html#ab52ba49ca1d79add9f6d83f8f9386b7e">trouverProgrammation</a>(const Evenement &amp;e) const </td><td class="entry"><a class="el" href="class_programmation_manager.html">ProgrammationManager</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 29 2015 09:31:29 for LO21 | Gestion de projets - Deryckère et Michel by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 20:59:15 for LO21 | Pistache by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>LO21 | Gestion de projets - Deryckère et Michel: Member List</title>
+<title>LO21 | Pistache: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,9 +24,9 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logomini.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">LO21 | Gestion de projets - Deryckère et Michel
+   <div id="projectname">LO21 | Pistache
    </div>
-   <div id="projectbrief">Projet de LO21 où l&#39;utilisateur peut créer des projets, des tâches et des évènements.</div>
+   <div id="projectbrief">Projet de LO21 de Loïc Deryckère et Mewen Michel</div>
   </td>
  </tr>
  </tbody>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -91,20 +92,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="class_composite.html">Composite</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>dispo</b> (defined in <a class="el" href="class_truc.html">Truc</a>)</td><td class="entry"><a class="el" href="class_truc.html">Truc</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>echeance</b> (defined in <a class="el" href="class_tache.html">Tache</a>)</td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getDispo</b>() const  (defined in <a class="el" href="class_truc.html">Truc</a>)</td><td class="entry"><a class="el" href="class_truc.html">Truc</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_tache.html#aa7638675a65b3ef3c57a07260f914fae">getEcheance</a>() const </td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_tache.html#a1fe8754733f0b85c232d91851cf61891">getId</a>() const </td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getIterator</b>() (defined in <a class="el" href="class_tache.html">Tache</a>)</td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getiterator</b>() (defined in <a class="el" href="class_composite.html">Composite</a>)</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_tache.html#ab6af5354e29498ab43ab3cc826b0aac4">getTitre</a>() const </td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>iterator</b> (defined in <a class="el" href="class_composite.html">Composite</a>)</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>titre</b> (defined in <a class="el" href="class_tache.html">Tache</a>)</td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_composite.html#ad8dce9e36cfb7386331babc980c382ff">addCompo</a>(Tache *t)</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_composite.html#ab0d63970716648141fbc24e7d77815a2">addItem</a>(Tache *t)</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_composite.html#a36da340a18bdf872a180c9657c5996c2">afficher</a>(ostream &amp;f)</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_composite.html#a99b8848e80b13dbf3ce3c48846cdf20a">CompoIterator</a> class</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_composite.html#af4ed8de948b2e2ffbd5a190aa1bc5260">getCompo</a>(const string &amp;id)</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_composite.html#a490a29347d32a8916f6a636e6de6d1ed">getCompo</a>(const string &amp;code) const </td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_composite.html#a21cf28bf7b0aa43af3804145c7e0b25f">getCompoIterator</a>()</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tache.html#a8cba5e74f4ee6b31e29d0339dbe470fe">getDateDisponibilite</a>() const </td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tache.html#abe0dbe94fc6908ba5e3cb7fd2fa90f92">getDateEcheance</a>() const </td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tache.html#a1fe8754733f0b85c232d91851cf61891">getId</a>() const </td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tache.html#a709d4d7d5c25604b6e9a5c37b74fa4a6">getIterator</a>()</td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_composite.html#a8f2329eb1c8e193a820243948b9a9cf7">getNbCompo</a>()</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tache.html#ac597ce580ad0b32c373b329d4da839ad">getNbPred</a>()</td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tache.html#ab29bfb6c79337fbc9dc5618195f12f8d">getPrecedence</a>(const string &amp;id)</td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tache.html#af995526e12eed76ffa2a4ba7b6fb7a90">getPrecedence</a>(const string &amp;code) const </td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tache.html#aa6d1abc3712b5a8b571bb3c131129ac7">getProjet</a>() const </td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tache.html#a18bda9873a4643a7bebe4905110e3814">getProjet</a>()</td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_composite.html#a6def8410e8a78678b488d1610266ee5b">getStatut</a>()</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tache.html#ab6af5354e29498ab43ab3cc826b0aac4">getTitre</a>() const </td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_composite.html#a4dd23b6bafdc87f05f0cb7d19e459f94">isFinished</a>(const Date &amp;d, const Horaire &amp;h)</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tache.html#a72df18190512de6ca437492a3664d05a">isPrecedence</a>() const </td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_composite.html#a38fbb5005db8a763fec1c8c04f63e1e0">isPrecedencePotentielle</a>(const string &amp;id)</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_composite.html#a8bbbf008527c73203db26f0f44c5e9d8">Projet::ajouterComposite</a>(const string &amp;t, const Date &amp;dispo, const Date &amp;deadline)</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tache.html#a56de6bd26a4a5028c01481ccdededd54">setDatesDisponibiliteEcheance</a>(const Date &amp;disp, const Date &amp;e)</td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tache.html#a4ea66e1007e692875199d4027e724a85">setId</a>(const string &amp;id)</td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tache.html#a191acd8b10c22b8e7a533aa8f237b907">setTitre</a>(const string &amp;t)</td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tache.html#a026b068c4e49643d6fec30c9b915ddca">Tache</a>(const string &amp;id, const string &amp;t, const Date &amp;dispo, const Date &amp;deadline, Projet *p)</td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_composite.html#ab57477d717423de47a26eb6981ab5914">update</a>(string id, string t, Date d, Date e)</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_composite.html#a872bf1fe01072258e23d5e9c25f8b57a">update</a>(string t, Date d, Date e)</td><td class="entry"><a class="el" href="class_composite.html">Composite</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tache.html#acefc2a88516ef4d8bd7b25afcf769e9c">~Tache</a>()</td><td class="entry"><a class="el" href="class_tache.html">Tache</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 29 2015 09:31:29 for LO21 | Gestion de projets - Deryckère et Michel by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 20:59:15 for LO21 | Pistache by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

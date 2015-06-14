@@ -1,19 +1,142 @@
 \hypertarget{class_activite}{}\section{Activite Class Reference}
 \label{class_activite}\index{Activite@{Activite}}
+
+
+Classe d\textquotesingle{}evenement basique programmable, héritant d\textquotesingle{}\hyperlink{class_evenement}{Evenement} La classe possède un titre et un lieu.  
+
+
+
+
+{\ttfamily \#include $<$Calendar.\+h$>$}
+
+
+
+Inheritance diagram for Activite\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{class_activite__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Activite\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{class_activite__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_activite_ab0e1e83e41d35906dffc14530826075e}{}string \hyperlink{class_activite_ab0e1e83e41d35906dffc14530826075e}{get\+Titre} () const \label{class_activite_ab0e1e83e41d35906dffc14530826075e}
-
-\begin{DoxyCompactList}\small\item\em accesseur \end{DoxyCompactList}\item 
-\hypertarget{class_activite_a695b4d43546d5715977381a7070d66d6}{}string \hyperlink{class_activite_a695b4d43546d5715977381a7070d66d6}{get\+Lieu} () const \label{class_activite_a695b4d43546d5715977381a7070d66d6}
-
-\begin{DoxyCompactList}\small\item\em accesseur \end{DoxyCompactList}\item 
-\hypertarget{class_activite_a201ae71f21859cb31fd24c3fd8b1875f}{}\hyperlink{class_t_i_m_e_1_1_duree}{Duree} \hyperlink{class_activite_a201ae71f21859cb31fd24c3fd8b1875f}{get\+Duree} () const \label{class_activite_a201ae71f21859cb31fd24c3fd8b1875f}
-
-\begin{DoxyCompactList}\small\item\em accesseur \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\hyperlink{class_activite_a06098c0f62244f4b60d250325b738094}{Activite} (const string \&t, const string \&l, \hyperlink{class_t_i_m_e_1_1_duree}{Duree} dur)
+\begin{DoxyCompactList}\small\item\em Constructeur d\textquotesingle{}activité \end{DoxyCompactList}\item 
+string \hyperlink{class_activite_ab0e1e83e41d35906dffc14530826075e}{get\+Titre} () const 
+\begin{DoxyCompactList}\small\item\em Retourne le titre. \end{DoxyCompactList}\item 
+string \hyperlink{class_activite_a695b4d43546d5715977381a7070d66d6}{get\+Lieu} () const 
+\begin{DoxyCompactList}\small\item\em Retourne le lieu. \end{DoxyCompactList}\item 
+void \hyperlink{class_activite_a510383c92c6d87877e074032fa8519ee}{set\+Titre} (const string \&t)
+\begin{DoxyCompactList}\small\item\em Modifie le titre. \end{DoxyCompactList}\item 
+void \hyperlink{class_activite_a1240cc984d5508b99feb99175bc05750}{set\+Lieu} (const string \&l)
+\begin{DoxyCompactList}\small\item\em Modifie le lieu. \end{DoxyCompactList}\item 
+void \hyperlink{class_activite_a513d49fbf721923d0db22a646ec606be}{update} (string t, string l, \hyperlink{class_t_i_m_e_1_1_duree}{Duree} d)
 \item 
-L\+O21app/Calendar.\+h\end{DoxyCompactItemize}
+virtual void \hyperlink{class_activite_acf748b87edc5e4a5b78bd5e9364946f3}{afficher} (ostream \&f)
+\begin{DoxyCompactList}\small\item\em Affiche les attributs de l\textquotesingle{}activité \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe d\textquotesingle{}evenement basique programmable, héritant d\textquotesingle{}\hyperlink{class_evenement}{Evenement} La classe possède un titre et un lieu. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_activite_a06098c0f62244f4b60d250325b738094}{}\index{Activite@{Activite}!Activite@{Activite}}
+\index{Activite@{Activite}!Activite@{Activite}}
+\subsubsection[{Activite}]{\setlength{\rightskip}{0pt plus 5cm}Activite\+::\+Activite (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{t, }
+\item[{const string \&}]{l, }
+\item[{{\bf Duree}}]{dur}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_activite_a06098c0f62244f4b60d250325b738094}
+
+
+Constructeur d\textquotesingle{}activité 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_activite_acf748b87edc5e4a5b78bd5e9364946f3}{}\index{Activite@{Activite}!afficher@{afficher}}
+\index{afficher@{afficher}!Activite@{Activite}}
+\subsubsection[{afficher}]{\setlength{\rightskip}{0pt plus 5cm}void Activite\+::afficher (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_activite_acf748b87edc5e4a5b78bd5e9364946f3}
+
+
+Affiche les attributs de l\textquotesingle{}activité 
+
+
+
+Implements \hyperlink{class_evenement_af217f0cd3d421e3f113a13536ee63593}{Evenement}.
+
+\hypertarget{class_activite_a695b4d43546d5715977381a7070d66d6}{}\index{Activite@{Activite}!get\+Lieu@{get\+Lieu}}
+\index{get\+Lieu@{get\+Lieu}!Activite@{Activite}}
+\subsubsection[{get\+Lieu}]{\setlength{\rightskip}{0pt plus 5cm}string Activite\+::get\+Lieu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_activite_a695b4d43546d5715977381a7070d66d6}
+
+
+Retourne le lieu. 
+
+\hypertarget{class_activite_ab0e1e83e41d35906dffc14530826075e}{}\index{Activite@{Activite}!get\+Titre@{get\+Titre}}
+\index{get\+Titre@{get\+Titre}!Activite@{Activite}}
+\subsubsection[{get\+Titre}]{\setlength{\rightskip}{0pt plus 5cm}string Activite\+::get\+Titre (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_activite_ab0e1e83e41d35906dffc14530826075e}
+
+
+Retourne le titre. 
+
+\hypertarget{class_activite_a1240cc984d5508b99feb99175bc05750}{}\index{Activite@{Activite}!set\+Lieu@{set\+Lieu}}
+\index{set\+Lieu@{set\+Lieu}!Activite@{Activite}}
+\subsubsection[{set\+Lieu}]{\setlength{\rightskip}{0pt plus 5cm}void Activite\+::set\+Lieu (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{l}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_activite_a1240cc984d5508b99feb99175bc05750}
+
+
+Modifie le lieu. 
+
+\hypertarget{class_activite_a510383c92c6d87877e074032fa8519ee}{}\index{Activite@{Activite}!set\+Titre@{set\+Titre}}
+\index{set\+Titre@{set\+Titre}!Activite@{Activite}}
+\subsubsection[{set\+Titre}]{\setlength{\rightskip}{0pt plus 5cm}void Activite\+::set\+Titre (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_activite_a510383c92c6d87877e074032fa8519ee}
+
+
+Modifie le titre. 
+
+\hypertarget{class_activite_a513d49fbf721923d0db22a646ec606be}{}\index{Activite@{Activite}!update@{update}}
+\index{update@{update}!Activite@{Activite}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Activite\+::update (
+\begin{DoxyParamCaption}
+\item[{string}]{t, }
+\item[{string}]{l, }
+\item[{{\bf Duree}}]{d}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_activite_a513d49fbf721923d0db22a646ec606be}
+Met à jour le titre, le lieu et la durée de l\textquotesingle{}activité 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+L\+O21app/\hyperlink{_calendar_8h}{Calendar.\+h}\item 
+L\+O21app/\hyperlink{_calendar_8cpp}{Calendar.\+cpp}\end{DoxyCompactItemize}

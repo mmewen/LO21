@@ -1,3 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_t_i_m_e_1_1_intervalle.html" title="Classe permettant de manipuler des intervalles de dates L&#39;utilisation de cette classe n�cessite des da..." alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node1" href="$class_evenement.html" title="Classe abstraite d&#39;éléments pouvant être programmés. " alt="" coords="5,19,93,45"/>
+<area shape="rect" id="node2" href="$class_activite.html" title="Classe d&#39;evenement basique programmable, héritant d&#39;Evenement La classe possède un titre et un lieu..." alt="" coords="151,5,217,32"/>
+<area shape="rect" id="node3" href="$class_unitaire.html" title="Classe de taches programmables, héritant de Tachet et d&#39;Evenement La classe de taches pouvant être pr..." alt="" coords="151,56,217,83"/>
+<area shape="rect" id="node4" href="$class_tache.html" title="Classe abstraite de taches composant Projet. " alt="" coords="20,81,79,108"/>
+<area shape="rect" id="node5" href="$class_composite.html" title="Classe d&#39;ensembles de taches, héritant de Tache La classe possède un pointeur de Taches qui représent..." alt="" coords="141,107,227,133"/>
 </map>

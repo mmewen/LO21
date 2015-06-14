@@ -2,31 +2,164 @@
 \label{class_programmation_manager}\index{Programmation\+Manager@{Programmation\+Manager}}
 
 
-Gestion des évènements ou taches programmés.  
+Classe composite de \hyperlink{class_programmation}{Programmation} La classe applique le designe pattern singleton et possède un iterateur sur le tableau de pointeurs de Programmations.  
 
 
 
 
 {\ttfamily \#include $<$Calendar.\+h$>$}
 
+
+
+Inheritance diagram for Programmation\+Manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{class_programmation_manager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Programmation\+Manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{class_programmation_manager__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_programmation_manager_1_1_iterator}{Iterator}
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_programmation_manager_ad6f6dbec484d80425f498460650a0649}{programmations\+Changed} ()
+\begin{DoxyCompactList}\small\item\em Signal de changement de programmation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_programmation_manager_a2f846196abea78a761b71bdc5eb6afd6}{}{\bfseries Programmation\+Manager} (const \hyperlink{class_programmation_manager}{Programmation\+Manager} \&um)\label{class_programmation_manager_a2f846196abea78a761b71bdc5eb6afd6}
-
+\hyperlink{class_programmation}{Programmation} $\ast$ \hyperlink{class_programmation_manager_a43fd958e37bf4a78b845006aa5551bec}{trouver\+Programmation} (\hyperlink{class_evenement}{Evenement} \&e) const 
+\begin{DoxyCompactList}\small\item\em Renvoie le pointeur de la programmation de l\textquotesingle{}événement correspondant si elle existe dans le tableau. \end{DoxyCompactList}\item 
+\hyperlink{class_programmation}{Programmation} $\ast$ \hyperlink{class_programmation_manager_ab52ba49ca1d79add9f6d83f8f9386b7e}{trouver\+Programmation} (const \hyperlink{class_evenement}{Evenement} \&e) const 
+\begin{DoxyCompactList}\small\item\em Renvoie le pointeur de la programmation de l\textquotesingle{}événement const correspondant si elle existe dans le tableau. \end{DoxyCompactList}\item 
+void \hyperlink{class_programmation_manager_a8b6067aba53b0389d30c485c9a544769}{ajouter\+Programmation} (\hyperlink{class_unitaire}{Unitaire} \&e, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d, const \hyperlink{class_t_i_m_e_1_1_horaire}{Horaire} \&h, \hyperlink{class_t_i_m_e_1_1_duree}{Duree} dur)
+\begin{DoxyCompactList}\small\item\em Crée une programmation d\textquotesingle{}une \hyperlink{class_tache}{Tache} \hyperlink{class_unitaire}{Unitaire} et stocke le pointeur dans le tableau programmations. \end{DoxyCompactList}\item 
+void \hyperlink{class_programmation_manager_a3451eabd67b35163c6213eed9b2f3733}{ajouter\+Programmation} (\hyperlink{class_activite}{Activite} \&e, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d, const \hyperlink{class_t_i_m_e_1_1_horaire}{Horaire} \&h, const \hyperlink{class_t_i_m_e_1_1_duree}{Duree} \&dur)
+\begin{DoxyCompactList}\small\item\em Crée une programmation d\textquotesingle{}une Activité et stocke le pointeur dans le tableau programmations. \end{DoxyCompactList}\item 
+\hyperlink{class_programmation_manager_1_1_iterator}{Iterator} \hyperlink{class_programmation_manager_aaff6e0852f9e7ec4aeb47f6ef976fdf9}{get\+Iterator} ()
+\begin{DoxyCompactList}\small\item\em Renvoie un iterateur sur programmations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_programmation_manager_a547fb5ab78a25298cba270a13ef3e8a7}{}\hyperlink{class_programmation_manager}{Programmation\+Manager} \& {\bfseries operator=} (const \hyperlink{class_programmation_manager}{Programmation\+Manager} \&um)\label{class_programmation_manager_a547fb5ab78a25298cba270a13ef3e8a7}
-
-\item 
-\hypertarget{class_programmation_manager_aa53a6a561512c95c09baedc4f788c45b}{}void {\bfseries ajouter\+Programmation} (const \hyperlink{class_unitaire}{Unitaire} \&t, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d, const \hyperlink{class_t_i_m_e_1_1_horaire}{Horaire} \&h)\label{class_programmation_manager_aa53a6a561512c95c09baedc4f788c45b}
-
-\end{DoxyCompactItemize}
+static \hyperlink{class_programmation_manager}{Programmation\+Manager} \& \hyperlink{class_programmation_manager_a9da2fc647972756d1f8cdf91d4017c25}{get\+Instance} ()
+\begin{DoxyCompactList}\small\item\em Renvoie la seule instance de \hyperlink{class_programmation_manager}{Programmation\+Manager}. \end{DoxyCompactList}\item 
+static void \hyperlink{class_programmation_manager_a94e3fcb28ea7c632dc6750c33949d712}{liberer\+Instance} ()
+\begin{DoxyCompactList}\small\item\em Libère l\textquotesingle{}unique instance de \hyperlink{class_programmation_manager}{Programmation\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Gestion des évènements ou taches programmés. 
+Classe composite de \hyperlink{class_programmation}{Programmation} La classe applique le designe pattern singleton et possède un iterateur sur le tableau de pointeurs de Programmations. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_programmation_manager_a8b6067aba53b0389d30c485c9a544769}{}\index{Programmation\+Manager@{Programmation\+Manager}!ajouter\+Programmation@{ajouter\+Programmation}}
+\index{ajouter\+Programmation@{ajouter\+Programmation}!Programmation\+Manager@{Programmation\+Manager}}
+\subsubsection[{ajouter\+Programmation}]{\setlength{\rightskip}{0pt plus 5cm}void Programmation\+Manager\+::ajouter\+Programmation (
+\begin{DoxyParamCaption}
+\item[{{\bf Unitaire} \&}]{e, }
+\item[{const {\bf Date} \&}]{d, }
+\item[{const {\bf Horaire} \&}]{h, }
+\item[{{\bf Duree}}]{dur}
+\end{DoxyParamCaption}
+)}\label{class_programmation_manager_a8b6067aba53b0389d30c485c9a544769}
+
+
+Crée une programmation d\textquotesingle{}une \hyperlink{class_tache}{Tache} \hyperlink{class_unitaire}{Unitaire} et stocke le pointeur dans le tableau programmations. 
+
+\hypertarget{class_programmation_manager_a3451eabd67b35163c6213eed9b2f3733}{}\index{Programmation\+Manager@{Programmation\+Manager}!ajouter\+Programmation@{ajouter\+Programmation}}
+\index{ajouter\+Programmation@{ajouter\+Programmation}!Programmation\+Manager@{Programmation\+Manager}}
+\subsubsection[{ajouter\+Programmation}]{\setlength{\rightskip}{0pt plus 5cm}void Programmation\+Manager\+::ajouter\+Programmation (
+\begin{DoxyParamCaption}
+\item[{{\bf Activite} \&}]{e, }
+\item[{const {\bf Date} \&}]{d, }
+\item[{const {\bf Horaire} \&}]{h, }
+\item[{const {\bf Duree} \&}]{dur}
+\end{DoxyParamCaption}
+)}\label{class_programmation_manager_a3451eabd67b35163c6213eed9b2f3733}
+
+
+Crée une programmation d\textquotesingle{}une Activité et stocke le pointeur dans le tableau programmations. 
+
+\hypertarget{class_programmation_manager_a9da2fc647972756d1f8cdf91d4017c25}{}\index{Programmation\+Manager@{Programmation\+Manager}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Programmation\+Manager@{Programmation\+Manager}}
+\subsubsection[{get\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Programmation\+Manager} \& Programmation\+Manager\+::get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_programmation_manager_a9da2fc647972756d1f8cdf91d4017c25}
+
+
+Renvoie la seule instance de \hyperlink{class_programmation_manager}{Programmation\+Manager}. 
+
+\hypertarget{class_programmation_manager_aaff6e0852f9e7ec4aeb47f6ef976fdf9}{}\index{Programmation\+Manager@{Programmation\+Manager}!get\+Iterator@{get\+Iterator}}
+\index{get\+Iterator@{get\+Iterator}!Programmation\+Manager@{Programmation\+Manager}}
+\subsubsection[{get\+Iterator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Iterator} Programmation\+Manager\+::get\+Iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_programmation_manager_aaff6e0852f9e7ec4aeb47f6ef976fdf9}
+
+
+Renvoie un iterateur sur programmations. 
+
+\hypertarget{class_programmation_manager_a94e3fcb28ea7c632dc6750c33949d712}{}\index{Programmation\+Manager@{Programmation\+Manager}!liberer\+Instance@{liberer\+Instance}}
+\index{liberer\+Instance@{liberer\+Instance}!Programmation\+Manager@{Programmation\+Manager}}
+\subsubsection[{liberer\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}void Programmation\+Manager\+::liberer\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_programmation_manager_a94e3fcb28ea7c632dc6750c33949d712}
+
+
+Libère l\textquotesingle{}unique instance de \hyperlink{class_programmation_manager}{Programmation\+Manager}. 
+
+\hypertarget{class_programmation_manager_ad6f6dbec484d80425f498460650a0649}{}\index{Programmation\+Manager@{Programmation\+Manager}!programmations\+Changed@{programmations\+Changed}}
+\index{programmations\+Changed@{programmations\+Changed}!Programmation\+Manager@{Programmation\+Manager}}
+\subsubsection[{programmations\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}void Programmation\+Manager\+::programmations\+Changed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_programmation_manager_ad6f6dbec484d80425f498460650a0649}
+
+
+Signal de changement de programmation. 
+
+\hypertarget{class_programmation_manager_a43fd958e37bf4a78b845006aa5551bec}{}\index{Programmation\+Manager@{Programmation\+Manager}!trouver\+Programmation@{trouver\+Programmation}}
+\index{trouver\+Programmation@{trouver\+Programmation}!Programmation\+Manager@{Programmation\+Manager}}
+\subsubsection[{trouver\+Programmation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Programmation} $\ast$ Programmation\+Manager\+::trouver\+Programmation (
+\begin{DoxyParamCaption}
+\item[{{\bf Evenement} \&}]{e}
+\end{DoxyParamCaption}
+) const}\label{class_programmation_manager_a43fd958e37bf4a78b845006aa5551bec}
+
+
+Renvoie le pointeur de la programmation de l\textquotesingle{}événement correspondant si elle existe dans le tableau. 
+
+\hypertarget{class_programmation_manager_ab52ba49ca1d79add9f6d83f8f9386b7e}{}\index{Programmation\+Manager@{Programmation\+Manager}!trouver\+Programmation@{trouver\+Programmation}}
+\index{trouver\+Programmation@{trouver\+Programmation}!Programmation\+Manager@{Programmation\+Manager}}
+\subsubsection[{trouver\+Programmation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Programmation} $\ast$ Programmation\+Manager\+::trouver\+Programmation (
+\begin{DoxyParamCaption}
+\item[{const {\bf Evenement} \&}]{e}
+\end{DoxyParamCaption}
+) const}\label{class_programmation_manager_ab52ba49ca1d79add9f6d83f8f9386b7e}
+
+
+Renvoie le pointeur de la programmation de l\textquotesingle{}événement const correspondant si elle existe dans le tableau. 
+
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-L\+O21app/Calendar.\+h\item 
-L\+O21app/Calendar.\+cpp\end{DoxyCompactItemize}
+L\+O21app/\hyperlink{_calendar_8h}{Calendar.\+h}\item 
+L\+O21app/\hyperlink{_calendar_8cpp}{Calendar.\+cpp}\end{DoxyCompactItemize}

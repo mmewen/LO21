@@ -1,0 +1,6 @@
+<map id="Editeur" name="Editeur">
+<area shape="rect" id="node3" href="$class_editeur_projet.html" title="Classe pour l&#39;Editeur de projet. " alt="" coords="5,155,103,181"/>
+<area shape="rect" id="node4" href="$class_editeur_tache.html" title="Classe abstraite pour l&#39;Editeur de taches. " alt="" coords="127,155,226,181"/>
+<area shape="rect" id="node5" href="$class_editeur_t_c.html" title="EditeurTache de taches composite. " alt="" coords="84,229,165,256"/>
+<area shape="rect" id="node6" href="$class_editeur_t_u.html" title="EditeurTache de taches unitaires. " alt="" coords="189,229,271,256"/>
+</map>

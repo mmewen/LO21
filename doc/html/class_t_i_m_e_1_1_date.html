@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>LO21 | Gestion de projets - DeryckÃ¨re et Michel: TIME::Date Class Reference</title>
+<title>LO21 | Pistache: TIME::Date Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,9 +24,9 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logomini.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">LO21 | Gestion de projets - DeryckÃ¨re et Michel
+   <div id="projectname">LO21 | Pistache
    </div>
-   <div id="projectbrief">Projet de LO21 oÃ¹ l&#39;utilisateur peut crÃ©er des projets, des tÃ¢ches et des Ã©vÃ¨nements.</div>
+   <div id="projectbrief">Projet de LO21 de LoÃ¯c DeryckÃ¨re et Mewen Michel</div>
   </td>
  </tr>
  </tbody>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -84,19 +85,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>TIME</b></li><li class="navelem"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_t_i_m_e.html">TIME</a></li><li class="navelem"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_t_i_m_e_1_1_date-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">TIME::Date Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Classe permettant de manipuler des dates standards L'utilisation de cette classe nécessite des dates valides au sens commun du terme. Déclenchement d'exception dans le cas contraire.  
+<p>Classe permettant de manipuler des dates standards L'utilisation de cette classe nï¿½cessite des dates valides au sens commun du terme. Dï¿½clenchement d'exception dans le cas contraire.  
  <a href="class_t_i_m_e_1_1_date.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="timing_8h_source.html">timing.h</a>&gt;</code></p>
@@ -104,47 +106,57 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab0d72ce6e986c0c0a5f2902e586cf81a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#ab0d72ce6e986c0c0a5f2902e586cf81a">Date</a> (unsigned int short j=1, unsigned int short m=1, unsigned int a=0)</td></tr>
-<tr class="memdesc:ab0d72ce6e986c0c0a5f2902e586cf81a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur à partir d'un jour, mois, année  <a href="#ab0d72ce6e986c0c0a5f2902e586cf81a">More...</a><br /></td></tr>
+<tr class="memdesc:ab0d72ce6e986c0c0a5f2902e586cf81a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur ï¿½ partir d'un jour, mois, annï¿½e.  <a href="#ab0d72ce6e986c0c0a5f2902e586cf81a">More...</a><br /></td></tr>
 <tr class="separator:ab0d72ce6e986c0c0a5f2902e586cf81a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4af978b7df2b738f62449b0a7e53c21d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4af978b7df2b738f62449b0a7e53c21d"></a>
-unsigned short int&#160;</td><td class="memItemRight" valign="bottom"><b>getJour</b> () const </td></tr>
+<tr class="memitem:a4af978b7df2b738f62449b0a7e53c21d"><td class="memItemLeft" align="right" valign="top">unsigned short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a4af978b7df2b738f62449b0a7e53c21d">getJour</a> () const </td></tr>
+<tr class="memdesc:a4af978b7df2b738f62449b0a7e53c21d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le jour de la date.  <a href="#a4af978b7df2b738f62449b0a7e53c21d">More...</a><br /></td></tr>
 <tr class="separator:a4af978b7df2b738f62449b0a7e53c21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cb9d945143df216115419c4cb8b14ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6cb9d945143df216115419c4cb8b14ce"></a>
-unsigned short int&#160;</td><td class="memItemRight" valign="bottom"><b>getMois</b> () const </td></tr>
+<tr class="memitem:a6cb9d945143df216115419c4cb8b14ce"><td class="memItemLeft" align="right" valign="top">unsigned short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a6cb9d945143df216115419c4cb8b14ce">getMois</a> () const </td></tr>
+<tr class="memdesc:a6cb9d945143df216115419c4cb8b14ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le mois de la date.  <a href="#a6cb9d945143df216115419c4cb8b14ce">More...</a><br /></td></tr>
 <tr class="separator:a6cb9d945143df216115419c4cb8b14ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07b41b2e9e85ef78bf13689e772bef7d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07b41b2e9e85ef78bf13689e772bef7d"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getAnnee</b> () const </td></tr>
+<tr class="memitem:a07b41b2e9e85ef78bf13689e772bef7d"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a07b41b2e9e85ef78bf13689e772bef7d">getAnnee</a> () const </td></tr>
+<tr class="memdesc:a07b41b2e9e85ef78bf13689e772bef7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'annï¿½e de la date.  <a href="#a07b41b2e9e85ef78bf13689e772bef7d">More...</a><br /></td></tr>
 <tr class="separator:a07b41b2e9e85ef78bf13689e772bef7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7419902750e61b9473ab05ccd5ced33d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7419902750e61b9473ab05ccd5ced33d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a7419902750e61b9473ab05ccd5ced33d">setDate</a> (unsigned short int j, unsigned short int m, unsigned int a)</td></tr>
-<tr class="memdesc:a7419902750e61b9473ab05ccd5ced33d"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation de la date <br /></td></tr>
+<tr class="memitem:a30428bf3b5e4daa144642dfa510edb14"><td class="memItemLeft" align="right" valign="top">QDate&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a30428bf3b5e4daa144642dfa510edb14">getQDate</a> () const </td></tr>
+<tr class="memdesc:a30428bf3b5e4daa144642dfa510edb14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'annï¿½e de la date.  <a href="#a30428bf3b5e4daa144642dfa510edb14">More...</a><br /></td></tr>
+<tr class="separator:a30428bf3b5e4daa144642dfa510edb14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09b00b96742bfceaa598060b486e604c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a09b00b96742bfceaa598060b486e604c">getJourMoisString</a> () const </td></tr>
+<tr class="memdesc:a09b00b96742bfceaa598060b486e604c"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation de la date  <a href="#a09b00b96742bfceaa598060b486e604c">More...</a><br /></td></tr>
+<tr class="separator:a09b00b96742bfceaa598060b486e604c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7419902750e61b9473ab05ccd5ced33d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a7419902750e61b9473ab05ccd5ced33d">setDate</a> (unsigned short int j, unsigned short int m, unsigned int a)</td></tr>
+<tr class="memdesc:a7419902750e61b9473ab05ccd5ced33d"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation de la date avec la date d'aujourd'hui  <a href="#a7419902750e61b9473ab05ccd5ced33d">More...</a><br /></td></tr>
 <tr class="separator:a7419902750e61b9473ab05ccd5ced33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace4be52a503c45de93b8db92dc592d93"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace4be52a503c45de93b8db92dc592d93"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#ace4be52a503c45de93b8db92dc592d93">setDateAujourdhui</a> ()</td></tr>
-<tr class="memdesc:ace4be52a503c45de93b8db92dc592d93"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation de la date avec la date d'aujourd'hui <br /></td></tr>
+<tr class="memitem:ace4be52a503c45de93b8db92dc592d93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#ace4be52a503c45de93b8db92dc592d93">setDateAujourdhui</a> ()</td></tr>
+<tr class="memdesc:ace4be52a503c45de93b8db92dc592d93"><td class="mdescLeft">&#160;</td><td class="mdescRight">affiche le date sous le format JJ/MM/AAAA  <a href="#ace4be52a503c45de93b8db92dc592d93">More...</a><br /></td></tr>
 <tr class="separator:ace4be52a503c45de93b8db92dc592d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa45188755f5d9d17cbebf0e55d3c571b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa45188755f5d9d17cbebf0e55d3c571b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#aa45188755f5d9d17cbebf0e55d3c571b">afficher</a> (std::ostream &amp;f=std::cout) const </td></tr>
-<tr class="memdesc:aa45188755f5d9d17cbebf0e55d3c571b"><td class="mdescLeft">&#160;</td><td class="mdescRight">affiche le date sous le format JJ/MM/AAAA <br /></td></tr>
+<tr class="memitem:aa45188755f5d9d17cbebf0e55d3c571b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#aa45188755f5d9d17cbebf0e55d3c571b">afficher</a> (std::ostream &amp;f=std::cout) const </td></tr>
 <tr class="separator:aa45188755f5d9d17cbebf0e55d3c571b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8208298c0efe5dbf661c66a284fd163"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8208298c0efe5dbf661c66a284fd163"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;d) const </td></tr>
+<tr class="memitem:aa8208298c0efe5dbf661c66a284fd163"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#aa8208298c0efe5dbf661c66a284fd163">operator==</a> (const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;d) const </td></tr>
+<tr class="memdesc:aa8208298c0efe5dbf661c66a284fd163"><td class="mdescLeft">&#160;</td><td class="mdescRight">d1==d2 retourne vrai si les deux dates sont ï¿½gales  <a href="#aa8208298c0efe5dbf661c66a284fd163">More...</a><br /></td></tr>
 <tr class="separator:aa8208298c0efe5dbf661c66a284fd163"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a3bccb05f00086e64c5b5518a37949f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a3bccb05f00086e64c5b5518a37949f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;d) const </td></tr>
+<tr class="memitem:a8a3bccb05f00086e64c5b5518a37949f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a8a3bccb05f00086e64c5b5518a37949f">operator&lt;</a> (const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;d) const </td></tr>
+<tr class="memdesc:a8a3bccb05f00086e64c5b5518a37949f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux dates dans le temps : d1&lt;d2 retourne true si d1 est avant d2.  <a href="#a8a3bccb05f00086e64c5b5518a37949f">More...</a><br /></td></tr>
 <tr class="separator:a8a3bccb05f00086e64c5b5518a37949f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61f93f8612a998bc440070f9b8a2660a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61f93f8612a998bc440070f9b8a2660a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;d) const </td></tr>
+<tr class="memitem:a4e6d6c380ef57bd34506ba8f017fec67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a4e6d6c380ef57bd34506ba8f017fec67">operator&lt;=</a> (const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;d) const </td></tr>
+<tr class="memdesc:a4e6d6c380ef57bd34506ba8f017fec67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare deux dates dans le temps : d1&lt;=d2 retourne true si d1 est avant ou bien ï¿½gale ï¿½ d2.  <a href="#a4e6d6c380ef57bd34506ba8f017fec67">More...</a><br /></td></tr>
+<tr class="separator:a4e6d6c380ef57bd34506ba8f017fec67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61f93f8612a998bc440070f9b8a2660a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a61f93f8612a998bc440070f9b8a2660a">operator-</a> (const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;d) const </td></tr>
+<tr class="memdesc:a61f93f8612a998bc440070f9b8a2660a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nombre de jours sï¿½parant les deux dates.  <a href="#a61f93f8612a998bc440070f9b8a2660a">More...</a><br /></td></tr>
 <tr class="separator:a61f93f8612a998bc440070f9b8a2660a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85907da4cadaff930c748328fda4d527"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a85907da4cadaff930c748328fda4d527"></a>
-<a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><b>demain</b> () const </td></tr>
+<tr class="memitem:a85907da4cadaff930c748328fda4d527"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a85907da4cadaff930c748328fda4d527">demain</a> () const </td></tr>
+<tr class="memdesc:a85907da4cadaff930c748328fda4d527"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la date du lendemain.  <a href="#a85907da4cadaff930c748328fda4d527">More...</a><br /></td></tr>
 <tr class="separator:a85907da4cadaff930c748328fda4d527"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c1f346c2ad9287155a71dc5d09e7fd8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c1f346c2ad9287155a71dc5d09e7fd8"></a>
-<a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (unsigned int nb) const </td></tr>
+<tr class="memitem:a3c1f346c2ad9287155a71dc5d09e7fd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a3c1f346c2ad9287155a71dc5d09e7fd8">operator+</a> (unsigned int nb) const </td></tr>
+<tr class="memdesc:a3c1f346c2ad9287155a71dc5d09e7fd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la date de dans nb jours.  <a href="#a3c1f346c2ad9287155a71dc5d09e7fd8">More...</a><br /></td></tr>
 <tr class="separator:a3c1f346c2ad9287155a71dc5d09e7fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a17bb8fb342545a476f35fe745613f7a9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_i_m_e_1_1_date.html#a17bb8fb342545a476f35fe745613f7a9">toTimingDate</a> (QDate d)</td></tr>
+<tr class="separator:a17bb8fb342545a476f35fe745613f7a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Classe permettant de manipuler des dates standards L'utilisation de cette classe nécessite des dates valides au sens commun du terme. Déclenchement d'exception dans le cas contraire. </p>
+<div class="textblock"><p>Classe permettant de manipuler des dates standards L'utilisation de cette classe nï¿½cessite des dates valides au sens commun du terme. Dï¿½clenchement d'exception dans le cas contraire. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ab0d72ce6e986c0c0a5f2902e586cf81a"></a>
 <div class="memitem">
@@ -184,26 +196,351 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <
 </table>
 </div><div class="memdoc">
 
-<p>Constructeur à partir d'un jour, mois, année </p>
+<p>Constructeur ï¿½ partir d'un jour, mois, annï¿½e. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">j</td><td>jour avec 1&lt;=j&lt;=31 </td></tr>
     <tr><td class="paramname">m</td><td>mois avec 1&lt;=m&lt;=12 </td></tr>
-    <tr><td class="paramname">a</td><td>année avec a&gt;=0 </td></tr>
+    <tr><td class="paramname">a</td><td>annï¿½e avec a&gt;=0 </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aa45188755f5d9d17cbebf0e55d3c571b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Date::afficher </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>f</em> = <code>std::cout</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a85907da4cadaff930c748328fda4d527"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> Date::demain </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la date du lendemain. </p>
+
+</div>
+</div>
+<a class="anchor" id="a07b41b2e9e85ef78bf13689e772bef7d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int TIME::Date::getAnnee </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne l'annï¿½e de la date. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4af978b7df2b738f62449b0a7e53c21d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short int TIME::Date::getJour </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne le jour de la date. </p>
+
+</div>
+</div>
+<a class="anchor" id="a09b00b96742bfceaa598060b486e604c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string TIME::Date::getJourMoisString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>initialisation de la date </p>
+<p>Retourne l'heure sous forme de chaine </p>
+
+</div>
+</div>
+<a class="anchor" id="a6cb9d945143df216115419c4cb8b14ce"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short int TIME::Date::getMois </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne le mois de la date. </p>
+
+</div>
+</div>
+<a class="anchor" id="a30428bf3b5e4daa144642dfa510edb14"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QDate TIME::Date::getQDate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne l'annï¿½e de la date. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3c1f346c2ad9287155a71dc5d09e7fd8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> Date::operator+ </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>nb</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la date de dans nb jours. </p>
+
+</div>
+</div>
+<a class="anchor" id="a61f93f8612a998bc440070f9b8a2660a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Date::operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne le nombre de jours sï¿½parant les deux dates. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8a3bccb05f00086e64c5b5518a37949f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Date::operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compare deux dates dans le temps : d1&lt;d2 retourne true si d1 est avant d2. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4e6d6c380ef57bd34506ba8f017fec67"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Date::operator&lt;= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compare deux dates dans le temps : d1&lt;=d2 retourne true si d1 est avant ou bien ï¿½gale ï¿½ d2. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa8208298c0efe5dbf661c66a284fd163"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Date::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>d1==d2 retourne vrai si les deux dates sont ï¿½gales </p>
+
+</div>
+</div>
+<a class="anchor" id="a7419902750e61b9473ab05ccd5ced33d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Date::setDate </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short int&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short int&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>a</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialisation de la date avec la date d'aujourd'hui </p>
+
+</div>
+</div>
+<a class="anchor" id="ace4be52a503c45de93b8db92dc592d93"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Date::setDateAujourdhui </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>affiche le date sous le format JJ/MM/AAAA </p>
+
+</div>
+</div>
+<a class="anchor" id="a17bb8fb342545a476f35fe745613f7a9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> Date::toTimingDate </td>
+          <td>(</td>
+          <td class="paramtype">QDate&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>LO21app/<a class="el" href="timing_8h_source.html">timing.h</a></li>
-<li>LO21app/timing.cpp</li>
+<li>LO21app/<a class="el" href="timing_8cpp.html">timing.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 29 2015 09:31:29 for LO21 | Gestion de projets - DeryckÃ¨re et Michel by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 20:59:16 for LO21 | Pistache by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

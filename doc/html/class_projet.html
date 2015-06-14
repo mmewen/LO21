@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>LO21 | Gestion de projets - Deryckère et Michel: Projet Class Reference</title>
+<title>LO21 | Pistache: Projet Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,9 +24,9 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logomini.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">LO21 | Gestion de projets - Deryckère et Michel
+   <div id="projectname">LO21 | Pistache
    </div>
-   <div id="projectbrief">Projet de LO21 où l&#39;utilisateur peut créer des projets, des tâches et des évènements.</div>
+   <div id="projectbrief">Projet de LO21 de Loïc Deryckère et Mewen Michel</div>
   </td>
  </tr>
  </tbody>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -94,7 +95,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Un ensemble de tache à réaliser.  
+<p>Classe de projets composite des Taches et composant <a class="el" href="class_projet_manager.html" title="Classe composite des Projets La classe applique le designe pattern singleton et possède un iterateur ...">ProjetManager</a>.  
  <a href="class_projet.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_calendar_8h_source.html">Calendar.h</a>&gt;</code></p>
@@ -106,29 +107,574 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abc4ef9586bab910e754d4f88943df720"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc4ef9586bab910e754d4f88943df720"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#abc4ef9586bab910e754d4f88943df720">getNom</a> () const </td></tr>
-<tr class="memdesc:abc4ef9586bab910e754d4f88943df720"><td class="mdescLeft">&#160;</td><td class="mdescRight">accesseur <br /></td></tr>
+<tr class="memitem:a386c53fc44bad454440d7742c4a705dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tache.html">Tache</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#a386c53fc44bad454440d7742c4a705dd">trouverTache</a> (const string &amp;id) const </td></tr>
+<tr class="memdesc:a386c53fc44bad454440d7742c4a705dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la tache correspondant à id si elle existe dans taches.  <a href="#a386c53fc44bad454440d7742c4a705dd">More...</a><br /></td></tr>
+<tr class="separator:a386c53fc44bad454440d7742c4a705dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbd43f9e454767870aeb2e5ae87b7cfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#abbd43f9e454767870aeb2e5ae87b7cfe">estComposante</a> (<a class="el" href="class_tache.html">Tache</a> *tache)</td></tr>
+<tr class="memdesc:abbd43f9e454767870aeb2e5ae87b7cfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne TRUE si la taches n'est pas dans tachesNonComposantes.  <a href="#abbd43f9e454767870aeb2e5ae87b7cfe">More...</a><br /></td></tr>
+<tr class="separator:abbd43f9e454767870aeb2e5ae87b7cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26e3e136385eca01dda79df7fba4e03d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#a26e3e136385eca01dda79df7fba4e03d">~Projet</a> ()</td></tr>
+<tr class="memdesc:a26e3e136385eca01dda79df7fba4e03d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur de projet.  <a href="#a26e3e136385eca01dda79df7fba4e03d">More...</a><br /></td></tr>
+<tr class="separator:a26e3e136385eca01dda79df7fba4e03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab55ad105de7afee7d7ce66f7cfcc871d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_unitaire.html">Unitaire</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#ab55ad105de7afee7d7ce66f7cfcc871d">ajouterUnitaire</a> (const string &amp;t, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;dispo, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;deadline, const <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> &amp;duree, const bool premp)</td></tr>
+<tr class="memdesc:ab55ad105de7afee7d7ce66f7cfcc871d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée une tache unitaire et ajoute son pointeur dans taches et dans tachesNonComposantes, à partir d'un titre, de dates de disponibilité et d'échéance, d'un durée et de la préemptabilité  <a href="#ab55ad105de7afee7d7ce66f7cfcc871d">More...</a><br /></td></tr>
+<tr class="separator:ab55ad105de7afee7d7ce66f7cfcc871d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b4d1f44967fec94cd9523164b46a4bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_composite.html">Composite</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#a3b4d1f44967fec94cd9523164b46a4bb">ajouterComposite</a> (const string &amp;t, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;dispo, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;deadline)</td></tr>
+<tr class="memdesc:a3b4d1f44967fec94cd9523164b46a4bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée une tache composite et ajoute son pointeur dans taches et dans tachesNonComposantes, à partir d'un titre et de dates de disponibilité et d'échéance.  <a href="#a3b4d1f44967fec94cd9523164b46a4bb">More...</a><br /></td></tr>
+<tr class="separator:a3b4d1f44967fec94cd9523164b46a4bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec4344d230da76d5af9ad269bda21ffe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tache.html">Tache</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#aec4344d230da76d5af9ad269bda21ffe">getTache</a> (const string &amp;id)</td></tr>
+<tr class="memdesc:aec4344d230da76d5af9ad269bda21ffe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la référence vers la tache désignée par id si elle existe.  <a href="#aec4344d230da76d5af9ad269bda21ffe">More...</a><br /></td></tr>
+<tr class="separator:aec4344d230da76d5af9ad269bda21ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99eedafc1f5a058c2d39f2e244240fa5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_tache.html">Tache</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#a99eedafc1f5a058c2d39f2e244240fa5">getTache</a> (const string &amp;code) const </td></tr>
+<tr class="memdesc:a99eedafc1f5a058c2d39f2e244240fa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la const référence vers la tache désignée par id si elle existe.  <a href="#a99eedafc1f5a058c2d39f2e244240fa5">More...</a><br /></td></tr>
+<tr class="separator:a99eedafc1f5a058c2d39f2e244240fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abae53a998b1d18ad7c8ea0d7221fc0eb"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#abae53a998b1d18ad7c8ea0d7221fc0eb">getId</a> () const </td></tr>
+<tr class="memdesc:abae53a998b1d18ad7c8ea0d7221fc0eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'identificateur du projet.  <a href="#abae53a998b1d18ad7c8ea0d7221fc0eb">More...</a><br /></td></tr>
+<tr class="separator:abae53a998b1d18ad7c8ea0d7221fc0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc4ef9586bab910e754d4f88943df720"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#abc4ef9586bab910e754d4f88943df720">getNom</a> () const </td></tr>
+<tr class="memdesc:abc4ef9586bab910e754d4f88943df720"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nom du projet.  <a href="#abc4ef9586bab910e754d4f88943df720">More...</a><br /></td></tr>
 <tr class="separator:abc4ef9586bab910e754d4f88943df720"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb3ac5233074e53f0263bd50b4e0bdec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb3ac5233074e53f0263bd50b4e0bdec"></a>
-<a class="el" href="class_projet_1_1_iterator.html">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getIterator</b> ()</td></tr>
+<tr class="memitem:a9cc70cd55d62e8a2fc2d286035a599a6"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#a9cc70cd55d62e8a2fc2d286035a599a6">getFile</a> () const </td></tr>
+<tr class="memdesc:a9cc70cd55d62e8a2fc2d286035a599a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nom du fichier du projet.  <a href="#a9cc70cd55d62e8a2fc2d286035a599a6">More...</a><br /></td></tr>
+<tr class="separator:a9cc70cd55d62e8a2fc2d286035a599a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad217a35a0b15f081ca3c4883bfacef87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#ad217a35a0b15f081ca3c4883bfacef87">getDispo</a> () const </td></tr>
+<tr class="memdesc:ad217a35a0b15f081ca3c4883bfacef87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la date de disponibilité du projet.  <a href="#ad217a35a0b15f081ca3c4883bfacef87">More...</a><br /></td></tr>
+<tr class="separator:ad217a35a0b15f081ca3c4883bfacef87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acffaba5346f86a0f0e674be256aad55f"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#acffaba5346f86a0f0e674be256aad55f">getNbTaches</a> () const </td></tr>
+<tr class="memdesc:acffaba5346f86a0f0e674be256aad55f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nombre d'élément dans taches.  <a href="#acffaba5346f86a0f0e674be256aad55f">More...</a><br /></td></tr>
+<tr class="separator:acffaba5346f86a0f0e674be256aad55f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad59a01337678059ac21e225dd3f41743"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#ad59a01337678059ac21e225dd3f41743">getEcheance</a> ()</td></tr>
+<tr class="memdesc:ad59a01337678059ac21e225dd3f41743"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la date d'échéance du projet à partir des dates d'échéances de toutes les taches du projet.  <a href="#ad59a01337678059ac21e225dd3f41743">More...</a><br /></td></tr>
+<tr class="separator:ad59a01337678059ac21e225dd3f41743"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04e9427d95b848a08551818f88246ebb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#a04e9427d95b848a08551818f88246ebb">getStatut</a> ()</td></tr>
+<tr class="memdesc:a04e9427d95b848a08551818f88246ebb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le statut du projet : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée.  <a href="#a04e9427d95b848a08551818f88246ebb">More...</a><br /></td></tr>
+<tr class="separator:a04e9427d95b848a08551818f88246ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8ea587dd12362c4e8867a043e81ca1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#ad8ea587dd12362c4e8867a043e81ca1e">moveTacheTo</a> (<a class="el" href="class_tache.html">Tache</a> *tMere, <a class="el" href="class_tache.html">Tache</a> *tFille)</td></tr>
+<tr class="memdesc:ad8ea587dd12362c4e8867a043e81ca1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une tache du projet (fille) en composition d'une autre tache (mère) et la retire de tachesNonComposantes.  <a href="#ad8ea587dd12362c4e8867a043e81ca1e">More...</a><br /></td></tr>
+<tr class="separator:ad8ea587dd12362c4e8867a043e81ca1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59cdf68a1ac1940b2c58ff93f800a8b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#a59cdf68a1ac1940b2c58ff93f800a8b9">save</a> (const string &amp;f)</td></tr>
+<tr class="memdesc:a59cdf68a1ac1940b2c58ff93f800a8b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exporte le projet sous le fichier f.  <a href="#a59cdf68a1ac1940b2c58ff93f800a8b9">More...</a><br /></td></tr>
+<tr class="separator:a59cdf68a1ac1940b2c58ff93f800a8b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb2a5742c64f6bac21022b313033edcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#adb2a5742c64f6bac21022b313033edcd">update</a> (const string &amp;nom, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;d)</td></tr>
+<tr class="memdesc:adb2a5742c64f6bac21022b313033edcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour le nom et la date de disponibilité du projet à partir des paramètres donnés.  <a href="#adb2a5742c64f6bac21022b313033edcd">More...</a><br /></td></tr>
+<tr class="separator:adb2a5742c64f6bac21022b313033edcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb3ac5233074e53f0263bd50b4e0bdec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_projet_1_1_iterator.html">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#acb3ac5233074e53f0263bd50b4e0bdec">getIterator</a> ()</td></tr>
+<tr class="memdesc:acb3ac5233074e53f0263bd50b4e0bdec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne un itérateur sur taches.  <a href="#acb3ac5233074e53f0263bd50b4e0bdec">More...</a><br /></td></tr>
 <tr class="separator:acb3ac5233074e53f0263bd50b4e0bdec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdfd076d0ad992fb0d12b2314b3ab70a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_projet_1_1_iterator.html">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#acdfd076d0ad992fb0d12b2314b3ab70a">getNCIterator</a> ()</td></tr>
+<tr class="memdesc:acdfd076d0ad992fb0d12b2314b3ab70a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne un itérateur sur tachesNonComposantes.  <a href="#acdfd076d0ad992fb0d12b2314b3ab70a">More...</a><br /></td></tr>
+<tr class="separator:acdfd076d0ad992fb0d12b2314b3ab70a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a9830fc407400559db7e7783cc10a9394"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9830fc407400559db7e7783cc10a9394"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>Iterator</b></td></tr>
-<tr class="separator:a9830fc407400559db7e7783cc10a9394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7718dec57b0fce2727460b65ff23b98d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_projet.html">Projet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projet.html#a7718dec57b0fce2727460b65ff23b98d">ProjetManager::ajouterProjet</a> (const string &amp;nom, const string &amp;file, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;dispo)</td></tr>
+<tr class="separator:a7718dec57b0fce2727460b65ff23b98d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Un ensemble de tache à réaliser. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Classe de projets composite des Taches et composant <a class="el" href="class_projet_manager.html" title="Classe composite des Projets La classe applique le designe pattern singleton et possède un iterateur ...">ProjetManager</a>. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a26e3e136385eca01dda79df7fba4e03d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Projet::~Projet </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destructeur de projet. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a3b4d1f44967fec94cd9523164b46a4bb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_composite.html">Composite</a> &amp; Projet::ajouterComposite </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>dispo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>deadline</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée une tache composite et ajoute son pointeur dans taches et dans tachesNonComposantes, à partir d'un titre et de dates de disponibilité et d'échéance. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab55ad105de7afee7d7ce66f7cfcc871d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_unitaire.html">Unitaire</a> &amp; Projet::ajouterUnitaire </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>dispo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>deadline</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> &amp;&#160;</td>
+          <td class="paramname"><em>duree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>premp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée une tache unitaire et ajoute son pointeur dans taches et dans tachesNonComposantes, à partir d'un titre, de dates de disponibilité et d'échéance, d'un durée et de la préemptabilité </p>
+
+</div>
+</div>
+<a class="anchor" id="abbd43f9e454767870aeb2e5ae87b7cfe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Projet::estComposante </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_tache.html">Tache</a> *&#160;</td>
+          <td class="paramname"><em>tache</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne TRUE si la taches n'est pas dans tachesNonComposantes. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad217a35a0b15f081ca3c4883bfacef87"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> Projet::getDispo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne la date de disponibilité du projet. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad59a01337678059ac21e225dd3f41743"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> Projet::getEcheance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la date d'échéance du projet à partir des dates d'échéances de toutes les taches du projet. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9cc70cd55d62e8a2fc2d286035a599a6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Projet::getFile </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne le nom du fichier du projet. </p>
+
+</div>
+</div>
+<a class="anchor" id="abae53a998b1d18ad7c8ea0d7221fc0eb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Projet::getId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne l'identificateur du projet. </p>
+
+</div>
+</div>
+<a class="anchor" id="acb3ac5233074e53f0263bd50b4e0bdec"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_projet_1_1_iterator.html">Iterator</a> Projet::getIterator </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne un itérateur sur taches. </p>
+
+</div>
+</div>
+<a class="anchor" id="acffaba5346f86a0f0e674be256aad55f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Projet::getNbTaches </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne le nombre d'élément dans taches. </p>
+
+</div>
+</div>
+<a class="anchor" id="acdfd076d0ad992fb0d12b2314b3ab70a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_projet_1_1_iterator.html">Iterator</a> Projet::getNCIterator </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne un itérateur sur tachesNonComposantes. </p>
+
+</div>
+</div>
+<a class="anchor" id="abc4ef9586bab910e754d4f88943df720"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Projet::getNom </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne le nom du projet. </p>
+
+</div>
+</div>
+<a class="anchor" id="a04e9427d95b848a08551818f88246ebb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Projet::getStatut </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne le statut du projet : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée. </p>
+
+</div>
+</div>
+<a class="anchor" id="aec4344d230da76d5af9ad269bda21ffe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_tache.html">Tache</a> &amp; Projet::getTache </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la référence vers la tache désignée par id si elle existe. </p>
+
+</div>
+</div>
+<a class="anchor" id="a99eedafc1f5a058c2d39f2e244240fa5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_tache.html">Tache</a> &amp; Projet::getTache </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la const référence vers la tache désignée par id si elle existe. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad8ea587dd12362c4e8867a043e81ca1e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Projet::moveTacheTo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_tache.html">Tache</a> *&#160;</td>
+          <td class="paramname"><em>tMere</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_tache.html">Tache</a> *&#160;</td>
+          <td class="paramname"><em>tFille</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute une tache du projet (fille) en composition d'une autre tache (mère) et la retire de tachesNonComposantes. </p>
+
+</div>
+</div>
+<a class="anchor" id="a59cdf68a1ac1940b2c58ff93f800a8b9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Projet::save </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exporte le projet sous le fichier f. </p>
+
+</div>
+</div>
+<a class="anchor" id="a386c53fc44bad454440d7742c4a705dd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_tache.html">Tache</a> * Projet::trouverTache </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie la tache correspondant à id si elle existe dans taches. </p>
+
+</div>
+</div>
+<a class="anchor" id="adb2a5742c64f6bac21022b313033edcd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Projet::update </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>nom</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met à jour le nom et la date de disponibilité du projet à partir des paramètres donnés. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="a7718dec57b0fce2727460b65ff23b98d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_projet.html">Projet</a>&amp; <a class="el" href="class_projet_manager.html#a1deef0505a26f2b14e7d2a35e1fead59">ProjetManager::ajouterProjet</a> </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>nom</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>dispo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>LO21app/<a class="el" href="_calendar_8h_source.html">Calendar.h</a></li>
+<li>LO21app/<a class="el" href="_calendar_8cpp.html">Calendar.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 29 2015 09:31:29 for LO21 | Gestion de projets - Deryckère et Michel by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 20:59:16 for LO21 | Pistache by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

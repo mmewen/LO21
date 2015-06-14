@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>LO21 | Gestion de projets - Deryckère et Michel: Unitaire Class Reference</title>
+<title>LO21 | Pistache: Unitaire Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,9 +24,9 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logomini.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">LO21 | Gestion de projets - Deryckère et Michel
+   <div id="projectname">LO21 | Pistache
    </div>
-   <div id="projectbrief">Projet de LO21 où l&#39;utilisateur peut créer des projets, des tâches et des évènements.</div>
+   <div id="projectbrief">Projet de LO21 de Loïc Deryckère et Mewen Michel</div>
   </td>
  </tr>
  </tbody>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -86,14 +87,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_unitaire-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Unitaire Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="class_tache.html" title="Classe abstraite mère de toutes les taches. Comporte un titre, une échéance et une liste de précédenc...">Tache</a> programmable.  
+<p>Classe de taches programmables, héritant de Tachet et d'<a class="el" href="class_evenement.html" title="Classe abstraite d&#39;éléments pouvant être programmés. ">Evenement</a> La classe de taches pouvant être programmées, en plusieurs fois si préemptive, en une seule fois sinon. La classe est forcément préemptive si sa durée dépasse 12h.  
  <a href="class_unitaire.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_calendar_8h_source.html">Calendar.h</a>&gt;</code></p>
@@ -102,90 +103,578 @@ Inheritance diagram for Unitaire:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_unitaire__inherit__graph.png" border="0" usemap="#_unitaire_inherit__map" alt="Inheritance graph"/></div>
 <map name="_unitaire_inherit__map" id="_unitaire_inherit__map">
-<area shape="rect" id="node2" href="class_tache.html" title="Classe abstraite mère de toutes les taches. Comporte un titre, une échéance et une liste de précédenc..." alt="" coords="9,80,68,107"/><area shape="rect" id="node3" href="class_truc.html" title="Truc" alt="" coords="15,5,63,32"/></map>
+<area shape="rect" id="node2" href="class_tache.html" title="Classe abstraite de taches composant Projet. " alt="" coords="5,5,64,32"/><area shape="rect" id="node3" href="class_evenement.html" title="Classe abstraite d&#39;éléments pouvant être programmés. " alt="" coords="88,5,176,32"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for Unitaire:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_unitaire__coll__graph.png" border="0" usemap="#_unitaire_coll__map" alt="Collaboration graph"/></div>
 <map name="_unitaire_coll__map" id="_unitaire_coll__map">
-<area shape="rect" id="node2" href="class_tache.html" title="Classe abstraite mère de toutes les taches. Comporte un titre, une échéance et une liste de précédenc..." alt="" coords="5,171,64,197"/><area shape="rect" id="node3" href="class_truc.html" title="Truc" alt="" coords="104,95,152,121"/><area shape="rect" id="node4" href="class_t_i_m_e_1_1_date.html" title="Classe permettant de manipuler des dates standards L&#39;utilisation de cette classe n�cessite des dates v..." alt="" coords="11,5,101,32"/><area shape="rect" id="node5" href="class_t_i_m_e_1_1_duree.html" title="Classe permettant de manipuler des durees L&#39;utilisation de cette classe n�cessite des dates valides au..." alt="" coords="89,171,186,197"/></map>
+<area shape="rect" id="node2" href="class_tache.html" title="Classe abstraite de taches composant Projet. " alt="" coords="5,5,64,32"/><area shape="rect" id="node3" href="class_evenement.html" title="Classe abstraite d&#39;éléments pouvant être programmés. " alt="" coords="88,5,176,32"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aee42e9fae46a5be23802afe5c6c08a31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee42e9fae46a5be23802afe5c6c08a31"></a>
-<a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#aee42e9fae46a5be23802afe5c6c08a31">getDuree</a> () const </td></tr>
-<tr class="memdesc:aee42e9fae46a5be23802afe5c6c08a31"><td class="mdescLeft">&#160;</td><td class="mdescRight">accesseur <br /></td></tr>
-<tr class="separator:aee42e9fae46a5be23802afe5c6c08a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adba3a8de0fe6273cea7eecda3520bfcd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adba3a8de0fe6273cea7eecda3520bfcd"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#adba3a8de0fe6273cea7eecda3520bfcd">isPreemp</a> () const </td></tr>
-<tr class="memdesc:adba3a8de0fe6273cea7eecda3520bfcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">accesseur <br /></td></tr>
+<tr class="memitem:a804454c39eb010aa67bd622a009df840"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#a804454c39eb010aa67bd622a009df840">addItem</a> (<a class="el" href="class_tache.html">Tache</a> *t)</td></tr>
+<tr class="memdesc:a804454c39eb010aa67bd622a009df840"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute la tache pointée aux tableau de précédences prec.  <a href="#a804454c39eb010aa67bd622a009df840">More...</a><br /></td></tr>
+<tr class="separator:a804454c39eb010aa67bd622a009df840"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adba3a8de0fe6273cea7eecda3520bfcd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#adba3a8de0fe6273cea7eecda3520bfcd">isPreemp</a> () const </td></tr>
+<tr class="memdesc:adba3a8de0fe6273cea7eecda3520bfcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si la tache est préemptable ou non.  <a href="#adba3a8de0fe6273cea7eecda3520bfcd">More...</a><br /></td></tr>
 <tr class="separator:adba3a8de0fe6273cea7eecda3520bfcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ab243102aa0572048a956204532b201"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ab243102aa0572048a956204532b201"></a>
-<a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#a9ab243102aa0572048a956204532b201">getFait</a> () const </td></tr>
-<tr class="memdesc:a9ab243102aa0572048a956204532b201"><td class="mdescLeft">&#160;</td><td class="mdescRight">accesseur <br /></td></tr>
+<tr class="memitem:a9ab243102aa0572048a956204532b201"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#a9ab243102aa0572048a956204532b201">getFait</a> () const </td></tr>
+<tr class="memdesc:a9ab243102aa0572048a956204532b201"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la durée faite de la tache.  <a href="#a9ab243102aa0572048a956204532b201">More...</a><br /></td></tr>
 <tr class="separator:a9ab243102aa0572048a956204532b201"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fa3fa1073200a18c9a2706b37eb78e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fa3fa1073200a18c9a2706b37eb78e6"></a>
-<a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#a2fa3fa1073200a18c9a2706b37eb78e6">getRestant</a> () const </td></tr>
-<tr class="memdesc:a2fa3fa1073200a18c9a2706b37eb78e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">accesseur, retour calculé <br /></td></tr>
+<tr class="memitem:a2fa3fa1073200a18c9a2706b37eb78e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#a2fa3fa1073200a18c9a2706b37eb78e6">getRestant</a> () const </td></tr>
+<tr class="memdesc:a2fa3fa1073200a18c9a2706b37eb78e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la durée restante à programmer de la tache, calculée en soustrayant la durée totale avec la dutée faite.  <a href="#a2fa3fa1073200a18c9a2706b37eb78e6">More...</a><br /></td></tr>
 <tr class="separator:a2fa3fa1073200a18c9a2706b37eb78e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadf6c5718aff37f1a7589240059e9e98"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#aadf6c5718aff37f1a7589240059e9e98">getStatut</a> ()</td></tr>
+<tr class="memdesc:aadf6c5718aff37f1a7589240059e9e98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée.  <a href="#aadf6c5718aff37f1a7589240059e9e98">More...</a><br /></td></tr>
+<tr class="separator:aadf6c5718aff37f1a7589240059e9e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affee1a6cda05a1032eba560196af99b9"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#affee1a6cda05a1032eba560196af99b9">isFinished</a> (const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;d, const <a class="el" href="class_t_i_m_e_1_1_horaire.html">Horaire</a> &amp;h)</td></tr>
+<tr class="memdesc:affee1a6cda05a1032eba560196af99b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie 1 si la tache a été terminée à la date d et l'horaire h, 0 sinon.  <a href="#affee1a6cda05a1032eba560196af99b9">More...</a><br /></td></tr>
+<tr class="separator:affee1a6cda05a1032eba560196af99b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9ef9d9bb2b47520c3c609d822364964"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#ad9ef9d9bb2b47520c3c609d822364964">setFait</a> (const <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> &amp;f)</td></tr>
+<tr class="memdesc:ad9ef9d9bb2b47520c3c609d822364964"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la durée faite de la tache.  <a href="#ad9ef9d9bb2b47520c3c609d822364964">More...</a><br /></td></tr>
+<tr class="separator:ad9ef9d9bb2b47520c3c609d822364964"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4893599f98385c26884441655331bc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#aa4893599f98385c26884441655331bc2">setPreemp</a> ()</td></tr>
+<tr class="memdesc:aa4893599f98385c26884441655331bc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rend la tache préemptable.  <a href="#aa4893599f98385c26884441655331bc2">More...</a><br /></td></tr>
+<tr class="separator:aa4893599f98385c26884441655331bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bb9a65dc5b0d03a44353edfae06580d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#a8bb9a65dc5b0d03a44353edfae06580d">setNonPreemp</a> ()</td></tr>
+<tr class="memdesc:a8bb9a65dc5b0d03a44353edfae06580d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rend, si possible, la tache preemptable.  <a href="#a8bb9a65dc5b0d03a44353edfae06580d">More...</a><br /></td></tr>
+<tr class="separator:a8bb9a65dc5b0d03a44353edfae06580d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98bd645b84e0bd2f378e13774324f7b7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#a98bd645b84e0bd2f378e13774324f7b7">afficher</a> (ostream &amp;f)</td></tr>
+<tr class="memdesc:a98bd645b84e0bd2f378e13774324f7b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les attributs de la tache.  <a href="#a98bd645b84e0bd2f378e13774324f7b7">More...</a><br /></td></tr>
+<tr class="separator:a98bd645b84e0bd2f378e13774324f7b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a965c3d4d8ba7864ae28a24a5d514dec5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#a965c3d4d8ba7864ae28a24a5d514dec5">update</a> (string id, string t, <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> d, <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> e, <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> dur, <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> df, bool p)</td></tr>
+<tr class="separator:a965c3d4d8ba7864ae28a24a5d514dec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f189cf8c1bc7d22b805e6bfd1aa0bd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#a2f189cf8c1bc7d22b805e6bfd1aa0bd7">update</a> (string t, <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> d, <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> e, <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> dur, bool p)</td></tr>
+<tr class="separator:a2f189cf8c1bc7d22b805e6bfd1aa0bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_tache"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_tache')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_tache.html">Tache</a></td></tr>
-<tr class="memitem:a1fe8754733f0b85c232d91851cf61891 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1fe8754733f0b85c232d91851cf61891"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#a1fe8754733f0b85c232d91851cf61891">getId</a> () const </td></tr>
-<tr class="memdesc:a1fe8754733f0b85c232d91851cf61891 inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">accesseur <br /></td></tr>
+<tr class="memitem:ac597ce580ad0b32c373b329d4da839ad inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#ac597ce580ad0b32c373b329d4da839ad">getNbPred</a> ()</td></tr>
+<tr class="memdesc:ac597ce580ad0b32c373b329d4da839ad inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre d'éléments de prec.  <a href="#ac597ce580ad0b32c373b329d4da839ad">More...</a><br /></td></tr>
+<tr class="separator:ac597ce580ad0b32c373b329d4da839ad inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6d1abc3712b5a8b571bb3c131129ac7 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_projet.html">Projet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#aa6d1abc3712b5a8b571bb3c131129ac7">getProjet</a> () const </td></tr>
+<tr class="memdesc:aa6d1abc3712b5a8b571bb3c131129ac7 inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie un pointeur vers le projet parent de la tache.  <a href="#aa6d1abc3712b5a8b571bb3c131129ac7">More...</a><br /></td></tr>
+<tr class="separator:aa6d1abc3712b5a8b571bb3c131129ac7 inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acefc2a88516ef4d8bd7b25afcf769e9c inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#acefc2a88516ef4d8bd7b25afcf769e9c">~Tache</a> ()</td></tr>
+<tr class="memdesc:acefc2a88516ef4d8bd7b25afcf769e9c inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desctructeur de la tache.  <a href="#acefc2a88516ef4d8bd7b25afcf769e9c">More...</a><br /></td></tr>
+<tr class="separator:acefc2a88516ef4d8bd7b25afcf769e9c inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a026b068c4e49643d6fec30c9b915ddca inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#a026b068c4e49643d6fec30c9b915ddca">Tache</a> (const string &amp;id, const string &amp;t, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;dispo, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;deadline, <a class="el" href="class_projet.html">Projet</a> *p)</td></tr>
+<tr class="separator:a026b068c4e49643d6fec30c9b915ddca inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab29bfb6c79337fbc9dc5618195f12f8d inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tache.html">Tache</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#ab29bfb6c79337fbc9dc5618195f12f8d">getPrecedence</a> (const string &amp;id)</td></tr>
+<tr class="memdesc:ab29bfb6c79337fbc9dc5618195f12f8d inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie une référence vers la tache désignée par id si elle existe dans prec.  <a href="#ab29bfb6c79337fbc9dc5618195f12f8d">More...</a><br /></td></tr>
+<tr class="separator:ab29bfb6c79337fbc9dc5618195f12f8d inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af995526e12eed76ffa2a4ba7b6fb7a90 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_tache.html">Tache</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#af995526e12eed76ffa2a4ba7b6fb7a90">getPrecedence</a> (const string &amp;code) const </td></tr>
+<tr class="memdesc:af995526e12eed76ffa2a4ba7b6fb7a90 inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie une const référence vers la tache désignée par id si elle existe dans prec.  <a href="#af995526e12eed76ffa2a4ba7b6fb7a90">More...</a><br /></td></tr>
+<tr class="separator:af995526e12eed76ffa2a4ba7b6fb7a90 inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72df18190512de6ca437492a3664d05a inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#a72df18190512de6ca437492a3664d05a">isPrecedence</a> () const </td></tr>
+<tr class="memdesc:a72df18190512de6ca437492a3664d05a inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique par booléen si la tache a des précédences ou non.  <a href="#a72df18190512de6ca437492a3664d05a">More...</a><br /></td></tr>
+<tr class="separator:a72df18190512de6ca437492a3664d05a inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae873dc0bfe552ea39c34f430d56f3846 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#ae873dc0bfe552ea39c34f430d56f3846">isPrecedencePotentielle</a> (const string &amp;id)</td></tr>
+<tr class="memdesc:ae873dc0bfe552ea39c34f430d56f3846 inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si la tache désignée par id est une précédence potentielle ou non pour la tache.  <a href="#ae873dc0bfe552ea39c34f430d56f3846">More...</a><br /></td></tr>
+<tr class="separator:ae873dc0bfe552ea39c34f430d56f3846 inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fe8754733f0b85c232d91851cf61891 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#a1fe8754733f0b85c232d91851cf61891">getId</a> () const </td></tr>
+<tr class="memdesc:a1fe8754733f0b85c232d91851cf61891 inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie l'identificateur de la tache.  <a href="#a1fe8754733f0b85c232d91851cf61891">More...</a><br /></td></tr>
 <tr class="separator:a1fe8754733f0b85c232d91851cf61891 inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6af5354e29498ab43ab3cc826b0aac4 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6af5354e29498ab43ab3cc826b0aac4"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#ab6af5354e29498ab43ab3cc826b0aac4">getTitre</a> () const </td></tr>
-<tr class="memdesc:ab6af5354e29498ab43ab3cc826b0aac4 inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">accesseur <br /></td></tr>
+<tr class="memitem:ab6af5354e29498ab43ab3cc826b0aac4 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#ab6af5354e29498ab43ab3cc826b0aac4">getTitre</a> () const </td></tr>
+<tr class="memdesc:ab6af5354e29498ab43ab3cc826b0aac4 inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le titre de la tache.  <a href="#ab6af5354e29498ab43ab3cc826b0aac4">More...</a><br /></td></tr>
 <tr class="separator:ab6af5354e29498ab43ab3cc826b0aac4 inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7638675a65b3ef3c57a07260f914fae inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7638675a65b3ef3c57a07260f914fae"></a>
-<a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#aa7638675a65b3ef3c57a07260f914fae">getEcheance</a> () const </td></tr>
-<tr class="memdesc:aa7638675a65b3ef3c57a07260f914fae inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">accesseur <br /></td></tr>
-<tr class="separator:aa7638675a65b3ef3c57a07260f914fae inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a709d4d7d5c25604b6e9a5c37b74fa4a6 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a709d4d7d5c25604b6e9a5c37b74fa4a6"></a>
-<a class="el" href="class_tache_1_1_iterator.html">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getIterator</b> ()</td></tr>
+<tr class="memitem:a8cba5e74f4ee6b31e29d0339dbe470fe inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#a8cba5e74f4ee6b31e29d0339dbe470fe">getDateDisponibilite</a> () const </td></tr>
+<tr class="memdesc:a8cba5e74f4ee6b31e29d0339dbe470fe inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la date de disponibilité de la tache.  <a href="#a8cba5e74f4ee6b31e29d0339dbe470fe">More...</a><br /></td></tr>
+<tr class="separator:a8cba5e74f4ee6b31e29d0339dbe470fe inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe0dbe94fc6908ba5e3cb7fd2fa90f92 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#abe0dbe94fc6908ba5e3cb7fd2fa90f92">getDateEcheance</a> () const </td></tr>
+<tr class="memdesc:abe0dbe94fc6908ba5e3cb7fd2fa90f92 inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la date d'échéance de la tache.  <a href="#abe0dbe94fc6908ba5e3cb7fd2fa90f92">More...</a><br /></td></tr>
+<tr class="separator:abe0dbe94fc6908ba5e3cb7fd2fa90f92 inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18bda9873a4643a7bebe4905110e3814 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_projet.html">Projet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#a18bda9873a4643a7bebe4905110e3814">getProjet</a> ()</td></tr>
+<tr class="memdesc:a18bda9873a4643a7bebe4905110e3814 inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le pointeur vers le projet parent.  <a href="#a18bda9873a4643a7bebe4905110e3814">More...</a><br /></td></tr>
+<tr class="separator:a18bda9873a4643a7bebe4905110e3814 inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ea66e1007e692875199d4027e724a85 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#a4ea66e1007e692875199d4027e724a85">setId</a> (const string &amp;id)</td></tr>
+<tr class="memdesc:a4ea66e1007e692875199d4027e724a85 inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'identificateur.  <a href="#a4ea66e1007e692875199d4027e724a85">More...</a><br /></td></tr>
+<tr class="separator:a4ea66e1007e692875199d4027e724a85 inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a191acd8b10c22b8e7a533aa8f237b907 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#a191acd8b10c22b8e7a533aa8f237b907">setTitre</a> (const string &amp;t)</td></tr>
+<tr class="memdesc:a191acd8b10c22b8e7a533aa8f237b907 inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie le titre.  <a href="#a191acd8b10c22b8e7a533aa8f237b907">More...</a><br /></td></tr>
+<tr class="separator:a191acd8b10c22b8e7a533aa8f237b907 inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56de6bd26a4a5028c01481ccdededd54 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#a56de6bd26a4a5028c01481ccdededd54">setDatesDisponibiliteEcheance</a> (const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;disp, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;e)</td></tr>
+<tr class="separator:a56de6bd26a4a5028c01481ccdededd54 inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a709d4d7d5c25604b6e9a5c37b74fa4a6 inherit pub_methods_class_tache"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tache_1_1_iterator.html">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tache.html#a709d4d7d5c25604b6e9a5c37b74fa4a6">getIterator</a> ()</td></tr>
+<tr class="memdesc:a709d4d7d5c25604b6e9a5c37b74fa4a6 inherit pub_methods_class_tache"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie un itérateur sur prec.  <a href="#a709d4d7d5c25604b6e9a5c37b74fa4a6">More...</a><br /></td></tr>
 <tr class="separator:a709d4d7d5c25604b6e9a5c37b74fa4a6 inherit pub_methods_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_truc"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_truc')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_truc.html">Truc</a></td></tr>
-<tr class="memitem:aca95e48d9dc4a28745998319c0fb6233 inherit pub_methods_class_truc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca95e48d9dc4a28745998319c0fb6233"></a>
-<a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getDispo</b> () const </td></tr>
-<tr class="separator:aca95e48d9dc4a28745998319c0fb6233 inherit pub_methods_class_truc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_evenement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_evenement')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_evenement.html">Evenement</a></td></tr>
+<tr class="memitem:a55edc55f582f7992296b10e8a60476c8 inherit pub_methods_class_evenement"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_evenement.html#a55edc55f582f7992296b10e8a60476c8">~Evenement</a> ()</td></tr>
+<tr class="memdesc:a55edc55f582f7992296b10e8a60476c8 inherit pub_methods_class_evenement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur de l'événement.  <a href="#a55edc55f582f7992296b10e8a60476c8">More...</a><br /></td></tr>
+<tr class="separator:a55edc55f582f7992296b10e8a60476c8 inherit pub_methods_class_evenement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab538f1a96d3b5b63f8ce0e89f16bcafd inherit pub_methods_class_evenement"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_evenement.html#ab538f1a96d3b5b63f8ce0e89f16bcafd">Evenement</a> (<a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> dur)</td></tr>
+<tr class="memdesc:ab538f1a96d3b5b63f8ce0e89f16bcafd inherit pub_methods_class_evenement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de l'événement à partir d'une durée.  <a href="#ab538f1a96d3b5b63f8ce0e89f16bcafd">More...</a><br /></td></tr>
+<tr class="separator:ab538f1a96d3b5b63f8ce0e89f16bcafd inherit pub_methods_class_evenement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43c92d1917720282ac6ba3a598fac708 inherit pub_methods_class_evenement"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_evenement.html#a43c92d1917720282ac6ba3a598fac708">getDuree</a> () const </td></tr>
+<tr class="memdesc:a43c92d1917720282ac6ba3a598fac708 inherit pub_methods_class_evenement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la durée de l'événement.  <a href="#a43c92d1917720282ac6ba3a598fac708">More...</a><br /></td></tr>
+<tr class="separator:a43c92d1917720282ac6ba3a598fac708 inherit pub_methods_class_evenement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5f395f7681426893894fb73eb851459 inherit pub_methods_class_evenement"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_evenement.html#aa5f395f7681426893894fb73eb851459">getNom</a> () const </td></tr>
+<tr class="memdesc:aa5f395f7681426893894fb73eb851459 inherit pub_methods_class_evenement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nom et l'éventuel lieu de l'événement en QString.  <a href="#aa5f395f7681426893894fb73eb851459">More...</a><br /></td></tr>
+<tr class="separator:aa5f395f7681426893894fb73eb851459 inherit pub_methods_class_evenement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42e914b00d21eb4377d7c0a242a88e9a inherit pub_methods_class_evenement"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_evenement.html#a42e914b00d21eb4377d7c0a242a88e9a">setDuree</a> (const <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> &amp;dur)</td></tr>
+<tr class="memdesc:a42e914b00d21eb4377d7c0a242a88e9a inherit pub_methods_class_evenement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la durée de l'événement à partir du paramètre "dur".  <a href="#a42e914b00d21eb4377d7c0a242a88e9a">More...</a><br /></td></tr>
+<tr class="separator:a42e914b00d21eb4377d7c0a242a88e9a inherit pub_methods_class_evenement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:afb536168ed579d6380142ab6d8afdff1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb536168ed579d6380142ab6d8afdff1"></a>
-<a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td><td class="memItemRight" valign="bottom"><b>duree</b></td></tr>
-<tr class="separator:afb536168ed579d6380142ab6d8afdff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2279ae0e8b3dd31b5cdd51e55fb882e3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2279ae0e8b3dd31b5cdd51e55fb882e3"></a>
-<a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td><td class="memItemRight" valign="bottom"><b>dureeRestante</b></td></tr>
-<tr class="separator:a2279ae0e8b3dd31b5cdd51e55fb882e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48d055a358e530bdb46b226a9234bad6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48d055a358e530bdb46b226a9234bad6"></a>
-<a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td><td class="memItemRight" valign="bottom"><b>dureeFaite</b></td></tr>
-<tr class="separator:a48d055a358e530bdb46b226a9234bad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1e8bb26f23031559fcbcd7450820dc5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1e8bb26f23031559fcbcd7450820dc5"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>preemptable</b></td></tr>
-<tr class="separator:ab1e8bb26f23031559fcbcd7450820dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_attribs_class_tache"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_tache')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_tache.html">Tache</a></td></tr>
-<tr class="memitem:a874e819401eeca991bcadbbd6de7fdb2 inherit pub_attribs_class_tache"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a874e819401eeca991bcadbbd6de7fdb2"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>titre</b></td></tr>
-<tr class="separator:a874e819401eeca991bcadbbd6de7fdb2 inherit pub_attribs_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab82c1297c111c406c1408c68631a9c22 inherit pub_attribs_class_tache"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab82c1297c111c406c1408c68631a9c22"></a>
-<a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><b>echeance</b></td></tr>
-<tr class="separator:ab82c1297c111c406c1408c68631a9c22 inherit pub_attribs_class_tache"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_attribs_class_truc"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_truc')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_truc.html">Truc</a></td></tr>
-<tr class="memitem:ab9df6defd6396fa46d998df1556645b6 inherit pub_attribs_class_truc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9df6defd6396fa46d998df1556645b6"></a>
-<a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><b>dispo</b></td></tr>
-<tr class="separator:ab9df6defd6396fa46d998df1556645b6 inherit pub_attribs_class_truc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:af32ab372e13abfb17b253ade6390cfd3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_unitaire.html">Unitaire</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unitaire.html#af32ab372e13abfb17b253ade6390cfd3">Projet::ajouterUnitaire</a> (const string &amp;t, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;dispo, const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;deadline, const <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> &amp;duree, const bool premp)</td></tr>
+<tr class="separator:af32ab372e13abfb17b253ade6390cfd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="class_tache.html" title="Classe abstraite mère de toutes les taches. Comporte un titre, une échéance et une liste de précédenc...">Tache</a> programmable. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Classe de taches programmables, héritant de Tachet et d'<a class="el" href="class_evenement.html" title="Classe abstraite d&#39;éléments pouvant être programmés. ">Evenement</a> La classe de taches pouvant être programmées, en plusieurs fois si préemptive, en une seule fois sinon. La classe est forcément préemptive si sa durée dépasse 12h. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a804454c39eb010aa67bd622a009df840"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Unitaire::addItem </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_tache.html">Tache</a> *&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ajoute la tache pointée aux tableau de précédences prec. </p>
+
+<p>Reimplemented from <a class="el" href="class_tache.html#a6a13b4138a46f22e632bf9d35f155c09">Tache</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a98bd645b84e0bd2f378e13774324f7b7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Unitaire::afficher </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Affiche les attributs de la tache. </p>
+
+<p>Implements <a class="el" href="class_evenement.html#af217f0cd3d421e3f113a13536ee63593">Evenement</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9ab243102aa0572048a956204532b201"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> Unitaire::getFait </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne la durée faite de la tache. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2fa3fa1073200a18c9a2706b37eb78e6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> Unitaire::getRestant </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne la durée restante à programmer de la tache, calculée en soustrayant la durée totale avec la dutée faite. </p>
+
+</div>
+</div>
+<a class="anchor" id="aadf6c5718aff37f1a7589240059e9e98"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Unitaire::getStatut </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée. </p>
+
+<p>Implements <a class="el" href="class_tache.html#ac60426a56aec80b995f30456fc60a256">Tache</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="affee1a6cda05a1032eba560196af99b9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Unitaire::isFinished </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_horaire.html">Horaire</a> &amp;&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie 1 si la tache a été terminée à la date d et l'horaire h, 0 sinon. </p>
+
+<p>Implements <a class="el" href="class_tache.html#a495d9d787ef400a510e625e4e51014bd">Tache</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adba3a8de0fe6273cea7eecda3520bfcd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Unitaire::isPreemp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indique si la tache est préemptable ou non. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad9ef9d9bb2b47520c3c609d822364964"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Unitaire::setFait </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> &amp;&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Modifie la durée faite de la tache. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8bb9a65dc5b0d03a44353edfae06580d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Unitaire::setNonPreemp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rend, si possible, la tache preemptable. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa4893599f98385c26884441655331bc2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Unitaire::setPreemp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rend la tache préemptable. </p>
+
+</div>
+</div>
+<a class="anchor" id="a965c3d4d8ba7864ae28a24a5d514dec5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Unitaire::update </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td>
+          <td class="paramname"><em>dur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td>
+          <td class="paramname"><em>df</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Met à jour la tache en modifiant ses attributs à partir des paramètres donnés : id, titre, disponibilité, échéance, durée, durée faite et préemptabilité </p>
+
+</div>
+</div>
+<a class="anchor" id="a2f189cf8c1bc7d22b805e6bfd1aa0bd7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Unitaire::update </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_t_i_m_e_1_1_date.html">Date</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a>&#160;</td>
+          <td class="paramname"><em>dur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Met à jour la tache en modifiant ses attributs à partir des paramètres donnés : id, titre, disponibilité, échéance, durée et préemptabilité </p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="af32ab372e13abfb17b253ade6390cfd3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_unitaire.html">Unitaire</a>&amp; <a class="el" href="class_projet.html#ab55ad105de7afee7d7ce66f7cfcc871d">Projet::ajouterUnitaire</a> </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>dispo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>deadline</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_t_i_m_e_1_1_duree.html">Duree</a> &amp;&#160;</td>
+          <td class="paramname"><em>duree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>premp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>LO21app/<a class="el" href="_calendar_8h_source.html">Calendar.h</a></li>
+<li>LO21app/<a class="el" href="_calendar_8cpp.html">Calendar.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 29 2015 09:31:29 for LO21 | Gestion de projets - Deryckère et Michel by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 20:59:16 for LO21 | Pistache by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

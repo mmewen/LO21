@@ -1,0 +1,251 @@
+\hypertarget{class_tree_view_model}{}\section{Tree\+View\+Model Class Reference}
+\label{class_tree_view_model}\index{Tree\+View\+Model@{Tree\+View\+Model}}
+
+
+Gestionnaire singloton du modèle du Tree\+View~\newline
+  
+
+
+
+
+{\ttfamily \#include $<$U\+I\+Classes.\+h$>$}
+
+
+
+Inheritance diagram for Tree\+View\+Model\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{class_tree_view_model__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Tree\+View\+Model\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{class_tree_view_model__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_tree_view_model_ae3b9431925e42572a66aa51ae1ab785f}{update\+Name} (\hyperlink{class_projet}{Projet} $\ast$projet)
+\begin{DoxyCompactList}\small\item\em Met à jour le nom d\textquotesingle{}un projet. \end{DoxyCompactList}\item 
+void \hyperlink{class_tree_view_model_a20c0d80c255910d92ad4fac40cb3295f}{update\+Name} (\hyperlink{class_unitaire}{Unitaire} $\ast$tache)
+\begin{DoxyCompactList}\small\item\em Met à jour le nom d\textquotesingle{}une tache unitaire. \end{DoxyCompactList}\item 
+void \hyperlink{class_tree_view_model_a3958b72bf354014f1f233072902b5da8}{update\+Name} (\hyperlink{class_composite}{Composite} $\ast$tache)
+\begin{DoxyCompactList}\small\item\em Met à jour le nom d\textquotesingle{}une tache composite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Standard\+Item\+Model $\ast$ \hyperlink{class_tree_view_model_af5e7f6992ae03a0c27130430b3c753f4}{get\+Modele} ()
+\begin{DoxyCompactList}\small\item\em Retourne une référence sur le modèle du Tree\+View. \end{DoxyCompactList}\item 
+void \hyperlink{class_tree_view_model_ac373475bea94e84c15588628f8e140d2}{print\+Tree} ()
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}arbre complet au lancement de l\textquotesingle{}application. \end{DoxyCompactList}\item 
+void \hyperlink{class_tree_view_model_ad7c89e0477e9da08cf71e73d023e3155}{add\+Projet} (\hyperlink{class_projet}{Projet} $\ast$nouveau\+Projet)
+\begin{DoxyCompactList}\small\item\em Ajoute un projet à la racine (virtuelle) de l\textquotesingle{}arbre à l\textquotesingle{}ajout d\textquotesingle{}un projet. \end{DoxyCompactList}\item 
+void \hyperlink{class_tree_view_model_a0e4a0fd3f762ca89591914494b0b8abd}{add\+Tache} (\hyperlink{class_projet}{Projet} $\ast$projet, \hyperlink{class_tache}{Tache} $\ast$tache)
+\begin{DoxyCompactList}\small\item\em Ajoute une tache à un projet. \end{DoxyCompactList}\item 
+void \hyperlink{class_tree_view_model_a3b36fb846f9bb7753fcf2d8e04b99bad}{add\+Tache} (\hyperlink{class_tache}{Tache} $\ast$tache\+Mere, \hyperlink{class_tache}{Tache} $\ast$tache)
+\begin{DoxyCompactList}\small\item\em Ajoute une tache à une tache mère (composite) \end{DoxyCompactList}\item 
+\hyperlink{class_tache}{Tache} $\ast$ \hyperlink{class_tree_view_model_ac036b65c8296ff50d616c06e5a9decfa}{get\+Tache\+From\+Item} (Q\+Standard\+Item $\ast$item)
+\begin{DoxyCompactList}\small\item\em Retourne une tache à partir d\textquotesingle{}un item de l\textquotesingle{}arbre. \end{DoxyCompactList}\item 
+Q\+Standard\+Item $\ast$ \hyperlink{class_tree_view_model_a71b5e1fb4a72adc756b6611b34a3a000}{get\+Item\+From\+Tache} (\hyperlink{class_tache}{Tache} $\ast$tache)
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}item de l\textquotesingle{}arbre lié à une tache. \end{DoxyCompactList}\item 
+\hyperlink{class_projet}{Projet} $\ast$ \hyperlink{class_tree_view_model_a1afea15d08be67340fff49476ddd3182}{get\+Projet\+From\+Item} (Q\+Standard\+Item $\ast$item)
+\begin{DoxyCompactList}\small\item\em Retourne un projet à partir d\textquotesingle{}un item de l\textquotesingle{}arbre. \end{DoxyCompactList}\item 
+Q\+Standard\+Item $\ast$ \hyperlink{class_tree_view_model_a54f066c26fef522024cd39f1eaf1c236}{get\+Item\+From\+Projet} (\hyperlink{class_projet}{Projet} $\ast$projet)
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}item associé à un projet. \end{DoxyCompactList}\item 
+void \hyperlink{class_tree_view_model_a9d049539995bcd46a98b58d0eb14f9b5}{update\+Icons} (\hyperlink{class_tache}{Tache} $\ast$t)
+\begin{DoxyCompactList}\small\item\em Met à jour les icones de la tache t et de ses parents (quand une tache est programmée) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_tree_view_model}{Tree\+View\+Model} \& \hyperlink{class_tree_view_model_a46c11bb283dec5498dc096bde83006b7}{get\+Instance} ()
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}instance de la classe. \end{DoxyCompactList}\item 
+static void \hyperlink{class_tree_view_model_a263f6bd7971d922ea536fdedcbf6bb1b}{liberer\+Instance} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Gestionnaire singloton du modèle du Tree\+View~\newline
+ 
+
+Contient les différentes méthodes afin d\textquotesingle{}afficher l\textquotesingle{}arbre des projets et taches.~\newline
+ On connait ainsi les taches incluses dans un projet, et celles qui sont dans une tache composite.~\newline
+ On voit rapidement l\textquotesingle{}état des taches/projet grace à une petite icone.~\newline
+ Permet de retrouver un projet/tache à partir d\textquotesingle{}un item et inversement.~\newline
+ 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_tree_view_model_ad7c89e0477e9da08cf71e73d023e3155}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!add\+Projet@{add\+Projet}}
+\index{add\+Projet@{add\+Projet}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{add\+Projet}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+View\+Model\+::add\+Projet (
+\begin{DoxyParamCaption}
+\item[{{\bf Projet} $\ast$}]{nouveau\+Projet}
+\end{DoxyParamCaption}
+)}\label{class_tree_view_model_ad7c89e0477e9da08cf71e73d023e3155}
+
+
+Ajoute un projet à la racine (virtuelle) de l\textquotesingle{}arbre à l\textquotesingle{}ajout d\textquotesingle{}un projet. 
+
+\hypertarget{class_tree_view_model_a0e4a0fd3f762ca89591914494b0b8abd}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!add\+Tache@{add\+Tache}}
+\index{add\+Tache@{add\+Tache}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{add\+Tache}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+View\+Model\+::add\+Tache (
+\begin{DoxyParamCaption}
+\item[{{\bf Projet} $\ast$}]{projet, }
+\item[{{\bf Tache} $\ast$}]{tache}
+\end{DoxyParamCaption}
+)}\label{class_tree_view_model_a0e4a0fd3f762ca89591914494b0b8abd}
+
+
+Ajoute une tache à un projet. 
+
+\hypertarget{class_tree_view_model_a3b36fb846f9bb7753fcf2d8e04b99bad}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!add\+Tache@{add\+Tache}}
+\index{add\+Tache@{add\+Tache}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{add\+Tache}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+View\+Model\+::add\+Tache (
+\begin{DoxyParamCaption}
+\item[{{\bf Tache} $\ast$}]{tache\+Mere, }
+\item[{{\bf Tache} $\ast$}]{tache}
+\end{DoxyParamCaption}
+)}\label{class_tree_view_model_a3b36fb846f9bb7753fcf2d8e04b99bad}
+
+
+Ajoute une tache à une tache mère (composite) 
+
+\hypertarget{class_tree_view_model_a46c11bb283dec5498dc096bde83006b7}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{get\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tree\+View\+Model} \& Tree\+View\+Model\+::get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_tree_view_model_a46c11bb283dec5498dc096bde83006b7}
+
+
+Retourne l\textquotesingle{}instance de la classe. 
+
+\hypertarget{class_tree_view_model_a54f066c26fef522024cd39f1eaf1c236}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!get\+Item\+From\+Projet@{get\+Item\+From\+Projet}}
+\index{get\+Item\+From\+Projet@{get\+Item\+From\+Projet}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{get\+Item\+From\+Projet}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Standard\+Item $\ast$ Tree\+View\+Model\+::get\+Item\+From\+Projet (
+\begin{DoxyParamCaption}
+\item[{{\bf Projet} $\ast$}]{projet}
+\end{DoxyParamCaption}
+)}\label{class_tree_view_model_a54f066c26fef522024cd39f1eaf1c236}
+
+
+Retourne l\textquotesingle{}item associé à un projet. 
+
+\hypertarget{class_tree_view_model_a71b5e1fb4a72adc756b6611b34a3a000}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!get\+Item\+From\+Tache@{get\+Item\+From\+Tache}}
+\index{get\+Item\+From\+Tache@{get\+Item\+From\+Tache}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{get\+Item\+From\+Tache}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Standard\+Item $\ast$ Tree\+View\+Model\+::get\+Item\+From\+Tache (
+\begin{DoxyParamCaption}
+\item[{{\bf Tache} $\ast$}]{tache}
+\end{DoxyParamCaption}
+)}\label{class_tree_view_model_a71b5e1fb4a72adc756b6611b34a3a000}
+
+
+Retourne l\textquotesingle{}item de l\textquotesingle{}arbre lié à une tache. 
+
+\hypertarget{class_tree_view_model_af5e7f6992ae03a0c27130430b3c753f4}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!get\+Modele@{get\+Modele}}
+\index{get\+Modele@{get\+Modele}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{get\+Modele}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Standard\+Item\+Model$\ast$ Tree\+View\+Model\+::get\+Modele (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_tree_view_model_af5e7f6992ae03a0c27130430b3c753f4}
+
+
+Retourne une référence sur le modèle du Tree\+View. 
+
+\hypertarget{class_tree_view_model_a1afea15d08be67340fff49476ddd3182}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!get\+Projet\+From\+Item@{get\+Projet\+From\+Item}}
+\index{get\+Projet\+From\+Item@{get\+Projet\+From\+Item}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{get\+Projet\+From\+Item}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Projet} $\ast$ Tree\+View\+Model\+::get\+Projet\+From\+Item (
+\begin{DoxyParamCaption}
+\item[{Q\+Standard\+Item $\ast$}]{item}
+\end{DoxyParamCaption}
+)}\label{class_tree_view_model_a1afea15d08be67340fff49476ddd3182}
+
+
+Retourne un projet à partir d\textquotesingle{}un item de l\textquotesingle{}arbre. 
+
+\hypertarget{class_tree_view_model_ac036b65c8296ff50d616c06e5a9decfa}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!get\+Tache\+From\+Item@{get\+Tache\+From\+Item}}
+\index{get\+Tache\+From\+Item@{get\+Tache\+From\+Item}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{get\+Tache\+From\+Item}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tache} $\ast$ Tree\+View\+Model\+::get\+Tache\+From\+Item (
+\begin{DoxyParamCaption}
+\item[{Q\+Standard\+Item $\ast$}]{item}
+\end{DoxyParamCaption}
+)}\label{class_tree_view_model_ac036b65c8296ff50d616c06e5a9decfa}
+
+
+Retourne une tache à partir d\textquotesingle{}un item de l\textquotesingle{}arbre. 
+
+\hypertarget{class_tree_view_model_a263f6bd7971d922ea536fdedcbf6bb1b}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!liberer\+Instance@{liberer\+Instance}}
+\index{liberer\+Instance@{liberer\+Instance}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{liberer\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+View\+Model\+::liberer\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_tree_view_model_a263f6bd7971d922ea536fdedcbf6bb1b}
+\hypertarget{class_tree_view_model_ac373475bea94e84c15588628f8e140d2}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!print\+Tree@{print\+Tree}}
+\index{print\+Tree@{print\+Tree}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{print\+Tree}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+View\+Model\+::print\+Tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_tree_view_model_ac373475bea94e84c15588628f8e140d2}
+
+
+Affiche l\textquotesingle{}arbre complet au lancement de l\textquotesingle{}application. 
+
+\hypertarget{class_tree_view_model_a9d049539995bcd46a98b58d0eb14f9b5}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!update\+Icons@{update\+Icons}}
+\index{update\+Icons@{update\+Icons}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{update\+Icons}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+View\+Model\+::update\+Icons (
+\begin{DoxyParamCaption}
+\item[{{\bf Tache} $\ast$}]{t}
+\end{DoxyParamCaption}
+)}\label{class_tree_view_model_a9d049539995bcd46a98b58d0eb14f9b5}
+
+
+Met à jour les icones de la tache t et de ses parents (quand une tache est programmée) 
+
+\hypertarget{class_tree_view_model_ae3b9431925e42572a66aa51ae1ab785f}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!update\+Name@{update\+Name}}
+\index{update\+Name@{update\+Name}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{update\+Name}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+View\+Model\+::update\+Name (
+\begin{DoxyParamCaption}
+\item[{{\bf Projet} $\ast$}]{projet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_tree_view_model_ae3b9431925e42572a66aa51ae1ab785f}
+
+
+Met à jour le nom d\textquotesingle{}un projet. 
+
+\hypertarget{class_tree_view_model_a20c0d80c255910d92ad4fac40cb3295f}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!update\+Name@{update\+Name}}
+\index{update\+Name@{update\+Name}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{update\+Name}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+View\+Model\+::update\+Name (
+\begin{DoxyParamCaption}
+\item[{{\bf Unitaire} $\ast$}]{tache}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_tree_view_model_a20c0d80c255910d92ad4fac40cb3295f}
+
+
+Met à jour le nom d\textquotesingle{}une tache unitaire. 
+
+\hypertarget{class_tree_view_model_a3958b72bf354014f1f233072902b5da8}{}\index{Tree\+View\+Model@{Tree\+View\+Model}!update\+Name@{update\+Name}}
+\index{update\+Name@{update\+Name}!Tree\+View\+Model@{Tree\+View\+Model}}
+\subsubsection[{update\+Name}]{\setlength{\rightskip}{0pt plus 5cm}void Tree\+View\+Model\+::update\+Name (
+\begin{DoxyParamCaption}
+\item[{{\bf Composite} $\ast$}]{tache}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_tree_view_model_a3958b72bf354014f1f233072902b5da8}
+
+
+Met à jour le nom d\textquotesingle{}une tache composite. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+L\+O21app/\hyperlink{_u_i_classes_8h}{U\+I\+Classes.\+h}\item 
+L\+O21app/\hyperlink{_u_i_classes_8cpp}{U\+I\+Classes.\+cpp}\end{DoxyCompactItemize}

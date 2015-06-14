@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$class_main_window.html" title="Conserve les pointeurs vers les principaux widgets de la fenêtre. S&#39;occupe des actions générales sur ..." alt="" coords="160,5,257,32"/>
+<area shape="rect" id="node2" href="$class_editeur_precedence.html" title="Editeur des précédences de la tache appelante. " alt="" coords="134,5,266,32"/>
+<area shape="rect" id="node3" href="$class_programmation_activite.html" title="Dialogue de programmation d&#39;une activité " alt="" coords="123,56,277,83"/>
+<area shape="rect" id="node4" href="$class_programmation_tache.html" title="Programme la tache sélectionnée dans le tree view. " alt="" coords="127,107,273,133"/>
 </map>

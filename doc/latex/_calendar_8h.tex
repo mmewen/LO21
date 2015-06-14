@@ -1,0 +1,76 @@
+\hypertarget{_calendar_8h}{}\section{L\+O21app/\+Calendar.h File Reference}
+\label{_calendar_8h}\index{L\+O21app/\+Calendar.\+h@{L\+O21app/\+Calendar.\+h}}
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$typeinfo$>$}\\*
+{\ttfamily \#include $<$Q\+Object$>$}\\*
+{\ttfamily \#include $<$Q\+File$>$}\\*
+{\ttfamily \#include $<$Q\+Xml\+Stream\+Writer$>$}\\*
+{\ttfamily \#include \char`\"{}timing.\+h\char`\"{}}\\*
+Include dependency graph for Calendar.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_calendar_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_calendar_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_calendar_exception}{Calendar\+Exception}
+\begin{DoxyCompactList}\small\item\em Classe permettant de gérer les exceptions du projet non liées au namespace \hyperlink{namespace_t_i_m_e}{T\+I\+M\+E}. \end{DoxyCompactList}\item 
+class \hyperlink{class_projet_manager}{Projet\+Manager}
+\begin{DoxyCompactList}\small\item\em Classe composite des Projets La classe applique le designe pattern singleton et possède un iterateur sur le tableau de pointeurs de Projets. \end{DoxyCompactList}\item 
+class \hyperlink{class_projet_manager_1_1_iterator}{Projet\+Manager\+::\+Iterator}
+\item 
+class \hyperlink{class_projet}{Projet}
+\begin{DoxyCompactList}\small\item\em Classe de projets composite des Taches et composant \hyperlink{class_projet_manager}{Projet\+Manager}. \end{DoxyCompactList}\item 
+class \hyperlink{class_projet_1_1_iterator}{Projet\+::\+Iterator}
+\item 
+class \hyperlink{class_evenement}{Evenement}
+\begin{DoxyCompactList}\small\item\em Classe abstraite d\textquotesingle{}éléments pouvant être programmés. \end{DoxyCompactList}\item 
+class \hyperlink{class_tache}{Tache}
+\begin{DoxyCompactList}\small\item\em Classe abstraite de taches composant \hyperlink{class_projet}{Projet}. \end{DoxyCompactList}\item 
+class \hyperlink{class_tache_1_1_iterator}{Tache\+::\+Iterator}
+\item 
+class \hyperlink{class_unitaire}{Unitaire}
+\begin{DoxyCompactList}\small\item\em Classe de taches programmables, héritant de Tachet et d\textquotesingle{}\hyperlink{class_evenement}{Evenement} La classe de taches pouvant être programmées, en plusieurs fois si préemptive, en une seule fois sinon. La classe est forcément préemptive si sa durée dépasse 12h. \end{DoxyCompactList}\item 
+class \hyperlink{class_composite}{Composite}
+\begin{DoxyCompactList}\small\item\em Classe d\textquotesingle{}ensembles de taches, héritant de \hyperlink{class_tache}{Tache} La classe possède un pointeur de Taches qui représente les composants de la tache composite. \end{DoxyCompactList}\item 
+class \hyperlink{class_composite_1_1_compo_iterator}{Composite\+::\+Compo\+Iterator}
+\item 
+class \hyperlink{class_activite}{Activite}
+\begin{DoxyCompactList}\small\item\em Classe d\textquotesingle{}evenement basique programmable, héritant d\textquotesingle{}\hyperlink{class_evenement}{Evenement} La classe possède un titre et un lieu. \end{DoxyCompactList}\item 
+class \hyperlink{class_programmation_manager}{Programmation\+Manager}
+\begin{DoxyCompactList}\small\item\em Classe composite de \hyperlink{class_programmation}{Programmation} La classe applique le designe pattern singleton et possède un iterateur sur le tableau de pointeurs de Programmations. \end{DoxyCompactList}\item 
+class \hyperlink{class_programmation_manager_1_1_iterator}{Programmation\+Manager\+::\+Iterator}
+\item 
+class \hyperlink{class_programmation}{Programmation}
+\begin{DoxyCompactList}\small\item\em Classe donnant une date, un horaire et une durée à une \hyperlink{class_evenement}{Evenement}, classe composant \hyperlink{class_programmation_manager}{Programmation\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{_calendar_8h_a0f16d28c485a5fc98a0f07b53d6009b1}{operator$<$$<$} (ostream \&f, const \hyperlink{class_tache}{Tache} \&t)
+\begin{DoxyCompactList}\small\item\em Operator d\textquotesingle{}affichage de \hyperlink{class_tache}{Tache} sur un ostream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{_calendar_8h_a0f16d28c485a5fc98a0f07b53d6009b1}{}\index{Calendar.\+h@{Calendar.\+h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Calendar.\+h@{Calendar.\+h}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{f, }
+\item[{const {\bf Tache} \&}]{t}
+\end{DoxyParamCaption}
+)}\label{_calendar_8h_a0f16d28c485a5fc98a0f07b53d6009b1}
+
+
+Operator d\textquotesingle{}affichage de \hyperlink{class_tache}{Tache} sur un ostream. 
+

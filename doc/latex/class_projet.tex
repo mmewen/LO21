@@ -2,7 +2,7 @@
 \label{class_projet}\index{Projet@{Projet}}
 
 
-Un ensemble de tache à réaliser.  
+Classe de projets composite des Taches et composant \hyperlink{class_projet_manager}{Projet\+Manager}.  
 
 
 
@@ -17,23 +17,290 @@ class \hyperlink{class_projet_1_1_iterator}{Iterator}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_projet_abc4ef9586bab910e754d4f88943df720}{}string \hyperlink{class_projet_abc4ef9586bab910e754d4f88943df720}{get\+Nom} () const \label{class_projet_abc4ef9586bab910e754d4f88943df720}
-
-\begin{DoxyCompactList}\small\item\em accesseur \end{DoxyCompactList}\item 
-\hypertarget{class_projet_acb3ac5233074e53f0263bd50b4e0bdec}{}\hyperlink{class_projet_1_1_iterator}{Iterator} {\bfseries get\+Iterator} ()\label{class_projet_acb3ac5233074e53f0263bd50b4e0bdec}
-
-\end{DoxyCompactItemize}
+\hyperlink{class_tache}{Tache} $\ast$ \hyperlink{class_projet_a386c53fc44bad454440d7742c4a705dd}{trouver\+Tache} (const string \&id) const 
+\begin{DoxyCompactList}\small\item\em Renvoie la tache correspondant à id si elle existe dans taches. \end{DoxyCompactList}\item 
+bool \hyperlink{class_projet_abbd43f9e454767870aeb2e5ae87b7cfe}{est\+Composante} (\hyperlink{class_tache}{Tache} $\ast$tache)
+\begin{DoxyCompactList}\small\item\em Retourne T\+R\+U\+E si la taches n\textquotesingle{}est pas dans taches\+Non\+Composantes. \end{DoxyCompactList}\item 
+\hyperlink{class_projet_a26e3e136385eca01dda79df7fba4e03d}{$\sim$\+Projet} ()
+\begin{DoxyCompactList}\small\item\em Destructeur de projet. \end{DoxyCompactList}\item 
+\hyperlink{class_unitaire}{Unitaire} \& \hyperlink{class_projet_ab55ad105de7afee7d7ce66f7cfcc871d}{ajouter\+Unitaire} (const string \&t, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&dispo, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&deadline, const \hyperlink{class_t_i_m_e_1_1_duree}{Duree} \&duree, const bool premp)
+\begin{DoxyCompactList}\small\item\em Crée une tache unitaire et ajoute son pointeur dans taches et dans taches\+Non\+Composantes, à partir d\textquotesingle{}un titre, de dates de disponibilité et d\textquotesingle{}échéance, d\textquotesingle{}un durée et de la préemptabilité \end{DoxyCompactList}\item 
+\hyperlink{class_composite}{Composite} \& \hyperlink{class_projet_a3b4d1f44967fec94cd9523164b46a4bb}{ajouter\+Composite} (const string \&t, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&dispo, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&deadline)
+\begin{DoxyCompactList}\small\item\em Crée une tache composite et ajoute son pointeur dans taches et dans taches\+Non\+Composantes, à partir d\textquotesingle{}un titre et de dates de disponibilité et d\textquotesingle{}échéance. \end{DoxyCompactList}\item 
+\hyperlink{class_tache}{Tache} \& \hyperlink{class_projet_aec4344d230da76d5af9ad269bda21ffe}{get\+Tache} (const string \&id)
+\begin{DoxyCompactList}\small\item\em Retourne la référence vers la tache désignée par id si elle existe. \end{DoxyCompactList}\item 
+const \hyperlink{class_tache}{Tache} \& \hyperlink{class_projet_a99eedafc1f5a058c2d39f2e244240fa5}{get\+Tache} (const string \&code) const 
+\begin{DoxyCompactList}\small\item\em Retourne la const référence vers la tache désignée par id si elle existe. \end{DoxyCompactList}\item 
+string \hyperlink{class_projet_abae53a998b1d18ad7c8ea0d7221fc0eb}{get\+Id} () const 
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}identificateur du projet. \end{DoxyCompactList}\item 
+string \hyperlink{class_projet_abc4ef9586bab910e754d4f88943df720}{get\+Nom} () const 
+\begin{DoxyCompactList}\small\item\em Retourne le nom du projet. \end{DoxyCompactList}\item 
+string \hyperlink{class_projet_a9cc70cd55d62e8a2fc2d286035a599a6}{get\+File} () const 
+\begin{DoxyCompactList}\small\item\em Retourne le nom du fichier du projet. \end{DoxyCompactList}\item 
+\hyperlink{class_t_i_m_e_1_1_date}{Date} \hyperlink{class_projet_ad217a35a0b15f081ca3c4883bfacef87}{get\+Dispo} () const 
+\begin{DoxyCompactList}\small\item\em Retourne la date de disponibilité du projet. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_projet_acffaba5346f86a0f0e674be256aad55f}{get\+Nb\+Taches} () const 
+\begin{DoxyCompactList}\small\item\em Retourne le nombre d\textquotesingle{}élément dans taches. \end{DoxyCompactList}\item 
+\hyperlink{class_t_i_m_e_1_1_date}{Date} \hyperlink{class_projet_ad59a01337678059ac21e225dd3f41743}{get\+Echeance} ()
+\begin{DoxyCompactList}\small\item\em Retourne la date d\textquotesingle{}échéance du projet à partir des dates d\textquotesingle{}échéances de toutes les taches du projet. \end{DoxyCompactList}\item 
+int \hyperlink{class_projet_a04e9427d95b848a08551818f88246ebb}{get\+Statut} ()
+\begin{DoxyCompactList}\small\item\em Retourne le statut du projet \+: 0 = rien n\textquotesingle{}est fait, 1 = en cours, 2 = terminé/deadline passée. \end{DoxyCompactList}\item 
+void \hyperlink{class_projet_ad8ea587dd12362c4e8867a043e81ca1e}{move\+Tache\+To} (\hyperlink{class_tache}{Tache} $\ast$t\+Mere, \hyperlink{class_tache}{Tache} $\ast$t\+Fille)
+\begin{DoxyCompactList}\small\item\em Ajoute une tache du projet (fille) en composition d\textquotesingle{}une autre tache (mère) et la retire de taches\+Non\+Composantes. \end{DoxyCompactList}\item 
+void \hyperlink{class_projet_a59cdf68a1ac1940b2c58ff93f800a8b9}{save} (const string \&f)
+\begin{DoxyCompactList}\small\item\em Exporte le projet sous le fichier f. \end{DoxyCompactList}\item 
+void \hyperlink{class_projet_adb2a5742c64f6bac21022b313033edcd}{update} (const string \&nom, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&d)
+\begin{DoxyCompactList}\small\item\em Met à jour le nom et la date de disponibilité du projet à partir des paramètres donnés. \end{DoxyCompactList}\item 
+\hyperlink{class_projet_1_1_iterator}{Iterator} \hyperlink{class_projet_acb3ac5233074e53f0263bd50b4e0bdec}{get\+Iterator} ()
+\begin{DoxyCompactList}\small\item\em Retourne un itérateur sur taches. \end{DoxyCompactList}\item 
+\hyperlink{class_projet_1_1_iterator}{Iterator} \hyperlink{class_projet_acdfd076d0ad992fb0d12b2314b3ab70a}{get\+N\+C\+Iterator} ()
+\begin{DoxyCompactList}\small\item\em Retourne un itérateur sur taches\+Non\+Composantes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_projet_a9830fc407400559db7e7783cc10a9394}{}class {\bfseries Iterator}\label{class_projet_a9830fc407400559db7e7783cc10a9394}
-
+\hyperlink{class_projet}{Projet} \& \hyperlink{class_projet_a7718dec57b0fce2727460b65ff23b98d}{Projet\+Manager\+::ajouter\+Projet} (const string \&nom, const string \&file, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&dispo)
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Un ensemble de tache à réaliser. 
+Classe de projets composite des Taches et composant \hyperlink{class_projet_manager}{Projet\+Manager}. 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_projet_a26e3e136385eca01dda79df7fba4e03d}{}\index{Projet@{Projet}!````~Projet@{$\sim$\+Projet}}
+\index{````~Projet@{$\sim$\+Projet}!Projet@{Projet}}
+\subsubsection[{$\sim$\+Projet}]{\setlength{\rightskip}{0pt plus 5cm}Projet\+::$\sim$\+Projet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_projet_a26e3e136385eca01dda79df7fba4e03d}
+
+
+Destructeur de projet. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_projet_a3b4d1f44967fec94cd9523164b46a4bb}{}\index{Projet@{Projet}!ajouter\+Composite@{ajouter\+Composite}}
+\index{ajouter\+Composite@{ajouter\+Composite}!Projet@{Projet}}
+\subsubsection[{ajouter\+Composite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Composite} \& Projet\+::ajouter\+Composite (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{t, }
+\item[{const {\bf Date} \&}]{dispo, }
+\item[{const {\bf Date} \&}]{deadline}
+\end{DoxyParamCaption}
+)}\label{class_projet_a3b4d1f44967fec94cd9523164b46a4bb}
+
+
+Crée une tache composite et ajoute son pointeur dans taches et dans taches\+Non\+Composantes, à partir d\textquotesingle{}un titre et de dates de disponibilité et d\textquotesingle{}échéance. 
+
+\hypertarget{class_projet_ab55ad105de7afee7d7ce66f7cfcc871d}{}\index{Projet@{Projet}!ajouter\+Unitaire@{ajouter\+Unitaire}}
+\index{ajouter\+Unitaire@{ajouter\+Unitaire}!Projet@{Projet}}
+\subsubsection[{ajouter\+Unitaire}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Unitaire} \& Projet\+::ajouter\+Unitaire (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{t, }
+\item[{const {\bf Date} \&}]{dispo, }
+\item[{const {\bf Date} \&}]{deadline, }
+\item[{const {\bf Duree} \&}]{duree, }
+\item[{const bool}]{premp}
+\end{DoxyParamCaption}
+)}\label{class_projet_ab55ad105de7afee7d7ce66f7cfcc871d}
+
+
+Crée une tache unitaire et ajoute son pointeur dans taches et dans taches\+Non\+Composantes, à partir d\textquotesingle{}un titre, de dates de disponibilité et d\textquotesingle{}échéance, d\textquotesingle{}un durée et de la préemptabilité 
+
+\hypertarget{class_projet_abbd43f9e454767870aeb2e5ae87b7cfe}{}\index{Projet@{Projet}!est\+Composante@{est\+Composante}}
+\index{est\+Composante@{est\+Composante}!Projet@{Projet}}
+\subsubsection[{est\+Composante}]{\setlength{\rightskip}{0pt plus 5cm}bool Projet\+::est\+Composante (
+\begin{DoxyParamCaption}
+\item[{{\bf Tache} $\ast$}]{tache}
+\end{DoxyParamCaption}
+)}\label{class_projet_abbd43f9e454767870aeb2e5ae87b7cfe}
+
+
+Retourne T\+R\+U\+E si la taches n\textquotesingle{}est pas dans taches\+Non\+Composantes. 
+
+\hypertarget{class_projet_ad217a35a0b15f081ca3c4883bfacef87}{}\index{Projet@{Projet}!get\+Dispo@{get\+Dispo}}
+\index{get\+Dispo@{get\+Dispo}!Projet@{Projet}}
+\subsubsection[{get\+Dispo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Date} Projet\+::get\+Dispo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_projet_ad217a35a0b15f081ca3c4883bfacef87}
+
+
+Retourne la date de disponibilité du projet. 
+
+\hypertarget{class_projet_ad59a01337678059ac21e225dd3f41743}{}\index{Projet@{Projet}!get\+Echeance@{get\+Echeance}}
+\index{get\+Echeance@{get\+Echeance}!Projet@{Projet}}
+\subsubsection[{get\+Echeance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Date} Projet\+::get\+Echeance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_projet_ad59a01337678059ac21e225dd3f41743}
+
+
+Retourne la date d\textquotesingle{}échéance du projet à partir des dates d\textquotesingle{}échéances de toutes les taches du projet. 
+
+\hypertarget{class_projet_a9cc70cd55d62e8a2fc2d286035a599a6}{}\index{Projet@{Projet}!get\+File@{get\+File}}
+\index{get\+File@{get\+File}!Projet@{Projet}}
+\subsubsection[{get\+File}]{\setlength{\rightskip}{0pt plus 5cm}string Projet\+::get\+File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_projet_a9cc70cd55d62e8a2fc2d286035a599a6}
+
+
+Retourne le nom du fichier du projet. 
+
+\hypertarget{class_projet_abae53a998b1d18ad7c8ea0d7221fc0eb}{}\index{Projet@{Projet}!get\+Id@{get\+Id}}
+\index{get\+Id@{get\+Id}!Projet@{Projet}}
+\subsubsection[{get\+Id}]{\setlength{\rightskip}{0pt plus 5cm}string Projet\+::get\+Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_projet_abae53a998b1d18ad7c8ea0d7221fc0eb}
+
+
+Retourne l\textquotesingle{}identificateur du projet. 
+
+\hypertarget{class_projet_acb3ac5233074e53f0263bd50b4e0bdec}{}\index{Projet@{Projet}!get\+Iterator@{get\+Iterator}}
+\index{get\+Iterator@{get\+Iterator}!Projet@{Projet}}
+\subsubsection[{get\+Iterator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Iterator} Projet\+::get\+Iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_projet_acb3ac5233074e53f0263bd50b4e0bdec}
+
+
+Retourne un itérateur sur taches. 
+
+\hypertarget{class_projet_acffaba5346f86a0f0e674be256aad55f}{}\index{Projet@{Projet}!get\+Nb\+Taches@{get\+Nb\+Taches}}
+\index{get\+Nb\+Taches@{get\+Nb\+Taches}!Projet@{Projet}}
+\subsubsection[{get\+Nb\+Taches}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Projet\+::get\+Nb\+Taches (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_projet_acffaba5346f86a0f0e674be256aad55f}
+
+
+Retourne le nombre d\textquotesingle{}élément dans taches. 
+
+\hypertarget{class_projet_acdfd076d0ad992fb0d12b2314b3ab70a}{}\index{Projet@{Projet}!get\+N\+C\+Iterator@{get\+N\+C\+Iterator}}
+\index{get\+N\+C\+Iterator@{get\+N\+C\+Iterator}!Projet@{Projet}}
+\subsubsection[{get\+N\+C\+Iterator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Iterator} Projet\+::get\+N\+C\+Iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_projet_acdfd076d0ad992fb0d12b2314b3ab70a}
+
+
+Retourne un itérateur sur taches\+Non\+Composantes. 
+
+\hypertarget{class_projet_abc4ef9586bab910e754d4f88943df720}{}\index{Projet@{Projet}!get\+Nom@{get\+Nom}}
+\index{get\+Nom@{get\+Nom}!Projet@{Projet}}
+\subsubsection[{get\+Nom}]{\setlength{\rightskip}{0pt plus 5cm}string Projet\+::get\+Nom (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_projet_abc4ef9586bab910e754d4f88943df720}
+
+
+Retourne le nom du projet. 
+
+\hypertarget{class_projet_a04e9427d95b848a08551818f88246ebb}{}\index{Projet@{Projet}!get\+Statut@{get\+Statut}}
+\index{get\+Statut@{get\+Statut}!Projet@{Projet}}
+\subsubsection[{get\+Statut}]{\setlength{\rightskip}{0pt plus 5cm}int Projet\+::get\+Statut (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_projet_a04e9427d95b848a08551818f88246ebb}
+
+
+Retourne le statut du projet \+: 0 = rien n\textquotesingle{}est fait, 1 = en cours, 2 = terminé/deadline passée. 
+
+\hypertarget{class_projet_aec4344d230da76d5af9ad269bda21ffe}{}\index{Projet@{Projet}!get\+Tache@{get\+Tache}}
+\index{get\+Tache@{get\+Tache}!Projet@{Projet}}
+\subsubsection[{get\+Tache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tache} \& Projet\+::get\+Tache (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{id}
+\end{DoxyParamCaption}
+)}\label{class_projet_aec4344d230da76d5af9ad269bda21ffe}
+
+
+Retourne la référence vers la tache désignée par id si elle existe. 
+
+\hypertarget{class_projet_a99eedafc1f5a058c2d39f2e244240fa5}{}\index{Projet@{Projet}!get\+Tache@{get\+Tache}}
+\index{get\+Tache@{get\+Tache}!Projet@{Projet}}
+\subsubsection[{get\+Tache}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Tache} \& Projet\+::get\+Tache (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{code}
+\end{DoxyParamCaption}
+) const}\label{class_projet_a99eedafc1f5a058c2d39f2e244240fa5}
+
+
+Retourne la const référence vers la tache désignée par id si elle existe. 
+
+\hypertarget{class_projet_ad8ea587dd12362c4e8867a043e81ca1e}{}\index{Projet@{Projet}!move\+Tache\+To@{move\+Tache\+To}}
+\index{move\+Tache\+To@{move\+Tache\+To}!Projet@{Projet}}
+\subsubsection[{move\+Tache\+To}]{\setlength{\rightskip}{0pt plus 5cm}void Projet\+::move\+Tache\+To (
+\begin{DoxyParamCaption}
+\item[{{\bf Tache} $\ast$}]{t\+Mere, }
+\item[{{\bf Tache} $\ast$}]{t\+Fille}
+\end{DoxyParamCaption}
+)}\label{class_projet_ad8ea587dd12362c4e8867a043e81ca1e}
+
+
+Ajoute une tache du projet (fille) en composition d\textquotesingle{}une autre tache (mère) et la retire de taches\+Non\+Composantes. 
+
+\hypertarget{class_projet_a59cdf68a1ac1940b2c58ff93f800a8b9}{}\index{Projet@{Projet}!save@{save}}
+\index{save@{save}!Projet@{Projet}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}void Projet\+::save (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{f}
+\end{DoxyParamCaption}
+)}\label{class_projet_a59cdf68a1ac1940b2c58ff93f800a8b9}
+
+
+Exporte le projet sous le fichier f. 
+
+\hypertarget{class_projet_a386c53fc44bad454440d7742c4a705dd}{}\index{Projet@{Projet}!trouver\+Tache@{trouver\+Tache}}
+\index{trouver\+Tache@{trouver\+Tache}!Projet@{Projet}}
+\subsubsection[{trouver\+Tache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tache} $\ast$ Projet\+::trouver\+Tache (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{id}
+\end{DoxyParamCaption}
+) const}\label{class_projet_a386c53fc44bad454440d7742c4a705dd}
+
+
+Renvoie la tache correspondant à id si elle existe dans taches. 
+
+\hypertarget{class_projet_adb2a5742c64f6bac21022b313033edcd}{}\index{Projet@{Projet}!update@{update}}
+\index{update@{update}!Projet@{Projet}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Projet\+::update (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{nom, }
+\item[{const {\bf Date} \&}]{d}
+\end{DoxyParamCaption}
+)}\label{class_projet_adb2a5742c64f6bac21022b313033edcd}
+
+
+Met à jour le nom et la date de disponibilité du projet à partir des paramètres donnés. 
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_projet_a7718dec57b0fce2727460b65ff23b98d}{}\index{Projet@{Projet}!Projet\+Manager\+::ajouter\+Projet@{Projet\+Manager\+::ajouter\+Projet}}
+\index{Projet\+Manager\+::ajouter\+Projet@{Projet\+Manager\+::ajouter\+Projet}!Projet@{Projet}}
+\subsubsection[{Projet\+Manager\+::ajouter\+Projet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Projet}\& {\bf Projet\+Manager\+::ajouter\+Projet} (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{nom, }
+\item[{const string \&}]{file, }
+\item[{const {\bf Date} \&}]{dispo}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_projet_a7718dec57b0fce2727460b65ff23b98d}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-L\+O21app/Calendar.\+h\end{DoxyCompactItemize}
+L\+O21app/\hyperlink{_calendar_8h}{Calendar.\+h}\item 
+L\+O21app/\hyperlink{_calendar_8cpp}{Calendar.\+cpp}\end{DoxyCompactItemize}

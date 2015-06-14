@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_projet.html" title="Un ensemble de tache à réaliser. " alt="" coords="5,5,61,32"/>
+<area shape="rect" id="node2" href="$class_programmation_manager.html" title="Classe composite de Programmation La classe applique le designe pattern singleton et possède un itera..." alt="" coords="124,5,284,32"/>
+<area shape="rect" id="node3" href="$class_tree_view_model.html" title="Gestionnaire singloton du modèle du TreeView &#160;" alt="" coords="148,56,260,83"/>
 </map>

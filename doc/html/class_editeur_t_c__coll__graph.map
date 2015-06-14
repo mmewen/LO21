@@ -1,0 +1,4 @@
+<map id="EditeurTC" name="EditeurTC">
+<area shape="rect" id="node2" href="$class_editeur_tache.html" title="Classe abstraite pour l&#39;Editeur de taches. " alt="" coords="5,155,104,181"/>
+<area shape="rect" id="node3" href="$class_editeur.html" title="Classe abstraite pour le widget d&#39;édition (partie droite de l&#39;onglet d&#39;édition) " alt="" coords="23,80,86,107"/>
+</map>

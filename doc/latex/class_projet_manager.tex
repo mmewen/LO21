@@ -1,0 +1,114 @@
+\hypertarget{class_projet_manager}{}\section{Projet\+Manager Class Reference}
+\label{class_projet_manager}\index{Projet\+Manager@{Projet\+Manager}}
+
+
+Classe composite des Projets La classe applique le designe pattern singleton et possède un iterateur sur le tableau de pointeurs de Projets.  
+
+
+
+
+{\ttfamily \#include $<$Calendar.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_projet_manager_1_1_iterator}{Iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_projet}{Projet} \& \hyperlink{class_projet_manager_a1deef0505a26f2b14e7d2a35e1fead59}{ajouter\+Projet} (const string \&nom, const string \&file, const \hyperlink{class_t_i_m_e_1_1_date}{Date} \&dispo)
+\begin{DoxyCompactList}\small\item\em Crée un \hyperlink{class_projet}{Projet} et garde son pointeur dans le tableau projets, à partir d\textquotesingle{}n nom, d\textquotesingle{}un nom de fichier et d\textquotesingle{}une date de disponibilité \end{DoxyCompactList}\item 
+\hyperlink{class_projet}{Projet} \& \hyperlink{class_projet_manager_aef6c8f10713e04d8e5e2592a8ab611e9}{get\+Projet} (const string \&id)
+\begin{DoxyCompactList}\small\item\em Renvoie une référence vers le projet correspondant à id s\textquotesingle{}il existe dans le tableau projets. \end{DoxyCompactList}\item 
+const \hyperlink{class_projet}{Projet} \& \hyperlink{class_projet_manager_a6287b1b73903f5458895135b2e6ca8f8}{get\+Projet} (const string \&code) const 
+\begin{DoxyCompactList}\small\item\em Renvoie une référence const vers le projet correspondant à id s\textquotesingle{}il existe dans le tableau projets. \end{DoxyCompactList}\item 
+\hyperlink{class_projet_manager_1_1_iterator}{Iterator} \hyperlink{class_projet_manager_ad326876aa4985f2b05a19d0750a8aa5e}{get\+Iterator} ()
+\begin{DoxyCompactList}\small\item\em Renvoie un itérateur sur le tableau projets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_projet_manager}{Projet\+Manager} \& \hyperlink{class_projet_manager_af0b8d536c3d208289033d6a3b757fac9}{get\+Instance} ()
+\begin{DoxyCompactList}\small\item\em Renvoie la seule instance de \hyperlink{class_projet_manager}{Projet\+Manager}. \end{DoxyCompactList}\item 
+static void \hyperlink{class_projet_manager_ab1b9396cdda866051d03ac5eae7f7e9d}{liberer\+Instance} ()
+\begin{DoxyCompactList}\small\item\em Libère l\textquotesingle{}instance de \hyperlink{class_projet_manager}{Projet\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe composite des Projets La classe applique le designe pattern singleton et possède un iterateur sur le tableau de pointeurs de Projets. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_projet_manager_a1deef0505a26f2b14e7d2a35e1fead59}{}\index{Projet\+Manager@{Projet\+Manager}!ajouter\+Projet@{ajouter\+Projet}}
+\index{ajouter\+Projet@{ajouter\+Projet}!Projet\+Manager@{Projet\+Manager}}
+\subsubsection[{ajouter\+Projet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Projet} \& Projet\+Manager\+::ajouter\+Projet (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{nom, }
+\item[{const string \&}]{file, }
+\item[{const {\bf Date} \&}]{dispo}
+\end{DoxyParamCaption}
+)}\label{class_projet_manager_a1deef0505a26f2b14e7d2a35e1fead59}
+
+
+Crée un \hyperlink{class_projet}{Projet} et garde son pointeur dans le tableau projets, à partir d\textquotesingle{}n nom, d\textquotesingle{}un nom de fichier et d\textquotesingle{}une date de disponibilité 
+
+\hypertarget{class_projet_manager_af0b8d536c3d208289033d6a3b757fac9}{}\index{Projet\+Manager@{Projet\+Manager}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Projet\+Manager@{Projet\+Manager}}
+\subsubsection[{get\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Projet\+Manager} \& Projet\+Manager\+::get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_projet_manager_af0b8d536c3d208289033d6a3b757fac9}
+
+
+Renvoie la seule instance de \hyperlink{class_projet_manager}{Projet\+Manager}. 
+
+\hypertarget{class_projet_manager_ad326876aa4985f2b05a19d0750a8aa5e}{}\index{Projet\+Manager@{Projet\+Manager}!get\+Iterator@{get\+Iterator}}
+\index{get\+Iterator@{get\+Iterator}!Projet\+Manager@{Projet\+Manager}}
+\subsubsection[{get\+Iterator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Iterator} Projet\+Manager\+::get\+Iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_projet_manager_ad326876aa4985f2b05a19d0750a8aa5e}
+
+
+Renvoie un itérateur sur le tableau projets. 
+
+\hypertarget{class_projet_manager_aef6c8f10713e04d8e5e2592a8ab611e9}{}\index{Projet\+Manager@{Projet\+Manager}!get\+Projet@{get\+Projet}}
+\index{get\+Projet@{get\+Projet}!Projet\+Manager@{Projet\+Manager}}
+\subsubsection[{get\+Projet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Projet} \& Projet\+Manager\+::get\+Projet (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{id}
+\end{DoxyParamCaption}
+)}\label{class_projet_manager_aef6c8f10713e04d8e5e2592a8ab611e9}
+
+
+Renvoie une référence vers le projet correspondant à id s\textquotesingle{}il existe dans le tableau projets. 
+
+\hypertarget{class_projet_manager_a6287b1b73903f5458895135b2e6ca8f8}{}\index{Projet\+Manager@{Projet\+Manager}!get\+Projet@{get\+Projet}}
+\index{get\+Projet@{get\+Projet}!Projet\+Manager@{Projet\+Manager}}
+\subsubsection[{get\+Projet}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Projet}\& Projet\+Manager\+::get\+Projet (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{code}
+\end{DoxyParamCaption}
+) const}\label{class_projet_manager_a6287b1b73903f5458895135b2e6ca8f8}
+
+
+Renvoie une référence const vers le projet correspondant à id s\textquotesingle{}il existe dans le tableau projets. 
+
+\hypertarget{class_projet_manager_ab1b9396cdda866051d03ac5eae7f7e9d}{}\index{Projet\+Manager@{Projet\+Manager}!liberer\+Instance@{liberer\+Instance}}
+\index{liberer\+Instance@{liberer\+Instance}!Projet\+Manager@{Projet\+Manager}}
+\subsubsection[{liberer\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}void Projet\+Manager\+::liberer\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_projet_manager_ab1b9396cdda866051d03ac5eae7f7e9d}
+
+
+Libère l\textquotesingle{}instance de \hyperlink{class_projet_manager}{Projet\+Manager}. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+L\+O21app/\hyperlink{_calendar_8h}{Calendar.\+h}\item 
+L\+O21app/\hyperlink{_calendar_8cpp}{Calendar.\+cpp}\end{DoxyCompactItemize}

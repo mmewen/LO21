@@ -1,0 +1,4 @@
+<map id="Evenement" name="Evenement">
+<area shape="rect" id="node2" href="$class_activite.html" title="Classe d&#39;evenement basique programmable, héritant d&#39;Evenement La classe possède un titre et un lieu..." alt="" coords="5,80,72,107"/>
+<area shape="rect" id="node3" href="$class_unitaire.html" title="Classe de taches programmables, héritant de Tachet et d&#39;Evenement La classe de taches pouvant être pr..." alt="" coords="96,80,163,107"/>
+</map>

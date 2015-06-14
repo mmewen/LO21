@@ -1,0 +1,120 @@
+\hypertarget{class_evenement}{}\section{Evenement Class Reference}
+\label{class_evenement}\index{Evenement@{Evenement}}
+
+
+Classe abstraite d\textquotesingle{}éléments pouvant être programmés.  
+
+
+
+
+{\ttfamily \#include $<$Calendar.\+h$>$}
+
+
+
+Inheritance diagram for Evenement\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{class_evenement__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{class_evenement_a55edc55f582f7992296b10e8a60476c8}{$\sim$\+Evenement} ()
+\begin{DoxyCompactList}\small\item\em Destructeur de l\textquotesingle{}événement. \end{DoxyCompactList}\item 
+\hyperlink{class_evenement_ab538f1a96d3b5b63f8ce0e89f16bcafd}{Evenement} (\hyperlink{class_t_i_m_e_1_1_duree}{Duree} dur)
+\begin{DoxyCompactList}\small\item\em Constructeur de l\textquotesingle{}événement à partir d\textquotesingle{}une durée. \end{DoxyCompactList}\item 
+\hyperlink{class_t_i_m_e_1_1_duree}{Duree} \hyperlink{class_evenement_a43c92d1917720282ac6ba3a598fac708}{get\+Duree} () const 
+\begin{DoxyCompactList}\small\item\em Renvoie la durée de l\textquotesingle{}événement. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_evenement_aa5f395f7681426893894fb73eb851459}{get\+Nom} () const 
+\begin{DoxyCompactList}\small\item\em Renvoie le nom et l\textquotesingle{}éventuel lieu de l\textquotesingle{}événement en Q\+String. \end{DoxyCompactList}\item 
+void \hyperlink{class_evenement_a42e914b00d21eb4377d7c0a242a88e9a}{set\+Duree} (const \hyperlink{class_t_i_m_e_1_1_duree}{Duree} \&dur)
+\begin{DoxyCompactList}\small\item\em Modifie la durée de l\textquotesingle{}événement à partir du paramètre \char`\"{}dur\char`\"{}. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_evenement_af217f0cd3d421e3f113a13536ee63593}{afficher} (ostream \&f)=0
+\begin{DoxyCompactList}\small\item\em Méthode virtuelle pure d\textquotesingle{}affichage de l\textquotesingle{}événement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe abstraite d\textquotesingle{}éléments pouvant être programmés. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_evenement_a55edc55f582f7992296b10e8a60476c8}{}\index{Evenement@{Evenement}!````~Evenement@{$\sim$\+Evenement}}
+\index{````~Evenement@{$\sim$\+Evenement}!Evenement@{Evenement}}
+\subsubsection[{$\sim$\+Evenement}]{\setlength{\rightskip}{0pt plus 5cm}virtual Evenement\+::$\sim$\+Evenement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{class_evenement_a55edc55f582f7992296b10e8a60476c8}
+
+
+Destructeur de l\textquotesingle{}événement. 
+
+\hypertarget{class_evenement_ab538f1a96d3b5b63f8ce0e89f16bcafd}{}\index{Evenement@{Evenement}!Evenement@{Evenement}}
+\index{Evenement@{Evenement}!Evenement@{Evenement}}
+\subsubsection[{Evenement}]{\setlength{\rightskip}{0pt plus 5cm}Evenement\+::\+Evenement (
+\begin{DoxyParamCaption}
+\item[{{\bf Duree}}]{dur}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_evenement_ab538f1a96d3b5b63f8ce0e89f16bcafd}
+
+
+Constructeur de l\textquotesingle{}événement à partir d\textquotesingle{}une durée. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_evenement_af217f0cd3d421e3f113a13536ee63593}{}\index{Evenement@{Evenement}!afficher@{afficher}}
+\index{afficher@{afficher}!Evenement@{Evenement}}
+\subsubsection[{afficher}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Evenement\+::afficher (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_evenement_af217f0cd3d421e3f113a13536ee63593}
+
+
+Méthode virtuelle pure d\textquotesingle{}affichage de l\textquotesingle{}événement. 
+
+
+
+Implemented in \hyperlink{class_activite_acf748b87edc5e4a5b78bd5e9364946f3}{Activite}, and \hyperlink{class_unitaire_a98bd645b84e0bd2f378e13774324f7b7}{Unitaire}.
+
+\hypertarget{class_evenement_a43c92d1917720282ac6ba3a598fac708}{}\index{Evenement@{Evenement}!get\+Duree@{get\+Duree}}
+\index{get\+Duree@{get\+Duree}!Evenement@{Evenement}}
+\subsubsection[{get\+Duree}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Duree} Evenement\+::get\+Duree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_evenement_a43c92d1917720282ac6ba3a598fac708}
+
+
+Renvoie la durée de l\textquotesingle{}événement. 
+
+\hypertarget{class_evenement_aa5f395f7681426893894fb73eb851459}{}\index{Evenement@{Evenement}!get\+Nom@{get\+Nom}}
+\index{get\+Nom@{get\+Nom}!Evenement@{Evenement}}
+\subsubsection[{get\+Nom}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Evenement\+::get\+Nom (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_evenement_aa5f395f7681426893894fb73eb851459}
+
+
+Renvoie le nom et l\textquotesingle{}éventuel lieu de l\textquotesingle{}événement en Q\+String. 
+
+\hypertarget{class_evenement_a42e914b00d21eb4377d7c0a242a88e9a}{}\index{Evenement@{Evenement}!set\+Duree@{set\+Duree}}
+\index{set\+Duree@{set\+Duree}!Evenement@{Evenement}}
+\subsubsection[{set\+Duree}]{\setlength{\rightskip}{0pt plus 5cm}void Evenement\+::set\+Duree (
+\begin{DoxyParamCaption}
+\item[{const {\bf Duree} \&}]{dur}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_evenement_a42e914b00d21eb4377d7c0a242a88e9a}
+
+
+Modifie la durée de l\textquotesingle{}événement à partir du paramètre \char`\"{}dur\char`\"{}. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+L\+O21app/\hyperlink{_calendar_8h}{Calendar.\+h}\item 
+L\+O21app/\hyperlink{_calendar_8cpp}{Calendar.\+cpp}\end{DoxyCompactItemize}

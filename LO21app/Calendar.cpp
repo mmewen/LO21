@@ -111,6 +111,23 @@ int Unitaire::getStatut(){
     return 1;
 }
 
+int Unitaire::isFinished(const Date& d, const Horaire& h){
+    // Retourne le statut de la tache par rapport à la date d : 0 = pas encore faite, 1 = terminée
+    if ( !getRestant().isNull() ){
+        return 0;
+    }
+    ProgrammationManager& pm = ProgrammationManager::getInstance();
+    if(!pm.trouverProgrammation(dynamic_cast<Evenement&>(*this)))
+        return 0;
+    if(d<pm.trouverProgrammation(dynamic_cast<Evenement&>(*this))->getDate()
+            || (d==pm.trouverProgrammation(dynamic_cast<Evenement&>(*this))->getDate()
+                && h<Horaire(pm.trouverProgrammation(dynamic_cast<Evenement&>(*this))->getHoraire().getHeure(),
+                           pm.trouverProgrammation(dynamic_cast<Evenement&>(*this))->getHoraire().getMinute()
+                           + pm.trouverProgrammation(dynamic_cast<Evenement&>(*this))->getDuree().getDureeEnMinutes())))
+        return 0;
+    return 1;
+}
+
 
 //COMPOSITE
 void Composite::afficher(ostream& f) {
@@ -237,6 +254,29 @@ int Composite::getStatut(){
 
     } else {
         return 0;
+    }
+    return -1;
+}
+
+int Composite::isFinished(const Date& d, const Horaire& h){
+    // Retourne le statut de la tache par rapport à la date d : 0 = pas encore faite, 1 = terminée
+    if (getNbCompo() != 0) {
+        int statutTemp;
+        bool fini = true;
+        for( Composite::CompoIterator it = getCompoIterator() ; !it.isDone() ;it.next() ){
+            statutTemp = it.current().isFinished(d,h);
+            if (statutTemp != 1){
+                fini = false;
+            }
+        }
+        if ( fini ){
+            return 1; // fini
+        }
+        else
+            return 0; // pas fini
+
+    } else {
+        return 1;
     }
     return -1;
 }
@@ -668,12 +708,8 @@ void ProgrammationManager::ajouterProgrammation(Unitaire& e, const Date& d, cons
         throw CalendarException("erreur, ProgrammationManager, programmation après echeance");
     Tache::Iterator it2 = e.getIterator();
     for(it2.first();!it2.isDone();it2.next()){
-        if(!trouverProgrammation(dynamic_cast<Evenement&>(it2.current())))
-            throw CalendarException("erreur, ProgrammationManager, precedence non respectee");
-        if(d<trouverProgrammation(dynamic_cast<Evenement&>(it2.current()))->getDate()
-                || (d==trouverProgrammation(dynamic_cast<Evenement&>(it2.current()))->getDate()
-                    && h<trouverProgrammation(dynamic_cast<Evenement&>(it2.current()))->getHoraire()))
-            throw CalendarException("erreur, ProgrammationManager, precedence non terminée");
+        if(!it2.current().isFinished(d,h))
+            throw CalendarException("erreur, ProgrammationManager, précédence non respectée");
     }
     e.setFait(Duree(e.getFait().getDureeEnMinutes()+dur.getDureeEnMinutes()));
     Programmation* newt=new Programmation(e,d,h,dur);

@@ -190,6 +190,7 @@ public:
     Date getDateEcheance() const {  return echeance; }//! Renvoie la date d'échéance de la tache
     Projet* getProjet() { return projetParent; }//! Renvoie le pointeur vers le projet parent
     virtual int getStatut() = 0; //! Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
+    virtual int isFinished(const Date& d, const Horaire& h)=0;//! Renvoie 1 si la tache a été terminée à la date d et l'horaire h, 0 sinon
     void setId(const string& id) { identificateur=id; }//! Modifie l'identificateur
     void setTitre(const string& t) { titre=t; }//! Modifie le titre
     void setDatesDisponibiliteEcheance(const Date& disp, const Date& e) {
@@ -239,6 +240,7 @@ public:
     Duree getFait() const { return dureeFaite; }//! Retourne la durée faite de la tache
     Duree getRestant() const { Duree dR = Duree(getDuree().getDureeEnMinutes() - getFait().getDureeEnMinutes()); return dR; }//! Retourne la durée restante à programmer de la tache, calculée en soustrayant la durée totale avec la dutée faite
     int getStatut(); //! Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
+    virtual int isFinished(const Date& d, const Horaire& h);//! Renvoie 1 si la tache a été terminée à la date d et l'horaire h, 0 sinon
     void setFait(const Duree& f){ dureeFaite=f; }//! Modifie la durée faite de la tache
     void setPreemp(){ preemptable=true; }//! Rend la tache préemptable
     void setNonPreemp(){ if(getDuree().getDureeEnHeures()>12) preemptable=true; else preemptable=false; }//! Rend, si possible, la tache preemptable
@@ -271,28 +273,29 @@ public:
 */
 class Composite : public Tache {
 private:
-    Tache** composition;
-    unsigned int nbCompo;
-    unsigned int nbMaxCompo;
-    Tache* trouverCompo(const string& id) const;
-    Composite(const Composite& t);
-    Composite& operator=(const Composite& t);
-    Composite(string id, string t, Date d, Date e, Projet* p):Tache(id,t,d,e,p),composition(0),nbCompo(0),nbMaxCompo(0){}
+    Tache** composition;//! Tableau de pointeurs de Taches composantes
+    unsigned int nbCompo;//! Nombre d'éléments dans composition
+    unsigned int nbMaxCompo;//! Taille allouée à composition
+    Tache* trouverCompo(const string& id) const;//! Renvoie le pointeur vers la tache correspondant à id si elle existe dans composition
+    Composite(const Composite& t);//! Constructeur par recopie interdit
+    Composite& operator=(const Composite& t);//! Recopie par operator= interdite
+    Composite(string id, string t, Date d, Date e, Projet* p):Tache(id,t,d,e,p),composition(0),nbCompo(0),nbMaxCompo(0){}//! Constructeur de composite avec un identificateur, un titre, date de disponibilité, date d'échéance et pointeur vers projet parent
     friend Composite& Projet::ajouterComposite(const string& t, const Date& dispo, const Date& deadline);
 public:
-    unsigned int getNbCompo(){return nbCompo; }
-    virtual void addItem(Tache* t);
-    void addCompo(Tache* t);
-    Tache& getCompo(const string& id);
-    const Tache& getCompo(const string& code) const;
+    unsigned int getNbCompo(){return nbCompo; }//! Retourne le nombre de taches composantes
+    virtual void addItem(Tache* t);//! Ajoute le pointeur de tache dans le tableau de précédence
+    void addCompo(Tache* t);//! Ajoute la pointeur de tache dans composition
+    Tache& getCompo(const string& id);//! Renvoie la référence vers la tache correspondant à id si elle existe dans composition
+    const Tache& getCompo(const string& code) const;//! Renvoie la const référence vers la tache correspondant à id si elle existe dans composition
     int getStatut(); //! Retourne le statut de la tache : 0 = rien n'est fait, 1 = en cours, 2 = terminé/deadline passée
-    bool isPrecedencePotentielle( const string& id );
+    virtual int isFinished(const Date& d, const Horaire& h);//! Renvoie 1 si la tache a été terminée à la date d et l'horaire h, 0 sinon
+    bool isPrecedencePotentielle( const string& id );//! Indique si la tache correspondant à id est une précédence potentielle ou non
     void update(string id, string t, Date d, Date e){
         setId(id); setTitre(t); setDatesDisponibiliteEcheance(d,e);
-    }
+    }//! Met à jour les attributs identificateur, titre, dates de Composite
     void update(string t, Date d, Date e){
         setTitre(t); setDatesDisponibiliteEcheance(d,e);
-    }
+    }//! Met à jour les attributes titre et dates de composite
     friend class CompoIterator;
     class CompoIterator{
     private:
@@ -311,8 +314,8 @@ public:
         void next(){ ++indice_tache; }
         void first(){ indice_tache=0; }
     };
-    CompoIterator getCompoIterator(){ return CompoIterator(composition,nbCompo); }
-    virtual void afficher(ostream& f) ;
+    CompoIterator getCompoIterator(){ return CompoIterator(composition,nbCompo); }//! Retourne un iterateur sur le tableau de composition
+    virtual void afficher(ostream& f) ;//! Affiche les attributs de la tache composite
 };
 
 /*! \class Activite
@@ -321,20 +324,18 @@ public:
 */
 class Activite : public Evenement {
 private:
-    string titre;
-    string lieu;
-    //Duree duree;
+    string titre;//! Titre de l'activité
+    string lieu;//! Lieu de l'activité
 public:
-    Activite(const string& t, const string& l, Duree dur): Evenement(dur), titre(t), lieu(l) {}
-    string getTitre() const { return titre; }
-    string getLieu() const { return lieu; }
-    void setTitre(const string& t) { titre=t; }
-    void setLieu(const string& l) { lieu=l; }
-    //Duree getDuree() const { return duree; }
+    Activite(const string& t, const string& l, Duree dur): Evenement(dur), titre(t), lieu(l) {}//! Constructeur d'activité
+    string getTitre() const { return titre; }//! Retourne le titre
+    string getLieu() const { return lieu; }//! Retourne le lieu
+    void setTitre(const string& t) { titre=t; }//! Modifie le titre
+    void setLieu(const string& l) { lieu=l; }//! Modifie le lieu
     void update(string t, string l, Duree d){
         setTitre(t); setLieu(l); setDuree(d);
-    }
-    virtual void afficher(ostream& f) ;
+    }//! Met à jour le titre, le lieu et la durée de l'activité
+    virtual void afficher(ostream& f) ;//! Affiche les attributs de l'activité
 };
 
 class Programmation;
@@ -350,8 +351,7 @@ private:
     unsigned int nb;//! Nombre de programmations
     unsigned int nbMax;//! Taille allouée au tableau programmations
     void addItem(Programmation* t);//! Ajoute le pointeur de programmation au tableau
-    Programmation* trouverProgrammation(Evenement& e) const;//! Renvoie le pointeur de la programmation de l'événement correspondant si elle existe dans le tableau
-    Programmation* trouverProgrammation(const Evenement& e) const;//! Renvoie le pointeur de la programmation de l'événement const correspondant si elle existe dans le tableau
+
     ProgrammationManager():programmations(0),nb(0),nbMax(0){}//! Constructeur de ProgrammationManager, initialise le tableau à 0
     ~ProgrammationManager();//! Destructeur de ProgrammationManager
     ProgrammationManager(const ProgrammationManager& um);//! Constructeur par recopie interdit
@@ -364,6 +364,8 @@ private:
     };
     static Handler handler;//! Handler permettant de rendre ProgrammationManager singleton
 public:
+    Programmation* trouverProgrammation(Evenement& e) const;//! Renvoie le pointeur de la programmation de l'événement correspondant si elle existe dans le tableau
+    Programmation* trouverProgrammation(const Evenement& e) const;//! Renvoie le pointeur de la programmation de l'événement const correspondant si elle existe dans le tableau
     static ProgrammationManager& getInstance();//! Renvoie la seule instance de ProgrammationManager
     static void libererInstance();//! Libère l'unique instance de ProgrammationManager
     void ajouterProgrammation(Unitaire& e, const Date& d, const Horaire& h, Duree dur);//! Crée une programmation d'une Tache Unitaire et stocke le pointeur dans le tableau programmations
